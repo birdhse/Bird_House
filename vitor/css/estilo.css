@@ -21,7 +21,7 @@
 
 #logo {
     float: left;
-    margin: 10px auto 0px 10px;
+    margin: 10px 0px 0px 10px;
     color: white;
 }
 
@@ -66,6 +66,7 @@
 
 #menu_lateral {
     width: 170px;
+    height: 893px;
     margin: 0;
     padding: 0;
     float: left;
@@ -95,11 +96,47 @@
 }
 
 #endereco{
-    font-family: "Verdana, Geneva, Tahoma, sans-serif";
     margin-top: 5px;
     margin-left: 180px;
 }
 
 .base{
     color: rgb(13, 101, 251);
+}
+
+.filtros{
+    margin-left: 620px;
+    margin-top: 10px;
+}
+
+.filtros button{
+    border-radius: 4px;
+    border: 0.5px solid black;
+    padding: 3px;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.filtros button:hover{
+    background-color: red;
+}
+
+#todos{
+    background-color: rgb(98, 98, 98);
+    color: white;
+}
+
+.tabela{
+    display: block;
+    margin-left: 200px;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.menu_tabela{
+    font-size: 20px;
+}
+
+table, th, td, tr{
+    border: 1px solid black;
 }
