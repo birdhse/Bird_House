@@ -1,0 +1,91 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#navegacao {
+    background-color: #198fad;
+    height: 60px;
+}
+
+
+#area_menu {
+
+    margin: 0 auto;
+}
+
+#menu {
+    float: left;
+    padding: 10px 0px;
+}
+
+#logo {
+    float: left;
+    margin: 10px auto 0px 5px;
+    color: white;
+}
+
+#data {
+    float: right;
+    margin-right: 20px;
+    color: white;
+    margin-top: 20px;
+}
+
+#txtBusca {
+    margin-left: 650px;
+    margin-top: 13px;
+    background-color: white;
+    padding-left: 5px;
+    font-size: 18px;
+    border: none;
+    height: 32px;
+    width: 260px;
+}
+
+#menu_lateral {
+    width: 170px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    background-color: #198fad86;
+
+}
+
+#menu_lateral ul li {
+    margin: 0;
+    padding: 0px;
+    text-align: left;
+    list-style-type: none;
+}
+
+#menu_lateral a {
+    color: rgb(19, 19, 19);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+}
+
+#menu_lateral a.link_ativo {
+    color: rgb(0, 0, 0);
+    background-color: #fdc827;
+}
+
+.dropdown li :hover {
+    background-color: #fdc827;
+}
+
+#endereco {
+    margin-left: 200px;
+}
+
+.base {
+    color: blue;
+}
+
+#nome {
+    margin-left: 200px;
+    margin-top: 10px;
+    font-weight: bold;
+}
