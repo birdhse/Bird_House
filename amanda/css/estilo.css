@@ -76,3 +76,59 @@ margin-top: 20px;
     float: right;
     color: white;
 }
+/* Estilo para o contêiner das legendas */
+.legend-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* Estilo para as legendas */
+.legend {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.todos {
+    background-color: #737373; /* cinza */
+    color: white;
+}
+
+.disponivel {
+    background-color: #3498db; /* azul */
+}
+
+.ocupado {
+    background-color: #e74c3c; /* vermelho */
+}
+
+.limpeza {
+    background-color: #a6a6a6; /* cinza claro */
+}
+
+.bloqueado {
+    background-color: black; /*petro */
+    color: white;
+}
+
+.entra_hoje {
+    background-color: #ffde59; /*amarelo */
+}
+
+.sai_hoje {
+    background-color: #7ed957; /* verde */
+}
+
+.atrasado {
+    background-color: rgb(175, 14, 175); /* roxo */
+}
+
+.vencido {
+    background-color: #004aad; /* azul escuro */
+}
