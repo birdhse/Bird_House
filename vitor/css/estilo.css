@@ -118,7 +118,9 @@
 }
 
 .filtros button:hover{
-    background-color: red;
+    background-color: rgb(209, 209, 209) !important;
+    color: black !important;
+    cursor: pointer;
 }
 
 #todos{
