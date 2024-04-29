@@ -1,6 +1,10 @@
 * {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #navegacao {
@@ -76,15 +80,101 @@ margin-top: 20px;
     float: right;
     color: white;
 }
+
+
+/* Estilo do cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .header .search {
+    flex-grow: 1;
+    margin-right: 20px;
+  }
+  
+  .header .notification {
+    margin-right: 20px;
+  }
+  
+  /* Estilo do menu lateral */
+  .sidebar {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    width: 200px;
+    background-color: #f4f4f4;
+  }
+  
+  .sidebar .logo {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .sidebar .menu {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar .menu button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar .menu button:hover {
+    background-color: #999;
+  }
+  
+  /* Estilo do conteúdo principal */
+  .main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Estilo dos cards */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 250px; /* Altura dos cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card h2 {
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo do espaço para ícones */
+  .icon-space {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
 /* Estilo para o contêiner das legendas */
-.legend-container {
+/* .legend-container {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-}
+} */
 
 /* Estilo para as legendas */
-.legend {
+/* .legend {
     padding: 10px 20px;
     margin: 0 10px;
     border-radius: 20px;
@@ -94,41 +184,41 @@ margin-top: 20px;
     border: none;
     cursor: pointer;
     outline: none;
-}
-.todos {
-    background-color: #737373; /* cinza */
+} */
+/* .todos {
+    background-color: #737373; cinza
     color: white;
-}
+} */
 
-.disponivel {
-    background-color: #3498db; /* azul */
+/* .disponivel {
+    background-color: #3498db; azul 
 }
 
 .ocupado {
-    background-color: #e74c3c; /* vermelho */
+    background-color: #e74c3c;  vermelho 
 }
 
 .limpeza {
-    background-color: #a6a6a6; /* cinza claro */
+    background-color: #a6a6a6; cinza claro 
 }
 
 .bloqueado {
-    background-color: black; /*petro */
+    background-color: black; petro 
     color: white;
 }
 
 .entra_hoje {
-    background-color: #ffde59; /*amarelo */
+    background-color: #ffde59; amarelo 
 }
 
 .sai_hoje {
-    background-color: #7ed957; /* verde */
+    background-color: #7ed957;  verde 
 }
 
 .atrasado {
-    background-color: rgb(175, 14, 175); /* roxo */
+    background-color: rgb(175, 14, 175);  roxo 
 }
 
 .vencido {
-    background-color: #004aad; /* azul escuro */
-}
+    background-color: #004aad; azul escuro 
+} */
