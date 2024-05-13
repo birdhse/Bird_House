@@ -43,12 +43,14 @@ margin-top: 20px;
     padding-left: 5px;
     font-size: 18px;
     border: none;
+    
     height: 32px;
     width: 260px;
 }
 
 #menu_lateral {
     width: 170px;
+    height: 970px;
     margin: 0;
     padding: 0;
     float: left;
@@ -136,8 +138,8 @@ margin-top: 20px;
   /* Estilo do conteúdo principal */
   .main-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    row-gap: 20px;
     justify-content: center;
   }
   
@@ -153,11 +155,11 @@ margin-top: 20px;
   }
   
   .card h2 {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   
   .card p {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   
   /* Estilo do espaço para ícones */
@@ -165,60 +167,4 @@ margin-top: 20px;
     display: flex;
     justify-content: flex-end;
   }
-  
-/* Estilo para o contêiner das legendas */
-/* .legend-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-} */
-
-/* Estilo para as legendas */
-/* .legend {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border-radius: 20px;
-    background-color: #f0f0f0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-} */
-/* .todos {
-    background-color: #737373; cinza
-    color: white;
-} */
-
-/* .disponivel {
-    background-color: #3498db; azul 
-}
-
-.ocupado {
-    background-color: #e74c3c;  vermelho 
-}
-
-.limpeza {
-    background-color: #a6a6a6; cinza claro 
-}
-
-.bloqueado {
-    background-color: black; petro 
-    color: white;
-}
-
-.entra_hoje {
-    background-color: #ffde59; amarelo 
-}
-
-.sai_hoje {
-    background-color: #7ed957;  verde 
-}
-
-.atrasado {
-    background-color: rgb(175, 14, 175);  roxo 
-}
-
-.vencido {
-    background-color: #004aad; azul escuro 
-} */
+ 
