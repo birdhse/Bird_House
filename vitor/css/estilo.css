@@ -1,144 +1,186 @@
 * {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
 }
 
 #navegacao {
     background-color: #198fad;
     height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
 }
-
 
 #area_menu {
-
-    margin: 0 auto;
-}
-
-#menu {
-    float: left;
-    padding: 10px 0px;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 #logo {
-    float: left;
-    margin: 10px 0px 0px 10px;
     color: white;
-}
-
-#data {
-    float: right;
-    margin-right: 20px;
-    color: white;
-    margin-top: 20px;
-}
-
-.caixa_busca{
-    border: 1px solid black;
-    margin-left: 180px;
-    margin-top: 2px;
-    border-radius: 8px;
-    height: 40px;
-    width: 455px;
+    margin-right: auto;
+    width: 180px;
 }
 
 #txtBusca {
-    border-radius: 8px;
-    background-color: rgb(206, 206, 206);
-    padding-left: 5px;
-    font-size: 18px;
-    border: none;
-    height: 40px;
-    width: 450px;
+    align-items: center;
+    height: 30px;
+    width: 500px;
+    padding: 5px;
+    font-size: 16px;
+    border: 100px;
 }
 
-
-#area_menu #txtBusca {
-    margin-left: 650px;
-    margin-top: 13px;
-    background-color: white;
-    padding-left: 5px;
-    font-size: 18px;
-    border: none;
-    border-radius: 0px;
-    height: 32px;
-    width: 260px;
+.material-symbols-outlined {
+    color: white;
+    font-size: 24px;
+    margin-left: 20px;
 }
 
-#menu_lateral {
-    width: 170px;
-    height: 893px;
-    margin: 0;
-    padding: 0;
-    float: left;
-    background-color: #198fad86;
-    display: block;
-
-}
-
-#menu_lateral ul li {
-    margin: 0;
-    padding: 0px;
-    text-align: left;
-    list-style-type: none;
-}
-
-#menu_lateral a {
-    color: rgb(19, 19, 19);
-    font-weight: bold;
-    text-decoration: none;
-    padding: 8px;
-    display: block;
-}
-
-#menu_lateral a.link_ativo {
-    color: rgb(0, 0, 0);
-    background-color: #fdc827;
-}
-
-#endereco{
-    margin-top: 5px;
-    margin-left: 180px;
-}
-
-.base{
-    color: rgb(13, 101, 251);
-}
-
-.filtros{
-    margin-left: 620px;
-    margin-top: 10px;
-}
-
-.filtros button{
-    border-radius: 4px;
-    border: 0.5px solid black;
-    padding: 3px;
-    font-size: 20px;
-    margin-right: 8px;
-}
-
-.filtros button:hover{
-    background-color: rgb(209, 209, 209) !important;
-    color: black !important;
-    cursor: pointer;
-}
-
-#todos{
-    background-color: rgb(98, 98, 98);
+#data {
+    margin-left: auto;
     color: white;
 }
 
-.tabela{
+#menu_lateral {
+    width: 200px;
+    float: left;
+    background-color: #198fad86;
+    height: 1044px;
+}
+
+#menu_lateral ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu_lateral ul li {
+    padding: 10px;
+}
+
+#menu_lateral ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.link_ativo {
+    font-weight: bold;
+    color: white;
+    background-color: #fdc827;
+}
+
+.container {
+    max-width: 1657px;
+    margin-left: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
     display: block;
-    margin-left: 200px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="date"] {
+    width: calc(50% - 5px);
+}
+
+input[type="submit"],
+button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: white;
     margin-top: 10px;
-    text-align: justify;
 }
 
-.menu_tabela{
-    font-size: 20px;
-}
-
-table, th, td, tr{
+.botoes button{
     border: 1px solid black;
+    
 }
+
+#vermelho{
+    background-color: red;
+}
+
+#cinza{
+    background-color: gray;
+}
+
+#azul{
+    background-color: rgb(36, 135, 228);
+}
+
+#verde{
+    background-color: rgb(184, 227, 119);
+    color: black;
+}
+
+#amarelo{
+    background-color: #fdc827;
+    color: black;
+}
+
+#roxo{
+    background-color: rgb(133, 20, 147);
+}
+
+#anil{
+    background-color: rgb(42, 42, 157);
+}
+
+
+
+/* Cores condicionais para o campo "Situação do Quarto" */
+select#roomStatus option[value="nao-hospedado"] {
+    color: white;
+    background-color: green; /* Cor padrão para "Não Hospedado" */
+}
+
+select#roomStatus option[value="hospedado"] {
+    color: white;
+    background-color: red; /* Cor para "Hospedado" */
+}
+
+#resumo_reserva {
+    width: 1657px;
+    margin: 0;
+    padding: 20px;
+    float: right;
+    background-color: #198fad;
+    height: 256px;
+}
+
+#resumo {
+    color: white;
+}
+
+#resumo h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#resumo p {
+    margin-bottom: 5px;
+}
+
