@@ -5,7 +5,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Coolvetica', sans-serif;
+
 }
 
 #navegacao {
@@ -50,14 +51,19 @@ body {
 
 #menu_lateral {
     width: 200px;
+    height: 1044px;
+    margin: 0;
+    padding: 0;
     float: left;
     background-color: #198fad86;
-    height: 1044px;
+
 }
 
 #menu_lateral ul {
-    list-style: none;
+    margin: 0;
     padding: 0;
+    text-align: left;
+    list-style-type: none;
 }
 
 #menu_lateral ul li {
@@ -66,7 +72,10 @@ body {
 
 #menu_lateral ul li a {
     color: black;
+    font-weight: bold;
     text-decoration: none;
+    padding: 6px;
+    display: block;
 }
 
 #menu_lateral ul li a.link_ativo {
@@ -134,12 +143,14 @@ button:hover {
 /* Cores condicionais para o campo "Situação do Quarto" */
 select#roomStatus option[value="nao-hospedado"] {
     color: white;
-    background-color: green; /* Cor padrão para "Não Hospedado" */
+    background-color: green;
+    /* Cor padrão para "Não Hospedado" */
 }
 
 select#roomStatus option[value="hospedado"] {
     color: white;
-    background-color: red; /* Cor para "Hospedado" */
+    background-color: red;
+    /* Cor para "Hospedado" */
 }
 
 #resumo_reserva {
@@ -163,4 +174,3 @@ select#roomStatus option[value="hospedado"] {
 #resumo p {
     margin-bottom: 5px;
 }
-
