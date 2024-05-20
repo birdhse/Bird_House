@@ -1,93 +1,92 @@
 * {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Coolvetica', sans-serif;
+
 }
 
 #navegacao {
     background-color: #198fad;
     height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
 }
-
 
 #area_menu {
-    
-    margin: 0 auto ;
-}
-
-#menu {
-    float: left;
-    padding: 10px 0px;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 #logo {
-    float: left;
-    margin: 10px auto 0px 5px;
     color: white;
-}
-
-#data{
-float: right;
-margin-right: 5px;
-color: white;
-margin-top: 20px;
+    margin-right: auto;
+    width: 180px;
 }
 
 #txtBusca {
-    margin-left: 650px;
-    margin-top: 13px;
-    background-color: white;
-    padding-left: 5px;
-    font-size: 18px;
-    border: none;
-    height: 32px;
-    width: 260px;
+    align-items: center;
+    height: 30px;
+    width: 500px;
+    padding: 5px;
+    font-size: 16px;
+    border: 100px;
+}
+
+.material-symbols-outlined {
+    color: white;
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+#data {
+    margin-left: auto;
+    color: white;
 }
 
 #menu_lateral {
-    width: 170px;
+    width: 200px;
+    height: 1044px;
     margin: 0;
     padding: 0;
     float: left;
     background-color: #198fad86;
-    
+
 }
 
-#menu_lateral ul li {
+#menu_lateral ul {
     margin: 0;
-    padding: 0px;
+    padding: 0;
     text-align: left;
     list-style-type: none;
 }
 
-#menu_lateral a{
-    color: rgb(19, 19, 19);
+#menu_lateral ul li {
+    padding: 10px;
+}
+
+#menu_lateral ul li a {
+    color: black;
     font-weight: bold;
     text-decoration: none;
-    padding: 8px;
+    padding: 6px;
     display: block;
 }
 
-#menu_lateral a.link_ativo{
-    color: rgb(255, 255, 255);
+#menu_lateral ul li a.link_ativo {
+    font-weight: bold;
+    color: white;
     background-color: #fdc827;
 }
 
-.material-symbols-outlined{
-    margin: 16px 27px 0px 1px;
-    float: right;
-    color: aliceblue;
-    
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 .container {
-    max-width: 600px;
-    margin: 20px auto;
+    max-width: 1657px;
+    margin-left: auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -114,36 +113,53 @@ input[type="date"] {
     width: calc(50% - 5px);
 }
 
-input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
+input[type="submit"],
+button {
+    cursor: pointer;
     border: none;
     padding: 10px 20px;
-    cursor: pointer;
     border-radius: 3px;
+    color: white;
+    margin-top: 10px;
 }
 
-input[type="submit"]:hover {
-    background-color: #0056b3;
+#confirmButton {
+    background-color: red;
+}
+
+#cancelButton {
+    background-color: purple;
+}
+
+#updateButton {
+    background-color: green;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    opacity: 0.8;
 }
 
 /* Cores condicionais para o campo "Situação do Quarto" */
 select#roomStatus option[value="nao-hospedado"] {
     color: white;
-    background-color: green; /* Cor padrão para "Não Hospedado" */
+    background-color: green;
+    /* Cor padrão para "Não Hospedado" */
 }
 
 select#roomStatus option[value="hospedado"] {
     color: white;
-    background-color: red; /* Cor para "Hospedado" */
+    background-color: red;
+    /* Cor para "Hospedado" */
 }
 
-#menu_direito {
-    width: 200px;
+#resumo_reserva {
+    width: 1657px;
     margin: 0;
     padding: 20px;
     float: right;
-    background-color: #198fad86;
+    background-color: #198fad;
+    height: 256px;
 }
 
 #resumo {
