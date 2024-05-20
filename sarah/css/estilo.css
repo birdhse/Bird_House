@@ -22,7 +22,7 @@
 #logo {
     float: left;
     margin: 10px auto 0px 5px;
-    color: white;
+    color: black;
 }
 
 #data {
@@ -77,7 +77,8 @@
 }
 
 #endereco {
-    margin-left: 200px;
+    margin-left: 185px;
+    margin-top: 10px;
 }
 
 .base {
@@ -88,4 +89,42 @@
     margin-left: 200px;
     margin-top: 10px;
     font-weight: bold;
+}
+
+.linha ul {
+
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+.linha li {
+    display: inline;
+    margin-right: 10px;
+    text-decoration: overline black;
+}
+
+/*///////////////////////////////////////////*/
+
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main main main'
+    'menu footer footer footer footer footer';
+  gap: 2px;
+  background-color: #198fad;
+  padding: 3px;
+}
+
+.grid-container > div {
+  background-color:white;
+  padding: 1px 0;
+  font-size: 30px;
 }
