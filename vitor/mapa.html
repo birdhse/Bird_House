@@ -26,8 +26,8 @@
     <nav id="menu_lateral">
         <ul>
             <li><a href="geral.html">Geral</a></li>
-            <li class="link_ativo"><a href="mapa.html">Mapa</a></li>
-            <li><a href="reserva.html">Reservas</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li class="link_ativo"><a href="reserva.html">Reservas</a></li>
             <li><a href="link4.htm">Cadastros</a></li>
             <li><a href="link5.htm">Transações</a></li>
         </ul>
@@ -38,27 +38,51 @@
             <h2>Geral / Reservas</h2>
             <input type="text" placeholder=" Pesquise por UH, nome do hóspede ou número de reserva">
             <div class="botoes">
-                <button id="cinza">Todos</button>
-                <button id="azul">Reservado</button>
-                <button id="vermelho">Hospedado</button>
-                <button id="verde">Finalizado</button>
-                <button id="amarelo">Cancelado</button>
-                <button id="roxo">Atrasado</button>
-                <button id="anil">Vencido</button>
+                <button id="corTodos">Todos</button>
+                <button id="corReservado">Reservado</button>
+                <button id="corHospedado">Hospedado</button>
+                <button id="corFinalizado">Finalizado</button>
+                <button id="corCancelado">Cancelado</button>
+                <button id="corAtrasado">Atrasado</button>
+                <button id="corVencido">Vencido</button>
             </div>
         </section>
 
+        <table>
+            <tr>
+                <th colspan="6">Lista de Reserva (<label id="lReserva">10</label>)</th>
+            </tr>
+            <tr>
+                <td id=>N°</td>
+                <td id=>Hóspede</td>
+                <td id=>Acomodações</td>
+                <td id=>Check-in</td>
+                <td id=>Check-out</td>
+                <td id=>Qntd.</td>
+            </tr>
+            <tr>
+                <td><a href=""><label id="txtReservado">■</label> HQ:00001</a></td>
+                <td>Isaac</td>
+                <td>Bus</td>
+                <td>24/10/2023</td>
+                <td>25/10/2023</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td><a href=""><label id="txtHospedado">■</label> HQ:00001</a></td>
+                <td>Matheus</td>
+                <td>Suíte com cozinha</td>
+                <td>24/10/2023</td>
+                <td>26/10/2023</td>
+                <td>1</td>
+            </tr>
+        </table>
+
+
         <aside id="resumo_reserva">
-            <h3>Resumo da Reserva</h3>
+            
             <div id="resumo">
-                <p><strong>Forma de Pagamento:</strong> Dinheiro</p>
-                <p><strong>Número de Diárias:</strong> 3</p>
-                <p><strong>Média de Diárias:</strong> R$ 150,00</p>
-                <p><strong>Diárias:</strong> R$ 450,00</p>
-                <p><strong>Produtos:</strong> R$ 50,00</p>
-                <p><strong>Serviços:</strong> R$ 100,00</p>
-                <p><strong>Total:</strong> R$ 600,00</p>
-                <p><strong>Recebido:</strong> R$ 600,00</p>
+                
             </div>
         </aside>
     </main>

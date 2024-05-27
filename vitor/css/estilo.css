@@ -69,6 +69,10 @@ body {
     text-decoration: none;
 }
 
+#menu_lateral li:hover{
+    background-color: #fdc827;
+}
+
 .link_ativo {
     font-weight: bold;
     color: white;
@@ -83,7 +87,7 @@ body {
     border-radius: 5px;
 }
 
-label {
+label .data {
     display: block;
     margin-bottom: 5px;
 }
@@ -119,36 +123,59 @@ button {
     
 }
 
-#vermelho{
+.botoes{
+    text-align: center;
+}
+
+#corHospedado{
     background-color: red;
 }
-
-#cinza{
+#txtHospedado{
+    color: red;
+}
+#corTodos{
     background-color: gray;
 }
-
-#azul{
+#txtTodos{
+    color: gray;
+}
+#corReservado{
     background-color: rgb(36, 135, 228);
 }
 
-#verde{
+#txtReservado{
+    color: rgb(36, 135, 228);
+}
+
+#corFinalizado{
     background-color: rgb(184, 227, 119);
     color: black;
 }
+#txtFinalizado{
+    color: rgb(184, 227, 119);
+}
 
-#amarelo{
+#corCancelado{
     background-color: #fdc827;
     color: black;
 }
 
-#roxo{
+#txtCancelado{
+    color: #fdc827;
+}
+
+#corAtrasado{
     background-color: rgb(133, 20, 147);
 }
-
-#anil{
+#txtAtrasado{
+    color: rgb(133, 20, 147);
+}
+#corVencido{
     background-color: rgb(42, 42, 157);
 }
-
+#txtVencido{
+    color: rgb(42, 42, 157);
+}
 
 
 /* Cores condicionais para o campo "Situação do Quarto" */
@@ -184,3 +211,11 @@ select#roomStatus option[value="hospedado"] {
     margin-bottom: 5px;
 }
 
+th{
+    text-align: left;
+    display: inline;
+}
+
+label .lReserva{
+    display: inline;
+}
