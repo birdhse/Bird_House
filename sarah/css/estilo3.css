@@ -99,6 +99,8 @@ text-decoration: none;
     background-color: #fdf2e9;
     padding: 20px;
     border: 1px solid #d3b69f;
+    margin-right: 300px;
+    width: 1250px;
 }
 
 .tabs {
@@ -107,7 +109,7 @@ text-decoration: none;
 }
 
 .tab {
-    background-color: #d3b69f;
+    background-color: #198fad86;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -115,7 +117,7 @@ text-decoration: none;
 }
 
 .tab.active {
-    background-color: #f0d9b5;
+    background-color:#198fad86;
 }
 
 .tab-content {
