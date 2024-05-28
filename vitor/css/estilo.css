@@ -68,15 +68,15 @@ body {
     color: black;
     text-decoration: none;
 }
-
+/* 
 #menu_lateral li:hover{
     background-color: #fdc827;
-}
+} */
 
 .link_ativo {
     font-weight: bold;
     color: white;
-    background-color: #fdc827;
+  
 }
 
 .container {
