@@ -78,8 +78,12 @@ body {
     display: block;
 }
 
-#menu_lateral ul li a.link_ativo {
-    font-weight: bold;
+#menu_lateral li:hover{
+    background-color: #fdc827;
+    color: white;
+}
+
+#menu_lateral li.link_ativo {
     color: white;
     background-color: #fdc827;
 }
@@ -121,10 +125,6 @@ button {
     border-radius: 3px;
     color: white;
     margin-top: 10px;
-}
-
-#confirmButton {
-    background-color: red;
 }
 
 #cancelButton {
