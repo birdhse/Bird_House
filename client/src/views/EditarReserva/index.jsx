@@ -8,8 +8,9 @@ function EditarReserva() {
                 <div id="area_menu">
                     <h1 id="logo">Bird House</h1>
                     <input type="text" id="txtBusca" placeholder="Buscar..." />
-                    <span class="material-symbols-outlined"> notifications </span>
+                    
                     <label id="data">23/04/2024</label>
+                    <span class="material-symbols-outlined"> notifications </span>
                 </div>
             </div>
             <div id="menu_lateral">

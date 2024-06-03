@@ -87,7 +87,7 @@ function Geral() {
                             <button>Hospedar</button>
                         </div>
 
-                        <div class="card black">
+                        <div class="card orange">
                             <h3>Domo</h3>
                             <p><strong>xxxx</strong></p>
                             <p>24/10/2023 - 25/10/2023</p>
