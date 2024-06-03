@@ -5,8 +5,7 @@
 }
 
 body {
-    font-family: 'Coolvetica', sans-serif;
-
+    font-family: Arial, sans-serif;
 }
 
 #navegacao {
@@ -51,19 +50,14 @@ body {
 
 #menu_lateral {
     width: 200px;
-    height: 1044px;
-    margin: 0;
-    padding: 0;
     float: left;
     background-color: #198fad86;
-
+    height: 1044px;
 }
 
 #menu_lateral ul {
-    margin: 0;
+    list-style: none;
     padding: 0;
-    text-align: left;
-    list-style-type: none;
 }
 
 #menu_lateral ul li {
@@ -72,20 +66,17 @@ body {
 
 #menu_lateral ul li a {
     color: black;
-    font-weight: bold;
     text-decoration: none;
-    padding: 6px;
-    display: block;
 }
-
+/* 
 #menu_lateral li:hover{
     background-color: #fdc827;
-    color: white;
-}
+} */
 
-#menu_lateral li.link_ativo {
+.link_ativo {
+    font-weight: bold;
     color: white;
-    background-color: #fdc827;
+  
 }
 
 .container {
@@ -96,7 +87,7 @@ body {
     border-radius: 5px;
 }
 
-label {
+label .data {
     display: block;
     margin-bottom: 5px;
 }
@@ -127,34 +118,79 @@ button {
     margin-top: 10px;
 }
 
-#cancelButton {
-    background-color: purple;
+.botoes button{
+    border: 1px solid black;
+    
 }
 
-#updateButton {
-    background-color: green;
+.botoes{
+    text-align: center;
 }
 
-input[type="submit"]:hover,
-button:hover {
-    opacity: 0.8;
+#corHospedado{
+    background-color: red;
 }
+#txtHospedado{
+    color: red;
+}
+#corTodos{
+    background-color: gray;
+}
+#txtTodos{
+    color: gray;
+}
+#corReservado{
+    background-color: rgb(36, 135, 228);
+}
+
+#txtReservado{
+    color: rgb(36, 135, 228);
+}
+
+#corFinalizado{
+    background-color: rgb(184, 227, 119);
+    color: black;
+}
+#txtFinalizado{
+    color: rgb(184, 227, 119);
+}
+
+#corCancelado{
+    background-color: #fdc827;
+    color: black;
+}
+
+#txtCancelado{
+    color: #fdc827;
+}
+
+#corAtrasado{
+    background-color: rgb(133, 20, 147);
+}
+#txtAtrasado{
+    color: rgb(133, 20, 147);
+}
+#corVencido{
+    background-color: rgb(42, 42, 157);
+}
+#txtVencido{
+    color: rgb(42, 42, 157);
+}
+
 
 /* Cores condicionais para o campo "Situação do Quarto" */
 select#roomStatus option[value="nao-hospedado"] {
     color: white;
-    background-color: green;
-    /* Cor padrão para "Não Hospedado" */
+    background-color: green; /* Cor padrão para "Não Hospedado" */
 }
 
 select#roomStatus option[value="hospedado"] {
     color: white;
-    background-color: red;
-    /* Cor para "Hospedado" */
+    background-color: red; /* Cor para "Hospedado" */
 }
 
 #resumo_reserva {
-    width: 1657px;
+    width: 1703px;
     margin: 0;
     padding: 20px;
     float: right;
@@ -173,4 +209,13 @@ select#roomStatus option[value="hospedado"] {
 
 #resumo p {
     margin-bottom: 5px;
+}
+
+th{
+    text-align: left;
+    display: inline;
+}
+
+label .lReserva{
+    display: inline;
 }
