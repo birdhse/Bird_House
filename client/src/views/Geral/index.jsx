@@ -18,7 +18,7 @@ function Geral() {
                     <li><a href="mapa.html">Mapa</a></li>
                     <li><a href="/reservas">Reservas</a></li>
                     <li><a href="/cadastros">Cadastros</a></li>
-                    <li><a href="relatorio.html">Transações</a></li>
+                    <li><a href="relatorio.html">Relatórios</a></li>
                 </ul>
             </div>
 

@@ -19,7 +19,7 @@ function Reservas() {
                     <li><a href="mapa.html">Mapa</a></li>
                     <li class="link_ativo"><a href="/reservas">Reservas</a></li>
                     <li><a href="/cadastros">Cadastros</a></li>
-                    <li><a href="link5.htm">Transações</a></li>
+                    <li><a href="link5.htm">Relatórios</a></li>
                 </ul>
             </div>
 
@@ -39,8 +39,8 @@ function Reservas() {
                 </div>
 
                 <table>
-                    <tr>
-                        <th colspan="6">Lista de Reserva (<label id="lReserva">10</label>)</th>
+                    <tr >
+                        <td colspan="6">Lista de Reserva (10)</td>
                     </tr>
                     <tr>
                         <td>N°</td>

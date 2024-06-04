@@ -19,7 +19,7 @@ function EditarReserva() {
                     <li><a href="link2.htm">Mapa</a></li>
                     <li class="link_ativo"><a href="/reservas" >Reservas</a></li>
                     <li><a href="/cadastros">Cadastros</a></li>
-                    <li><a href="link5.htm">Transações</a></li>
+                    <li><a href="link5.htm">Relatórios</a></li>
                 </ul>
             </div>
 

@@ -1,5 +1,62 @@
 /*TELA RESERVAS*/
+.botoes button{
+    border: 1px solid black;
+    
+}
 
+.botoes{
+    text-align: center;
+}
+
+#corHospedado{
+    background-color: red;
+}
+#txtHospedado{
+    color: red;
+}
+#corTodos{
+    background-color: gray;
+}
+#txtTodos{
+    color: gray;
+}
+#corReservado{
+    background-color: rgb(36, 135, 228);
+}
+
+#txtReservado{
+    color: rgb(36, 135, 228);
+}
+
+#corFinalizado{
+    background-color: rgb(184, 227, 119);
+    color: black;
+}
+#txtFinalizado{
+    color: rgb(184, 227, 119);
+}
+
+#corCancelado{
+    background-color: #fdc827;
+    color: black;
+}
+
+#txtCancelado{
+    color: #fdc827;
+}
+
+#corAtrasado{
+    background-color: rgb(133, 20, 147);
+}
+#txtAtrasado{
+    color: rgb(133, 20, 147);
+}
+#corVencido{
+    background-color: rgb(42, 42, 157);
+}
+#txtVencido{
+    color: rgb(42, 42, 157);
+}
 /*FIM - TELA RESERVAS*/
 
 /*TELA EDITAR RESERVA*/
@@ -76,5 +133,6 @@ input[type="text"], input[type="number"], input[type="date"], select {
     padding: 15px;
     border: 1px solid #ccc;
   }
+  
   
   /*FIM - TELA EDITAR RESERVA*/
