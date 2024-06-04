@@ -12,9 +12,8 @@
 }
 
 .content {
-    background-color: #fdf2e9;
     padding: 20px;
-    border: 1px solid #d3b69f;
+    border: 1px solid #ccc;
     margin-right: 300px;
     width: 1250px;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Reserva() {
+function Reservas() {
     return (
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -17,9 +17,9 @@ function Reserva() {
                 <ul>
                     <li><a href="/">Geral</a></li>
                     <li><a href="mapa.html">Mapa</a></li>
-                    <li class="link_ativo"><a href="/reserva">Reservas</a></li>
-                    <li><a href="/cadastro">Cadastros</a></li>
-                    <li><a href="link5.htm">Transações</a></li>
+                    <li class="link_ativo"><a href="/reservas">Reservas</a></li>
+                    <li><a href="/cadastros">Cadastros</a></li>
+                    <li><a href="link5.htm">Relatórios</a></li>
                 </ul>
             </div>
 
@@ -71,4 +71,4 @@ function Reserva() {
         </div >
     )
 }
-export default Reserva
+export default Reservas
