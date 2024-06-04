@@ -18,7 +18,7 @@ function EditarReserva() {
                     <li><a href="/">Geral</a></li>
                     <li><a href="link2.htm">Mapa</a></li>
                     <li class="link_ativo"><a href="/reserva" >Reservas</a></li>
-                    <li><a href="link4.htm">Cadastros</a></li>
+                    <li><a href="/cadastro">Cadastros</a></li>
                     <li><a href="link5.htm">Transações</a></li>
                 </ul>
             </div>

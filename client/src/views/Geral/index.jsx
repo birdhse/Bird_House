@@ -17,7 +17,7 @@ function Geral() {
                     <li class="link_ativo"><a href="/" >Geral</a></li>
                     <li><a href="mapa.html">Mapa</a></li>
                     <li><a href="/reserva">Reservas</a></li>
-                    <li><a href="cadastros.html">Cadastros</a></li>
+                    <li><a href="/cadastro">Cadastros</a></li>
                     <li><a href="relatorio.html">Transações</a></li>
                 </ul>
             </div>

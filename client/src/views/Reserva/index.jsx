@@ -17,7 +17,7 @@ function Reserva() {
                     <li><a href="/">Geral</a></li>
                     <li><a href="mapa.html">Mapa</a></li>
                     <li class="link_ativo"><a href="/reserva">Reservas</a></li>
-                    <li><a href="link4.htm">Cadastros</a></li>
+                    <li><a href="/cadastro">Cadastros</a></li>
                     <li><a href="link5.htm">Transações</a></li>
                 </ul>
             </div>
@@ -50,7 +50,7 @@ function Reserva() {
                         <td >Qntd.</td>
                     </tr>
                     <tr>
-                        <td><a href=""><label id="txtReservado">■</label> HQ:00001</a></td>
+                        <td><a href="/editreserva"><label id="txtReservado">■</label> HQ:00001</a></td>
                         <td>Isaac</td>
                         <td>Bus</td>
                         <td>24/10/2023</td>
@@ -58,7 +58,7 @@ function Reserva() {
                         <td>1</td>
                     </tr>
                     <tr>
-                        <td><a href=""><label id="txtHospedado">■</label> HQ:00001</a></td>
+                        <td><a href="/editreserva"><label id="txtHospedado">■</label> HQ:00001</a></td>
                         <td>Matheus</td>
                         <td>Suíte com cozinha</td>
                         <td>24/10/2023</td>
