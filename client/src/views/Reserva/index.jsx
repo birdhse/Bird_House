@@ -39,8 +39,8 @@ function Reserva() {
                 </div>
 
                 <table>
-                    <tr>
-                        <th colspan="6">Lista de Reserva (<label id="lReserva">10</label>)</th>
+                    <tr >
+                        <td colspan="6">Lista de Reserva (10)</td>
                     </tr>
                     <tr>
                         <td>N°</td>

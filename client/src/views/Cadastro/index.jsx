@@ -36,6 +36,7 @@ function Cadastro() {
                         <button class="tab" onclick="showTab('history')">Histórico de estadias</button>
                     </div>
                 </div>
+                
                 <div class="tab-content" id="info">
                     <div class="profile-pic">
                         <img src="avatar.png" alt="Foto de perfil"></img>
