@@ -3,16 +3,17 @@ import React from 'react'
 function Cadastro() {
     return (
         <div>
-            <div class="container">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            
                 <div id="navegacao">
                     <div id="area_menu">
                         <h1 id="logo">Bird House</h1>
-
                         <input type="text" id="txtBusca" placeholder="Buscar..." />
                         <label id="data">23/04/2024</label>
+                        <span class="material-symbols-outlined">notifications</span>
                     </div>
                 </div>
-            </div>
+            
 
             <div id="menu_lateral">
                 <ul>

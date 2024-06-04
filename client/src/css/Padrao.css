@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navegacao {
+  background-color: #198fad;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+#area_menu {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  color: white;
+  margin-right: auto;
+  width: 180px;
+}
+
+#txtBusca {
+  align-items: center;
+  height: 30px;
+  width: 500px;
+  padding: 5px;
+  font-size: 16px;
+  border: 100px;
+}
+
+.material-symbols-outlined {
+  color: white;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+#data {
+  margin-left: auto;
+  color: white;
+}
+
+#menu_lateral {
+  width: 200px;
+  height: 893px;
+  margin: 0;
+  padding: 0;
+  float: left;
+  background-color: #198fad86;
+}
+
+#menu_lateral ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style-type: none;
+}
+
+#menu_lateral ul li {
+  padding: 10px;
+}
+
+#menu_lateral ul li a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px;
+  display: block;
+}
+
+#menu_lateral li:hover {
+  background-color: #fdc827;
+}
+
+#menu_lateral li.link_ativo {
+  background-color: #fdc827;
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.search-bar input {
+  padding: 5px;
+  font-size: 16px;
+}
