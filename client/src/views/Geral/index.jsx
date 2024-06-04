@@ -14,10 +14,10 @@ function Geral() {
             </div>
             <div id="menu_lateral">
                 <ul>
-                    <li class="link_ativo"><a href="telaPrincipal.html" >Geral</a></li>
+                    <li class="link_ativo"><a href="/" >Geral</a></li>
                     <li><a href="mapa.html">Mapa</a></li>
-                    <li><a href="reserva.html">Reservas</a></li>
-                    <li><a href="cadastros.html">Cadastros</a></li>
+                    <li><a href="/reservas">Reservas</a></li>
+                    <li><a href="/cadastros">Cadastros</a></li>
                     <li><a href="relatorio.html">Transações</a></li>
                 </ul>
             </div>
