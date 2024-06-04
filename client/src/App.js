@@ -19,7 +19,7 @@ function App() {
         <Route path='/' element={<Geral />} />
         <Route path='/cadastros' element={<Cadastros />} />
         <Route path='/editreserva' element={<EditarReserva />} />
-        <Route path='/reserva' element={<Reserva />} />
+        <Route path='/reservas' element={<Reservas />} />
         
       </Routes>
     </BrowserRouter>
