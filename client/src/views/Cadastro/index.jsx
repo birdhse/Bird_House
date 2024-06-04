@@ -1,5 +1,4 @@
 import React from 'react'
-import "./css/estilo3.css"
 function Cadastros() {
     return (
         <div>
@@ -61,7 +60,7 @@ function Cadastros() {
                                 <input type="text" id="contato" value="(00) 000000000"></input>
                             </form>
                         </div>
-                        <div class="tab-content" id="history" style="display:none;">
+                        <div class="tab-content" id="history" style={{display:'none'}}>
                             <p>Histórico de estadias não disponível.</p>
                         </div>
                     </div>
