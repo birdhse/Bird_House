@@ -11,6 +11,9 @@ import Geral from './views/Geral';
 import Reservas from './views/Reserva';
 import EditarReserva from './views/EditarReserva';
 import Cadastros from './views/Cadastro';
+import express from "express"
+import hospedeController from "./Controllers/HospedeController.js"
+const client = express()
 
 function App() {
   return (
