@@ -11,9 +11,9 @@ class ReservaController{
         const uh = req.body.uh
         const valor_diaria = req.body.valor_diaria
         const num_h = req.body.num_h
-        const nome_h = req.body.nome_h
+        const id_h = req.body.id_h
         const status = req.body.status
-        ReservaModel.create(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,nome_h,status).then(
+        ReservaModel.create(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,id_h,status).then(
             resposta =>{
                 console.debug("Cadastrando uma reserva")
                 res.status(resposta[0]).json(resposta[1])                
@@ -43,15 +43,15 @@ class ReservaController{
 
    }
    update(req,res){
-    const id_r = req.params.id_r
+        const id_r = req.params.id_r
         const dt_entrada = req.body.dt_entrada
         const dt_saida = req.body.dt_saida
         const uh = req.body.uh
         const valor_diaria = req.body.valor_diaria
         const num_h = req.body.num_h
-        const nome_h = req.body.nome_h
+        const id_h = req.body.id_h
         const status = req.body.status
-    ReservaModel.update(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,nome_h,status).then(
+    ReservaModel.update(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,id_h,status).then(
        resposta =>{
            console.debug("Atualizando reserva")
            res.status(resposta[0]).json(resposta[1])                

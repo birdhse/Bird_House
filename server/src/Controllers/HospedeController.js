@@ -37,11 +37,12 @@ class HospedeController{
         )
     }
     update(req,res){
-        const nome_h = req.params.nome_h
+        const id_h = req.params.id_h
+        const nome_h = req.body.nome_h
         const cpf_h = req.body.cpf_h
         const dtnasc_h = req.body.dtnasc_h
         const contato_h = req.body.contato_h
-        HospedeModel.update(nome_h,cpf_h,dtnasc_h,contato_h).then(
+        HospedeModel.update(id_h,nome_h,cpf_h,dtnasc_h,contato_h).then(
             resposta =>{
                 console.debug("Atualizando hospede")
                 res.status(resposta[0]).json(resposta[1])
@@ -54,8 +55,8 @@ class HospedeController{
         )
     }
     delete(req,res){
-        const nome_h =req.params.nome_h
-        HospedeModel.delete(nome_h).then(
+        const id_h =req.params.id_h
+        HospedeModel.delete(id_h).then(
             resposta =>{
                 console.debug("Deletando hospede")
                 res.status(resposta[0]).json(resposta[1])

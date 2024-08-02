@@ -1,22 +1,23 @@
 import express from "express"
-import HospedeController from './Controllers/hospedeController.js';
-const client = express()
+import HospedeController from './Controllers/HospedeController.js';
+import ReservaController from "./Controllers/ReservaController.js";
+const server = express()
 
-client.use(express.json())
+server.use(express.json())
 
-client.get("/",(req,res)=>{
+server.get("/",(req,res)=>{
   res.status(200).json("Servidor funcionando")
 })
 
-client.post("/cad_hosped", HospedeController.create)
-client.get("/cad_hosped", HospedeController.read)
-client.put("/cad_hosped/:nome_h",HospedeController.update)
-client.delete("/cad_hosped/:nome_h",HospedeController.delete)
+server.post("/cad_hosped", HospedeController.create)
+server.get("/cad_hosped", HospedeController.read)
+server.put("/cad_hosped/:id_h",HospedeController.update)
+server.delete("/cad_hosped/:id_h",HospedeController.delete)
 
-/*
-client.post("/pedidos",PedidosController.create)
-client.get("/pedidos",PedidosController.read)
-client.put("/pedidos/:id_pedido",PedidosController.update)
-client.delete("/pedidos/:id_pedido",PedidosController.delete)*/
 
-client.listen(5000)
+server.post("/cad_reservas",ReservaController.create)
+server.get("/cad_reservas",ReservaController.read)
+server.put("cad_reservas/:id_r",ReservaController.update)
+server.delete("/cad_reservas/:id_r",ReservaController.delete)
+
+server.listen(5000)
