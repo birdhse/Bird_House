@@ -6,14 +6,11 @@ import './css/Mapa.css';
 import './css/Cadastro.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 import Geral from './views/Geral';
 import Reservas from './views/Reserva';
 import EditarReserva from './views/EditarReserva';
 import Cadastros from './views/Cadastro';
-import express from "express"
-
-const client = express()
 
 function App() {
   return (
