@@ -1,7 +1,7 @@
 import React from 'react'
 import Menu from '../../layout/menu';
 
-function Cadastro() {
+function Hospedes() {
     function showTab(tabId) {
         // Remove a classe "active" de todos os botões
         const tabButtons = document.querySelectorAll('.tab');
@@ -77,4 +77,4 @@ function Cadastro() {
     )
 }
 
-export default Cadastro
+export default Hospedes;

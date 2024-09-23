@@ -4,6 +4,7 @@ import './css/Geral.css';
 import './css/Relatorio.css';
 import './css/Mapa.css';
 import './css/Cadastro.css';
+import './css/Usuarios.css';
 
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
@@ -13,6 +14,7 @@ import Reservas from './components/views/Reserva';
 import EditarReserva from './components/views/EditarReserva';
 import Cadastros from './components/views/Hospedes';
 import Relatorios from './components/views/Relatorios';
+import Usuarios from './components/views/Usuarios';
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
         <Route path='/cadastros' element={<Cadastros />} />
         <Route path='/editreserva' element={<EditarReserva />} />
         <Route path='/reservas' element={<Reservas />} />
-        
+        <Route path='/usuarios' element={<Usuarios />} />
+
       </Routes>
     </BrowserRouter>
   );
