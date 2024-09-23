@@ -17,7 +17,6 @@ function Reservas() {
                         <button id="corFinalizado">Finalizado</button>
                         <button id="corCancelado">Cancelado</button>
                         <button id="corAtrasado">Atrasado</button>
-                        <button id="corVencido">Vencido</button>
                     </div>
                 </div>
 

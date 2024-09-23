@@ -24,8 +24,13 @@ function App() {
         <Route path='/cadastros' element={<Cadastros />} />
         <Route path='/editreserva' element={<EditarReserva />} />
         <Route path='/reservas' element={<Reservas />} />
+<<<<<<< HEAD
         <Route path='/usuarios' element={<Usuarios />} />
 
+=======
+        <Route path='/relatorios' element={<Relatorios/>}/>
+        
+>>>>>>> bded1f5fc62b987b73463b42ce1eac427a4a6017
       </Routes>
     </BrowserRouter>
   );
