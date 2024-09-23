@@ -1,27 +1,10 @@
 import React from 'react'
+import Menu from '../../layout/menu'
 
 function EditarReserva() {
     return (
         <div>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <div id="navegacao">
-                <div id="area_menu">
-                    <h1 id="logo">Bird House</h1>
-                    <input type="text" id="txtBusca" placeholder="Buscar..." />
-                    
-                    <label id="data">23/04/2024</label>
-                    <span class="material-symbols-outlined"> notifications </span>
-                </div>
-            </div>
-            <div id="menu_lateral">
-                <ul>
-                    <li><a href="/">Geral</a></li>
-                    <li><a href="link2.htm">Mapa</a></li>
-                    <li class="link_ativo"><a href="/reservas" >Reservas</a></li>
-                    <li><a href="/cadastros">Cadastros</a></li>
-                    <li><a href="link5.htm">Relatórios</a></li>
-                </ul>
-            </div>
+            <Menu/>
 
             <div>
                 <div class="containerReserva">
