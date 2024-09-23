@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <title>Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://imagens.publico.pt/imagens.aspx/1824095?tp=UH&db=IMAGENS&type=JPG'); /* Coloque a imagem de fundo aqui */
+      background-position: center;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #ba2f1f;
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e67e22;
+    }
+
+    @media (max-width: 600px) {
+      .login-container {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <form class="login-form" onsubmit="handleSubmit(event)">
+      <h2>Login</h2>
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Senha" required />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Aqui você pode adicionar lógica de autenticação, ou exibir os dados no console
+      if (!email || !password) {
+        alert('Preencha todos os campos');
+        return;
+      }
+
+      console.log('Email:', email);
+      console.log('Senha:', password);
+    }
+  </script>
+
+</body>
+</html>
