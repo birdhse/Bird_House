@@ -22,6 +22,7 @@ function App() {
         <Route path='/cadastros' element={<Cadastros />} />
         <Route path='/editreserva' element={<EditarReserva />} />
         <Route path='/reservas' element={<Reservas />} />
+        <Route path='/relatorios' element={<Relatorios />} />
         
       </Routes>
     </BrowserRouter>

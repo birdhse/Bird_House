@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Reservas - Bird House</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            width: 100%;
+            background-color: #f7e9d4;
+            padding: 20px;
+        }
+
+        .sidebar h1 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .main-content {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 50%;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .notification {
+            display: flex;
+            align-items: center;
+        }
+
+        .notification span {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .date {
+            font-size: 18px;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-controls button {
+            background-color: #c5a880;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .calendar-controls span {
+            font-size: 18px;
+        }
+
+        .calendar {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .cell {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .header {
+            background-color: #eee;
+            font-weight: bold;
+        }
+
+        .reserved {
+            background-color: #ffcccc;
+        }
+
+        .booked {
+            background-color: #ccccff;
+        }
+
+        .delayed {
+            background-color: #e6ccff;
+        }
+
+        .cleaning {
+            background-color: #d9d9d9;
+        }
+
+        .blocked {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .plus button {
+            width: 100%;
+            height: 100%;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>Bird House</h1>
+            <ul>
+                <li><a href="#">Geral</a></li>
+                <li><a href="#">Mapa</a></li>
+                <li><a href="#">Reservas</a></li>
+                <li><a href="#">Cadastros</a></li>
+                <li><a href="#">Relatórios</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <input type="text" placeholder="Pesquisar...">
+                <div class="header-right">
+                    <div class="notification">
+                        <span>&#x1F514;</span>
+                        <span class="date">24/10/2023</span>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar-controls">
+                <button id="prev">&lt;</button>
+                <span id="current-range">24/10/23 - 06/11/23</span>
+                <button id="next">&gt;</button>
+            </div>
+            <div class="calendar">
+                <div class="row">
+                    <div class="cell header">UH / Data</div>
+                    <div class="cell header">24/10</div>
+                    <div class="cell header">25/10</div>
+                    <div class="cell header">26/10</div>
+                    <div class="cell header">27/10</div>
+                    <div class="cell header">28/10</div>
+                    <div class="cell header">29/10</div>
+                    <div class="cell header">30/10</div>
+                    <div class="cell header">31/10</div>
+                    <div class="cell header">01/11</div>
+                    <div class="cell header">02/11</div>
+                    <div class="cell header">03/11</div>
+                    <div class="cell header">04/11</div>
+                    <div class="cell header">05/11</div>
+                    <div class="cell header">06/11</div>
+                </div>
+                <div class="row">
+                    <div class="cell">Suíte com cozinha</div>
+                    <div class="cell reserved" colspan="2">Mat...</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">Chalé Família</div>
+                    <div class="cell cleaning" colspan="3">Pietro</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">Cabana</div>
+                    <div class="cell delayed" colspan="8">Amanda Xavier</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">Bus</div>
+                    <div class="cell booked" colspan="2">Isaac</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell plus"><button id="plus-button">+</button></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">Estaciona. Overlands</div>
+                    <div class="cell reserved" colspan="1">P....</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="row">
+                    <div class="cell">Bloqueado</div>
+                    <div class="cell blocked" colspan="6">Bloqueado</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

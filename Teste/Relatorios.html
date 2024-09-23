@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Bird House</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header .data {
+            font-size: 14px;
+        }
+
+        .sidebar {
+            background-color: #2980b9;
+            color: white;
+            width: 250px;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .sidebar ul li.active {
+            background-color: #1f618d;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 2rem;
+            background-color: #ecf0f1;
+        }
+
+        h2 {
+            color: #34495e;
+        }
+
+        .tabs {
+            margin-top: 1rem;
+            display: flex;
+        }
+
+        .tab-button {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .tab-button.active {
+            background-color: #2980b9;
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <main class="content">
+            <h2>Relatórios e gráficos do sistema</h2>
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab('graficos')">Gráficos</button>
+                <button class="tab-button" onclick="openTab('relatorios')">Relatórios</button>
+            </div>
+            <div id="graficos" class="tab-content active">
+                <p>Aqui serão exibidos os gráficos.</p>
+            </div>
+            <div id="relatorios" class="tab-content">
+                <label for="relatorio">Relatório</label>
+                <select id="relatorio">
+                    <option value="">Selecione</option>
+                    <option value="1">Relatório 1</option>
+                    <option value="2">Relatório 2</option>
+                    <option value="3">Relatório 3</option>
+                </select>
+                <button class="btn">Gerar Relatório</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            const tabs = document.getElementsByClassName('tab-content');
+            const buttons = document.getElementsByClassName('tab-button');
+
+            // Hide all tabs and remove active class from buttons
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+
+            // Show the selected tab and set active button
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
