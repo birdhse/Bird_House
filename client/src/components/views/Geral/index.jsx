@@ -13,7 +13,6 @@ function Geral() {
                     <div class="header">
                         <h2>24/10/2023</h2>
                         <div class="status">
-                            <span>Todos: 6</span>
                             <span>Disponível: 0</span>
                             <span>Ocupado: 1</span>
                             <span>Em limpeza: 1</span>
@@ -21,7 +20,6 @@ function Geral() {
                             <span>Entra hoje: 1</span>
                             <span>Sai hoje: 1</span>
                             <span>Atrasado: 1</span>
-                            <span>Vencido: 0</span>
                         </div>
                     </div>
 
