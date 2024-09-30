@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Menu from '../../layout/menu'
 
 function Relatorios() {
     const [graficoRelatorio, setGraficoRelatorio] = useState(false);
@@ -12,6 +13,7 @@ function Relatorios() {
     }
     return (
         <div>
+            <Menu/>
             <div className="container">
 
                 <main className="content">
