@@ -1,5 +1,6 @@
 import React from 'react'
 import Menu from '../../layout/menu'
+import styles from './geral.modules.css';
 
 function Geral() {
     return (
@@ -13,12 +14,12 @@ function Geral() {
                     <div class="header">
                         <h2>24/10/2023</h2>
                         <div class="status">
-                            <span>Disponível: 0</span>
-                            <span>Ocupado: 1</span>
-                            <span>Em limpeza: 1</span>
-                            <span>Bloqueado: 1</span>
-                            <span>Entra hoje: 1</span>
-                            <span>Sai hoje: 1</span>
+                            <span>Disponível: 0 </span>
+                            <span>Ocupado: 1 </span>
+                            <span>Em limpeza: 1 </span>
+                            <span>Bloqueado: 1 </span>
+                            <span>Entra hoje: 1 </span>
+                            <span>Sai hoje: 1 </span>
                             <span>Atrasado: 1</span>
                         </div>
                     </div>

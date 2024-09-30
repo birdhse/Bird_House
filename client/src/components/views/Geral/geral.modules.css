@@ -1,0 +1,126 @@
+.container {
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    margin: 0;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    position: relative;
+  }
+  
+  .card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin-bottom: 10px;
+  }
+  
+  .card .icons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 30px;
+    width: 90%;
+    height: 15px;
+  }
+  
+  .card.red {
+    background-color: #ffcccc;
+  }
+  
+  .card.grey {
+    background-color: #d9d9d9;
+  }
+  
+  .card.purple {
+    background-color: #e6ccff;
+  }
+  
+  .card.green {
+    background-color: #ccffcc;
+  }
+  
+  .card.yellow {
+    background-color: #ffffcc;
+  }
+  
+  .card.orange {
+    background-color: #faca9c;
+  }
+  
+  .card button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .card button:hover {
+    background-color: #555;
+  }
+  
+  @media (max-width: 767px) {
+    #navegacao {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding: 10px;
+    }
+  
+    */ #logo, #txtBusca, #data, .material-symbols-outlined {
+      margin-bottom: 10px;
+    }
+  
+    .container {
+      flex-direction: column;
+    }
+  
+    .main-content {
+      width: 100%;
+    }
+  
+    .cards {
+      flex-direction: column;
+    }
+  
+    .card {
+      width: 100%;
+    }
+  }

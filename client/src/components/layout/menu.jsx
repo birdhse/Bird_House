@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './menu.modules.css';
 
 function Menu() {
     return (
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <div id="navegacao">
-                <div id="area_menu">
+            <div id="menu_superior">
+                <div id="elementos_menu_superior">
                     <h1 id="logo">Bird House</h1>
                     <input type="text" id="txtBusca" placeholder="Buscar..." />
 
