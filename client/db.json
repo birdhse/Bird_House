@@ -1,0 +1,53 @@
+{
+  "reservas": [
+    {
+      "id": "02",
+      "status": "finalizado",
+      "hospede": "Matheus Sarti Brunelli",
+      "acomodacao": "Suíte com Cozinha",
+      "check-in": "24/10/2023",
+      "check-out": "26/10/2023",
+      "qntd": "3"
+    },
+    {
+      "id": "03",
+      "status": "hospedado",
+      "hospede": "Márcia Moreira Jackson",
+      "acomodacao": "Quarto Premium",
+      "check-in": "14/10/2024",
+      "check-out": "17/10/2024",
+      "qntd": "2"
+    },
+    {
+      "id": "04",
+      "status": "reservado",
+      "hospede": "Isaac Lindo Cheroso",
+      "acomodacao": "Suíte com Cozinha",
+      "check-in": "14/10/2024",
+      "check-out": "20/10/2024",
+      "qntd": "4"
+    },
+    {
+      "id": "740f",
+      "status": "Teste",
+      "hospede": "Teste",
+      "acomodacao": "Teste",
+      "checkin": "2024-10-15",
+      "checkout": "2024-10-16",
+      "qntd": "2",
+      "chave": null
+    }
+  ],
+  "hospedes": [
+    {
+      "id": "01",
+      "nome": "",
+      "contato": ""
+    },
+    {
+      "id": "02",
+      "nome": "",
+      "contato": ""
+    }
+  ]
+}

@@ -2,11 +2,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Geral from './components/views/Geral';
-import Reservas from './components/views/Reserva';
-import EditarReserva from './components/views/EditarReserva';
-import Cadastros from './components/views/Hospedes';
+import Reservas from './components/views/GestaoReservas';
+import EditarReserva from './components/views/EditReserva';
+import Cadastros from './components/views/GestaoHospedes';
 import Relatorios from './components/views/Relatorios';
-import Usuarios from './components/views/Usuarios';
+import CadastroReserva from './components/views/CadastroReserva';
+import EditReserva from './components/views/EditReserva';
+import GestaoReservas from './components/views/GestaoReservas';
+
 
 function App() {
   return (
@@ -16,13 +19,10 @@ function App() {
         <Route path='/cadastros' element={<Cadastros />} />
         <Route path='/editreserva' element={<EditarReserva />} />
         <Route path='/reservas' element={<Reservas />} />
-
         <Route path='/relatorios' element={<Relatorios />} />
-
-        <Route path='/usuarios' element={<Usuarios />} />
-
-      
-        
+        <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
+        <Route path='/reservas/:tipo' element={<GestaoReservas/>}/>
+        <Route path='/edit_reserva/:id' element={<EditReserva/>}/>
 
       </Routes>
     </BrowserRouter>

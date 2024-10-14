@@ -1,13 +1,13 @@
 import React from 'react'
-import Menu from '../../layout/menu'
-import styles from './geral.modules.css';
+import Menu from '../layout/menu'
+import styles from './Geral.modules.css';
 
 function Geral() {
     return (
         <div>
             <Menu/>
 
-            <div class="container">
+            <div class="containerGeral">
 
                 <div class="main-content">
 

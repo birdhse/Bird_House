@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Menu from '../../layout/menu'
+import Menu from '../layout/menu'
 
 function Relatorios() {
     const [graficoRelatorio, setGraficoRelatorio] = useState(false);

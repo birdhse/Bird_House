@@ -7,7 +7,7 @@ function Menu() {
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <div id="menu_superior">
                 <div id="elementos_menu_superior">
-                    <h1 id="logo">Bird House</h1>
+                    <h2 id="logo">Bird House</h2>
                     <input type="text" id="txtBusca" placeholder="Buscar..." />
 
                     <label id="data">23/04/2024</label>
