@@ -26,16 +26,6 @@
       "check-in": "14/10/2024",
       "check-out": "20/10/2024",
       "qntd": "4"
-    },
-    {
-      "id": "740f",
-      "status": "Teste",
-      "hospede": "Teste",
-      "acomodacao": "Teste",
-      "checkin": "2024-10-15",
-      "checkout": "2024-10-16",
-      "qntd": "2",
-      "chave": null
     }
   ],
   "hospedes": [
