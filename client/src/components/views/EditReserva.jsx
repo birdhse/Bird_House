@@ -21,6 +21,7 @@ function EditReserva() {
       }
       else{
         console.log('Reserva Editada');
+        
       }
     } catch (error) {
       console.log('Erro ao editar reserva', error);

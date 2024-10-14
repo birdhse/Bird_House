@@ -1,31 +1,54 @@
 {
   "reservas": [
     {
-      "id": "02",
-      "status": "finalizado",
-      "hospede": "Matheus Sarti Brunelli",
-      "acomodacao": "Suíte com Cozinha",
-      "check-in": "24/10/2023",
-      "check-out": "26/10/2023",
-      "qntd": "3"
-    },
-    {
-      "id": "03",
-      "status": "hospedado",
+      "status": "reservado",
       "hospede": "Márcia Moreira Jackson",
       "acomodacao": "Quarto Premium",
-      "check-in": "14/10/2024",
-      "check-out": "17/10/2024",
-      "qntd": "2"
+      "checkin": "2024-10-05",
+      "checkout": "2024-10-10",
+      "qntd": "2",
+      "chave": null,
+      "id": "03"
     },
     {
-      "id": "04",
-      "status": "reservado",
-      "hospede": "Isaac Lindo Cheroso",
-      "acomodacao": "Suíte com Cozinha",
-      "check-in": "14/10/2024",
-      "check-out": "20/10/2024",
-      "qntd": "4"
+      "status": "finalizado",
+      "hospede": "Isaac Lucca",
+      "acomodacao": "Suíte sem cozinha",
+      "checkin": "2024-08-16",
+      "checkout": "2024-08-16",
+      "qntd": "4",
+      "chave": null,
+      "id": "04"
+    },
+    {
+      "status": "em limpeza",
+      "hospede": "Teste",
+      "acomodacao": "Teste",
+      "checkin": "2024-10-15",
+      "checkout": "2024-10-16",
+      "qntd": "2",
+      "chave": null,
+      "id": "740f"
+    },
+    {
+      "id": "a501",
+      "status": "bloqueado",
+      "hospede": "Sarah Joana",
+      "acomodacao": "BUS",
+      "checkin": "2024-10-11",
+      "checkout": "2024-10-24",
+      "qntd": "2",
+      "chave": null
+    },
+    {
+      "id": "545a",
+      "status": "atrasado",
+      "hospede": "Amanda Xavier",
+      "acomodacao": "Cabana 01",
+      "checkin": "2024-12-25",
+      "checkout": "2025-01-03",
+      "qntd": "2",
+      "chave": null
     }
   ],
   "hospedes": [
