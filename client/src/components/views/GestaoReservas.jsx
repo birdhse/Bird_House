@@ -51,7 +51,7 @@ function GestaoReservas() {
         <>
             <Menu />
             <div>
-                {/* <div class="containerReserva">
+                {/* { <div class="containerReserva">
                     <h2>Geral / Reservas</h2>
                     <input type="text" placeholder=" Pesquise por UH, nome do hóspede ou número de reserva"></input>
                     <div class="botoes">
@@ -62,7 +62,7 @@ function GestaoReservas() {
                         <button id="corCancelado">Cancelado</button>
                         <button id="corAtrasado">Atrasado</button>
                     </div>
-                </div> */}
+                </div> } */}
 
                 <div className='container'>
                     <h1 className='text-center mt-3'>Gestão de Reservas</h1>

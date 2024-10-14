@@ -15,7 +15,7 @@ function CadastroReserva() {
         console.log('Erro ao cadastrar')
       }
       else {
-        alert('Reserva cadastrada')
+        console.log('Reserva cadastrada')
       }
     } catch (error) {
       console.error('Erro ao cadastrar', error)

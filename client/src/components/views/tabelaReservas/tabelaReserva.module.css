@@ -1,34 +1,169 @@
-.reservas{
-    display: inline-block;
-    width: 80%;
-    vertical-align: top;
-}
-
-.edit{
-    width: 100%;
-}
-
-.tabelaReservas{
+/* Estilo da tabela geral */
+.tabelaReservas {
     width: 100%;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.tabelaReservas thead{
-    background-color: #006bb4;
-    color: #fff;
+/* Cabeçalho da tabela */
+.tabelaReservas thead {
+    background-color: #f1f1f1;
+    color: #333;
 }
 
-.tabelaReservas tbody tr:nth-child(odd){
+/* Linhas ímpares */
+.tabelaReservas tbody tr:nth-child(odd) {
     background-color: #f2f2f2;
 }
 
-.tabelaReservas tbody tr:nth-child(even){
-    background-color: #26a9e1;
-    color: #fff;
+/* Linhas pares */
+.tabelaReservas tbody tr:nth-child(even) {
+    background-color: #d9edf7;
 }
 
-.tabelaAulas td,.tabelaAulas th{
-    padding: 4px;
+/* Colunas de ação (botões editar e deletar) */
+.acaoBtn {
+    display: flex;
+    justify-content: space-around;
 }
+
+/* Icones de status */
+.statusIcon {
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.statusIcon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.statusIcon.reservado {
+    background-color: #4784ca;
+}
+
+.statusIcon.hospedado {
+    background-color: #f44336;
+}
+
+.statusIcon.emLimpeza {
+    background-color: #e57373;
+}
+
+.statusIcon.bloqueado {
+    background-color: #000000;
+}
+
+.statusIcon.finalizado {
+    background-color: #4caf50;
+}
+
+.statusIcon.cancelado {
+    background-color: #ffeb3b;
+}
+
+.statusIcon.atrasado {
+    background-color: #9c27b0;
+}
+
+.statusIcon.vencido {
+    background-color: #3f51b5;
+}
+
+
+/* .reservado {
+    background-color: #26a9e1;
+}
+
+.hospedado {
+    background-color: #ffcc00;
+}
+
+.emLimpeza {
+    background-color: #e57373;
+}
+
+.bloqueado {
+    background-color: #000;
+}
+
+.finalizado {
+    background-color: #4caf50;
+}
+
+.cancelado {
+    background-color: #ff5722;
+}
+
+.atrasado {
+    background-color: #9c27b0;
+}
+
+.vencido {
+    background-color: #3f51b5;
+} */
+
+/* Botões de filtro de status */
+.filtroStatus {
+    margin-bottom: 20px;
+}
+
+.filtroStatus button {
+    margin-right: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+}
+
+.filtroStatus .todos {
+    background-color: #757575;
+}
+
+.filtroStatus .reservado {
+    background-color: #4784ca;
+}
+
+.filtroStatus .hospedado {
+    background-color: #f44336;
+}
+
+.filtroStatus .emLimpeza {
+    background-color: #e57373;
+}
+
+.filtroStatus .bloqueado {
+    background-color: #000000;
+}
+
+.filtroStatus .finalizado {
+    background-color: #4caf50;
+}
+
+.filtroStatus .cancelado {
+    background-color: #ffeb3b;
+    color: black;
+}
+
+.filtroStatus .atrasado {
+    background-color: #9c27b0;
+}
+
+.filtroStatus .vencido {
+    background-color: #3f51b5;
+}
+
+
+/* Estilo para o tipo 'edit' */
+.edit {
+    width: 100%;
+}
+
