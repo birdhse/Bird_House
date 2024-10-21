@@ -1,53 +1,134 @@
 {
   "reservas": [
     {
-      "id": "02",
-      "status": "finalizado",
-      "hospede": "Matheus Sarti Brunelli",
-      "acomodacao": "Suíte com Cozinha",
-      "check-in": "24/10/2023",
-      "check-out": "26/10/2023",
-      "qntd": "3"
+      "id_reserva": "02",
+      "id_status": "finalizado",
+      "id_hospede": "Matheus Sarti Brunelli",
+      "id_acomodacao": "Suíte com Cozinha",
+      "checkin": "24/10/2023",
+      "checkout": "26/10/2023",
+      "qntd_hospedes": "3",
+      "num_dias": "",
+      "valor_total": "",
+      "observacao": "",
+      "validacao":""
+       
     },
     {
-      "id": "03",
-      "status": "hospedado",
-      "hospede": "Márcia Moreira Jackson",
-      "acomodacao": "Quarto Premium",
-      "check-in": "14/10/2024",
-      "check-out": "17/10/2024",
-      "qntd": "2"
+      "id_reserva": "03",
+      "id_status": "hospedado",
+      "id_hospede": "Márcia Moreira Jackson",
+      "id_acomodacao": "Quarto Premium",
+      "checkin": "14/10/2024",
+      "checkout": "17/10/2024",
+      "qntd_hospedes": "2",
+      "num_dias": "",
+      "valor_total": "",
+      "observacao": "",
+      "validacao":""
     },
     {
-      "id": "04",
-      "status": "reservado",
-      "hospede": "Isaac Lindo Cheroso",
-      "acomodacao": "Suíte com Cozinha",
-      "check-in": "14/10/2024",
-      "check-out": "20/10/2024",
-      "qntd": "4"
+      "id_reserva": "04",
+      "id_status": "reservado",
+      "id_hospede": "Isaac Lindo Cheroso",
+      "id_acomodacao": "Suíte com Cozinha",
+      "checkin": "14/10/2024",
+      "checkout": "20/10/2024",
+      "qntd_hospedes": "4",
+      "num_dias": "",
+      "valor_total": "",
+      "observacao": "",
+      "validacao":""
     },
     {
-      "id": "740f",
-      "status": "Teste",
-      "hospede": "Teste",
-      "acomodacao": "Teste",
+      "id_reserva": "740f",
+      "id_status": "Teste",
+      "id_hospede": "Teste",
+      "id_acomodacao": "Teste",
       "checkin": "2024-10-15",
       "checkout": "2024-10-16",
-      "qntd": "2",
-      "chave": null
+      "qntd_hospedes": "2",
+      "num_dias": "",
+      "valor_total": "",
+      "observacao": "",
+      "validacao":""
     }
   ],
+
+
   "hospedes": [
     {
-      "id": "01",
-      "nome": "",
-      "contato": ""
+      "id_hospede": "01",
+      "nome_hospede": "",
+      "num_celular": "",
+      "email_hospede": "",
+      "data_nascimento": "",
+      "cpf_hospede": ""
     },
     {
-      "id": "02",
-      "nome": "",
-      "contato": ""
+      "id_hospede": "02",
+      "nome_hospede": "",
+      "num_celular": "",
+      "email_hospede": "",
+      "data_nascimento": "",
+      "cpf_hospede": ""
+    }
+  ],
+
+
+
+  "usuarios": [
+    {
+      "id_usuario": "",
+      "nome_usuario": "",
+      "email_usuario": "",
+      "login_usuario": "",
+      "senha": "",
+      "id_cargo": ""
+    }
+  ],
+
+
+
+  "cargos": [
+    {
+      "id_cargo": "",
+      "nome_cargo": ""
+    }
+  ],
+
+
+  "acomodacoes": [
+    {
+      "id_acomodacao": "",
+      "nome_acomodacao": "",
+      "qntd_limite": "",
+      "id_comodidade": ""
+    }
+  ],
+  
+
+  "comodidades": [
+    {
+      "id_comodidade": "",
+      "camas_casal": "",
+      "camas_solteiro": "",
+      "arcondicionado": "",
+      "wifi": "",
+      "tv": "",
+      "cozinha": "",
+      "toalha": "",
+      "frigobar":"",
+      "ducha": "",
+      "banheira": ""
+    }
+  ],
+
+
+  "status": [
+    {
+      "id_status": "",
+      "condicao": ""
     }
   ]
 }
