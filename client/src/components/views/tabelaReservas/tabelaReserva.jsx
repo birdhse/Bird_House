@@ -114,12 +114,12 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                             <tr key={reserva.id}>
                                 <td>{reserva.id}</td>
                                 {/* Aqui está a chamada da função renderStatusIcon */}
-                                <td>{renderStatusIcon(reserva.status)}</td>
-                                <td>{reserva.hospede}</td>
-                                <td>{reserva.acomodacao}</td>
+                                <td>{renderStatusIcon(reserva.id_status)}</td>
+                                <td>{reserva.id_hospede}</td>
+                                <td>{reserva.id_acomodacao}</td>
                                 <td>{reserva.checkin}</td>
                                 <td>{reserva.checkout}</td>
-                                <td>{reserva.qntd}</td>
+                                <td>{reserva.qntd_hospedes}</td>
                                 {tipo === 'edit' &&
                                     <td className={styles.acaoBtn}>
                                         <Link to={`/edit_reserva/${reserva.id}`} className="btn btn-warning btn-sm">
