@@ -1,0 +1,27 @@
+tabela reservas: informações por chave estranheira
+
+trazer as informações na hora de atualizar a reserva
+ 
+informações nulas e mensagens(back)
+
+tela exibi reserva - ajeitar cadastro reserva(observações entre outros campos e css)
+
+css telas
+
+informações nulas e mensagens(front)
+
+conectar front com back (server com client)
+
+ajeitar calendário(data atualizada)
+
+crud de hospedes
+
+crud usuários
+
+permições de acessos 
+
+validação login usuário
+
+crud acomodações
+
+tela geral, puxar informações diversas
