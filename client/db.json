@@ -1,61 +1,5 @@
 {
-  "reservas": [
-    {
-      "id_reserva": "02",
-      "id_status": "finalizado",
-      "id_hospede": "Matheus Sarti Brunelli",
-      "id_acomodacao": "Suíte com Cozinha",
-      "checkin": "24/10/2023",
-      "checkout": "26/10/2023",
-      "qntd_hospedes": "3",
-      "num_dias": "",
-      "valor_total": "",
-      "observacao": "",
-      "validacao":""
-       
-    },
-    {
-      "id_reserva": "03",
-      "id_status": "hospedado",
-      "id_hospede": "Márcia Moreira Jackson",
-      "id_acomodacao": "Quarto Premium",
-      "checkin": "14/10/2024",
-      "checkout": "17/10/2024",
-      "qntd_hospedes": "2",
-      "num_dias": "",
-      "valor_total": "",
-      "observacao": "",
-      "validacao":""
-    },
-    {
-      "id_reserva": "04",
-      "id_status": "reservado",
-      "id_hospede": "Isaac Lindo Cheroso",
-      "id_acomodacao": "Suíte com Cozinha",
-      "checkin": "14/10/2024",
-      "checkout": "20/10/2024",
-      "qntd_hospedes": "4",
-      "num_dias": "",
-      "valor_total": "",
-      "observacao": "",
-      "validacao":""
-    },
-    {
-      "id_reserva": "740f",
-      "id_status": "Teste",
-      "id_hospede": "Teste",
-      "id_acomodacao": "Teste",
-      "checkin": "2024-10-15",
-      "checkout": "2024-10-16",
-      "qntd_hospedes": "2",
-      "num_dias": "",
-      "valor_total": "",
-      "observacao": "",
-      "validacao":""
-    }
-  ],
-
-
+  "reservas": [],
   "hospedes": [
     {
       "id_hospede": "01",
@@ -63,7 +7,8 @@
       "num_celular": "",
       "email_hospede": "",
       "data_nascimento": "",
-      "cpf_hospede": ""
+      "cpf_hospede": "",
+      "id": "d871"
     },
     {
       "id_hospede": "02",
@@ -71,12 +16,10 @@
       "num_celular": "",
       "email_hospede": "",
       "data_nascimento": "",
-      "cpf_hospede": ""
+      "cpf_hospede": "",
+      "id": "13bf"
     }
   ],
-
-
-
   "usuarios": [
     {
       "id_usuario": "",
@@ -84,30 +27,26 @@
       "email_usuario": "",
       "login_usuario": "",
       "senha": "",
-      "id_cargo": ""
+      "id_cargo": "",
+      "id": "6b06"
     }
   ],
-
-
-
   "cargos": [
     {
       "id_cargo": "",
-      "nome_cargo": ""
+      "nome_cargo": "",
+      "id": "88f6"
     }
   ],
-
-
   "acomodacoes": [
     {
       "id_acomodacao": "",
       "nome_acomodacao": "",
       "qntd_limite": "",
-      "id_comodidade": ""
+      "id_comodidade": "",
+      "id": "077a"
     }
   ],
-  
-
   "comodidades": [
     {
       "id_comodidade": "",
@@ -118,17 +57,17 @@
       "tv": "",
       "cozinha": "",
       "toalha": "",
-      "frigobar":"",
+      "frigobar": "",
       "ducha": "",
-      "banheira": ""
+      "banheira": "",
+      "id": "ae7d"
     }
   ],
-
-
   "status": [
     {
       "id_status": "",
-      "condicao": ""
+      "condicao": "",
+      "id": "b7a2"
     }
   ]
 }
