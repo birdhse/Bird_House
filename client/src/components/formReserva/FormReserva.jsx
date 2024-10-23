@@ -63,13 +63,31 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
             <h2 className="text-center">{titulo}</h2>
             <form onSubmit={submit}>
                 <label className='form-label' htmlFor="status">Status</label>
-                <input className='form-control' type="text" name="status" id="status" value={status} onChange={(e) => (setStatus(e.target.value))} />
-
+                <select className='form-control' type="text" name="status" id="status" value={status} onChange={(e) => (setStatus(e.target.value))}>
+                    <option value="" selected hidden></option>
+                    <option value="reservado">Reservado</option>
+                    <option value="hospedado">Hospedado</option>
+                    <option value="em limpeza">Em limpeza</option>
+                    <option value="bloqueado">Bloqueado</option>
+                    <option value="finalizado">Finalizado</option>
+                    <option value="cancelado">Cancelado</option>
+                    <option value="atrasado">Atrasado</option>
+                    <option value="vencido">Vencido</option>
+                </select>
                 <label className='form-label' htmlFor="hospede">Nome do Hóspede:</label>
                 <input className='form-control' type="text" name="hospede" id="hospede" value={hospede} onChange={(e) => (setHospede(e.target.value))} />
 
                 <label className='form-label' htmlFor="acomodacao">Acomodação:</label>
-                <input className='form-control' type="text" name="acomodacao" id="acomodacao" value={acomodacao} onChange={(e) => (setAcomodacao(e.target.value))} />
+                <select className='form-control' name="acomodacao" id="acomodacao" value={acomodacao} onChange={(e) => (setAcomodacao(e.target.value))} required>
+                    <option value="" selected hidden></option>
+                    <option value="suite-cozinha">Suíte com Cozinha</option>
+                    <option value="chale-familia">Chalé Família</option>
+                    <option value="cabana">Cabana</option>
+                    <option value="domo">Domo</option>
+                    <option value="bus">Bus</option>
+                    <option value="estacionamento-overlands">Estacionamento de Overlands</option>
+                </select>
+
 
                 <label className='form-label' htmlFor="checkin">Data de Check-in</label>
                 <input className='form-control' type="date" name="checkin" id="checkin" value={checkin} onChange={(e) => (setCheckin(e.target.value))} />
@@ -81,7 +99,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
                 <input className='form-control' type="number" name="qntd" id="qntd" value={qntd} onChange={(e) => (setQntd(e.target.value))} />
 
                 <div className="d-flex justify-content-between mt-3">
-                    <a className="btn btn-danger" href="#">Cancelar</a>
+                    <a className="btn btn-danger" href="/reservas">Cancelar</a>
                     <button className="btn btn-success" type="submit">{textoBotao}</button>
                 </div>
             </form>
