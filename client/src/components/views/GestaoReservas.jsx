@@ -4,7 +4,7 @@ import TabelaReservas from './tabelaReservas/tabelaReserva';
 import { Link, useParams } from 'react-router-dom'
 
 
-
+//Teste
 
 function GestaoReservas() {
     const { tipo } = useParams();

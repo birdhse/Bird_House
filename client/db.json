@@ -1,7 +1,7 @@
 {
   "reservas": [
     {
-      "id_reserva": "04",
+      "id_reserva": "b74e",
       "id_status": "reservado",
       "id_hospede": "Isaac Lindo Cheroso",
       "id_acomodacao": "Suíte com Cozinha",
@@ -11,8 +11,8 @@
       "num_dias": "",
       "valor_total": "",
       "observacao": "",
-      "validacao": "",
-      "id": "b74e"
+      "validacao": ""
+      
     },
     {
       "id_reserva": "740f",
@@ -25,8 +25,7 @@
       "num_dias": "",
       "valor_total": "",
       "observacao": "",
-      "validacao": "",
-      "id": "be16"
+      "validacao": ""
     }
   ],
   "hospedes": [
@@ -37,7 +36,7 @@
       "email_hospede": "",
       "data_nascimento": "",
       "cpf_hospede": "",
-      "id": "d871"
+      "id": "9f42"
     },
     {
       "id_hospede": "02",
@@ -46,7 +45,7 @@
       "email_hospede": "",
       "data_nascimento": "",
       "cpf_hospede": "",
-      "id": "13bf"
+      "id": "16fe"
     }
   ],
   "usuarios": [
@@ -57,14 +56,14 @@
       "login_usuario": "",
       "senha": "",
       "id_cargo": "",
-      "id": "6b06"
+      "id": "e80f"
     }
   ],
   "cargos": [
     {
       "id_cargo": "",
       "nome_cargo": "",
-      "id": "88f6"
+      "id": "1113"
     }
   ],
   "acomodacoes": [
@@ -73,7 +72,7 @@
       "nome_acomodacao": "",
       "qntd_limite": "",
       "id_comodidade": "",
-      "id": "077a"
+      "id": "9b75"
     }
   ],
   "comodidades": [
@@ -89,41 +88,14 @@
       "frigobar": "",
       "ducha": "",
       "banheira": "",
-      "id": "ae7d"
+      "id": "daaa"
     }
   ],
   "status": [
     {
-      "id_status": "1",
-      "condicao": "reservado"
-    },
-    {
-      "id_status": "2",
-      "condicao": "hospedado"
-    },
-    {
-      "id_status": "3",
-      "condicao": "em limpeza"
-    },
-    {
-      "id_status": "4",
-      "condicao": "bloqueado"
-    },
-    {
-      "id_status": "5",
-      "condicao": "finalizado"
-    },
-    {
-      "id_status": "6",
-      "condicao": "cancelado"
-    },
-    {
-      "id_status": "7",
-      "condicao": "atrasado"
-    },
-    {
-      "id_status": "8",
-      "condicao": "vencido"
+      "id_status": "",
+      "condicao": "",
+      "id": "b7a2"
     }
   ]
 }
