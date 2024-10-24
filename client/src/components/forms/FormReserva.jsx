@@ -4,12 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap import
 
 function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
     const navigate = useNavigate();
-    const [status, setStatus] = useState('');
-    const [hospede, setHospede] = useState('');
-    const [acomodacao, setAcomodacao] = useState('');
+    const [id_status, setStatus] = useState('');
+    const [id_hospede, setHospede] = useState('');
+    const [id_acomodacao, setAcomodacao] = useState('');
     const [checkin, setCheckin] = useState('');
     const [checkout, setCheckout] = useState('');
     const [qntd, setQntd] = useState('');
+    const [observacao, setObservacao] = useState('');
 
     useEffect(() => {
         if (id) {
@@ -30,12 +31,13 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
                 throw new Error('Erro ao buscar reserva');
             } else {
                 const respostaJSON = await resposta.json();
-                setStatus(respostaJSON.status);
-                setHospede(respostaJSON.hospede);
-                setAcomodacao(respostaJSON.acomodacao);
+                setStatus(respostaJSON.id_status);
+                setHospede(respostaJSON.id_hospede);
+                setAcomodacao(respostaJSON.id_acomodacao);
                 setCheckin(respostaJSON.checkin);
                 setCheckout(respostaJSON.checkout);
                 setQntd(respostaJSON.qntd);
+                setObservacao(respostaJSON.observacao);
             }
         } catch (error) {
             console.log(error)
@@ -45,12 +47,13 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
     function submit(e) {
         e.preventDefault();
         const reserva = {
-            status: status,
-            hospede: hospede,
-            acomodacao: acomodacao,
+            id_status: id_status,
+            id_hospede: id_hospede,
+            id_acomodacao: id_acomodacao,
             checkin: checkin,
             checkout: checkout,
-            qntd: qntd,
+            qntd_hospedes: qntd,
+            observacao: observacao,
             chave: null
         };
 
@@ -63,7 +66,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
             <h2 className="text-center">{titulo}</h2>
             <form onSubmit={submit}>
                 <label className='form-label' htmlFor="status">Status</label>
-                <select className='form-control' type="text" name="status" id="status" value={status} onChange={(e) => (setStatus(e.target.value))}>
+                <select className='form-control' type="text" name="status" id="status" value={id_status} onChange={(e) => (setStatus(e.target.value))}>
                     <option value="" selected hidden></option>
                     <option value="reservado">Reservado</option>
                     <option value="hospedado">Hospedado</option>
@@ -75,10 +78,10 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
                     <option value="vencido">Vencido</option>
                 </select>
                 <label className='form-label' htmlFor="hospede">Nome do Hóspede:</label>
-                <input className='form-control' type="text" name="hospede" id="hospede" value={hospede} onChange={(e) => (setHospede(e.target.value))} />
+                <input className='form-control' type="text" name="hospede" id="hospede" value={id_hospede} onChange={(e) => (setHospede(e.target.value))} />
 
                 <label className='form-label' htmlFor="acomodacao">Acomodação:</label>
-                <select className='form-control' name="acomodacao" id="acomodacao" value={acomodacao} onChange={(e) => (setAcomodacao(e.target.value))} required>
+                <select className='form-control' name="acomodacao" id="acomodacao" value={id_acomodacao} onChange={(e) => (setAcomodacao(e.target.value))} required>
                     <option value="" selected hidden></option>
                     <option value="suite-cozinha">Suíte com Cozinha</option>
                     <option value="chale-familia">Chalé Família</option>
@@ -97,6 +100,9 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
 
                 <label className='form-label' htmlFor="qntd">Quantidade de hóspedes:</label>
                 <input className='form-control' type="number" name="qntd" id="qntd" value={qntd} onChange={(e) => (setQntd(e.target.value))} />
+
+                <label className='form-label' htmlFor="observacao">Observações:</label>
+                <input className='form-control' type="text" name="observacao" id="observacao" value={observacao} onChange={(e) => (setObservacao(e.target.value))} />
 
                 <div className="d-flex justify-content-between mt-3">
                     <a className="btn btn-danger" href="/reservas">Cancelar</a>

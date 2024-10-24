@@ -1,21 +1,20 @@
 {
   "reservas": [
     {
-      "id_reserva": "b74e",
+      "id": "b74e",
       "id_status": "reservado",
       "id_hospede": "Isaac Lindo Cheroso",
       "id_acomodacao": "Suíte com Cozinha",
-      "checkin": "14/10/2024",
-      "checkout": "20/10/2024",
+      "checkin": "14-10-2024",
+      "checkout": "20-10-2024",
       "qntd_hospedes": "4",
       "num_dias": "",
       "valor_total": "",
       "observacao": "",
       "validacao": ""
-      
     },
     {
-      "id_reserva": "740f",
+      "id": "740f",
       "id_status": "hospedado",
       "id_hospede": "Teste",
       "id_acomodacao": "Teste",
@@ -26,6 +25,28 @@
       "valor_total": "",
       "observacao": "",
       "validacao": ""
+    },
+    {
+      "id": "0874",
+      "id_status": "reservado",
+      "id_hospede": "aaaaaaaa",
+      "id_acomodacao": "suite-cozinha",
+      "checkin": "2222-02-22",
+      "checkout": "0022-02-22",
+      "qntd_hospedes": "2",
+      "observacao": "tjrtjyrjrjryjyjy",
+      "chave": null
+    },
+    {
+      "id": "5bcd",
+      "id_status": "bloqueado",
+      "id_hospede": "hhhhhhhhh",
+      "id_acomodacao": "domo",
+      "checkin": "0555-05-05",
+      "checkout": "0555-05-05",
+      "qntd_hospedes": "5",
+      "observacao": "kkkkkkkk",
+      "chave": null
     }
   ],
   "hospedes": [
@@ -93,9 +114,19 @@
   ],
   "status": [
     {
-      "id_status": "",
-      "condicao": "",
-      "id": "b7a2"
+      "id_status": "01",
+      "condicao": "reservado",
+      "id": "de7c"
+    },
+    {
+      "id_status": "01",
+      "condicao": "ocupado",
+      "id": "f01e"
+    },
+    {
+      "id_status": "01",
+      "condicao": "rservado",
+      "id": "4809"
     }
   ]
 }
