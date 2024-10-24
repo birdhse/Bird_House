@@ -70,8 +70,9 @@
     {
       "id_acomodacao": "",
       "nome_acomodacao": "",
-      "qntd_limite": "",
+      "lotacao": "",
       "id_comodidade": "",
+      "valor_diaria": "",
       "id": "9b75"
     }
   ],

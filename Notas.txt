@@ -1,27 +1,33 @@
-tabela reservas: informações por chave estranheira
+tabela reservas: informações por chave estranheira (ramon)
 
-trazer as informações na hora de atualizar a reserva
+trazer as informações na hora de atualizar a reserva -------------------------------------------------------- ()
  
-informações nulas e mensagens(back)
+informações nulas e mensagens(back) ------------------------------------------------------------------------- ()
 
-tela exibi reserva - ajeitar cadastro reserva(observações entre outros campos e css)
+tela exibi reserva - ajeitar cadastro reserva(observações entre outros campos e css) ------------------------ ()
 
-css telas
+css telas --------------------------------------------------------------------------------------------------- ()
 
-informações nulas e mensagens(front)
+informações nulas e mensagens(front) (ramon)
 
-conectar front com back (server com client)
+conectar front com back (server com client) (ramon)
 
-ajeitar calendário(data atualizada)
+ajeitar calendário(data atualizada) ------------------------------------------------------------------------ ()
 
-crud de hospedes
+crud de hospedes ------------------------------------------------------------------------------------------- ()
 
-crud usuários
+crud usuários ---------------------------------------------------------------------------------------------- ()
 
-permições de acessos 
+permições de acessos (ramon)
 
-validação login usuário
+validação login usuário (ramon)
 
-crud acomodações
+crud acomodações ------------------------------------------------------------------------------------------- ()
 
-tela geral, puxar informações diversas
+tela geral, puxar informações diversas --------------------------------------------------------------------- ()
+
+definir a ordem de mudança dos status da reserva ----------------------------------------------------------- ()
+
+acomodação ter outra entidade de status (pendente_confirmação, inisponivel, em_limpeza, manuntanção, disponivel)
+
+pre_reserva (pendente_confirmação) (maumau)
