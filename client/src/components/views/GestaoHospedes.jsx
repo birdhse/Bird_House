@@ -3,23 +3,17 @@ import Menu from '../layout/menu';
 
 function Hospedes() {
     function showTab(tabId) {
-        // Remove a classe "active" de todos os botões
         const tabButtons = document.querySelectorAll('.tab');
-        tabButtons.forEach(button => {
-            button.classList.remove('active');
-        });
-    
-        // Adiciona a classe "active" ao botão clicado
+        tabButtons.forEach(button => button.classList.remove('active'));
+
         const ButtonClicado = document.querySelector(`#${tabId}`);
         ButtonClicado.classList.add('active');
-    
-        // Esconde todas as abas
+
         const tabContents = document.querySelectorAll('.tab-content');
         tabContents.forEach(tabContent => {
             tabContent.style.display = 'none';
         });
-    
-        // Mostra a aba correspondente ao botão clicado
+
         const TabContentSelecionado = document.getElementById(tabId);
         TabContentSelecionado.style.display = 'block';
     }
@@ -32,7 +26,7 @@ function Hospedes() {
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="#">Geral</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Cadastros</li>
+                        <li className="breadcrumb-item active" aria-current="page">Hóspede</li>
                     </ol>
                 </nav>
 
@@ -70,15 +64,20 @@ function Hospedes() {
                             <label htmlFor="nascimento" className="form-label">Nascimento</label>
                             <input type="date" className="form-control" id="nascimento" value="2003-03-30" />
                         </div>
-                        {/* <div className="col-md-6">
-                            <label htmlFor="sexo" className="form-label">Sexo</label>
-                            <input type="text" className="form-control" id="sexo" value="Feminino" />
-                        </div> */}
                         <div className="col-md-6">
                             <label htmlFor="contato" className="form-label">Contato</label>
                             <input type="text" className="form-control" id="contato" value="(00) 000000000" />
                         </div>
+                        <div className="col-md-6">
+                            <label htmlFor="contato" className="form-label">Observações</label>
+                            <input type="text" className="form-control" id="observacoes" value="Quartinho" />
+                        </div>
                     </form>
+
+                    {/* Botão de Editar na parte inferior, dentro da aba de informações */}
+                    <div className="d-flex justify-content-center mt-4">
+                        <button className="btn btn-primary">Editar Hóspede</button>
+                    </div>
                 </div>
 
                 <div className="tab-content" id="history" style={{ display: 'none' }}>
