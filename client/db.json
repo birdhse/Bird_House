@@ -1,32 +1,52 @@
 {
   "reservas": [
     {
-      "id_reserva": "03",
-      "id_status": "hospedado",
-      "id_hospede": "Márcia Moreira Jackson",
-      "id_acomodacao": "Quarto Premium",
-      "checkin": "14/10/2024",
-      "checkout": "17/10/2024",
-      "qntd_hospedes": "2",
-      "num_dias": "",
-      "valor_total": "",
-      "observacao": "",
-      "validacao": "",
-      "id": "e76a"
-    },
-    {
-      "id_reserva": "04",
+      "id": "b74e",
       "id_status": "reservado",
       "id_hospede": "Isaac Lindo Cheroso",
       "id_acomodacao": "Suíte com Cozinha",
-      "checkin": "14/10/2024",
-      "checkout": "20/10/2024",
+      "checkin": "14-10-2024",
+      "checkout": "20-10-2024",
       "qntd_hospedes": "4",
       "num_dias": "",
       "valor_total": "",
       "observacao": "",
-      "validacao": "",
-      "id": "99b6"
+      "validacao": ""
+    },
+    {
+      "id": "740f",
+      "id_status": "hospedado",
+      "id_hospede": "Teste",
+      "id_acomodacao": "Teste",
+      "checkin": "2024-10-15",
+      "checkout": "2024-10-16",
+      "qntd_hospedes": "2",
+      "num_dias": "",
+      "valor_total": "",
+      "observacao": "",
+      "validacao": ""
+    },
+    {
+      "id": "0874",
+      "id_status": "reservado",
+      "id_hospede": "aaaaaaaa",
+      "id_acomodacao": "suite-cozinha",
+      "checkin": "2222-02-22",
+      "checkout": "0022-02-22",
+      "qntd_hospedes": "2",
+      "observacao": "tjrtjyrjrjryjyjy",
+      "chave": null
+    },
+    {
+      "id": "5bcd",
+      "id_status": "bloqueado",
+      "id_hospede": "hhhhhhhhh",
+      "id_acomodacao": "domo",
+      "checkin": "0555-05-05",
+      "checkout": "0555-05-05",
+      "qntd_hospedes": "5",
+      "observacao": "kkkkkkkk",
+      "chave": null
     }
   ],
   "hospedes": [
@@ -71,8 +91,9 @@
     {
       "id_acomodacao": "",
       "nome_acomodacao": "",
-      "qntd_limite": "",
+      "lotacao": "",
       "id_comodidade": "",
+      "valor_diaria": "",
       "id": "9b75"
     }
   ],
@@ -94,9 +115,19 @@
   ],
   "status": [
     {
-      "id_status": "",
-      "condicao": "",
-      "id": "fd61"
+      "id_status": "01",
+      "condicao": "reservado",
+      "id": "de7c"
+    },
+    {
+      "id_status": "01",
+      "condicao": "ocupado",
+      "id": "f01e"
+    },
+    {
+      "id_status": "01",
+      "condicao": "rservado",
+      "id": "4809"
     }
   ]
 }

@@ -122,7 +122,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                                 <td>{reserva.qntd_hospedes}</td>
                                 {tipo === 'edit' &&
                                     <td className={styles.acaoBtn}>
-                                        <Link to={`/edit_reserva/${reserva.id}`} className="btn btn-warning btn-sm">
+                                        <Link to={`/edit_reserva/${reserva.idd}`} className="btn btn-warning btn-sm">
                                             Editar
                                         </Link>
                                         <button

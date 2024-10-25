@@ -1,0 +1,35 @@
+tabela reservas: informações por chave estranheira (ramon)
+
+trazer as informações na hora de atualizar a reserva(conexao com server) ------------------------------------ ()
+ 
+informações nulas e mensagens(back) ------------------------------------------------------------------------- ()
+
+tela exibi reserva - ajeitar cadastro reserva(observações entre outros campos e css) ------------------------ ()
+
+css telas --------------------------------------------------------------------------------------------------- ()
+
+informações nulas e mensagens(front) (ramon)
+
+conectar front com back (server com client) (ramon)
+
+ajeitar calendário(data atualizada) ------------------------------------------------------------------------ ()
+
+crud de hospedes ------------------------------------------------------------------------------------------- ()
+
+crud usuários ---------------------------------------------------------------------------------------------- ()
+
+permições de acessos (ramon)
+
+validação login usuário (ramon)
+
+crud acomodações ------------------------------------------------------------------------------------------- ()
+
+tela geral, puxar informações diversas --------------------------------------------------------------------- ()
+
+definir a ordem de mudança dos status da reserva ----------------------------------------------------------- ()
+
+acomodação ter outra entidade de status (pendente_confirmação, inisponivel, em_limpeza, manuntanção, disponivel)
+
+pre_reserva (pendente_confirmação) (maumau)
+
+a tela hospedes será igual a de reservas, e na coluna de "ações" será "mais informações" jogando para a tela de cadastros, onde terá botão de editar e salvar
