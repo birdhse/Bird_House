@@ -1,0 +1,66 @@
+/* Estilo da tabela geral */
+.tabelaReservas {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Cabeçalho da tabela */
+.tabelaReservas thead {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* Linhas ímpares */
+.tabelaReservas tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Linhas pares */
+.tabelaReservas tbody tr:nth-child(even) {
+    background-color: #d9edf7;
+}
+
+/* Colunas de ação (botões editar e deletar) */
+.acaoBtn {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Icones de status */
+.statusIcon {
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.statusIcon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.filtroStatus {
+    margin-bottom: 20px;
+}
+
+.filtroStatus button {
+    margin-right: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+}
+
+
+
+/* Estilo para o tipo 'edit' */
+.edit {
+    width: 100%;
+}
