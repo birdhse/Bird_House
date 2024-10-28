@@ -2,13 +2,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Geral from './components/views/Geral';
-import Reservas from './components/views/GestaoReservas';
-import EditarReserva from './components/views/EditReserva';
-import Cadastros from './components/views/GestaoHospedes';
+import Reservas from './components/views/Reservas/GestaoReservas';
+import EditarReserva from './components/views/Reservas/EditReserva';
+import Cadastros from './components/views/Hospedes/GestaoHospedes';
 import Relatorios from './components/views/Relatorios';
-import CadastroReserva from './components/views/CadastroReserva';
-import EditReserva from './components/views/EditReserva';
-import GestaoReservas from './components/views/GestaoReservas';
+import CadastroReserva from './components/views/Reservas/CadastroReserva';
+import EditReserva from './components/views/Reservas/EditReserva';
+import GestaoReservas from './components/views/Reservas/GestaoReservas';
 
 
 function App() {

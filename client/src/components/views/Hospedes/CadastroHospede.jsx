@@ -1,5 +1,5 @@
-import FormReserva from "../forms/FormReserva";
-import Menu from "../layout/menu"
+import FormReserva from "../../forms/FormReserva";
+import Menu from "../../layout/menu"
 import { useState } from "react";
 
 function CadastroReserva() {
