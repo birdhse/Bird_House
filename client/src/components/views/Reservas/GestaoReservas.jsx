@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Menu from '../layout/menu'
-import TabelaReservas from './tabelaReservas/tabelaReserva';
+import Menu from '../../layout/menu'
+import TabelaReservas from '../tabelas/tabelaReserva';
 import { Link, useParams } from 'react-router-dom'
 
 

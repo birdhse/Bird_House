@@ -1,5 +1,5 @@
-import React from 'react';
-import Menu from '../layout/menu';
+import React from 'react'
+import Menu from '../../layout/menu';
 
 function Hospedes() {
     function showTab(tabId) {

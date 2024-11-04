@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './menu.modules.css';
+import Data from './data';
+import Relogio from './relogio';
 
 function Menu() {
     return (
@@ -8,9 +10,9 @@ function Menu() {
             <div id="menu_superior">
                 <div id="elementos_menu_superior">
                     <h2 id="logo">Bird House</h2>
-                    <input type="text" id="txtBusca" placeholder="Buscar..." />
+                    <h3 id="data"><Data/></h3>
 
-                    <label id="data">23/04/2024</label>
+                    <h3 id="relogio"><Relogio/></h3>
                     <span class="material-symbols-outlined"> notifications </span>
                 </div>
             </div>

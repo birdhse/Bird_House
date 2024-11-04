@@ -9,7 +9,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
     const [id_acomodacao, setAcomodacao] = useState('');
     const [checkin, setCheckin] = useState('');
     const [checkout, setCheckout] = useState('');
-    const [qntd, setQntd] = useState('');
+    const [qntd_hospedes, setQntd] = useState('');
     const [observacao, setObservacao] = useState('');
 
     useEffect(() => {
@@ -36,7 +36,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
                 setAcomodacao(respostaJSON.id_acomodacao);
                 setCheckin(respostaJSON.checkin);
                 setCheckout(respostaJSON.checkout);
-                setQntd(respostaJSON.qntd);
+                setQntd(respostaJSON.qntd_hospedes);
                 setObservacao(respostaJSON.observacao);
             }
         } catch (error) {
@@ -52,7 +52,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
             id_acomodacao: id_acomodacao,
             checkin: checkin,
             checkout: checkout,
-            qntd_hospedes: qntd,
+            qntd_hospedes: qntd_hospedes,
             observacao: observacao,
             chave: null
         };
@@ -83,10 +83,10 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
                 <label className='form-label' htmlFor="acomodacao">Acomodação:</label>
                 <select className='form-control' name="acomodacao" id="acomodacao" value={id_acomodacao} onChange={(e) => (setAcomodacao(e.target.value))} required>
                     <option value="" selected hidden></option>
-                    <option value="suite-cozinha">Suíte com Cozinha</option>
-                    <option value="chale-familia">Chalé Família</option>
-                    <option value="cabana">Cabana</option>
-                    <option value="domo">Domo</option>
+                    <option value="Suíte com Cozinha">Suíte com Cozinha</option>
+                    <option value="Chalé Família">Chalé Família</option>
+                    <option value="Cabana">Cabana</option>
+                    <option value="Domo">Domo</option>
                     <option value="bus">Bus</option>
                     <option value="estacionamento-overlands">Estacionamento de Overlands</option>
                 </select>
@@ -99,7 +99,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id, tipo }) {
                 <input className='form-control' type="date" name="checkout" id="checkout" value={checkout} onChange={(e) => (setCheckout(e.target.value))} />
 
                 <label className='form-label' htmlFor="qntd">Quantidade de hóspedes:</label>
-                <input className='form-control' type="number" name="qntd" id="qntd" value={qntd} onChange={(e) => (setQntd(e.target.value))} />
+                <input className='form-control' type="number" name="qntd" id="qntd" value={qntd_hospedes} onChange={(e) => (setQntd(e.target.value))} />
 
                 <label className='form-label' htmlFor="observacao">Observações:</label>
                 <input className='form-control' type="text" name="observacao" id="observacao" value={observacao} onChange={(e) => (setObservacao(e.target.value))} />
