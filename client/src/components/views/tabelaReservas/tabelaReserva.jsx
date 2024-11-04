@@ -50,8 +50,8 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
     }
 
     // Função para renderizar o ícone de status com base no valor de status
-    const renderStatusIcon = (status) => {
-        switch (status) {
+    const renderStatusIcon = (id_status) => {
+        switch (id_status) {
             case 'reservado':
                 return <span className={`${styles.statusIcon} ${styles.reservado}`} />;
             case 'hospedado':
@@ -77,7 +77,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
         if (filtro === 'todos') {
             return reservas;
         } else {
-            return reservas.filter(reserva => reserva.status === filtro);
+            return reservas.filter(reserva => reserva.id_status === filtro);
         }
     };
 
@@ -122,7 +122,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                                 <td>{reserva.qntd_hospedes}</td>
                                 {tipo === 'edit' &&
                                     <td className={styles.acaoBtn}>
-                                        <Link to={`/edit_reserva/${reserva.idd}`} className="btn btn-warning btn-sm">
+                                        <Link to={`/edit_reserva/${reserva.id}`} className="btn btn-warning btn-sm">
                                             Editar
                                         </Link>
                                         <button
