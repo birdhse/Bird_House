@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './menu.modules.css';
+import styles from './menu.modules.css'
 import Data from './data';
 import Relogio from './relogio';
 
@@ -7,22 +7,22 @@ function Menu() {
     return (
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <div id="menu_superior">
-                <div id="elementos_menu_superior">
-                    <h2 id="logo">Bird House</h2>
-                    <h3 id="data"><Data/></h3>
+            <div className='menu_superior'>
+                <div className='elementos_menu_superior'>
+                    <h2 className="logo">Bird House</h2>
+                    <h3 className='data'><Data/></h3>
 
-                    <h3 id="relogio"><Relogio/></h3>
-                    <span class="material-symbols-outlined"> notifications </span>
+                    <h3 className='relogio'><Relogio/></h3>
+                    <span className='material_symbols_outlined'> notifications </span>
                 </div>
             </div>
-            <div id="menu_lateral">
+            <div className='menu_lateral'>
                 <ul>
                     <li><a href="/">Geral</a></li>
                     <li><a href="/reservas">Reservas</a></li>
-                    <li><a href="/cadastros">Hóspedes</a></li>
-                    <li><a href="/relatorios">Relatórios</a></li>
+                    <li><a href="/hospedes">Hóspedes</a></li>
                     <li><a href="/usuarios">Usuários</a></li>
+                    <li><a href="/relatorios">Relatórios</a></li>
                 </ul>
             </div>
         </div>

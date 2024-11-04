@@ -5,7 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
   }
   
-  #menu_superior {
+  .menu_superior {
     background-color: #198fad;
     height: 60px;
     display: flex;
@@ -13,35 +13,35 @@
     padding: 0 20px;
   }
   
-  #elementos_menu_superior{
+  .elementos_menu_superior{
     flex: 1;
     display: flex;
     align-items: center;
   }
   
-  #logo {
+  .logo {
     color: white;
     margin-right: auto;
     width: 180px;
   }
   
-  #data {
+  .data {
     align-items: center;
     color: white;
   }
   
-  .material-symbols-outlined {
+  .material_symbols_outlined {
     color: white;
     font-size: 24px;
     margin-left: 20px;
   }
   
-  #relogio {
+  .relogio {
     margin-left: auto;
     color: white;
   }
   
-  #menu_lateral {
+  .menu_lateral {
     width: 200px;
     height: 893px;
     margin: 0;
@@ -50,18 +50,18 @@
     background-color: #198fad86;
   }
   
-  #menu_lateral ul {
+  .menu_lateral ul {
     margin: 0;
     padding: 0;
     text-align: left;
     list-style-type: none;
   }
   
-  #menu_lateral ul li {
+  .menu_lateral ul li {
     padding: 10px;
   }
   
-  #menu_lateral ul li a {
+  .menu_lateral ul li a {
     color: black;
     font-weight: bold;
     text-decoration: none;
@@ -69,11 +69,11 @@
     display: block;
   }
   
-  #menu_lateral li:hover {
+  .menu_lateral li:hover {
     background-color: #fdc827;
   }
   
-  #menu_lateral li.link_ativo {
+  .menu_lateral li.link_ativo {
     background-color: #fdc827;
     font-weight: bold;
   }
@@ -83,7 +83,7 @@
     margin-bottom: 5px;
   }
   
-  .search-bar input {
+  .search_bar input {
     padding: 5px;
     font-size: 16px;
   }

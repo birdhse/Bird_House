@@ -1,5 +1,5 @@
 /* Estilo da tabela geral */
-.tabelaReservas {
+.tabelaHospedes {
     width: 100%;
     text-align: center;
     font-size: 16px;
@@ -8,18 +8,18 @@
 }
 
 /* Cabeçalho da tabela */
-.tabelaReservas thead {
+.tabelaHospedes thead {
     background-color: #f1f1f1;
     color: #333;
 }
 
 /* Linhas ímpares */
-.tabelaReservas tbody tr:nth-child(odd) {
+.tabelaHospedes tbody tr:nth-child(odd) {
     background-color: #f2f2f2;
 }
 
 /* Linhas pares */
-.tabelaReservas tbody tr:nth-child(even) {
+.tabelaHospedes tbody tr:nth-child(even) {
     background-color: #d9edf7;
 }
 
