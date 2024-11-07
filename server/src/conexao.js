@@ -1,10 +1,8 @@
-const config = {
-    db:{
+export const db = {
         host:"localhost",
         user:"root",
         password:"",
         database:"birdhouse"
-    }
 }
 
-export default config
+export default db;

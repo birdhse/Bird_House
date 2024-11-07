@@ -1,23 +1,27 @@
 import express from "express"
-import HospedeController from './Controllers/HospedeController.js';
-import ReservaController from "./Controllers/ReservaController.js";
-const server = express()
+import cors from 'cors'
 
-server.use(express.json())
+import {criaReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva} from './Controllers/ReservaController.js';
 
-server.get("/",(req,res)=>{
+const app = express();
+const porta = 5000;
+
+app.use(cors());
+app.use(express.json());
+
+
+app.get("/",(req,res)=>{
   res.status(200).json("Servidor funcionando")
-})
-
-server.post("/cad_hosped", HospedeController.create)
-server.get("/cad_hosped", HospedeController.read)
-server.put("/cad_hosped/:id_h",HospedeController.update)
-server.delete("/cad_hosped/:id_h",HospedeController.delete)
+});
 
 
-server.post("/cad_reservas",ReservaController.create)
-server.get("/cad_reservas",ReservaController.read)
-server.put("cad_reservas/:id_r",ReservaController.update)
-server.delete("/cad_reservas/:id_r",ReservaController.delete)
 
-server.listen(5000)
+server.post("/reservas",criaReserva)
+server.get("/reservas",mostrarReservas)
+server.put("reservas/:id_r",atualizarReserva)
+server.delete("/reservas/:id_r",excluirReserva)
+app.get('/reservas/:id', mostrarUmaReserva)
+
+app.listen(porta, () => {
+  console.log(`API Rodando na porta ${porta}`)
+});

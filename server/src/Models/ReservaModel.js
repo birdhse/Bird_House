@@ -1,64 +1,157 @@
-import mysql from "mysql2"
-import config from "../Config.js"
+import mysql from "mysql2/promise";
+import db from "../conexao.js";
 
-class ReservaModel{
-    constructor(){
-        this.conexao = mysql.createConnection(config.db)
-        console.debug("Conectado")
-    }
-    create(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,id_h,status){
-        let sql = `insert into cad_reservas values("${id_r}","${dt_entrada}","${dt_saida}","${uh}","${valor_diaria}","${num_h}","${id_h}","${status}");`
+export async function readReserva(reserva) {
+    const conexao = mysql.createPool(db);
 
-        return new Promise((resolve, reject)=>{
-            this.conexao.query(sql,(erro,retorno)=>{
-                if(erro){
-                    console.debug(erro)
-                    reject([400,erro])
-                }
-                resolve([201,"Reserva inserida"])
-            }) 
-        });
+    //Ao ser acionado o metodo createAula retorna na tela
+    console.log('Entrando no Model Reserva');
+
+    //Criando aula
+    const sql = `SELECT * FROM reservas`;
+
+    //Definindo parametros para inserir no sql
+    const params = [
+        reserva.id_hospede,
+        reserva.id_acomodacao,
+        reserva.id_status,
+        reserva.checkin,
+        reserva.checkout,
+        reserva.qntd_hospedes,
+        reserva.valor_total,
+        reserva.observacao
+    ];
+
+    //Executando query no banco
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Reserva exibida');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [502, error];
     }
-    read(){
-        let sql = `select * from cad_reservas;`
-        return new Promise((resolve,reject)=>{
-            this.conexao.query(sql,(erro,retorno)=>{
-                if(erro){
-                    console.debug(erro)
-                    reject([400,erro])
-                }
-                resolve([200,retorno])
-            })
-        });
-         
+
+}
+
+
+export async function createReserva(reserva) {
+    //Criando conexão para o banco de dados usando configurações de 'db'
+    const conexao = mysql.createPool(db);
+
+    //Ao ser acionado o metodo createAula retorna na tela
+    console.log('Criando no Model Reserva');
+
+    //Criando aula
+    const sql = `INSERT INTO reservas (
+    id_status,
+    id_hospede,
+    id_acomodacao,
+    checkin,
+    checkout,
+    qntd_hospedes,
+    valor_total,
+    observacao)
+    VALUES (?,?,?,?,?,?,?,?)`;
+
+    //Definindo parametros para inserir no sql
+    const params = [
+        reserva.id_hospede,
+        reserva.id_acomodacao,
+        reserva.id_status,
+        reserva.checkin,
+        reserva.checkout,
+        reserva.qntd_hospedes,
+        reserva.valor_total,
+        reserva.observacao
+    ];
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Reserva cadastrada');
+        return [201, retorno];
+    } catch (error) {
+        console.log(error);
+        return [500, error];
     }
-    update(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,id_h,status){
-        let sql =`update cad_reservas set dt_entrada="${dt_entrada}", dt_saida="${dt_saida}", uh="${uh}",valor_diaria="${valor_diaria}",num_h="${num_h}",id_h="${id_h}",status="${status}" where id_r="${id_r}";`
-        return new Promise ((resolve, reject)=>{
-            this.conexao.query(sql,(erro,retorno)=>{
-                if(erro){
-                    console.debug(erro)
-                    reject([400,erro])
-                }
-                resolve([200,"Reserva Atualizada"])
-            })
-        });       
+}
+
+export async function updateReserva(reserva) {
+    //Criando conexão para o banco de dados usando configurações de 'db'
+    const conexao = mysql.createPool(db);
+
+    //Ao ser acionado o metodo createAula retorna na tela
+    console.log('Criando no Model Reserva');
+
+    //Criando aula
+    const sql = `UPDATE reservas SET id_status =?,
+    id_hospede =?,
+    id_acomodacao=?,
+    checkin=?,
+    checkout=?,
+    qntd_hospedes=?,
+    valor_total=?,
+    observacao=?
+    where id_reserva = ?`
+
+    //Definindo parametros para inserir no sql
+    const params = [
+        reserva.id_hospede,
+        reserva.id_acomodacao,
+        reserva.id_status,
+        reserva.checkin,
+        reserva.checkout,
+        reserva.qntd_hospedes,
+        reserva.valor_total,
+        reserva.observacao
+    ];
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Atualizando reserva');
+        if (retorno.affectedRows < 1) {
+            return [404, { mensagem: 'Reserva não encontrada' }];
+        }
+            return [200,{mensagem:'Reserva Atualizada'}];
+    } catch (error) {
+        console.log(error);
+        return [500, error];
     }
-     delete(id_r){
-        let sql = `delete from cad_reservas where id_r="${id_r}";`
-        return new Promise((resolve,reject)=>{
-            this.conexao.query(sql,(erro,retorno)=>{
-                if(erro){
-                    console.debug(erro)
-                    reject([400,erro])
-                }
-                resolve([200,"Reserva deletada"])
-            })
-        });
-     }
 }
 
 
 
+export async function deleteReserva(id) {
+    const conexao = mysql.createPool(db);
 
-export default new ReservaModel();
+    console.log('Deletando no Model Reserva');
+    const sql = `DELETE FROM  reservas WHERE id=?`;
+    const params = [id];
+
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Deletando reserva');
+        if (retorno.affectedRows < 1) {
+            return [404, { mensagem: 'Reserva não encontrada' }];
+        }
+        return [200,{mensagem:'Reserva Deletada'}];
+    } catch (error) {
+        console.log(error);
+        return [500, error];
+    }
+}
+
+export async function showOneReserva(id) {
+    const conexao = mysql.createPool(db);
+
+    console.log('Mostrando uma Reserva no Model Reserva');
+    const sql = `SELECT * FROM  reservas WHERE id=?`;
+    const params = [id];
+
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Mostrando uma Reserva');
+        return [200, retorno[0]];
+    } catch (error) {
+        console.log(error);
+        return [500, error];
+    }
+}
