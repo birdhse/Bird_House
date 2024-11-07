@@ -1,4 +1,5 @@
 import { createReserva, deleteReserva, updateReserva, readReserva, showOneReserva } from '../Models/ReservaModel.js'
+import { hasProperty, isNullOrEmpty, verificaReserva } from "../validations/ReservaValidation.js";
 
 export async function criaReserva(req, res) {
 
@@ -33,28 +34,42 @@ export async function mostrarReservas(req, res) {
     }
 }
 
+
 export async function atualizarReserva(req, res) {
+
     console.log('ReservaController atualizarReserva');
 
+    //Criando constante com a requisição
     const reserva = req.body;
-    const { id } = req.params;
-    try {
-        const [status, resposta] = await updateReserva(reserva, id);
-        res.status(status).json(resposta);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
+    const { id_reserva } = req.params;
+
+    if (verificaReserva(reserva) || isNullOrEmpty(id_reserva)) {
+        res.status(400).json({ menssage: 'Todas as propriedades devem ser preenchidas' });
+    }
+    else {
+        //Tentando atualizar reserva
+        try {
+            const [status, resposta] = await updateReserva(reserva, id_reserva);
+            res.status(status).json(resposta)
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
     }
 
 }
 
 export async function excluirReserva(req, res) {
-    console.log('ReservaController excluirReserva');
+    console.log('HReservaController excluirReserva');
 
-    const { id } = req.params;
+    const { id_reserva } = req.params;
 
+    if (verificaHospede(reserva)) {
+        res.status(400).json({ menssage: 'O id deve ser informado' });
+    }
+    else {
         try {
-            const [status, resposta] = await deleteReserva(id);
+            const [status, resposta] = await deleteReserva(id_reserva);
             res.status(status).json(resposta);
         } catch (error) {
             console.log(error);
@@ -62,15 +77,20 @@ export async function excluirReserva(req, res) {
         }
     }
 
+
+}
+
 export async function mostrarUmaReserva(req, res) {
     console.log('ReservaController mostrarUmaReserva');
 
-    const { id } = req.params;
+    const { id_reserva } = req.params;
     try {
-        const [status, resposta] = await showOneReserva(id);
+        const [status, resposta] = await showOneReserva(id_reserva);
         res.status(status).json(resposta);
     } catch (error) {
         console.log(error);
         res.status(500).json(error);
     }
 }
+
+export default new ReservaController();
