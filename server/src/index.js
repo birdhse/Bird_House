@@ -16,11 +16,11 @@ app.get("/",(req,res)=>{
 
 
 
-server.post("/reservas",criaReserva)
-server.get("/reservas",mostrarReservas)
-server.put("reservas/:id_r",atualizarReserva)
-server.delete("/reservas/:id_r",excluirReserva)
-app.get('/reservas/:id', mostrarUmaReserva)
+app.post("/reservas",criaReserva)
+app.get("/reservas",mostrarReservas)
+app.put("reservas/:id_reserva",atualizarReserva)
+app.delete("/reservas/:id_reserva",excluirReserva)
+app.get('/reservas/:id_reserva', mostrarUmaReserva)
 
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)
