@@ -1,86 +1,76 @@
-import ReservaModel from "../Models/ReservaModel.js";
+import { createReserva, deleteReserva, updateReserva, readReserva, showOneReserva } from '../Models/ReservaModel.js'
 
-class ReservaController{
-    constructor(){
+export async function criaReserva(req, res) {
 
+    //Ao ser chamado o criarAula controller virá no console
+    console.log('ReservaController criarReserva');
+    const reserva = req.body;
+
+    //Exibindo corpo da requisição
+    console.log(reserva);
+    try {
+        const [status, resposta] = await createReserva(reserva);
+        res.status(status).json(resposta);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
     }
-    create(req,res){
-        const id_r = req.body.id_r
-        const dt_entrada = req.body.dt_entrada
-        const dt_saida = req.body.dt_saida
-        const uh = req.body.uh
-        const valor_diaria = req.body.valor_diaria
-        const num_h = req.body.num_h
-        const id_h = req.body.id_h
-        const status = req.body.status
-        ReservaModel.create(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,id_h,status).then(
-            resposta =>{
-                console.debug("Cadastrando uma reserva")
-                res.status(resposta[0]).json(resposta[1])                
-            }
-        ).catch(
-            resposta =>{
-                console.debug(resposta)
-                console.debug("Erro cadastrando uma reserva")
-                res.status(resposta[0]).json(resposta[1])                
-            }
-        )
+}
 
+export async function mostrarReservas(req, res) {
+    console.log('ReservaController mostrarReserva');
+    const reserva = req.body;
+
+    //Exibindo corpo da requisição
+    console.log(reserva);
+
+    try {
+        const [status, resposta] = await readReserva(reserva);
+        res.status(status).json(resposta);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
     }
-    read(req,res){
-        ReservaModel.read().then(
-           resposta =>{
-               console.debug("Exibindo reservas")
-               res.status(resposta[0]).json(resposta[1])                
-           }
-       ).catch(
-           resposta =>{
-               console.debug(resposta)
-               console.debug("Erro ao exibir reservas")
-               res.status(resposta[0]).json(resposta[1])                
-           }
-       )
-
-   }
-   update(req,res){
-        const id_r = req.params.id_r
-        const dt_entrada = req.body.dt_entrada
-        const dt_saida = req.body.dt_saida
-        const uh = req.body.uh
-        const valor_diaria = req.body.valor_diaria
-        const num_h = req.body.num_h
-        const id_h = req.body.id_h
-        const status = req.body.status
-    ReservaModel.update(id_r,dt_entrada,dt_saida,uh,valor_diaria,num_h,id_h,status).then(
-       resposta =>{
-           console.debug("Atualizando reserva")
-           res.status(resposta[0]).json(resposta[1])                
-       }
-   ).catch(
-       resposta =>{
-           console.debug(resposta)
-           console.debug("Erro Atualizando reserva")
-           res.status(resposta[0]).json(resposta[1])                
-       }
-   )
-
-}
-delete(req,res){
-    const id_r= req.params.id_r
-   ReservaModel.delete(id_r).then(
-       resposta =>{
-           console.debug("Deletando reserva")
-           res.status(resposta[0]).json(resposta[1])                
-       }
-   ).catch(
-       resposta =>{
-           console.debug(resposta)
-           console.debug("Erro Deletando um reserva")
-           res.status(resposta[0]).json(resposta[1])                
-       }
-   )
-
-}
 }
 
-export default new ReservaController();
+export async function atualizarReserva(req, res) {
+    console.log('ReservaController atualizarReserva');
+
+    const reserva = req.body;
+    const { id } = req.params;
+    try {
+        const [status, resposta] = await updateReserva(reserva, id);
+        res.status(status).json(resposta);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+
+}
+
+export async function excluirReserva(req, res) {
+    console.log('ReservaController excluirReserva');
+
+    const { id } = req.params;
+
+        try {
+            const [status, resposta] = await deleteReserva(id);
+            res.status(status).json(resposta);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+
+export async function mostrarUmaReserva(req, res) {
+    console.log('ReservaController mostrarUmaReserva');
+
+    const { id } = req.params;
+    try {
+        const [status, resposta] = await showOneReserva(id);
+        res.status(status).json(resposta);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}

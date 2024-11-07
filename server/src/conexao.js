@@ -1,4 +1,4 @@
-const db = {
+export const db = {
         host:"localhost",
         user:"root",
         password:"",
