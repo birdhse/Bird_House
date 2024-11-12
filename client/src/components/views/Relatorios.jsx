@@ -12,17 +12,26 @@ function Relatorios() {
     function exibeRelatorio() {
         setGraficoRelatorio(false);
     }
-
+     
     return (
         <div>
             <Menu />
             <div className="container mt-4">
-
                 <main className="content">
                     <h2 className="mb-4">Relatórios e Gráficos das Hospedagens</h2>
                     <div className="btn-group mb-4" role="group">
-                        <button className="btn btn-primary" onClick={exibeGrafico}>Gráficos</button>
-                        <button className="btn btn-secondary" onClick={exibeRelatorio}>Relatórios</button>
+                        <button 
+                            className={`btn ${graficoRelatorio ? "btn-primary" : "btn-outline-primary"}`} 
+                            onClick={exibeGrafico}
+                        >
+                            Gráficos
+                        </button>
+                        <button 
+                            className={`btn ${!graficoRelatorio ? "btn-primary" : "btn-outline-primary"}`} 
+                            onClick={exibeRelatorio}
+                        >
+                            Relatórios
+                        </button>
                     </div>
                     {graficoRelatorio ? (
                         <div id="graficos" className="p-3 border rounded bg-light">

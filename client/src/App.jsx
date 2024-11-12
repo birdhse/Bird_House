@@ -8,6 +8,7 @@ import CadastroReserva from './components/views/Reservas/CadastroReserva';
 import EditReserva from './components/views/Reservas/EditReserva';
 import Relatorios from './components/views/Relatorios';
 import ListarHospedes from './components/views/Hospedes/GestaoHospedes';
+import ConfigUsuario from './components/views/Configuração/ConfigUsuario';
 
 
 function App() {
@@ -21,8 +22,12 @@ function App() {
         <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
         <Route path='/edit_reserva/:id' element={<EditReserva/>}/>
 
+
         <Route path='/hospedes' element={<ListarHospedes/>}/>
         <Route path='/hospedes/:tipo' element={<ListarHospedes/>}/>
+
+
+        <Route path='/usuarios' element={<ConfigUsuario/>}/>
 
       </Routes>
     </BrowserRouter>
