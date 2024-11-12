@@ -18,7 +18,7 @@ app.get("/",(req,res)=>{
 
 app.post("/reservas",criaReserva)
 app.get("/reservas",mostrarReservas)
-app.put("reservas/:id_reserva",atualizarReserva)
+app.put("/reservas/:id_reserva",atualizarReserva)
 app.delete("/reservas/:id_reserva",excluirReserva)
 app.get('/reservas/:id_reserva', mostrarUmaReserva)
 

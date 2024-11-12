@@ -37,9 +37,9 @@ export async function atualizarReserva(req, res) {
     console.log('ReservaController atualizarReserva');
 
     const reserva = req.body;
-    const { id } = req.params;
+    const { id_reserva } = req.params;
     try {
-        const [status, resposta] = await updateReserva(reserva, id);
+        const [status, resposta] = await updateReserva(reserva, id_reserva);
         res.status(status).json(resposta);
     } catch (error) {
         console.log(error);
@@ -51,10 +51,10 @@ export async function atualizarReserva(req, res) {
 export async function excluirReserva(req, res) {
     console.log('ReservaController excluirReserva');
 
-    const { id } = req.params;
+    const { id_reserva } = req.params;
 
         try {
-            const [status, resposta] = await deleteReserva(id);
+            const [status, resposta] = await deleteReserva(id_reserva);
             res.status(status).json(resposta);
         } catch (error) {
             console.log(error);
