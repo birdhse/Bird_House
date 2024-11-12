@@ -18,7 +18,7 @@ export function verificaHospede(hospede) {
     return propriedades.some(prop => isNullOrEmpty(hospede[prop]));
 }
 
-export function verificaTelef(num_celular) {
+export function verificaTelefHosp(num_celular) {
     num_celular = document.getElementById('num_celular').value.trim();
     const telPadrao = /^\d{11}$/; // Formato XXXXXXXXXXX
     let valido = true;
@@ -33,7 +33,7 @@ export function verificaTelef(num_celular) {
     return valido;
 }
 
-export function verificaEmail(email_hospede) {
+export function verificaEmailHosp(email_hospede) {
     email_hospede = document.getElementById('email_hospede').value.trim();
     let valido = true;
 
@@ -47,7 +47,7 @@ export function verificaEmail(email_hospede) {
     return valido;
 }
 
-export function verificarDataNascimento(data_nascimento) {
+export function verificarDataNascimentoHosp(data_nascimento) {
     const dataPadrao = /^\d{2}\/\d{2}\/\d{4}$/;
 
     // Verifica o formato "dd/mm/aaaa"
@@ -80,7 +80,7 @@ export function verificarDataNascimento(data_nascimento) {
     return true;
 }
 
-export function validacaoMatCPF(cpf_hospede) {
+export function validacaoMatCPFHosp(cpf_hospede) {
     let digito1 = 0;
     let digito2 = 0;
     let validoCPF = false;
@@ -121,7 +121,7 @@ export function validacaoMatCPF(cpf_hospede) {
     }
 }
 
-export function validacaoRepetidoCPF(cpf_hospede) {
+export function validacaoRepetidoCPFHosp(cpf_hospede) {
     return !(
         cpf_hospede === '00000000000' ||
         cpf_hospede === '11111111111' ||
@@ -136,6 +136,6 @@ export function validacaoRepetidoCPF(cpf_hospede) {
     );
 }
 
-export function validarCPF(cpf_hospede) {
+export function validarCPFHosp(cpf_hospede) {
     return typeof cpf_hospede === 'string' && cpf_hospede.length === 11 && /^[0-9]+$/.test(cpf_hospede);
 }
