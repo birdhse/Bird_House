@@ -17,3 +17,17 @@ export function isNullOrEmpty(valor) {
 export function verificaUsuario(usuario) {
     return propriedades.some(prop => isNullOrEmpty(usuario[prop]));
 }
+
+export function verificaEmailUsua(email_usuario) {
+    email_usuario = document.getElementById('email_usuario').value.trim();
+    let valido = true;
+
+    if (email_usuario === '' || !email_usuario.includes('@')) {
+        document.getElementById('alerta-email').style.visibility = 'visible';
+        valido = false;
+    } else {
+        document.getElementById('alerta-email').style.visibility = 'hidden';
+    }
+
+    return valido;
+}
