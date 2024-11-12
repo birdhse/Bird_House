@@ -158,6 +158,7 @@ export async function updateReserva(reserva,id_reserva) {
         reserva.observacao,
         id_reserva
     ];
+
     try {
         const [retorno] = await conexao.query(sql, params);
         console.log('Atualizando reserva');

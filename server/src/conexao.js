@@ -5,4 +5,4 @@ export const db = {
         database:"birdhouse"
 }
 
-export default db;
+export default db
