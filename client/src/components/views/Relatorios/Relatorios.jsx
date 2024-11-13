@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Menu from '../layout/menu';
+import Menu from '../../layout/menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Relatorios() {
@@ -17,9 +17,10 @@ function Relatorios() {
         <div>
             <Menu />
             <div className="container mt-4">
+              <h1 className="text-center mt-3">Relatórios e Gráficos das Hospedagens</h1>  
                 <main className="content">
-                    <h2 className="mb-4">Relatórios e Gráficos das Hospedagens</h2>
-                    <div className="btn-group mb-4" role="group">
+                    
+                    <div className="btn-group mb-5" role="group">
                         <button 
                             className={`btn ${graficoRelatorio ? "btn-primary" : "btn-outline-primary"}`} 
                             onClick={exibeGrafico}

@@ -1,5 +1,5 @@
 import React from 'react'
-import Menu from '../layout/menu'
+import Menu from '../../layout/menu'
 import styles from './Geral.modules.css';
 
 function Geral() {
