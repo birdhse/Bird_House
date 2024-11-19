@@ -17,6 +17,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path='/' element={<TelaLogin />} />
+         {/* <Route path='/' element={<Geral />} /> */}
         <Route path='/geral' element={<Geral />} />
         <Route path='/relatorios' element={<Relatorios />} />
         <Route path='/reservas' element={<ListarReservas />} />

@@ -33,7 +33,7 @@ export function verificaTelef(num_celular) {
     return valido;
 }
 
-export function verificaTelef(email_hospede) {
+export function verificaEmail(email_hospede) {
     const email = email_hospede.trim();
     let valido = true;
 

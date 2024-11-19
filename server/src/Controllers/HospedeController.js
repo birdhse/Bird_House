@@ -97,4 +97,3 @@ export async function mostrarUmHospede(req, res) {
     }
 }
 
-export default new HospedeController();

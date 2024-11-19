@@ -4,6 +4,9 @@ ajeitar cadastro reserva(observações entre outros campos e css) --------------
 ajeitar calendário(data atualizada) ------------------------------------------------------------------------ (Feito)
 
 
+definir a ordem de mudança dos status da reserva ----------------------------------------------------------- (Feito)
+
+
 css telas --------------------------------------------------------------------------------------------------- (Fazendo)
 
 
@@ -43,9 +46,6 @@ crud acomodações -------------------------------------------------------------
 tela geral, puxar informações diversas(puxar do back as inform) -------------------------------------------- ()
 
 
-definir a ordem de mudança dos status da reserva ----------------------------------------------------------- ()
-
-
 trocar o editar e deletar pra tela de mais informações e criar essa tela(parecido com o de hospede) ---------()
 
 
@@ -53,7 +53,7 @@ acomodação ter outra entidade de status (pendente_confirmação, inisponivel, 
 
 
 pre_reserva (pendente_confirmação) (maumau)
-
+-ao confirmar uma reserva, solicitações conflitantes são canceladas
 
 a tela hospedes será igual a de reservas, e na coluna de "ações" será "mais informações" jogando para a tela de cadastros, onde terá botão de editar e salvar
 

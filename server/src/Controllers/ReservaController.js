@@ -11,7 +11,7 @@ export async function criaReserva(req, res) {
     console.log(reserva);
 
     if(verificaReserva(reserva)){
-        res.status(400).json({mensagem: 'odas as propriedades devem ser preenchidas'})
+        res.status(400).json({mensagem: 'Todas as propriedades devem ser preenchidas'})
     }else{
     try {
         const [status, resposta] = await createReserva(reserva);
@@ -98,4 +98,3 @@ export async function mostrarUmaReserva(req, res) {
     }
 }
 
-export default new ReservaController();

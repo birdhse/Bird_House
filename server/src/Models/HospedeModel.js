@@ -139,4 +139,3 @@ export async function showOneHospede(id_hospede) {
     }
 }
 
-export default new HospedeModel();

@@ -1,5 +1,5 @@
 import React from 'react'
-import Menu from '../../layout/menu'
+import Menu from '../../client/src/components/layout/menu'
 
 function EditarReserva() {
     return (
