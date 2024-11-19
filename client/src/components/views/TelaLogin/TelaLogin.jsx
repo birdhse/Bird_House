@@ -4,14 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function TelaLogin() {
-    const [login, setLogin] = useState('');
+    const [login_usuario, setLogin] = useState('');
     const [senha, setSenha] = useState('');
 
     async function efetuarLogin() {
-        const dadosLogin = { login, senha };
+        const dadosLogin = { login_usuario, senha };
 
         try {
-            const resposta = await fetch('http://localhost:5000/login', {
+            const resposta = await fetch('http://localhost:5000/usuarios', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,12 +35,12 @@ function TelaLogin() {
             <div className="login-box p-4 rounded shadow bg-light">
                 <h2 className="text-center mb-4">Login</h2>
                 <div className="form-group">
-                    <label>Email</label>
+                    <label>Login</label>
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Email"
-                        value={login}
+                        placeholder="Login"
+                        value={login_usuario}
                         onChange={(e) => setLogin(e.target.value)}
                     />
                 </div>
@@ -54,7 +54,7 @@ function TelaLogin() {
                         onChange={(e) => setSenha(e.target.value)}
                     />
                 </div>
-                <button className="btn btn-danger w-100 mt-4" onClick={efetuarLogin}>
+                <button href='/geral' className="btn btn-danger w-100 mt-4" onClick={efetuarLogin}>
                     Enviar
                 </button>
             </div>
