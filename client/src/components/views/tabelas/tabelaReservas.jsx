@@ -29,9 +29,9 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
         }
     }
 
-    async function deletarReservas(id) {
+    async function deletarReservas(id_reserva) {
         try {
-            const resposta = await fetch(`http://localhost:5000/reservas/${id}`, {
+            const resposta = await fetch(`http://localhost:5000/reservas/${id_reserva}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
             if (!resposta.ok) {
                 throw new Error('Erro ao deletar reserva', JSON.stringify(resposta));
             } else {
-                setReservas(reservas.filter(reserva => reserva.id !== id));
+                setReservas(reservas.filter(reserva => reserva.id_reserva !== id_reserva));
                 onDeleteSuccess();
             }
         } catch (error) {
@@ -50,24 +50,20 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
     }
 
     // Função para renderizar o ícone de status com base no valor de status
-    const renderStatusIcon = (id_status) => {
-        switch (id_status) {
-            case 'reservado':
-                return <span className={`${styles.statusIcon} ${styles.reservado}`} />;
-            case 'hospedado':
-                return <span className={`${styles.statusIcon} ${styles.hospedado}`} />;
-            case 'em limpeza':
-                return <span className={`${styles.statusIcon} ${styles.emLimpeza}`} />;
-            case 'bloqueado':
-                return <span className={`${styles.statusIcon} ${styles.bloqueado}`} />;
-            case 'finalizado':
-                return <span className={`${styles.statusIcon} ${styles.finalizado}`} />;
-            case 'cancelado':
-                return <span className={`${styles.statusIcon} ${styles.cancelado}`} />;
-            case 'atrasado':
-                return <span className={`${styles.statusIcon} ${styles.atrasado}`} />;
-            case 'vencido':
-                return <span className={`${styles.statusIcon} ${styles.vencido}`} />;
+    const renderStatusIcon = (id_status_reserva) => {
+        switch (id_status_reserva) {
+            case 1:
+                return <span className={`${styles.statusIcon} ${styles.solicitada}`} />;
+            case 2:
+                return <span className={`${styles.statusIcon} ${styles.reservada}`} />;
+            case 3:
+                return <span className={`${styles.statusIcon} ${styles.hospedada}`} />;
+            case 4:
+                return <span className={`${styles.statusIcon} ${styles.atrasada}`} />;
+            case 5:
+                return <span className={`${styles.statusIcon} ${styles.cancelada}`} />;
+            case 6:
+                return <span className={`${styles.statusIcon} ${styles.finalizada}`} />;
             default:
                 return <span className={styles.statusIcon} />;
         }
@@ -77,7 +73,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
         if (filtro === 'todos') {
             return reservas;
         } else {
-            return reservas.filter(reserva => reserva.id_status === filtro);
+            return reservas.filter(reserva => reserva.id_status_reserva === filtro);
         }
     };
 
@@ -85,14 +81,12 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
         <div>
             <div className={`filtroStatus ${styles.filtroStatus}`}>
                 <button className={`todos btn ${styles.todos}`} onClick={() => setFiltro('todos')}>Todos</button>
-                <button className={`reservado btn ${styles.reservado}`} onClick={() => setFiltro('reservado')}>Reservado</button>
-                <button className={`hospedado btn ${styles.hospedado}`} onClick={() => setFiltro('hospedado')}>Hospedado</button>
-                <button className={`emLimpeza btn ${styles.emLimpeza}`} onClick={() => setFiltro('em limpeza')}>Em Limpeza</button>
-                <button className={`bloqueado btn ${styles.bloqueado}`} onClick={() => setFiltro('bloqueado')}>Bloqueado</button>
-                <button className={`finalizado btn ${styles.finalizado}`} onClick={() => setFiltro('finalizado')}>Finalizado</button>
-                <button className={`cancelado btn ${styles.cancelado}`} onClick={() => setFiltro('cancelado')}>Cancelado</button>
-                <button className={`atrasado btn ${styles.atrasado}`} onClick={() => setFiltro('atrasado')}>Atrasado</button>
-                <button className={`vencido btn ${styles.vencido}`} onClick={() => setFiltro('vencido')}>Vencido</button>
+                <button className={`reservado btn ${styles.reservado}`} onClick={() => setFiltro(1)}>Solicitada</button>
+                <button className={`hospedado btn ${styles.hospedado}`} onClick={() => setFiltro(2)}>Reservada</button>
+                <button className={`emLimpeza btn ${styles.emLimpeza}`} onClick={() => setFiltro(3)}>Hospedada</button>
+                <button className={`bloqueado btn ${styles.bloqueado}`} onClick={() => setFiltro(4)}>Atrasada</button>
+                <button className={`finalizado btn ${styles.finalizado}`} onClick={() => setFiltro(5)}>Cancelada</button>
+                <button className={`cancelado btn ${styles.cancelado}`} onClick={() => setFiltro(6)}>Finalizada</button>
             </div>
 
             <div className={`${styles.tabelaReservas} ${tipo === 'edit' ? styles.edit : ''}`}>
@@ -111,10 +105,10 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                     </thead>
                     <tbody>
                         {filtrarReservas().map((reserva) => (
-                            <tr key={reserva.id}>
-                                <td>{reserva.id}</td>
+                            <tr key={reserva.id_reserva}>
+                                <td>{reserva.id_reserva}</td>
                                 {/* Aqui está a chamada da função renderStatusIcon */}
-                                <td>{renderStatusIcon(reserva.id_status)}</td>
+                                <td>{renderStatusIcon(reserva.id_status_reserva)}</td>
                                 <td>{reserva.id_hospede}</td>
                                 <td>{reserva.id_acomodacao}</td>
                                 <td>{reserva.checkin}</td>
@@ -122,12 +116,12 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                                 <td>{reserva.qntd_hospedes}</td>
                                 {tipo === 'edit' &&
                                     <td className={styles.acaoBtn}>
-                                        <Link to={`/edit_reserva/${reserva.id}`} className="btn btn-warning btn-sm">
+                                        <Link to={`/edit_reserva/${reserva.id_reserva}`} className="btn btn-warning btn-sm">
                                             Editar
                                         </Link>
                                         <button
                                             className="btn btn-danger btn-sm"
-                                            onClick={() => deletarReservas(reserva.id)}
+                                            onClick={() => deletarReservas(reserva.id_reserva)}
                                         >
                                             Deletar
                                         </button>

@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 function EditReserva() {
-  const {id} = useParams();
+  const {id_reserva} = useParams();
 
-  async function editarReserva(infoReserva, id) {
+  async function editarReserva(infoReserva, id_reserva) {
     try {
-      const resposta = await fetch(`http://localhost:5000/reservas/${id}`,{
+      const resposta = await fetch(`http://localhost:5000/reservas/${id_reserva}`,{
         method:'PUT',
         headers:{
           'Content-Type':'application/json'
@@ -31,9 +31,10 @@ function EditReserva() {
     <div>
       <Menu/>
       <FormReserva titulo='Editar Reserva' 
-      textoBotao='Salvar' id={id} 
+      textoBotao='Salvar' id={id_reserva} 
       handleSubmit={editarReserva}
-      tipo='editada'/>
+      tipo='editada'
+      valorT= 'Valor Total:'/>
     </div>
         
         

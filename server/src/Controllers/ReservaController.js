@@ -1,7 +1,7 @@
 import { createReserva, deleteReserva, updateReserva, readReserva, showOneReserva } from '../Models/ReservaModel.js'
 import { hasProperty, isNullOrEmpty, verificaReserva } from "../validations/ReservaValidation.js";
 
-export async function criaReserva(req, res) {
+export async function criarReserva(req, res) {
 
     //Ao ser chamado o criarAula controller virá no console
     console.log('ReservaController criarReserva');
@@ -11,7 +11,7 @@ export async function criaReserva(req, res) {
     console.log(reserva);
 
     if(verificaReserva(reserva)){
-        res.status(400).json({mensagem: 'odas as propriedades devem ser preenchidas'})
+        res.status(400).json({mensagem: 'Todas as propriedades devem ser preenchidas'})
     }else{
     try {
         const [status, resposta] = await createReserva(reserva);
@@ -97,5 +97,3 @@ export async function mostrarUmaReserva(req, res) {
         res.status(500).json(error);
     }
 }
-
-export default new ReservaController();

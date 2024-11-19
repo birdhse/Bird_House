@@ -1,7 +1,7 @@
 import express from "express"
 import cors from 'cors'
 
-import {criaReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva} from './Controllers/ReservaController.js';
+import {criarReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva} from './Controllers/ReservaController.js';
 
 const app = express();
 const porta = 5000;
@@ -16,7 +16,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.post("/reservas",criaReserva)
+app.post("/reservas",criarReserva)
 app.get("/reservas",mostrarReservas)
 app.put("/reservas/:id_reserva",atualizarReserva)
 app.delete("/reservas/:id_reserva",excluirReserva)

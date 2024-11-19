@@ -14,7 +14,7 @@ export async function readReserva(reserva) {
     const params = [
         reserva.id_hospede,
         reserva.id_acomodacao,
-        reserva.id_status,
+        reserva.id_status_reserva,
         reserva.checkin,
         reserva.checkout,
         reserva.qntd_hospedes,
@@ -40,6 +40,9 @@ export async function createReserva(reserva) {
 
     //Ao ser acionado o metodo createAula retorna na tela
     console.log('Criando no Model Reserva');
+
+    const desconto = reserva.valor_total;
+
 
     //Criando aula
     const sql = `INSERT INTO reservas (
@@ -68,7 +71,7 @@ export async function createReserva(reserva) {
         const id_reserva = retorno.insertId;
         console.log('Reserva cadastrada');
         calculoDias(reserva, id_reserva);
-        calculoValor(reserva, id_reserva);
+        calculoValor(reserva, id_reserva, desconto);
         return [201, retorno];
     } catch (error) {
         console.log(error);
@@ -82,7 +85,7 @@ export async function calculoDias(reserva, id_reserva) {
     const conexao = mysql.createPool(db);
     console.log('Terminando de criar no Model Reserva');
 
-    const sql = `UPDATE reservas SET num_dias=?, valor_total=? WHERE id_reserva=?`;
+    const sql = `UPDATE reservas SET num_dias=? WHERE id_reserva=?`;
     const diferencaMs = new Date(reserva.checkout) - new Date(reserva.checkin);
     const num_dias = diferencaMs / (1000 * 60 * 60 * 24);
 
@@ -101,7 +104,7 @@ export async function calculoDias(reserva, id_reserva) {
     }
 }
 
-export async function calculoValor(reserva, id_reserva) {
+export async function calculoValor(reserva, id_reserva, desconto) {
     const diferencaMs = new Date(reserva.checkout) - new Date(reserva.checkin);
     const num_dias = diferencaMs / (1000 * 60 * 60 * 24);
 
@@ -109,7 +112,9 @@ export async function calculoValor(reserva, id_reserva) {
     console.log('Terminando de criar no Model Reserva');
 
     const [consulta] = await conexao.query('SELECT valor_diaria FROM acomodacoes WHERE id_acomodacao = ?', reserva.id_acomodacao);
-    const valor_total = consulta[0].valor_diaria * num_dias;
+    const valor_total = (consulta[0].valor_diaria * num_dias) - desconto;
+
+    const sql = `UPDATE reservas SET valor_total=? WHERE id_reserva=?`;
 
     const params = [
         valor_total,
@@ -165,7 +170,7 @@ export async function updateReserva(reserva,id_reserva) {
         if (retorno.affectedRows < 1) {
             return [404, { mensagem: 'Reserva não encontrada' }];
         }
-        calculoDias(reserva, id_reserva);
+        calculoDias(reserva, id_reserva, 0);
         return [200, { mensagem: 'Reserva Atualizada' }];
     } catch (error) {
         console.log(error);
@@ -195,12 +200,12 @@ export async function deleteReserva(id_reserva) {
     }
 }
 
-export async function showOneReserva(id) {
+export async function showOneReserva(id_reserva) {
     const conexao = mysql.createPool(db);
 
     console.log('Mostrando uma Reserva no Model Reserva');
     const sql = `SELECT * FROM  reservas WHERE id_reserva=?`;
-    const params = [id];
+    const params = [id_reserva];
 
     try {
         const [retorno] = await conexao.query(sql, params);

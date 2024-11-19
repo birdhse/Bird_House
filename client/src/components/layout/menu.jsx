@@ -23,6 +23,7 @@ function Menu() {
                     <li><a href="/hospedes">Hóspedes</a></li>
                     <li><a href="/usuarios">Usuários</a></li>
                     <li><a href="/relatorios">Relatórios</a></li>
+    
                 </ul>
             </div>
         </div>

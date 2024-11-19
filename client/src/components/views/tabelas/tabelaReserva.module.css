@@ -45,36 +45,28 @@
     margin-right: 8px;
 }
 
-.statusIcon.reservado {
+.statusIcon.solicitada {
     background-color: #4784ca;
 }
 
-.statusIcon.hospedado {
+.statusIcon.reservada {
     background-color: #f44336;
 }
 
-.statusIcon.emLimpeza {
+.statusIcon.hospedada {
     background-color: #e57373;
 }
 
-.statusIcon.bloqueado {
+.statusIcon.atrasada {
     background-color: #000000;
 }
 
-.statusIcon.finalizado {
+.statusIcon.cancelada {
     background-color: #4caf50;
 }
 
-.statusIcon.cancelado {
+.statusIcon.finalizada {
     background-color: #ffeb3b;
-}
-
-.statusIcon.atrasado {
-    background-color: #9c27b0;
-}
-
-.statusIcon.vencido {
-    background-color: #3f51b5;
 }
 
 

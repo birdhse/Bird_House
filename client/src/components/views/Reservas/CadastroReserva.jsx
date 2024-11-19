@@ -28,7 +28,8 @@ function CadastroReserva() {
       <FormReserva titulo='Cadastrar Reserva'
       textoBotao='Cadastrar'
       handleSubmit={cadastrarReserva}
-      tipo='cadastrada'/>
+      tipo='cadastrada'
+      valorT='Desconto:'/>
     </div>
 
   )
