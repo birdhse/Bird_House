@@ -18,7 +18,8 @@ function Menu() {
             </div>
             <div className='menu_lateral'>
                 <ul>
-                    <li><a href="/">Geral</a></li>
+                    
+                    <li><a href="/geral">Geral</a></li>
                     <li><a href="/reservas">Reservas</a></li>
                     <li><a href="/hospedes">Hóspedes</a></li>
                     <li><a href="/usuarios">Usuários</a></li>

@@ -27,15 +27,15 @@
       "validacao": ""
     },
     {
-      "id": "0874",
       "id_status": "reservado",
       "id_hospede": "aaaaaaaa",
-      "id_acomodacao": "Suíte com Cozinha",
+      "id_acomodacao": "Chalé Família",
       "checkin": "2222-02-22",
       "checkout": "0022-02-22",
       "qntd_hospedes": "2",
       "observacao": "tjrtjyrjrjryjyjy",
-      "chave": null
+      "chave": null,
+      "id": "0874"
     },
     {
       "id": "5bcd",
@@ -49,13 +49,24 @@
       "chave": null
     },
     {
-      "id": "a16d",
       "id_status": "finalizado",
       "id_hospede": "Gregory Veloso ",
-      "id_acomodacao": "suite-cozinha",
+      "id_acomodacao": "Suíte com Cozinha",
       "checkin": "2024-10-25",
       "checkout": "2024-10-30",
       "qntd_hospedes": "1",
+      "observacao": "",
+      "chave": null,
+      "id": "a16d"
+    },
+    {
+      "id": "81dc",
+      "id_status": "em limpeza",
+      "id_hospede": "-",
+      "id_acomodacao": "Cabana",
+      "checkin": "2024-11-13",
+      "checkout": "2024-11-15",
+      "qntd_hospedes": "2",
       "observacao": "",
       "chave": null
     }

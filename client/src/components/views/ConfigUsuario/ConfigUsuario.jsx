@@ -34,7 +34,10 @@ function ConfigUsuario() {
 
               <div className="mb-4">
                 <label htmlFor="role" className="form-label">Função</label>
-                <input type="text" id="role" className="form-control w-1 p-2" placeholder="" />
+                <select id="relatorio" className="form-select w-1 p-2">
+                   <option value="1">Admnistrador</option>
+                   <option value="2">Funcionário Geral</option>
+                </select>
               </div>
 
               <div className="mb-4">
