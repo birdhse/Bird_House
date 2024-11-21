@@ -96,5 +96,3 @@ export async function mostrarUmUsuario(req, res) {
         res.status(500).json(error);
     }
 }
-
-export default new UsuarioController();

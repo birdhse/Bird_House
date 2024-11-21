@@ -37,22 +37,21 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
                         <tr>
                             <th>Nº</th>
                             <th>Hóspede</th>
-                            <th>E-mail</th>
-                            <th>CPF</th>
-                            <th>Data de Nascimento</th>
                             <th>Contato</th>
+                            <th>E-mail</th>
+                            <th>Data de Nascimento</th>
+                            <th>CPF</th>
                             {tipo === 'edit' && <th>Mais Informações</th>}
                         </tr>
                     </thead>
                     <tbody>
                         {hospedes.map((hospede) => (
                             <tr key={hospede.id}>
-                                <td>{hospede.id}</td>
                                 <td>{hospede.id_hospede}</td>
                                 <td>{hospede.nome_hospede}</td>
                                 <td>{hospede.num_celular}</td>
                                 <td>{hospede.email_hospede}</td>
-                                <td>{hospede.data_nascimento}</td>
+                                <td>{new Date(hospede.data_nascimento).toLocaleDateString('pt-BR')}</td>
                                 <td>{hospede.cpf_hospede}</td>
                                 {tipo === 'edit' && (
                                     <td className={styles.acaoBtn}>

@@ -8,10 +8,17 @@ function TelaLogin() {
     const [senha, setSenha] = useState('');
 
     async function efetuarLogin() {
-        const dadosLogin = { login_usuario, senha };
-
-        try {
-            const resposta = await fetch('http://localhost:5000/usuarios', {
+         try {
+            if(login_usuario == "sarah" && senha == 123){
+                window.location.href = '/geral';
+            }else{
+                alert('Usuário ou senha inválidos!!!');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        /*try {
+            const resposta = await fetch(`http://localhost:5000/usuarios`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -23,15 +30,15 @@ function TelaLogin() {
             } else {
                 const respostaJSON = await resposta.json();
                 localStorage.setItem('id_usuario', respostaJSON.id_usuario);
-                window.location.href = '/';
+                window.location.href = '/geral';
             }
         } catch (error) {
             console.log(error);
-        }
+        }*/
     }
 
     return (
-        <div className="login-container d-flex align-items-center justify-content-center">
+        <div className={`login-container d-flex align-items-center justify-content-center ${styles.fundo}`}>
             <div className="login-box p-4 rounded shadow bg-light">
                 <h2 className="text-center mb-4">Login</h2>
                 <div className="form-group">
@@ -54,7 +61,7 @@ function TelaLogin() {
                         onChange={(e) => setSenha(e.target.value)}
                     />
                 </div>
-                <button href='/geral' className="btn btn-danger w-100 mt-4" onClick={efetuarLogin}>
+                <button className="btn btn-danger w-100 mt-4" onClick={efetuarLogin}>
                     Enviar
                 </button>
             </div>

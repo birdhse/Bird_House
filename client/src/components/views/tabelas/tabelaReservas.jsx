@@ -71,7 +71,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
 
     const filtrarReservas = () => {
         if (filtro === 'todos') {
-            return reservas;
+            return reservas.filter(reserva => reserva.id_status_reserva !== 7);
         } else {
             return reservas.filter(reserva => reserva.id_status_reserva === filtro);
         }
@@ -111,10 +111,10 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                                 <td>{renderStatusIcon(reserva.id_status_reserva)}</td>
                                 <td>{reserva.id_hospede}</td>
                                 <td>{reserva.id_acomodacao}</td>
-                                <td>{reserva.checkin}</td>
-                                <td>{reserva.checkout}</td>
+                                <td>{new Date(reserva.checkin).toLocaleDateString('pt-BR')}</td>
+                                <td>{new Date(reserva.checkout).toLocaleDateString('pt-BR')}</td>
                                 <td>{reserva.qntd_hospedes}</td>
-                                {tipo === 'edit' &&
+                                {tipo === 'edit' && (
                                     <td className={styles.acaoBtn}>
                                         <Link to={`/edit_reserva/${reserva.id_reserva}`} className="btn btn-warning btn-sm">
                                             Editar
@@ -126,7 +126,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                                             Deletar
                                         </button>
                                     </td>
-                                }
+                                )}
                             </tr>
                         ))}
                     </tbody>

@@ -1,4 +1,4 @@
-import { createHospede, deleteHospede, readHospede, showOneHospede, updateHospede } from "../models/HospedeModel.js";
+import { createHospede, deleteHospede, readHospede, showOneHospede, updateHospede } from "../Models/HospedeModel.js";
 import { hasProperty, isNullOrEmpty, verificaHospede } from "../validations/HospedeValidation.js";
 
 export async function criarHospede(req, res) {
@@ -21,21 +21,30 @@ export async function criarHospede(req, res) {
     }
 }
 
-export async function mostrarHospede(req, res) {
-    console.log('HospedeController mostrarHospede');
-    const hospede = req.body;
-
-    //Exibindo corpo da requisição
-    console.log(hospede);
-
-    try {
-        const [status, resposta] = await readHospede(hospede);
-        res.status(status).json(resposta);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
+export async function mostrarHospedes(req, res) {
+    const [status, data] = await readHospede();  // Desestruture o retorno corretamente
+    if (status === 200) {
+        res.status(200).json(data);  // Retorna os hóspedes se tudo deu certo
+    } else {
+        res.status(status).json(data);  // Retorna o erro com o código de status
     }
 }
+
+    // export async function mostrarHospedes(req, res) {
+    //     console.log('HospedeController mostrarHospede');
+    //     const hospede = req.body;
+
+    //     //Exibindo corpo da requisição
+    //     console.log(hospede);
+
+    //     try {
+    //         const [status, resposta] = await readHospede(hospede);
+    //         res.status(status).json(resposta);
+    //     } catch (error) {
+    //         console.log(error);
+    //         res.status(500).json(error);
+    //     }
+    // }
 
 export async function atualizarHospede(req, res) {
 
@@ -96,5 +105,3 @@ export async function mostrarUmHospede(req, res) {
         res.status(500).json(error);
     }
 }
-
-export default new HospedeController();

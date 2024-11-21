@@ -1,12 +1,3 @@
-ajeitar cadastro reserva(observações entre outros campos e css) --------------------------------------------- (Feito)
-
-
-ajeitar calendário(data atualizada) ------------------------------------------------------------------------ (Feito)
-
-
-css telas --------------------------------------------------------------------------------------------------- (Fazendo)
-
-
 crud reservas ---------------------------------------------------------------------------------------------- (Fazendo)
 
 
@@ -58,9 +49,13 @@ pre_reserva (pendente_confirmação) (maumau)
 a tela hospedes será igual a de reservas, e na coluna de "ações" será "mais informações" jogando para a tela de cadastros, onde terá botão de editar e salvar
 
 
-hospede adicionou campo observação 
 
 
 
+AO EXIBIR RESERVAS: COMO PUXAR DA TABELA HOSPEDES E ACOMODAÇÕES OS NOMES DE ACORDO COM OS IDS?
+
+TELA DE CONFIRMAÇÃO DE DELETAR
 
 RESOLVER: NA TABELA RESERVAS, CADASTRO DE NOVA RESERVA - ID_HOSPEDE PELO NOME: NOVO HOSPEDE OU HOSPEDE JÁ EXISTENTE.
+SE EU CADASTRAR NOVA RESERVA, PONHO O NOME DE HOSPEDE (VAI BUSCAR NO BANCO SE JÁ EXISTE, SE NÃO EXISTE ENTÃO MENSAGEM INFORMANDO QUE DEVE SER CADASTRADO).
+AO CADASTRAR NOVO HOSPEDE, O SISTEMA BUSCA NO BANCO DE HOSPEDES SE ALGUM POSSUI CPF IGUAL, SE SIM ELE IMPEDE O CADASTRO. 
