@@ -23,7 +23,7 @@ function App() {
         <Route path='/reservas' element={<ListarReservas />} />
         <Route path='/reservas/:tipo' element={<ListarReservas/>}/>
         <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
-        <Route path='/edit_reserva/:id' element={<EditReserva/>}/>
+        <Route path='/edit_reserva/:id_reserva' element={<EditReserva/>}/>
 
 
         <Route path='/hospedes' element={<ListarHospedes/>}/>

@@ -1,9 +1,11 @@
 const propriedades = [
-    'nome_hospede',
-    'num_celular',
-    'email_hospede',
-    'data_nascimento',
-    'cpf_hospede'
+    'id_status_reserva',
+    'id_hospede',
+    'id_acomodacao',
+    'checkin',
+    'checkout',
+    'qntd_hospedes',
+    'valor_total'
 ];
 
 export function hasProperty(reserva) {
@@ -16,33 +18,4 @@ export function isNullOrEmpty(valor) {
 
 export function verificaReserva(reserva) {
     return propriedades.some(prop=>isNullOrEmpty(reserva[prop]));
-}
-
-export function verificaTelef(num_celular) {
-    const celular = num_celular.trim();
-    const telPadrao = /^\d{11}$/; // Formato XXXXXXXXXXX
-    let valido = true;
-
-    if (celular === '' || !telPadrao.test(celular)) {
-        document.getElementById('alerta-telef').style.visibility = 'visible';
-        valido = false;
-    } else {
-        document.getElementById('alerta-telef').style.visibility = 'hidden';
-    }
-
-    return valido;
-}
-
-export function verificaEmail(email_hospede) {
-    const email = email_hospede.trim();
-    let valido = true;
-
-    if (email === '' || !email.includes('@')) {
-        document.getElementById('alerta-email').style.visibility = 'visible';
-        valido = false;
-    } else {
-        document.getElementById('alerta-email').style.visibility = 'hidden';
-    }
-
-    return valido;
 }

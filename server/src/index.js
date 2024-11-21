@@ -1,7 +1,7 @@
 import express from "express"
 import cors from 'cors'
 
-import {criaReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva} from './Controllers/ReservaController.js';
+import {criarReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva} from './Controllers/ReservaController.js';
 import {atualizarHospede, criarHospede, excluirHospede, mostrarHospede, mostrarUmHospede} from './Controllers/HospedeController.js'
 import { atualizarUsuario, criarUsuario, excluirUsuario, mostrarUmUsuario, mostrarUsuario } from "./Controllers/UsuarioController.js";
 
@@ -18,7 +18,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.post("/reservas",criaReserva)
+app.post("/reservas",criarReserva)
 app.get("/reservas",mostrarReservas)
 app.put("/reservas/:id_reserva",atualizarReserva)
 app.delete("/reservas/:id_reserva",excluirReserva)

@@ -61,3 +61,6 @@ a tela hospedes será igual a de reservas, e na coluna de "ações" será "mais 
 hospede adicionou campo observação 
 
 
+
+
+RESOLVER: NA TABELA RESERVAS, CADASTRO DE NOVA RESERVA - ID_HOSPEDE PELO NOME: NOVO HOSPEDE OU HOSPEDE JÁ EXISTENTE.
