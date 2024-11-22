@@ -9,15 +9,15 @@ import EditReserva from './components/views/Reservas/EditReserva';
 import Relatorios from './components/views/Relatorios/Relatorios';
 import ListarHospedes from './components/views/Hospedes/GestaoHospedes';
 import ConfigUsuario from './components/views/ConfigUsuario/ConfigUsuario';
-import TelaLogin from './components/views/TelaLogin/TelaLogin';
+// import TelaLogin from './components/views/TelaLogin/TelaLogin';
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path='/' element={<TelaLogin />} />
-         {/* <Route path='/' element={<Geral />} /> */}
+      {/* <Route path='/' element={<TelaLogin />} /> */}
+        <Route path='/' element={<Geral />} />
         <Route path='/geral' element={<Geral />} />
         <Route path='/relatorios' element={<Relatorios />} />
         <Route path='/reservas' element={<ListarReservas />} />

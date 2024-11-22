@@ -8,7 +8,7 @@ function TelaLogin() {
     const [senha, setSenha] = useState('');
 
     async function efetuarLogin() {
-        const dadosLogin = { login, senha };
+        const dadosLogin = { login_usuario, senha };
 
         try {
             const resposta = await fetch('http://localhost:5000/usuarios', {
