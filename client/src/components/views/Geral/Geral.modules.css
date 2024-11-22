@@ -27,13 +27,12 @@
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
-  border: none;
+  border: 1px solid black; /* Borda fina preta */
   transition: background-color 0.3s ease;
 }
 
 .status-button.pending {
   background-color: #ffcccc;
-  
 }
 
 .status-button.unavailable {
@@ -72,6 +71,7 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   width: calc(33.333% - 20px);
   position: relative;
+  
 }
 
 .card h3 {
@@ -94,26 +94,32 @@
 /* Cores dos cards */
 .card.red {
   background-color: #ffcccc;
+  border: 1px solid black;
 }
 
 .card.green_two {
   background-color: #ccffcc;
+  border: 1px solid black;
 }
 
 .card.purple {
   background-color: #e6ccff;
+  border: 1px solid black;
 }
 
 .card.green {
   background-color: #ccffcc;
+  border: 1px solid black;
 }
 
 .card.yellow {
   background-color: #ffffcc;
+  border: 1px solid black;
 }
 
 .card.orange {
   background-color: #faca9c;
+  border: 1px solid black;
 }
 
 /* Botões de ação (Liberar, Hospedar, etc.) */
