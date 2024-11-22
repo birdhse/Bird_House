@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap import
 
-function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, tipo, TextoValor }) {
+function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor }) {
     const navigate = useNavigate();
-    
+    //const [resultado, setResultado] = useState('');
     const [id_status_reserva, setStatus] = useState('');
     const [id_hospede, setHospede] = useState('');
     const [id_acomodacao, setAcomodacao] = useState('');
@@ -47,7 +47,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, tipo, Texto
         }
     }
 
-    function submit(e) {
+    async function submit(e) {
         e.preventDefault();
         const reserva = {
             id_status_reserva: id_status_reserva,
@@ -57,11 +57,11 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, tipo, Texto
             checkout: checkout,
             qntd_hospedes: qntd_hospedes,
             valor_total: valor_total,
-            observacao: observacao,
-            chave: null
+            observacao: observacao
         };
 
-        handleSubmit(reserva, id_reserva);
+        const tipo = await handleSubmit(reserva, id_reserva);
+        console.log(tipo);
         navigate(`/reservas/${tipo}`);
     }
 

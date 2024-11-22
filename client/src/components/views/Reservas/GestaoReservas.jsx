@@ -43,6 +43,10 @@ function GestaoReservas() {
                 setClasseMensagem('alert alert-primary');
                 setTextoMensagem('Reserva Editada');
                 break;
+            case 'erro':
+                setClasseMensagem('alert alert-warning');
+                setTextoMensagem('Erro na operação');
+                break;
         }
     }
 
@@ -51,19 +55,6 @@ function GestaoReservas() {
         <>
             <Menu />
             <div>
-                {/* { <div class="containerReserva">
-                    <h2>Geral / Reservas</h2>
-                    <input type="text" placeholder=" Pesquise por UH, nome do hóspede ou número de reserva"></input>
-                    <div class="botoes">
-                        <button id="corTodos">Todos</button>
-                        <button id="corReservado">Reservado</button>
-                        <button id="corHospedado">Hospedado</button>
-                        <button id="corFinalizado">Finalizado</button>
-                        <button id="corCancelado">Cancelado</button>
-                        <button id="corAtrasado">Atrasado</button>
-                    </div>
-                </div> } */}
-
                 <div className='container'>
                     <h1 className='text-center mt-3'>Gestão de Reservas</h1>
                     {exibeAlerta && <div className={classeMensagem}>{textoMensagem}</div>}

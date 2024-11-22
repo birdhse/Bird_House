@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise";
 import db from "../conexao.js";
+import { isNullOrEmpty } from "../validations/ReservaValidation.js";
 
 export async function readReserva() {
     const conexao = mysql.createPool(db);
@@ -23,10 +24,14 @@ export async function createReserva(reserva) {
     const conexao = mysql.createPool(db);
     console.log('Criando no Model Reserva');
 
-    const desconto = reserva.valor_total;
+    
     const [consulta] = await conexao.query('SELECT id_hospede FROM hospedes WHERE nome_hospede = ?', reserva.id_hospede);
     reserva.id_hospede = consulta[0].id_hospede;
-  
+    if(isNullOrEmpty(reserva.id_hospede)){
+        console.log('Hospede não encontrado');
+        return [500, error];
+    }
+
     const sql = `INSERT INTO reservas (
     checkin,
     checkout,
@@ -47,6 +52,8 @@ export async function createReserva(reserva) {
         reserva.id_acomodacao,
         reserva.observacao
     ];
+
+    const desconto = reserva.valor_total;
 
     try {
         const [retorno] = await conexao.query(sql, params);
@@ -77,7 +84,7 @@ export async function calculoDias(reserva, id_reserva) {
 
     try {
         const [retorno] = await conexao.query(sql, params);
-        console.log('Dias cadastrados');
+        console.log('Calculos de dias concluidos');
         return [201, retorno];
     } catch (error) {
         console.log(error);
@@ -104,7 +111,7 @@ export async function calculoValor(reserva, id_reserva, desconto) {
 
     try {
         const [retorno] = await conexao.query(sql, params);
-        console.log('Calculos cadastrados');
+        console.log('Calculos de preço concluidos');
         return [201, retorno];
     } catch (error) {
         console.log(error);

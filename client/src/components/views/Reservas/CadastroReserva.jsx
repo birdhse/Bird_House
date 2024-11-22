@@ -1,7 +1,9 @@
+import { useState } from "react";
 import FormReserva from "../../forms/FormReserva";
 import Menu from "../../layout/menu"
 
 function CadastroReserva() {
+ 
 
   async function cadastrarReserva(infoReserva) {
     try {
@@ -11,10 +13,11 @@ function CadastroReserva() {
         body: JSON.stringify(infoReserva)
       });
       if (!resposta.ok) {
-        console.log('Erro ao cadastrar')
+        return 'erro';
       }
       else {
         console.log('Reserva cadastrada')
+        return 'cadastrada';
       }
     } catch (error) {
       console.error('Erro ao cadastrar', error)
@@ -27,7 +30,6 @@ function CadastroReserva() {
       <FormReserva titulo='Cadastrar Reserva'
       textoBotao='Cadastrar'
       handleSubmit={cadastrarReserva}
-      tipo='cadastrada'
       TextoValor='Desconto:'/>
     </div>
 
