@@ -28,7 +28,6 @@ export async function criarReserva(req, res) {
 
     if(verificaReserva(reserva)){
         res.status(400).json({mensagem: 'Todas as propriedades devem ser preenchidas'})
-        res.status(400).json({mensagem: 'Todas as propriedades devem ser preenchidas'})
     }else{
     try {
         const [status, resposta] = await createReserva(reserva);

@@ -1,3 +1,6 @@
+import mysql from "mysql2/promise";
+import db from "../conexao.js";
+
 const propriedades = [
     'id_status_reserva',
     'id_hospede',

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 function EditReserva() {
   const {id_reserva} = useParams();
+  let resultado;
 
   async function editarReserva(infoReserva, id_reserva) {
     try {
@@ -18,9 +19,11 @@ function EditReserva() {
       if(!resposta.ok){
         const retorno = await resposta.json();
         console.log('Erro ao editar Reserva',retorno);
+        return 'erro';
       }
       else{
         console.log('Reserva Editada');
+        return 'editada';
         
       }
     } catch (error) {
@@ -33,7 +36,6 @@ function EditReserva() {
       <FormReserva titulo='Editar Reserva' 
       textoBotao='Salvar' id_reserva={id_reserva} 
       handleSubmit={editarReserva}
-      tipo='editada'
       TextoValor= 'Valor Total:'/>
     </div>
         

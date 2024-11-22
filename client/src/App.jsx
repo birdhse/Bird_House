@@ -23,6 +23,7 @@ function App() {
         <Route path='/' element={<Geral />} />
         <Route path='/geral' element={<Geral />} />
         <Route path='/relatorios' element={<Relatorios />} />
+
         <Route path='/reservas' element={<ListarReservas />} />
         <Route path='/reservas/:tipo' element={<ListarReservas/>}/>
         <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
