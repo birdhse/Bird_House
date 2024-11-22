@@ -1,35 +1,14 @@
 import mysql from "mysql2/promise";
 import db from "../conexao.js";
 
-export async function readReserva(reserva) {
+export async function readReserva() {
     const conexao = mysql.createPool(db);
 
-    //Ao ser acionado o metodo createAula retorna na tela
     console.log('Entrando no Model Reserva');
-
-    // const [resultHospede] = await conexao.query('SELECT nome_hospede FROM hospedes WHERE id_hospede = ?', [reserva.id_hospede]);
-    // const nome_hospede = resultHospede[0];
-
-    // const [nomeAcomodacaoResult] = await conexao.query('SELECT nome_acomodacao FROM acomodacoes WHERE id_acomodacao = ?', [reserva.id_acomodacao]);
-    // const nome_acomodacao = nomeAcomodacaoResult[0].nome_acomodacao;
-
-
     const sql = `SELECT * FROM reservas`;
 
-    const params = [
-        reserva.id_hospede,
-        reserva.id_acomodacao,
-        reserva.id_status_reserva,
-        reserva.checkin,
-        reserva.checkout,
-        reserva.qntd_hospedes,
-        reserva.valor_total,
-        reserva.observacao
-    ];
-
-    //Executando query no banco
     try {
-        const [retorno] = await conexao.query(sql, params);
+        const [retorno] = await conexao.query(sql);
         console.log('Reserva exibida');
         return [200, retorno];
     } catch (error) {
@@ -40,16 +19,14 @@ export async function readReserva(reserva) {
 }
 
 export async function createReserva(reserva) {
-    //Criando conexão para o banco de dados usando configurações de 'db'
-    const conexao = mysql.createPool(db);
 
-    //Ao ser acionado o metodo createAula retorna na tela
+    const conexao = mysql.createPool(db);
     console.log('Criando no Model Reserva');
 
     const desconto = reserva.valor_total;
-    reserva.id_hospede = await conexao.query('SELECT id_hospede FROM hospedes WHERE nome_hospede = ?', reserva.id_hospede);
-
-    //Criando aula
+    const [consulta] = await conexao.query('SELECT id_hospede FROM hospedes WHERE nome_hospede = ?', reserva.id_hospede);
+    reserva.id_hospede = consulta[0].id_hospede;
+  
     const sql = `INSERT INTO reservas (
     checkin,
     checkout,
@@ -60,7 +37,7 @@ export async function createReserva(reserva) {
     observacao)
     VALUES (?,?,?,?,?,?,?)`;
 
-    //Definindo parametros para inserir no sql
+    
     const params = [
         reserva.checkin,
         reserva.checkout,
@@ -135,7 +112,7 @@ export async function calculoValor(reserva, id_reserva, desconto) {
     }
 }
 
-export async function updateReserva(reserva,id_reserva) {
+export async function updateReserva(reserva, id_reserva) {
     //Criando conexão para o banco de dados usando configurações de 'db'
     const conexao = mysql.createPool(db);
 
@@ -182,8 +159,6 @@ export async function updateReserva(reserva,id_reserva) {
     }
 }
 
-
-
 export async function deleteReserva(id_reserva) {
     const conexao = mysql.createPool(db);
 
@@ -221,4 +196,23 @@ export async function showOneReserva(id_reserva) {
         console.log(error);
         return [500, error];
     }
+}
+
+export async function showTableReservas() {
+    const conexao = mysql.createPool(db);
+
+    console.log('Entrando no Model Reserva');
+    const sql = `SELECT * FROM tabelareservas;`;
+
+    try {
+        const [retorno] = await conexao.query(sql);
+        console.log('Tabela Reservas exibida');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [502, error];
+    }
+
+    
+    
 }

@@ -1,6 +1,6 @@
 import FormReserva from "../../forms/FormReserva";
 import Menu from "../../layout/menu"
-import { useState } from "react";
+
 import { useParams } from "react-router-dom";
 
 function EditReserva() {
@@ -31,10 +31,10 @@ function EditReserva() {
     <div>
       <Menu/>
       <FormReserva titulo='Editar Reserva' 
-      textoBotao='Salvar' id={id_reserva} 
+      textoBotao='Salvar' id_reserva={id_reserva} 
       handleSubmit={editarReserva}
       tipo='editada'
-      valorT= 'Valor Total:'/>
+      TextoValor= 'Valor Total:'/>
     </div>
         
         
