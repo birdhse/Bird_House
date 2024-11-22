@@ -1,89 +1,133 @@
+/* Reset e configurações globais */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .menu_superior {
-    background-color: #198fad;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-  }
-  
-  .elementos_menu_superior{
-    flex: 1;
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    color: white;
-    margin-right: auto;
-    width: 180px;
-  }
-  
-  .data {
-    align-items: center;
-    color: white;
-  }
-  
-  .material_symbols_outlined {
-    color: white;
-    font-size: 24px;
-    margin-left: 20px;
-  }
-  
-  .relogio {
-    margin-left: auto;
-    color: white;
-  }
-  
-  .menu_lateral {
-    width: 200px;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    float: left;
-    background-color: #198fad86;
-  }
-  
-  .menu_lateral ul {
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    list-style-type: none;
-  }
-  
-  .menu_lateral ul li {
-    padding: 10px;
-  }
-  
-  .menu_lateral ul li a {
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 6px;
-    display: block;
-  }
-  
-  .menu_lateral li:hover {
-    background-color: #fdc827;
-  }
-  
-  .menu_lateral li.link_ativo {
-    background-color: #fdc827;
-    font-weight: bold;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .search_bar input {
-    padding: 5px;
-    font-size: 16px;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Cabeçalho superior */
+.menu_superior {
+  background-color: #198fad;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.elementos_menu_superior {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espaçamento entre elementos */
+}
+
+/* Logo com imagem e texto */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 2px; /* Reduzido para aproximar a imagem do texto */
+}
+
+.logo-image {
+  width: 50px; /* Ajuste o tamanho da imagem */
+  height: 50px;
+}
+
+.logo-text {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Centralizar a data */
+.data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex: 1; /* Ocupa espaço proporcional no layout */
+  text-align: center;
+}
+
+/* Relógio alinhado à direita */
+.relogio {
+  color: white;
+}
+
+/* Ícones no cabeçalho */
+.material_symbols_outlined {
+  color: white;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+/* Menu lateral */
+.menu_lateral {
+  width: 200px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  float: left;
+  background-color: #198fad86;
+}
+
+.menu_lateral ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style-type: none;
+}
+
+.menu_lateral ul li {
+  padding: 10px;
+}
+
+.menu_lateral ul li a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px;
+  display: block;
+}
+
+.menu_lateral li:hover {
+  background-color: #fdc827;
+}
+
+.menu_lateral li.link_ativo {
+  background-color: #fdc827;
+  font-weight: bold;
+}
+
+/* Outros elementos */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.search_bar input {
+  padding: 5px;
+  font-size: 16px;
+}
+
+
+/* Ajustes adicionais para a logo */
+.logo {
+  color: rgb(245, 245, 245);
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 85px; /* Ajuste do tamanho da imagem */
+  height: 40px;
+
+}
+
+.logo-text {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+

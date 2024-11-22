@@ -2,6 +2,9 @@ import React from 'react'
 import styles from './menu.modules.css'
 import Data from './data';
 import Relogio from './relogio';
+import BirdLogo from '../../images/bird-logo.png';
+
+
 
 function Menu() {
     return (
@@ -9,11 +12,14 @@ function Menu() {
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <div className='menu_superior'>
                 <div className='elementos_menu_superior'>
-                    <h2 className="logo">Bird House</h2>
+                <h2 className="logo">
+                <img src={BirdLogo} alt="Bird Logo" className="logo-image" />
+                 Bird House
+                </h2>
                     <h3 className='data'><Data/></h3>
 
                     <h3 className='relogio'><Relogio/></h3>
-                    <span className='material_symbols_outlined'> notifications </span>
+                    {/* <span className='material_symbols_outlined'> notifications </span> */}
                 </div>
             </div>
             <div className='menu_lateral'>

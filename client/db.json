@@ -69,6 +69,30 @@
       "qntd_hospedes": "2",
       "observacao": "",
       "chave": null
+    },
+    {
+      "id": "ae5a",
+      "id_status_reserva": "2",
+      "id_hospede": "Amanda Xavier",
+      "id_acomodacao": "2",
+      "checkin": "2024-11-08",
+      "checkout": "2024-11-23",
+      "qntd_hospedes": "1",
+      "valor_total": "500",
+      "observacao": "",
+      "chave": null
+    },
+    {
+      "id": "78aa",
+      "id_status_reserva": "2",
+      "id_hospede": "Gregory Veloso ",
+      "id_acomodacao": "1",
+      "checkin": "",
+      "checkout": "",
+      "qntd_hospedes": "",
+      "valor_total": "",
+      "observacao": "",
+      "chave": null
     }
   ],
   "hospedes": [
