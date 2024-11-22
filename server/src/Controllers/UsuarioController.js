@@ -21,7 +21,7 @@ export async function criarUsuario(req, res) {
     }
 }
 
-export async function mostrarUsuario(req, res) {
+export async function mostrarUsuarios(req, res) {
     console.log('UsuarioController mostrarUsuario');
     const usuario = req.body;
 
