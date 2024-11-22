@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap import
 
 function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, tipo, valorT }) {
     const navigate = useNavigate();
+    
     const [id_status_reserva, setStatus] = useState('');
     const [id_hospede, setHospede] = useState('');
     const [id_acomodacao, setAcomodacao] = useState('');

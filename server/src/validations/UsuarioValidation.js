@@ -18,7 +18,7 @@ export function verificaUsuario(usuario) {
     return propriedades.some(prop => isNullOrEmpty(usuario[prop]));
 }
 
-export function verificaEmailUsua(email_usuario) {
+export function verificaEmail(email_usuario) {
     email_usuario = document.getElementById('email_usuario').value.trim();
     let valido = true;
 

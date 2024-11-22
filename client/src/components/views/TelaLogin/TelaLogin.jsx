@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './TelaLogin.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+
 
 function TelaLogin() {
     const [login_usuario, setLogin] = useState('');
@@ -11,24 +11,22 @@ function TelaLogin() {
         const dadosLogin = { login_usuario, senha };
 
         try {
-            const resposta = await fetch('http://localhost:5000/usuarios', {
+            const resposta = await fetch(`http://localhost:5000/usuarios`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(dadosLogin),
+                body: JSON.stringify(dadosLogin)
             });
-
             if (!resposta.ok) {
-                alert('Usuário ou senha inválidos!');
+                alert('Usuário ou senha inválidos!!!');
             } else {
                 const respostaJSON = await resposta.json();
                 localStorage.setItem('id_usuario', respostaJSON.id_usuario);
-                window.location.href = '/';
+                window.location.href = '/geral';
             }
         } catch (error) {
-            console.log('Erro ao efetuar login:', error);
-            alert('Erro ao se conectar ao servidor. Tente novamente mais tarde.');
+            console.log(error);
         }
     }
 
@@ -56,7 +54,7 @@ function TelaLogin() {
                         onChange={(e) => setSenha(e.target.value)}
                     />
                 </div>
-                <button href='/geral' className="btn btn-danger w-100 mt-4" onClick={efetuarLogin}>
+                <button className="btn btn-danger w-100 mt-4" onClick={efetuarLogin}>
                     Enviar
                 </button>
             </div>
