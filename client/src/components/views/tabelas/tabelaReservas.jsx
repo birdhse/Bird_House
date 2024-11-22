@@ -12,7 +12,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
 
     async function baixarReservas() {
         try {
-            const resposta = await fetch('http://localhost:5000/reservas', {
+            const resposta = await fetch('http://localhost:5000/reservas/tabela', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -109,8 +109,8 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                                 <td>{reserva.id_reserva}</td>
                                 {/* Aqui está a chamada da função renderStatusIcon */}
                                 <td>{renderStatusIcon(reserva.id_status_reserva)}</td>
-                                <td>{reserva.id_hospede}</td>
-                                <td>{reserva.id_acomodacao}</td>
+                                <td>{reserva.nome_hospede}</td>
+                                <td>{reserva.nome_acomodacao}</td>
                                 <td>{new Date(reserva.checkin).toLocaleDateString('pt-BR')}</td>
                                 <td>{new Date(reserva.checkout).toLocaleDateString('pt-BR')}</td>
                                 <td>{reserva.qntd_hospedes}</td>

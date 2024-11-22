@@ -1,6 +1,5 @@
 import FormReserva from "../../forms/FormReserva";
 import Menu from "../../layout/menu"
-import { useState } from "react";
 
 function CadastroReserva() {
 
@@ -29,7 +28,7 @@ function CadastroReserva() {
       textoBotao='Cadastrar'
       handleSubmit={cadastrarReserva}
       tipo='cadastrada'
-      valorT='Desconto:'/>
+      TextoValor='Desconto:'/>
     </div>
 
   )

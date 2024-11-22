@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 function EditHospede() {
-  const {id} = useParams();
+  const {id_hospede} = useParams();
 
   async function editarHospedde(infoHospede, id_hospede) {
     try {
@@ -31,7 +31,7 @@ function EditHospede() {
     <div>
       <Menu/>
       <FormHosp titulo='Editar Hospede' 
-      textoBotao='Salvar' id={id_hospede} 
+      textoBotao='Salvar' id_reserva={id_hospede} 
       handleSubmit={editarHospedde}
       tipo='editada'/>
     </div>

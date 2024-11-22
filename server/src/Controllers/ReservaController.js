@@ -1,5 +1,21 @@
-import { createReserva, deleteReserva, updateReserva, readReserva, showOneReserva } from '../Models/ReservaModel.js'
+import { createReserva, deleteReserva, updateReserva, readReserva, showOneReserva, showTableReservas } from '../Models/ReservaModel.js'
 import { hasProperty, isNullOrEmpty, verificaReserva } from "../validations/ReservaValidation.js";
+
+
+export async function mostrarTabelaReservas(req, res) {
+    console.log('ReservaController mostrarTabelaReservas');
+    const reserva = req.body;
+
+    console.log(reserva);
+
+    try {
+        const [status, resposta] = await showTableReservas(reserva);
+        res.status(status).json(resposta);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
 
 export async function criarReserva(req, res) {
 
