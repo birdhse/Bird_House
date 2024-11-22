@@ -105,3 +105,4 @@ export async function mostrarUmHospede(req, res) {
         res.status(500).json(error);
     }
 }
+

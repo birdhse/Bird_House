@@ -1,21 +1,21 @@
-import FormReserva from "../../forms/FormReserva";
+import FormHosp from "../../forms/FormEditHosp";
 import Menu from "../../layout/menu"
 import { useState } from "react";
 
-function CadastroReserva() {
+function CadastroHospede() {
 
-  async function cadastrarReserva(infoReserva) {
+  async function cadastrarHospede(infoHospede) {
     try {
-      const resposta = await fetch('http://localhost:5000/reservas', {
+      const resposta = await fetch('http://localhost:5000/hospedes', {
         method: 'POST',
         headers: { 'content-Type': 'application/json' },
-        body: JSON.stringify(infoReserva)
+        body: JSON.stringify(infoHospede)
       });
       if (!resposta.ok) {
         console.log('Erro ao cadastrar')
       }
       else {
-        console.log('Reserva cadastrada')
+        console.log('hospede cadastrado')
       }
     } catch (error) {
       console.error('Erro ao cadastrar', error)
@@ -25,13 +25,13 @@ function CadastroReserva() {
   return (
     <div>
       <Menu />
-      <FormReserva titulo='Cadastrar Reserva'
+      <FormHosp titulo='Cadastrar Hospede'
       textoBotao='Cadastrar'
-      handleSubmit={cadastrarReserva}
+      handleSubmit={cadastrarHospede}
       tipo='cadastrada'/>
     </div>
 
   )
 }
 
-export default CadastroReserva
+export default CadastroHospede

@@ -139,4 +139,3 @@ export async function showOneUsuario(id_usuario) {
     }
 }
 
-export default new UsuarioModel();

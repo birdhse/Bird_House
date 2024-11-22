@@ -8,16 +8,9 @@ function TelaLogin() {
     const [senha, setSenha] = useState('');
 
     async function efetuarLogin() {
-         try {
-            if(login_usuario == "sarah" && senha == 123){
-                window.location.href = '/geral';
-            }else{
-                alert('Usuário ou senha inválidos!!!');
-            }
-        } catch (error) {
-            console.log(error);
-        }
-        /*try {
+        const dadosLogin = { login_usuario, senha };
+
+        try {
             const resposta = await fetch(`http://localhost:5000/usuarios`, {
                 method: 'POST',
                 headers: {
@@ -34,7 +27,7 @@ function TelaLogin() {
             }
         } catch (error) {
             console.log(error);
-        }*/
+        }
     }
 
     return (

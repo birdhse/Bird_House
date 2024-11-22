@@ -1,5 +1,5 @@
-import { createUsuario, deleteUsuario, readUsuario, showOneUsuario, updateUsuario } from "../Models/UsuarioModel";
-import { hasProperty, isNullOrEmpty,verificaUsuario } from "../validations/UsuarioValidation";
+import { createUsuario, deleteUsuario, readUsuario, showOneUsuario, updateUsuario } from "../Models/UsuarioModel.js";
+import { hasProperty, isNullOrEmpty,verificaUsuario } from "../validations/UsuarioValidation.js";
 
 
 export async function criarUsuario(req, res) {
