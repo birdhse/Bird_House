@@ -119,10 +119,11 @@ label {
   color: rgb(245, 245, 245);
   display: flex;
   align-items: center;
+  margin-top: 20px;
 }
 
 .logo-image {
-  width: 85px; /* Ajuste do tamanho da imagem */
+  width: 45px; /* Ajuste do tamanho da imagem */
   height: 40px;
 
 }
