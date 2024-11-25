@@ -33,9 +33,9 @@ function Geral() {
                             <p><strong>Matheus Sarti Brunelli</strong></p>
                             <p>24/10/2023 - 25/10/2023</p>
                             <div className="icons">
-                                <button className="icon-button" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                <button className="icon-button" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                <button className="icon-button" onClick={() => handleIconClick('editar')}>&#x270F;</button>
+                                <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
+                                <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                             </div>
                         </div>
 
@@ -58,9 +58,9 @@ function Geral() {
                             <p><strong>Pietro</strong></p>
                             <p>20/10/2023 - 24/10/2023</p>
                             <div className="icons">
-                                <button className="icon-button" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                <button className="icon-button" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                <button className="icon-button" onClick={() => handleIconClick('editar')}>&#x270F;</button>
+                                <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
+                                <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                             </div>
                         </div>
 
@@ -85,4 +85,3 @@ function Geral() {
 }
 
 export default Geral;
-
