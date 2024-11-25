@@ -125,6 +125,14 @@ export async function updateReserva(reserva, id_reserva) {
 
     //Ao ser acionado o metodo createAula retorna na tela
     console.log('Atualizando no Model Reserva');
+    const [consulta] = await conexao.query('SELECT id_hospede FROM hospedes WHERE nome_hospede = ?', reserva.id_hospede);
+    reserva.id_hospede = consulta[0].id_hospede;
+    if(isNullOrEmpty(reserva.id_hospede)){
+        console.log('Hospede não encontrado');
+        return [500, error];
+    }
+
+
 
     //Criando aula
     const sql = `UPDATE reservas SET
@@ -192,7 +200,7 @@ export async function showOneReserva(id_reserva) {
     const conexao = mysql.createPool(db);
 
     console.log('Mostrando uma Reserva no Model Reserva');
-    const sql = `SELECT * FROM  reservas WHERE id_reserva=?`;
+    const sql = `SELECT * FROM  umareserva WHERE id_reserva=?`;
     const params = [id_reserva];
 
     try {

@@ -6,7 +6,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
     const navigate = useNavigate();
     //const [resultado, setResultado] = useState('');
     const [id_status_reserva, setStatus] = useState('');
-    const [id_hospede, setHospede] = useState('');
+    const [nome_hospede, setHospede] = useState('');
     const [id_acomodacao, setAcomodacao] = useState('');
     const [checkin, setCheckin] = useState('');
     const [checkout, setCheckout] = useState('');
@@ -29,18 +29,22 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
                 }
             });
 
+            
+
             if (!resposta.ok) {
                 throw new Error('Erro ao buscar reserva');
             } else {
                 const respostaJSON = await resposta.json();
                 setStatus(respostaJSON.id_status_reserva);
-                setHospede(respostaJSON.id_hospede);
+                setHospede(respostaJSON.nome_hospede);
                 setAcomodacao(respostaJSON.id_acomodacao);
                 setCheckin(respostaJSON.checkin);
                 setCheckout(respostaJSON.checkout);
                 setQntd(respostaJSON.qntd_hospedes);
                 setVT(respostaJSON.valor_total);
                 setObservacao(respostaJSON.observacao);
+
+               
             }
         } catch (error) {
             console.log(error)
@@ -51,7 +55,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
         e.preventDefault();
         const reserva = {
             id_status_reserva: id_status_reserva,
-            id_hospede: id_hospede,
+            id_hospede: nome_hospede,
             id_acomodacao: id_acomodacao,
             checkin: checkin,
             checkout: checkout,
@@ -81,7 +85,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
                 </select>
 
                 <label className='form-label' htmlFor="hospede">Nome do Hóspede:</label>
-                <input className='form-control' type="text" name="hospede" id="hospede" value={id_hospede} onChange={(e) => (setHospede(e.target.value))} />
+                <input className='form-control' type="text" name="hospede" id="hospede" value={nome_hospede} onChange={(e) => (setHospede(e.target.value))} />
 
                 <label className='form-label' htmlFor="acomodacao">Acomodação:</label>
                 <select className='form-control' name="acomodacao" id="acomodacao" value={id_acomodacao} onChange={(e) => (setAcomodacao(e.target.value))} required>
