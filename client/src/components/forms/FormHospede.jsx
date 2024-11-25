@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap import
 
-function FormHosp({ titulo, textoBotao, handleSubmit, id_hospede, tipo }) {
+function FormHospede({ titulo, textoBotao1, textoBotao2, classBotao1, classBotao2, handleSubmit, id_hospede }) {
     const navigate = useNavigate();
-    const [id_status, setStatus] = useState('');
-    const [id_hospede, setHospede] = useState('');
-    const [nome_hospede, setNomeHospede] = useState('');
-    const [num_celular, setNumCelular] = useState('');
-    const [email_hospede, setEmailHospede] = useState('');
-    const [data_nascimento, setDataNascimento] = useState('');
-    const [cpf_hospede, setCpfHospede] = useState('');
+
+    const [hospedes, setHospedes] = useState([]);
+    const [nome_hospede, setNome] = useState('');
+    const [num_celular, setCelular] = useState('');
+    const [email_hospede, setEmail] = useState('');
+    const [data_nascimento, setNascimento] = useState('');
+    const [cpf_hospede, setCPF] = useState('');
 
     useEffect(() => {
         if (id_hospede) {
@@ -28,65 +28,82 @@ function FormHosp({ titulo, textoBotao, handleSubmit, id_hospede, tipo }) {
             });
 
             if (!resposta.ok) {
-                throw new Error('Erro ao buscar Hospede');
+                throw new Error('Erro ao buscar reserva');
             } else {
                 const respostaJSON = await resposta.json();
-                setHospede(respostaJSON.id_hospede);
-                setNomeHospede(respostaJSON.nome_hospede)
-                setNumCelular(respostaJSON.num_celular);
-                setEmailHospede(respostaJSON.email_hospede);
-                setDataNascimento(respostaJSON.data_nascimento);
-                setCpfHospede(respostaJSON.cpf_hospede);
+                setNome(respostaJSON.nome_hospede);
+                setCelular(respostaJSON.num_celular);
+                setEmail(respostaJSON.email_hospede);
+                setNascimento(respostaJSON.data_nascimento);
+                setCPF(respostaJSON.cpf_hospede);
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    function submit(e) {
+    async function deletarHospede(id_hospede) {
+        try {
+            const resposta = await fetch(`http://localhost:5000/hospedes/${id_hospede}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!resposta.ok) {
+                throw new Error('Erro ao deletar reserva', JSON.stringify(resposta));
+            } else {
+                setHospedes(hospedes.filter(hospede => hospede.id_hospede !== id_hospede));
+                onDeleteSuccess();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function submit(e) {
         e.preventDefault();
-        const reserva = {
-            id_status: id_status,
-            id_hospede: id_hospede,
+        const hospede = {
             nome_hospede: nome_hospede,
             num_celular: num_celular,
             email_hospede: email_hospede,
             data_nascimento: data_nascimento,
-            cpf_hospede: cpf_hospede,
-            chave: null
+            cpf_hospede: cpf_hospede
         };
 
-        handleSubmit(hospede, id_hospede);
+        const tipo = await handleSubmit(hospede, id_hospede);
+        console.log(tipo);
         navigate(`/hospedes/${tipo}`);
     }
 
     return (
         <div className='container col-sm-12 col-md-6 col-lg-3 mt-3'>
-            <h2>Editar Hospéde</h2>
+            <h2 className="text-center">{titulo}</h2>
             <form onSubmit={submit}>
-                
-                <label className='form-label' htmlFor="nome_hospede">Nome Hóspede:</label>
-                <input className='form-control' type="text" name="nome_hospede" id="nome_hospede" value={nome_hospede} onChange={(e) => (setHospede(e.target.value))} />
+                <label className='form-label' htmlFor="nome">Nome do Hospede</label>
+                <input className='form-control' type="text" name="nome" id="nome" value={nome_hospede} onChange={(e) => (setNome(e.target.value))} />
 
-                <label className='form-label' htmlFor="num_celular">Contato:</label>
-                <input className='form-control' type="text" name="num_celular" id="num_celular" value={num_celular} onChange={(e) => (setObservacao(e.target.value))} />
+                <label className='form-label' htmlFor="cel">Numero de Celular:</label>
+                <input className='form-control' type="text" name="cel" id="cel" value={num_celular} onChange={(e) => (setCelular(e.target.value))} />
 
-                <label className='form-label' htmlFor="email_hospede">E-mail:</label>
-                <input className='form-control' type="text" name="email_hospede" id="email_hospede" value={email_hospede} onChange={(e) => (setCheckin(e.target.value))} />
+                <label className='form-label' htmlFor="email">Email:</label>
 
-                <label className='form-label' htmlFor="data_nascimento">Data de Nascimento:</label>
-                <input className='form-control' type="text" name="data_nascimento" id="data_nascimento" value={data_nascimento} onChange={(e) => (setObservacao(e.target.value))} />
+                <label className='form-label' htmlFor="nascimento">Data de Nascimento</label>
+                <input className='form-control' type="date" name="nascimento" id="nascimento" value={data_nascimento} onChange={(e) => (setNascimento(e.target.value))} />
 
-                <label className='form-label' htmlFor="cpf_hospede">CPF:</label>
-                <input className='form-control' type="text" name="cpf_hospede" id="cpf_hospede" value={cpf_hospede} onChange={(e) => (setQntd(e.target.value))} />
-             
+                <label className='form-label' htmlFor="checkout">Data de Check-out:</label>
+
+                <label className='form-label' htmlFor="cpf">CPF:</label>
+                <input className='form-control' type="text" name="cpf" id="cpf" value={cpf_hospede} onChange={(e) => (setCPF(e.target.value))} />
+
                 <div className="d-flex justify-content-between mt-3">
-                    <a className="btn btn-danger" href="/reservas">Cancelar</a>
-                    <button className="btn btn-success" type="submit">{textoBotao}</button>
+                    <button className="btn btn-success" type="submit">{textoBotao1}</button>
+                    <button className="btn btn-success" type="submit">{textoBotao2}</button>
                 </div>
             </form>
         </div>
     );
 }
 
-export default FormHosp;
+export default FormHospede;

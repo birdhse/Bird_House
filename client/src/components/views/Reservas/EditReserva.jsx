@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 function EditReserva() {
   const {id_reserva} = useParams();
-  let resultado;
 
   async function editarReserva(infoReserva, id_reserva) {
     try {

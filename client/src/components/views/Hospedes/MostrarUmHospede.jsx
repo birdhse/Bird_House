@@ -1,91 +1,109 @@
-import React from 'react'
-import Menu from '../../layout/menu';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap import
 
-function MostrarHospedes() {
-    function showTab(tabId) {
-        const tabButtons = document.querySelectorAll('.tab');
-        tabButtons.forEach(button => button.classList.remove('active'));
+function FormHospede({ titulo, textoBotao, handleSubmit, id_hospede}) {
+    const navigate = useNavigate();
 
-        const ButtonClicado = document.querySelector(`#${tabId}`);
-        ButtonClicado.classList.add('active');
+    const [hospedes, setHospedes] = useState([]);
+    const [nome_hospede, setNome] = useState('');
+    const [num_celular, setCelular] = useState('');
+    const [email_hospede, setEmail] = useState('');
+    const [data_nascimento, setNascimento] = useState('');
+    const [cpf_hospede, setCPF] = useState('');
 
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(tabContent => {
-            tabContent.style.display = 'none';
-        });
+    useEffect(() => {
+        if (id_hospede) {
+            baixarReserva(id_hospede)
+        }
+    }, []);
 
-        const TabContentSelecionado = document.getElementById(tabId);
-        TabContentSelecionado.style.display = 'block';
+    async function baixarHospede(id_hospede) {
+        try {
+            const resposta = await fetch(`http://localhost:5000/hospedes/${id_hospede}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!resposta.ok) {
+                throw new Error('Erro ao buscar reserva');
+            } else {
+                const respostaJSON = await resposta.json();
+                setNome(respostaJSON.nome_hospede);
+                setCelular(respostaJSON.num_celular);
+                setEmail(respostaJSON.email_hospede);
+                setNascimento(respostaJSON.data_nascimento);
+                setCPF(respostaJSON.cpf_hospede);
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function deletarHospede(id_hospede) {
+        try {
+            const resposta = await fetch(`http://localhost:5000/hospedes/${id_hospede}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!resposta.ok) {
+                throw new Error('Erro ao deletar reserva', JSON.stringify(resposta));
+            } else {
+                setHospedes(hospedes.filter(hospede => hospede.id_hospede !== id_hospede));
+                onDeleteSuccess();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function submit(e) {
+        e.preventDefault();
+        const hospede = {
+            nome_hospede: nome_hospede,
+            num_celular: num_celular,
+            email_hospede: email_hospede,
+            data_nascimento: data_nascimento,
+            cpf_hospede: cpf_hospede
+        };
+
+        const tipo = await handleSubmit(hospede, id_hospede);
+        console.log(tipo);
+        navigate(`/hospedes/${tipo}`);
     }
 
     return (
-        <div>
-            <Menu />
+        <div className='container col-sm-12 col-md-6 col-lg-3 mt-3'>
+            <h2 className="text-center">{titulo}</h2>
+            <form onSubmit={submit}>
+                <label className='form-label' htmlFor="nome">Nome do Hospede</label>
+                <input className='form-control' type="text" name="nome" id="nome" value={nome_hospede} onChange={(e) => (setNome(e.target.value))} />
 
-            <div className="container mt-4">
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="#">Geral</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Hóspede</li>
-                    </ol>
-                </nav>
+                <label className='form-label' htmlFor="cel">Numero de Celular:</label>
+                <input className='form-control' type="text" name="cel" id="cel" value={num_celular} onChange={(e) => (setCelular(e.target.value))} />
 
-                <h2 className="mb-4">Amanda Xavier</h2>
+                <label className='form-label' htmlFor="email">Email:</label>
 
-                <div className="d-flex mb-3">
-                    <button className="btn btn-info me-2 tab active" onClick={() => showTab('info')}>
-                        Informações do hóspede
-                    </button>
-                    <button className="btn btn-outline-info tab" onClick={() => showTab('history')}>
-                        Histórico de estadias
-                    </button>
+                <label className='form-label' htmlFor="nascimento">Data de Nascimento</label>
+                <input className='form-control' type="date" name="nascimento" id="nascimento" value={data_nascimento} onChange={(e) => (setNascimento(e.target.value))} />
+
+                <label className='form-label' htmlFor="checkout">Data de Check-out:</label>
+
+                <label className='form-label' htmlFor="cpf">CPF:</label>
+                <input className='form-control' type="text" name="cpf" id="cpf" value={cpf_hospede} onChange={(e) => (setCPF(e.target.value))} />
+
+                <div className="d-flex justify-content-between mt-3">
+                    <a className="btn btn-danger" href="/hospedes">Cancelar</a>
+                    <button className="btn btn-success" type="submit">{textoBotao}</button>
                 </div>
-
-                <div className="tab-content" id="info" style={{ display: 'block' }}>
-                    <div className="d-flex align-items-center mb-4">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" alt="Foto de perfil" className="rounded-circle" style={{ width: '100px', height: '100px', marginRight: '20px' }} />
-                        <button className="btn btn-outline-primary">Selecionar uma foto (Proporção: 500 x 500)</button>
-                    </div>
-
-                    <form className="row g-3">
-                        <div className="col-md-6">
-                            <label htmlFor="nome" className="form-label">Nome completo</label>
-                            <input type="text" className="form-control" id="nome" value="Amanda Xavier" />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="email" className="form-label">E-mail</label>
-                            <input type="email" className="form-control" id="email" value="amanda@gmail.com" />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="cpf" className="form-label">CPF</label>
-                            <input type="text" className="form-control" id="cpf" value="000000000-00" />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="nascimento" className="form-label">Nascimento</label>
-                            <input type="date" className="form-control" id="nascimento" value="2003-03-30" />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="contato" className="form-label">Contato</label>
-                            <input type="text" className="form-control" id="contato" value="(00) 000000000" />
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="contato" className="form-label">Observações</label>
-                            <input type="text" className="form-control" id="observacoes" value="Quartinho" />
-                        </div>
-                    </form>
-
-                    {/* Botão de Editar na parte inferior, dentro da aba de informações */}
-                    <div className="d-flex justify-content-center mt-4">
-                        <button className="btn btn-primary">Editar Hóspede</button>
-                    </div>
-                </div>
-
-                <div className="tab-content" id="history" style={{ display: 'none' }}>
-                    <p>Histórico de estadias não disponível.</p>
-                </div>
-            </div>
+            </form>
         </div>
     );
 }
 
-export default MostrarHospedes;
+export default FormHospede;
