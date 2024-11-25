@@ -33,26 +33,32 @@
 
 .status-button.pending {
   background-color: #ffcccc;
+  color: black;
+  font-weight: bold;
 }
 
 .status-button.unavailable {
   background-color:  #faca9c;
   color: black;
+  font-weight: bold;
 }
 
 .status-button.available {
   background-color: #ccffcc;
   color: black;
+  font-weight: bold;
 }
 
 .status-button.maintenance {
   background-color: #ffffcc;
   color: black;
+  font-weight: bold;
 }
 
 .status-button.cleaning {
   background-color:  #e6ccff;
   color: black;
+  font-weight: bold;
 }
 
 /* Cards */
