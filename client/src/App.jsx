@@ -6,7 +6,9 @@ import Geral from './components/views/Geral/Geral'
 
 import ListarReservas from './components/views/Reservas/GestaoReservas';
 import CadastroReserva from './components/views/Reservas/CadastroReserva'
-import EditReserva from './components/views/Reservas/EditReserva';
+import EditReserva from './components/views/Reservas/EditarReserva';
+import ExibirReserva from './components/views/Reservas/MostrarUmaReserva';
+
 import Relatorios from './components/views/Relatorios/Relatorios';
 
 import ListarHospedes from './components/views/Hospedes/GestaoHospedes';
@@ -28,6 +30,7 @@ function App() {
         <Route path='/reservas/:tipo' element={<ListarReservas/>}/>
         <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
         <Route path='/edit_reserva/:id_reserva' element={<EditReserva/>}/>
+        <Route path='/info_reserva/:id_reserva' element={<ExibirReserva/>}/>
 
 
         <Route path='/hospedes' element={<ListarHospedes/>}/>
