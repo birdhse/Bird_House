@@ -3,7 +3,7 @@ import cors from 'cors'
 
 import {criarReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva, mostrarTabelaReservas} from './Controllers/ReservaController.js';
 import {atualizarHospede, criarHospede, excluirHospede, mostrarHospedes, mostrarUmHospede} from './Controllers/HospedeController.js'
-import { atualizarUsuario, criarUsuario, excluirUsuario, mostrarUmUsuario, mostrarUsuarios } from "./Controllers/UsuarioController.js";
+import { atualizarUsuario, criarUsuario, excluirUsuario, logarUsuario, mostrarUmUsuario, mostrarUsuarios } from "./Controllers/UsuarioController.js";
 
 const app = express();
 const porta = 5000;
@@ -16,7 +16,7 @@ app.get("/",(req,res)=>{
   res.status(200).json("Servidor funcionando")
 });
 
-
+app.post('/login', logarUsuario)
 
 app.post("/reservas",criarReserva)
 app.get("/reservas",mostrarReservas)

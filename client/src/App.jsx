@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
+import TelaLogin from './components/views/TelaLogin/TelaLogin';
 import Geral from './components/views/Geral/Geral'
 
 import ListarReservas from './components/views/Reservas/GestaoReservas';
@@ -20,22 +21,21 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      {/* <Route path='/' element={<TelaLogin />} /> */}
-        <Route path='/' element={<Geral />} />
+        <Route path='/' element={<TelaLogin />} />
         <Route path='/geral' element={<Geral />} />
         <Route path='/relatorios' element={<Relatorios />} />
 
         <Route path='/reservas' element={<ListarReservas />} />
-        <Route path='/reservas/:tipo' element={<ListarReservas/>}/>
-        <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
-        <Route path='/edit_reserva/:id_reserva' element={<EditReserva/>}/>
+        <Route path='/reservas/:tipo' element={<ListarReservas />} />
+        <Route path='/cadastro_reserva' element={<CadastroReserva />} />
+        <Route path='/edit_reserva/:id_reserva' element={<EditReserva />} />
 
 
-        <Route path='/hospedes' element={<ListarHospedes/>}/>
-        <Route path='/hospedes/:tipo' element={<ListarHospedes/>}/>
+        <Route path='/hospedes' element={<ListarHospedes />} />
+        <Route path='/hospedes/:tipo' element={<ListarHospedes />} />
 
 
-        <Route path='/usuarios' element={<ConfigUsuario/>}/>
+        <Route path='/usuarios' element={<ConfigUsuario />} />
 
       </Routes>
     </BrowserRouter>

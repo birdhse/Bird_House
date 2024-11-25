@@ -139,3 +139,27 @@ export async function showOneUsuario(id_usuario) {
     }
 }
 
+export async function findUserByLoginPassword(login_usuario,senha) {
+    console.log('UsuarioModel :: findUserByLoginPassword');
+
+    
+    const conexao = mysql.createPool(db);
+    const sql = 'SELECT id_usuario FROM usuarios WHERE login_usuario = ? AND senha = ?';
+    const params = [login_usuario,senha];
+
+    try {
+        const [retorno] = await conexao.query(sql,params);
+        if (retorno.length < 1) {
+            return [404, {message: 'Usuário ou senha inválidos'}];
+            
+        } else {
+            return [200,retorno[0]];
+            
+        }
+        
+    } catch (error) {
+        console.log(error);
+        return [500, {message: 'Erro ao mostrar usuário'}]
+        
+    }
+}

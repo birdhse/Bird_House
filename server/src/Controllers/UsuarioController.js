@@ -1,4 +1,4 @@
-import { createUsuario, deleteUsuario, readUsuario, showOneUsuario, updateUsuario } from "../Models/UsuarioModel.js";
+import { createUsuario, deleteUsuario, readUsuario, showOneUsuario, updateUsuario, findUserByLoginPassword} from "../Models/UsuarioModel.js";
 import { hasProperty, isNullOrEmpty,verificaUsuario } from "../validations/UsuarioValidation.js";
 
 
@@ -18,6 +18,25 @@ export async function criarUsuario(req, res) {
         console.debug(resposta)
         console > debug("Erro cadastrando usuario")
         res.satus(resposta[0]).json(resposta[1])
+    }
+}
+
+export async function logarUsuario(req,res) {
+    console.log('UsuarioController :: logarUsuario');
+    const {login_usuario,senha} = req.body;
+
+    if (!login_usuario || !senha) {
+        res.status(400).json({message:'Usuário e senha são obrigatórios'})
+        
+    } else {
+        try {
+            const [status,resposta] = await findUserByLoginPassword(login_usuario,senha);
+            res.status(status).json(resposta);
+        } catch (error) {
+            res.status(500).json({message:'Erro ao efetuar login'})
+            
+        }
+        
     }
 }
 

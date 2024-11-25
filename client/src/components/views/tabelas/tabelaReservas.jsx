@@ -30,6 +30,8 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
     }
 
     async function deletarReservas(id_reserva) {
+        const confirmacao = window.confirm("Você tem certeza que deseja deletar essa reserva?");
+        if (confirmacao) {
         try {
             const resposta = await fetch(`http://localhost:5000/reservas/${id_reserva}`, {
                 method: 'DELETE',
@@ -46,7 +48,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
             }
         } catch (error) {
             console.log(error);
-        }
+        }}
     }
 
     // Função para renderizar o ícone de status com base no valor de status
