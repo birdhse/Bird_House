@@ -119,7 +119,6 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                                         <Link to={`/edit_reserva/${reserva.id_reserva}`} className="btn btn-warning btn-sm">
                                             Editar
                                         </Link>
-                                        <Link to={`/info_reserva/${reserva.id_reserva}`} className="btn btn-primary btn-sm">Mais Info</Link>
                                         <button className="btn btn-danger btn-sm" onClick={() => deletarReservas(reserva.id_reserva)}>
                                             Deletar
                                         </button>
