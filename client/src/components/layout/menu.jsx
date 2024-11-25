@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './menu.modules.css'
 import Data from './data';
 import Relogio from './relogio';
-import BirdLogo from '../../images/bird-logo.png';
+import BirdLogo from '../../images/bbhouse.png';
 
 
 
