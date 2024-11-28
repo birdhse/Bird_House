@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styles from './tabelaReserva.module.css';
 import { Link } from "react-router-dom";
 
-function TabelaReservas({tipo, onDeleteSuccess}) {
+function TabelaReservas({ tipo, onDeleteSuccess }) {
     const [reservas, setReservas] = useState([]);
     const [filtro, setFiltro] = useState('todos');
+    const [pesquisa, setPesquisa] = useState("");  // Estado para armazenar a pesquisa
 
     useEffect(() => {
         baixarReservas();
@@ -32,23 +33,24 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
     async function deletarReservas(id_reserva) {
         const confirmacao = window.confirm("Você tem certeza que deseja deletar essa reserva?");
         if (confirmacao) {
-        try {
-            const resposta = await fetch(`http://localhost:5000/reservas/${id_reserva}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+            try {
+                const resposta = await fetch(`http://localhost:5000/reservas/${id_reserva}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-            if (!resposta.ok) {
-                throw new Error('Erro ao deletar reserva', JSON.stringify(resposta));
-            } else {
-                setReservas(reservas.filter(reserva => reserva.id_reserva !== id_reserva));
-                onDeleteSuccess();
+                if (!resposta.ok) {
+                    throw new Error('Erro ao deletar reserva', JSON.stringify(resposta));
+                } else {
+                    setReservas(reservas.filter(reserva => reserva.id_reserva !== id_reserva));
+                    onDeleteSuccess();
+                }
+            } catch (error) {
+                console.log(error);
             }
-        } catch (error) {
-            console.log(error);
-        }}
+        }
     }
 
     // Função para renderizar o ícone de status com base no valor de status
@@ -71,12 +73,25 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
         }
     }
 
+    // Função para filtrar as reservas
     const filtrarReservas = () => {
-        if (filtro === 'todos') {
-            return reservas.filter(reserva => reserva.id_status_reserva !== 7);
-        } else {
-            return reservas.filter(reserva => reserva.id_status_reserva === filtro);
-        }
+        // Filtra primeiro pelo status e depois pela pesquisa
+        return reservas
+            .filter(reserva => {
+                if (filtro === 'todos') {
+                    return reserva.ativo !== 0;
+                } else {
+                    return reserva.id_status_reserva === filtro;
+                }
+            })
+            .filter(reserva => {
+                // Filtra pelo id_reserva, nome_hospede ou nome_acomodacao
+                return (
+                    reserva.id_reserva.toString().includes(pesquisa) || // Filtra pelo ID da reserva
+                    reserva.nome_hospede.toLowerCase().includes(pesquisa.toLowerCase()) || // Filtra pelo nome do hóspede
+                    reserva.nome_acomodacao.toLowerCase().includes(pesquisa.toLowerCase()) // Filtra pelo nome da acomodação
+                );
+            });
     };
 
     return (
@@ -86,9 +101,20 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                 <button className={`reservado btn ${styles.reservado}`} onClick={() => setFiltro(1)}>Solicitada</button>
                 <button className={`hospedado btn ${styles.hospedado}`} onClick={() => setFiltro(2)}>Reservada</button>
                 <button className={`emLimpeza btn ${styles.emLimpeza}`} onClick={() => setFiltro(3)}>Hospedada</button>
-                <button className={`bloqueado btn ${styles.bloqueado}`} onClick={() => setFiltro(4)}>Atrasada</button>
+                <button className={`atrasada btn ${styles.atrasada}`} onClick={() => setFiltro(4)}>Atrasada</button>
                 <button className={`finalizado btn ${styles.finalizado}`} onClick={() => setFiltro(5)}>Cancelada</button>
                 <button className={`cancelado btn ${styles.cancelado}`} onClick={() => setFiltro(6)}>Finalizada</button>
+            </div>
+
+            {/* Barra de pesquisa */}
+            <div className={styles.barraPesquisa}>
+                <input
+                    type="text"
+                    placeholder="Pesquisar por ID, hóspede ou acomodação"
+                    value={pesquisa}
+                    onChange={(e) => setPesquisa(e.target.value)}  // Atualiza o estado com o valor digitado
+                    className={styles.inputPesquisa}
+                />
             </div>
 
             <div className={`${styles.tabelaReservas} ${tipo === 'edit' ? styles.edit : ''}`}>
@@ -109,7 +135,6 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                         {filtrarReservas().sort((a, b) => b.id_reserva - a.id_reserva).map((reserva) => (
                             <tr key={reserva.id_reserva}>
                                 <td>{reserva.id_reserva}</td>
-                                {/* Aqui está a chamada da função renderStatusIcon */}
                                 <td>{renderStatusIcon(reserva.id_status_reserva)}</td>
                                 <td>{reserva.nome_hospede}</td>
                                 <td>{reserva.nome_acomodacao}</td>

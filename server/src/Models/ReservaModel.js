@@ -178,9 +178,9 @@ export async function deleteReserva(id_reserva) {
     const conexao = mysql.createPool(db);
 
     console.log('Deletando no Model Reserva');
-    const sql = `UPDATE reservas SET id_status_reserva = ? WHERE id_reserva=?`;
+    const sql = `UPDATE reservas SET ativo = ? WHERE id_reserva=?`;
     const params = [
-        7,
+        0,
         id_reserva
     ]
     try {
