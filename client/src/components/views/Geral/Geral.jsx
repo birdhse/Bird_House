@@ -19,12 +19,13 @@ function Geral() {
                 <div className="main-content">
                     {/* Área de Status */}
                     <div className="status">
-                        <button className="status-button pending" onClick={() => handleActionClick('Pendente')}>Pendente</button>
-                        <button className="status-button unavailable" onClick={() => handleActionClick('Indisponível')}>Indisponível</button>
-                        <button className="status-button available" onClick={() => handleActionClick('Disponível')}>Disponível</button>
-                        <button className="status-button maintenance" onClick={() => handleActionClick('Manutenção')}>Manutenção</button>
-                        <button className="status-button cleaning" onClick={() => handleActionClick('Em Limpeza')}>Em limpeza</button>
+                        <span className="status-label pending">Pendente</span>
+                        <span className="status-label unavailable">Indisponível</span>
+                        <span className="status-label available">Disponível</span>
+                        <span className="status-label maintenance">Manutenção</span>
+                        <span className="status-label cleaning">Em limpeza</span>
                     </div>
+
 
                     {/* Cards de Acomodações */}
                     <div className="cards">

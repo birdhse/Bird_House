@@ -200,3 +200,41 @@
       width: 100%;
   }
 }
+
+.status-label {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.status-label.pending {
+  background-color: #ffcccc; /* Amarelo */
+  color: #000;
+  border: 1px solid black;
+}
+
+.status-label.unavailable {
+  background-color:#faca9c; /* Vermelho */
+  color: #000;
+  border: 1px solid black;
+}
+
+.status-label.available {
+  background-color: #ccffcc; /* Verde */
+  color: #000;
+  border: 1px solid black;
+}
+
+.status-label.maintenance {
+  background-color: #ffffcc; /* Cinza */
+  color: #000;
+  border: 1px solid black;
+}
+
+.status-label.cleaning {
+  background-color: #e6ccff; /* Azul */
+  color: #000;
+  border: 1px solid black;
+}

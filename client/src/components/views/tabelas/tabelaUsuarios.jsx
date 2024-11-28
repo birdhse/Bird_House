@@ -19,7 +19,7 @@ function tabelaUsuarios({ tipo, OnDeleteSucess}) {
             });
 
             if (!resposta.ok) {
-                throw new Error('Erro ao buscar usua´rio');
+                throw new Error('Erro ao buscar usuário');
             }
             const consulta = await resposta.json();
             setHospedes(consulta);

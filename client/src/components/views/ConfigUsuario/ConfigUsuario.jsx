@@ -54,7 +54,7 @@ function ConfigUsuario() {
                 <button type="button" className="btn btn-info text-white" onClick={() => alert("Função para alterar a senha!")}>
                   Alterar
                 </button>
-                <a href="#" className="text-primary" onClick={(e) => { e.preventDefault(); alert("Ajuda!") }}>
+                <a href="#" className="text-primary" onClick={(e) => { e.preventDefault(); alert("Para ajuda entre em contato através do e-mail: matheus.brunelli@aluno.senai.br ou entre em contato com seu admnistrador") }}>
                   Ajuda
                 </a>
               </div>
