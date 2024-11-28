@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap import
 
-function FormHospede({ titulo, textoBotao1, textoBotao2, classBotao1, classBotao2, handleSubmit, id_hospede }) {
+function FormHospede({ titulo, textoBotao, handleSubmit, id_hospede }) {
     const navigate = useNavigate();
 
-    const [hospedes, setHospedes] = useState([]);
     const [nome_hospede, setNome] = useState('');
     const [num_celular, setCelular] = useState('');
     const [email_hospede, setEmail] = useState('');
@@ -42,25 +41,6 @@ function FormHospede({ titulo, textoBotao1, textoBotao2, classBotao1, classBotao
         }
     }
 
-    async function deletarHospede(id_hospede) {
-        try {
-            const resposta = await fetch(`http://localhost:5000/hospedes/${id_hospede}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (!resposta.ok) {
-                throw new Error('Erro ao deletar reserva', JSON.stringify(resposta));
-            } else {
-                setHospedes(hospedes.filter(hospede => hospede.id_hospede !== id_hospede));
-                onDeleteSuccess();
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     async function submit(e) {
         e.preventDefault();
@@ -88,18 +68,17 @@ function FormHospede({ titulo, textoBotao1, textoBotao2, classBotao1, classBotao
                 <input className='form-control' type="text" name="cel" id="cel" value={num_celular} onChange={(e) => (setCelular(e.target.value))} />
 
                 <label className='form-label' htmlFor="email">Email:</label>
+                <input className='form-control' type="text" name="email" id="email" value={email_hospede} onChange={(e) => (setEmail(e.target.value))} />
 
                 <label className='form-label' htmlFor="nascimento">Data de Nascimento</label>
-                <input className='form-control' type="date" name="nascimento" id="nascimento" value={data_nascimento} onChange={(e) => (setNascimento(e.target.value))} />
-
-                <label className='form-label' htmlFor="checkout">Data de Check-out:</label>
+                <input className='form-control' type="date" name="nascimento" id="nascimento" value={new Date(data_nascimento).toLocaleDateString('en-CA')} onChange={(e) => (setNascimento(e.target.value))} />
 
                 <label className='form-label' htmlFor="cpf">CPF:</label>
                 <input className='form-control' type="text" name="cpf" id="cpf" value={cpf_hospede} onChange={(e) => (setCPF(e.target.value))} />
 
                 <div className="d-flex justify-content-between mt-3">
-                    <button className="btn btn-success" type="submit">{textoBotao1}</button>
-                    <button className="btn btn-success" type="submit">{textoBotao2}</button>
+                    <a className="btn btn-danger" href="/hospedes">Cancelar</a>
+                    <button className="btn btn-success" type="submit">{textoBotao}</button>
                 </div>
             </form>
         </div>

@@ -1,6 +1,5 @@
-import FormHosp from "../../forms/FormEditHosp";
+import FormHospede  from "../../forms/FormHospede.jsx";
 import Menu from "../../layout/menu"
-import { useState } from "react";
 
 function CadastroHospede() {
 
@@ -12,10 +11,11 @@ function CadastroHospede() {
         body: JSON.stringify(infoHospede)
       });
       if (!resposta.ok) {
-        console.log('Erro ao cadastrar')
+        return 'erro';
       }
       else {
-        console.log('hospede cadastrado')
+        console.log('Hospede cadastrado')
+        return 'cadastrada';
       }
     } catch (error) {
       console.error('Erro ao cadastrar', error)
@@ -25,7 +25,7 @@ function CadastroHospede() {
   return (
     <div>
       <Menu />
-      <FormHosp titulo='Cadastrar Hospede'
+      <FormHospede titulo='Cadastrar Hospede'
       textoBotao='Cadastrar'
       handleSubmit={cadastrarHospede}
       tipo='cadastrada'/>

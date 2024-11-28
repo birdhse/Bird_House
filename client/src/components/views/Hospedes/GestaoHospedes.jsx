@@ -4,8 +4,6 @@ import TabelaHospedes from '../tabelas/tabelaHospedes';
 import { Link, useParams } from 'react-router-dom'
 
 
-//Teste
-
 function GestaoHospedes() {
     const { tipo } = useParams();
     const [exibeAlerta, setExibeAlerta] = useState(false);
@@ -33,15 +31,19 @@ function GestaoHospedes() {
         switch (tipoMensagem) {
             case 'cadastrada':
                 setClasseMensagem('alert alert-success');
-                setTextoMensagem('Reserva Cadastrada');
+                setTextoMensagem('Hospede Cadastrado');
                 break;
             case 'deletada':
                 setClasseMensagem('alert alert-danger');
-                setTextoMensagem('Reserva Deletada');
+                setTextoMensagem('Hospede Deletado');
                 break;
             case 'editada':
                 setClasseMensagem('alert alert-primary');
-                setTextoMensagem('Reserva Editada');
+                setTextoMensagem('Hospede Editado');
+                break;
+            case 'erro':
+                setClasseMensagem('alert alert-warning');
+                setTextoMensagem('Erro na operação');
                 break;
         }
     }
@@ -50,30 +52,15 @@ function GestaoHospedes() {
     return (
         <>
             <Menu />
-            <div>
-                {/* { <div class="containerReserva">
-                    <h2>Geral / Reservas</h2>
-                    <input type="text" placeholder=" Pesquise por UH, nome do hóspede ou número de reserva"></input>
-                    <div class="botoes">
-                        <button id="corTodos">Todos</button>
-                        <button id="corReservado">Reservado</button>
-                        <button id="corHospedado">Hospedado</button>
-                        <button id="corFinalizado">Finalizado</button>
-                        <button id="corCancelado">Cancelado</button>
-                        <button id="corAtrasado">Atrasado</button>
-                    </div>
-                </div> } */}
+            <div className='container'>
+                <h1 className='text-center mt-3'>Gestão de Hospedes</h1>
+                {exibeAlerta && <div className={classeMensagem}>{textoMensagem}</div>}
 
-                <div className='container'>
-                    <h1 className='text-center mt-3'>Gestão de Hospedes</h1>
-                    {exibeAlerta && <div className={classeMensagem}>{textoMensagem}</div>}
-                    
 
-                    <div className='col=12 text-end my-2'>
-                        <Link to='/cadastro_hospede' className='btn btn-primary ms-auto'>Cadastrar</Link>
-                    </div>
-                    <TabelaHospedes tipo='edit' onDeleteSuccess={mensagemDelete} />
+                <div className='col=12 text-end my-2'>
+                    <Link to='/cadastro_hospede' className='btn btn-primary ms-auto'>Cadastrar</Link>
                 </div>
+                <TabelaHospedes tipo='edit' onDeleteSuccess={mensagemDelete} />
             </div>
         </>
     )

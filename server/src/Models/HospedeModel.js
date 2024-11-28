@@ -1,4 +1,4 @@
-import mysql from "mysql2"
+import mysql from "mysql2/promise"
 import db from "../conexao.js";
 
 export async function createHospede(hospedes) {
@@ -31,44 +31,15 @@ export async function createHospede(hospedes) {
     }
 }
 
-// export async function readHospede(hospedes) {
-//     const conexao = mysql.createPool(db);
-
-//     //Ao ser acionado o metodo createAula retorna na tela
-//     console.log('Entrando no Model Hospede');
-
-//     //Criando aula
-//     const sql = `SELECT * FROM hospedes`;
-
-//     const params = [
-//         hospedes.nome_hospede,
-//         hospedes.num_celular,
-//         hospedes.email_hospede,
-//         hospedes.data_nascimento,
-//         hospedes.cpf_hospede
-//     ]
-
-//     //Executando query no banco
-//     try {
-//         const [retorno] = await conexao.query(sql, params);
-//         console.log('Hospede exibido');
-//         return [200, retorno];
-//     } catch (error) {
-//         console.log(error);
-//         return [400, error];
-//     }
-
-// }
-
 export async function readHospede() {
     const conexao = mysql.createPool(db);
     console.log('Entrando no Model Hospede');
 
-    const sql = `SELECT * FROM hospedes`;
+    const sql = 'SELECT * FROM hospedes';
 
     try {
         // Usando promise() para que query retorne uma Promise
-        const [retorno] = await conexao.promise().query(sql);
+        const [retorno] = await conexao.query(sql);
         console.log('Hospedes exibidos');
         return [200, retorno];  // Retorna o status 200 e os resultados da consulta
     } catch (error) {
@@ -120,9 +91,11 @@ export async function deleteHospede(id_hospede) {
     const conexao = mysql.createPool(db);
 
     console.log('Deletando no Model Hospede');
-    const sql = `DELETE FROM  hospedes WHERE id_hospede =?`;
-
-    const params = [id_hospede];
+    const sql = `UPDATE hospedes SET ativo = ? WHERE id_hospede=?`;
+    const params = [
+        0,
+        id_hospede
+    ]
 
     try {
         const [retorno] = await conexao.query(sql, params);
@@ -142,7 +115,7 @@ export async function showOneHospede(id_hospede) {
     const conexao = mysql.createPool(db);
 
     console.log('Mostrando um Hospede no Model Hospede');
-    const sql = `SELECT * FROM  hospedes WHERE id_hospede =?`;
+    const sql = 'SELECT * FROM  hospedes WHERE id_hospede =?';
     const params = [id_hospede];
 
     try {

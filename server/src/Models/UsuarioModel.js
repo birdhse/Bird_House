@@ -1,4 +1,4 @@
-import mysql from "mysql2"
+import mysql from "mysql2/promise"
 import db from "../conexao.js";
 
 export async function createUsuario(usuarios) {

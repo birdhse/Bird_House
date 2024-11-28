@@ -2,7 +2,6 @@ import FormReserva from "../../forms/FormReserva";
 import Menu from "../../layout/menu"
 
 function CadastroReserva() {
- 
 
   async function cadastrarReserva(infoReserva) {
     try {

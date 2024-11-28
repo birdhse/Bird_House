@@ -4,8 +4,6 @@ import TabelaReservas from '../tabelas/tabelaReservas';
 import { Link, useParams } from 'react-router-dom'
 
 
-//Teste
-
 function GestaoReservas() {
     const { tipo } = useParams();
     const [exibeAlerta, setExibeAlerta] = useState(false);

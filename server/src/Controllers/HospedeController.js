@@ -2,7 +2,6 @@ import { createHospede, deleteHospede, readHospede, showOneHospede, updateHosped
 import { hasProperty, isNullOrEmpty, verificaHospede } from "../validations/HospedeValidation.js";
 
 export async function criarHospede(req, res) {
-
     //Ao ser chamado o criarAula controller virá no console
     console.log('HospedeController criarHospede');
     const hospede = req.body;
@@ -30,22 +29,6 @@ export async function mostrarHospedes(req, res) {
     }
 }
 
-    // export async function mostrarHospedes(req, res) {
-    //     console.log('HospedeController mostrarHospede');
-    //     const hospede = req.body;
-
-    //     //Exibindo corpo da requisição
-    //     console.log(hospede);
-
-    //     try {
-    //         const [status, resposta] = await readHospede(hospede);
-    //         res.status(status).json(resposta);
-    //     } catch (error) {
-    //         console.log(error);
-    //         res.status(500).json(error);
-    //     }
-    // }
-
 export async function atualizarHospede(req, res) {
 
     console.log('HospedeController atualizarHospede');
@@ -67,7 +50,6 @@ export async function atualizarHospede(req, res) {
             res.status(500).json(error);
         }
     }
-
 }
 
 export async function excluirHospede(req, res) {
@@ -75,10 +57,10 @@ export async function excluirHospede(req, res) {
 
     const { id_hospede } = req.params;
 
-    if (verificaHospede(hospede)) {
-        res.status(400).json({ menssage: 'O id deve ser informado' });
-    }
-    else {
+    // if (verificaHospede(id_hospede)) {
+    //     res.status(400).json({ menssage: 'O id deve ser informado' });
+    // }
+    // else {
         try {
             const [status, resposta] = await deleteHospede(id_hospede);
             res.status(status).json(resposta);
@@ -86,9 +68,7 @@ export async function excluirHospede(req, res) {
             console.log(error);
             res.status(500).json(error);
         }
-    }
-
-
+    
 }
 
 export async function mostrarUmHospede(req, res) {
@@ -105,4 +85,3 @@ export async function mostrarUmHospede(req, res) {
         res.status(500).json(error);
     }
 }
-

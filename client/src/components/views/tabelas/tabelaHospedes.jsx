@@ -28,6 +28,31 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
         }
     }
 
+    async function deletarHospedes(id_hospede) {
+        const confirmacao = window.confirm("Você tem certeza que deseja deletar essa hospede?");
+        if (confirmacao) {
+        try {
+            const resposta = await fetch(`http://localhost:5000/hospedes/${id_hospede}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!resposta.ok) {
+                throw new Error('Erro ao deletar hospede', JSON.stringify(resposta));
+            } else {
+                setHospedes(hospedes.filter(hospede => hospede.id_hospede !== id_hospede));
+                OnDeleteSucess();
+            }
+        } catch (error) {
+            console.log(error);
+        }}
+    }
+
+    const filtrarHospedes = () => {
+        return hospedes.filter(hospede => hospede.ativo !== 0);
+    };
 
     return (
         <div>
@@ -45,7 +70,7 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
                         </tr>
                     </thead>
                     <tbody>
-                        {hospedes.map((hospede) => (
+                        {filtrarHospedes().map((hospede) => (
                             <tr key={hospede.id}>
                                 <td>{hospede.id_hospede}</td>
                                 <td>{hospede.nome_hospede}</td>
@@ -55,10 +80,13 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
                                 <td>{hospede.cpf_hospede}</td>
                                 {tipo === 'edit' && (
                                     <td className={styles.acaoBtn}>
-                                        <Link to={`/edit_hospede/${hospede.id}`} className="btn btn-warning btn-sm">
-                                            Editar
-                                        </Link>
-                                    </td>
+                                    <Link to={`/edit_hospede/${hospede.id_hospede}`} className="btn btn-warning btn-sm">
+                                        Editar
+                                    </Link>
+                                    <button className="btn btn-danger btn-sm" onClick={() => deletarHospedes(hospede.id_hospede)}>
+                                        Deletar
+                                    </button>
+                                </td>
                                 )}
                             </tr>
                         ))}

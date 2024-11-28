@@ -106,7 +106,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
                         </tr>
                     </thead>
                     <tbody>
-                        {filtrarReservas().map((reserva) => (
+                        {filtrarReservas().sort((a, b) => b.id_reserva - a.id_reserva).map((reserva) => (
                             <tr key={reserva.id_reserva}>
                                 <td>{reserva.id_reserva}</td>
                                 {/* Aqui está a chamada da função renderStatusIcon */}
