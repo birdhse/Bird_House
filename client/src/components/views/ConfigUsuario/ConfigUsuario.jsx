@@ -46,7 +46,7 @@ function ConfigUsuario() {
               </div>
 
               <div className="form-check mb-3">
-                <input type="checkbox" id="active" className="form-check-input" defaultChecked />
+                <input type="checkbox" id="active" className="form-check-input"/>
                 <label htmlFor="active" className="form-check-label w-1">Ativo</label>
               </div>
 
