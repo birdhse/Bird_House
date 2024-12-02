@@ -5,7 +5,7 @@ function CadastroReserva() {
 
   async function cadastrarReserva(infoReserva) {
     try {
-      const resposta = await fetch('http://localhost:5000/reservas', {
+      const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/reservas`, {
         method: 'POST',
         headers: { 'content-Type': 'application/json' },
         body: JSON.stringify(infoReserva)

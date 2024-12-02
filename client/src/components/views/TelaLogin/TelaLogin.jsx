@@ -11,7 +11,7 @@ function TelaLogin() {
         const dadosLogin = { login_usuario, senha };
 
         try {
-            const resposta = await fetch(`http://localhost:5000/login`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
