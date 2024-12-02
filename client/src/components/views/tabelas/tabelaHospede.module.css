@@ -5,6 +5,7 @@
     font-size: 16px;
     border-collapse: collapse;
     margin-top: 20px;
+    border-color: #CCCCCC;
 }
 
 /* Cabeçalho da tabela */
@@ -66,21 +67,30 @@
 
 /* Estilos para a tabela rolável */
 .tabelaHospedes tbody {
+    border-color: #CCCCCC;
     display: block;  /* Torna o corpo da tabela rolável */
-    max-height: 400px;  /* Altura máxima que o corpo da tabela pode ocupar */
+    max-height: 600px;  /* Altura máxima que o corpo da tabela pode ocupar */
     overflow-y: auto;   /* Permite rolar o conteúdo verticalmente */
     width: 100%;
 }
 
-.tabelaHospedes thead, .tabelaHospedes tbody tr {
+.tabelaHospedes thead {
+    display: table-header-group; /* Garante que o cabeçalho da tabela não role */
+}
+
+.tabelaHospedes tbody {
+    display: block; /* Torna o corpo da tabela rolável */
+    width: 100%;
+}
+
+.tabelaHospedes tr {
     display: table;
     width: 100%;
-    table-layout: fixed; /* Garantir que o cabeçalho e o corpo fiquem alinhados */
+    table-layout: fixed;
 }
 
-.tabelaHospedes th, .tabelaHospedes td {
-    text-align: center;
-    padding: 8px;
+.tabelaHospedes td, .tabelaHospedes th {
     word-wrap: break-word;
+    padding: 8px;
+    text-align: left;
 }
-

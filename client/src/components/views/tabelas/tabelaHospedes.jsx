@@ -74,8 +74,8 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
                 />
             </div>
             <br/>
-            <div className={`${styles.TabelaHospedes} ${tipo === 'edit' ? styles.edit : ''}`}>
-                <table className={`table table-bordered ${styles.TabelaHospedes}`}>
+            <div className={`${styles.tabelaHospedes} ${tipo === 'edit' ? styles.edit : ''}`}>
+                <table className={`table table-bordered ${styles.tabelaHospedes}`}>
                     <thead>
                         <tr>
                             <th>Nº</th>
