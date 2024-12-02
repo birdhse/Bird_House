@@ -33,9 +33,9 @@ app.get('/hospedes/:id_hospede', mostrarUmHospede)
 
 app.post("/usuarios",criarUsuario)
 app.get("/usuarios",mostrarUsuarios)
-app.put("/usuarios/:id_hospede",atualizarUsuario)
-app.delete("/usuarios/:id_hospede",excluirUsuario)
-app.get('/usuarios/:id_hospede', mostrarUmUsuario)
+app.put("/usuarios/:id_usuario",atualizarUsuario)
+app.delete("/usuarios/:id_usuario",excluirUsuario)
+app.get('/usuarios/:id_usuario', mostrarUmUsuario)
 
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)

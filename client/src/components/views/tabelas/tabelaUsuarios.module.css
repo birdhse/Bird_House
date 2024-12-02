@@ -1,0 +1,5 @@
+/* Colunas de ação (botões editar e deletar) */
+.acaoBtn {
+    display: flex;
+    justify-content: space-around;
+}

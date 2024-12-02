@@ -81,7 +81,7 @@ function TabelaReservas({ tipo, onDeleteSuccess }) {
                 if (filtro === 'todos') {
                     return reserva.ativo !== 0;
                 } else {
-                    return reserva.id_status_reserva === filtro;
+                    return reserva.id_status_reserva === filtro && reserva.ativo !== 0;
                 }
             })
             .filter(reserva => {
