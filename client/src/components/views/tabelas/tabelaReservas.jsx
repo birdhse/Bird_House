@@ -132,30 +132,34 @@ function TabelaReservas({ tipo, onDeleteSuccess }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {filtrarReservas().sort((a, b) => b.id_reserva - a.id_reserva).map((reserva) => (
-                            <tr key={reserva.id_reserva}>
-                                <td>{reserva.id_reserva}</td>
-                                <td>{renderStatusIcon(reserva.id_status_reserva)}</td>
-                                <td>{reserva.nome_hospede}</td>
-                                <td>{reserva.nome_acomodacao}</td>
-                                <td>{new Date(reserva.checkin).toLocaleDateString('pt-BR')}</td>
-                                <td>{new Date(reserva.checkout).toLocaleDateString('pt-BR')}</td>
-                                <td>{reserva.qntd_hospedes}</td>
-                                {tipo === 'edit' && (
-                                    <td className={styles.acaoBtn}>
-                                        <Link to={`/edit_reserva/${reserva.id_reserva}`} className="btn btn-warning btn-sm">
-                                            Editar
-                                        </Link>
-                                        <button className="btn btn-danger btn-sm" onClick={() => deletarReservas(reserva.id_reserva)}>
-                                            Deletar
-                                        </button>
-                                    </td>
-                                )}
-                            </tr>
-                        ))}
+                        {/* Aqui, envolvemos a tbody em uma div com rolamento */}
+                        <div className={styles.tabelaBody}>
+                            {filtrarReservas().sort((a, b) => b.id_reserva - a.id_reserva).map((reserva) => (
+                                <tr key={reserva.id_reserva}>
+                                    <td>{reserva.id_reserva}</td>
+                                    <td>{renderStatusIcon(reserva.id_status_reserva)}</td>
+                                    <td>{reserva.nome_hospede}</td>
+                                    <td>{reserva.nome_acomodacao}</td>
+                                    <td>{new Date(reserva.checkin).toLocaleDateString('pt-BR')}</td>
+                                    <td>{new Date(reserva.checkout).toLocaleDateString('pt-BR')}</td>
+                                    <td>{reserva.qntd_hospedes}</td>
+                                    {tipo === 'edit' && (
+                                        <td className={styles.acaoBtn}>
+                                            <Link to={`/edit_reserva/${reserva.id_reserva}`} className="btn btn-warning btn-sm">
+                                                Editar
+                                            </Link>
+                                            <button className="btn btn-danger btn-sm" onClick={() => deletarReservas(reserva.id_reserva)}>
+                                                Deletar
+                                            </button>
+                                        </td>
+                                    )}
+                                </tr>
+                            ))}
+                        </div>
                     </tbody>
                 </table>
             </div>
+
         </div>
     );
 }

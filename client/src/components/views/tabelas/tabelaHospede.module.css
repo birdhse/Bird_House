@@ -15,12 +15,12 @@
 
 /* Linhas ímpares */
 .tabelaHospedes tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
+    background-color: #fbfeff;
 }
 
 /* Linhas pares */
 .tabelaHospedes tbody tr:nth-child(even) {
-    background-color: #d9edf7;
+    background-color: #e3f0f3;
 }
 
 /* Colunas de ação (botões editar e deletar) */
@@ -45,6 +45,7 @@
     margin-right: 8px;
 }
 
+/* Estilo para os botões de filtro de status */
 .filtroStatus {
     margin-bottom: 20px;
 }
@@ -58,9 +59,28 @@
     border: none;
 }
 
-
-
 /* Estilo para o tipo 'edit' */
 .edit {
     width: 100%;
 }
+
+/* Estilos para a tabela rolável */
+.tabelaHospedes tbody {
+    display: block;  /* Torna o corpo da tabela rolável */
+    max-height: 400px;  /* Altura máxima que o corpo da tabela pode ocupar */
+    overflow-y: auto;   /* Permite rolar o conteúdo verticalmente */
+    width: 100%;
+}
+
+.tabelaHospedes thead, .tabelaHospedes tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Garantir que o cabeçalho e o corpo fiquem alinhados */
+}
+
+.tabelaHospedes th, .tabelaHospedes td {
+    text-align: center;
+    padding: 8px;
+    word-wrap: break-word;
+}
+

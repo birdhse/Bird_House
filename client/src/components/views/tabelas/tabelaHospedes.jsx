@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function TabelaHospedes({ tipo, OnDeleteSucess}) {
     const [hospedes, setHospedes] = useState([]);
+    const [pesquisa, setPesquisa] = useState("");
 
     useEffect(() => {
         baixarHospedes();
@@ -51,11 +52,28 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
     }
 
     const filtrarHospedes = () => {
-        return hospedes.filter(hospede => hospede.ativo !== 0);
+        return hospedes.filter(hospede => hospede.ativo !== 0)
+        .filter(hospede => {
+            // Filtra pelo id_reserva, nome_hospede ou nome_acomodacao
+            return (
+                hospede.cpf_hospede.toString().includes(pesquisa) || // Filtra pelo CPF do hóspede
+                hospede.nome_hospede.toLowerCase().includes(pesquisa.toLowerCase())// Filtra pelo nome do hóspede
+            );
+        });
     };
 
     return (
         <div>
+             <div className={styles.barraPesquisa}>
+                <input
+                    type="text"
+                    placeholder="Pesquisar por nome e cpf"
+                    value={pesquisa}
+                    onChange={(e) => setPesquisa(e.target.value)}  // Atualiza o estado com o valor digitado
+                    className={styles.inputPesquisa}
+                />
+            </div>
+            <br/>
             <div className={`${styles.TabelaHospedes} ${tipo === 'edit' ? styles.edit : ''}`}>
                 <table className={`table table-bordered ${styles.TabelaHospedes}`}>
                     <thead>
@@ -69,26 +87,26 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
                             {tipo === 'edit' && <th>Mais Informações</th>}
                         </tr>
                     </thead>
-                    <tbody>
-                        {filtrarHospedes().map((hospede) => (
-                            <tr key={hospede.id}>
-                                <td>{hospede.id_hospede}</td>
-                                <td>{hospede.nome_hospede}</td>
-                                <td>{hospede.num_celular}</td>
-                                <td>{hospede.email_hospede}</td>
-                                <td>{new Date(hospede.data_nascimento).toLocaleDateString('pt-BR')}</td>
-                                <td>{hospede.cpf_hospede}</td>
-                                {tipo === 'edit' && (
-                                    <td className={styles.acaoBtn}>
-                                    <Link to={`/edit_hospede/${hospede.id_hospede}`} className="btn btn-warning btn-sm">
-                                        Editar
-                                    </Link>
-                                    <button className="btn btn-danger btn-sm" onClick={() => deletarHospedes(hospede.id_hospede)}>
-                                        Deletar
-                                    </button>
-                                </td>
-                                )}
-                            </tr>
+                    <tbody className={styles.tabelaBody}>
+                        {filtrarHospedes().sort((a, b) => b.id_hospede - a.id_hospede).map((hospede) => (
+                             <tr key={hospede.id}>
+                             <td>{hospede.id_hospede}</td>
+                             <td>{hospede.nome_hospede}</td>
+                             <td>{hospede.num_celular}</td>
+                             <td>{hospede.email_hospede}</td>
+                             <td>{new Date(hospede.data_nascimento).toLocaleDateString('pt-BR')}</td>
+                             <td>{hospede.cpf_hospede}</td>
+                             {tipo === 'edit' && (
+                                 <td className={styles.acaoBtn}>
+                                     <Link to={`/edit_hospede/${hospede.id_hospede}`} className="btn btn-warning btn-sm">
+                                         Editar
+                                     </Link>
+                                     <button className="btn btn-danger btn-sm" onClick={() => deletarHospedes(hospede.id_hospede)}>
+                                         Deletar
+                                     </button>
+                                 </td>
+                             )}
+                         </tr>
                         ))}
                     </tbody>
                 </table>
