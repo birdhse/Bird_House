@@ -5,6 +5,7 @@
     font-size: 16px;
     border-collapse: collapse;
     margin-top: 20px;
+    border-color: #CCCCCC;
 }
 
 /* Cabeçalho da tabela */
@@ -15,12 +16,12 @@
 
 /* Linhas ímpares */
 .tabelaHospedes tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
+    background-color: #fbfeff;
 }
 
 /* Linhas pares */
 .tabelaHospedes tbody tr:nth-child(even) {
-    background-color: #d9edf7;
+    background-color: #e3f0f3;
 }
 
 /* Colunas de ação (botões editar e deletar) */
@@ -45,6 +46,7 @@
     margin-right: 8px;
 }
 
+/* Estilo para os botões de filtro de status */
 .filtroStatus {
     margin-bottom: 20px;
 }
@@ -58,9 +60,37 @@
     border: none;
 }
 
-
-
 /* Estilo para o tipo 'edit' */
 .edit {
     width: 100%;
+}
+
+/* Estilos para a tabela rolável */
+.tabelaHospedes tbody {
+    border-color: #CCCCCC;
+    display: block;  /* Torna o corpo da tabela rolável */
+    max-height: 600px;  /* Altura máxima que o corpo da tabela pode ocupar */
+    overflow-y: auto;   /* Permite rolar o conteúdo verticalmente */
+    width: 100%;
+}
+
+.tabelaHospedes thead {
+    display: table-header-group; /* Garante que o cabeçalho da tabela não role */
+}
+
+.tabelaHospedes tbody {
+    display: block; /* Torna o corpo da tabela rolável */
+    width: 100%;
+}
+
+.tabelaHospedes tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tabelaHospedes td, .tabelaHospedes th {
+    word-wrap: break-word;
+    padding: 8px;
+    text-align: left;
 }

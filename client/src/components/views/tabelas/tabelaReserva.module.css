@@ -5,6 +5,7 @@
     font-size: 16px;
     border-collapse: collapse;
     margin-top: 20px;
+    border-color: #CCCCCC;
 }
 
 /* Cabeçalho da tabela */
@@ -15,12 +16,12 @@
 
 /* Linhas ímpares */
 .tabelaReservas tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
+    background-color: #fbfeff;
 }
 
 /* Linhas pares */
 .tabelaReservas tbody tr:nth-child(even) {
-    background-color: #d9edf7;
+    background-color: #e3f0f3;
 }
 
 /* Colunas de ação (botões editar e deletar) */
@@ -45,6 +46,20 @@
     margin-right: 8px;
 }
 
+/* Botões de filtro de status */
+.filtroStatus {
+    margin-bottom: 20px;
+}
+
+.filtroStatus button {
+    margin-right: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+}
+
 .statusIcon.solicitada {
     background-color: #4caf50;
 }
@@ -67,21 +82,6 @@
 
 .statusIcon.finalizada {
     background-color: #ffeb3b;
-}
-
-
-/* Botões de filtro de status */
-.filtroStatus {
-    margin-bottom: 20px;
-}
-
-.filtroStatus button {
-    margin-right: 5px;
-    border-radius: 5px;
-    color: white;
-    font-size: 14px;
-    padding: 8px 12px;
-    border: none;
 }
 
 .filtroStatus .todos {
@@ -118,3 +118,31 @@
     width: 100%;
 }
 
+/* Estilo para permitir rolamento no corpo da tabela */
+.tabelaBody {
+    border-color: #CCCCCC;
+    display: block;
+    max-height: 600px; /* Define a altura máxima do corpo da tabela */
+    overflow-y: auto;  /* Rolamento vertical ativado */
+}
+
+.tabelaReservas thead {
+    display: table-header-group; /* Garante que o cabeçalho da tabela não role */
+}
+
+.tabelaReservas tbody {
+    display: block; /* Torna o corpo da tabela rolável */
+    width: 100%;
+}
+
+.tabelaReservas tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tabelaReservas td, .tabelaReservas th {
+    word-wrap: break-word;
+    padding: 8px;
+    text-align: left;
+}
