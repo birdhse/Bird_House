@@ -11,7 +11,7 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
 
     async function baixarHospedes() {
         try {
-            const resposta = await fetch(`http://localhost:5000/hospedes`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/hospedes`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ function TabelaHospedes({ tipo, OnDeleteSucess}) {
         const confirmacao = window.confirm("Você tem certeza que deseja deletar essa hospede?");
         if (confirmacao) {
         try {
-            const resposta = await fetch(`http://localhost:5000/hospedes/${id_hospede}`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/hospedes/${id_hospede}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

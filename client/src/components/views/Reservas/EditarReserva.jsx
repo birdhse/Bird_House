@@ -8,7 +8,7 @@ function EditReserva() {
 
   async function editarReserva(infoReserva, id_reserva) {
     try {
-      const resposta = await fetch(`http://localhost:5000/reservas/${id_reserva}`,{
+      const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/reservas/${id_reserva}`,{
         method:'PUT',
         headers:{
           'Content-Type':'application/json'

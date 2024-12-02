@@ -19,7 +19,7 @@ function FormHospede({ titulo, textoBotao, handleSubmit, id_hospede }) {
 
     async function baixarHospede(id_hospede) {
         try {
-            const resposta = await fetch(`http://localhost:5000/hospedes/${id_hospede}`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/hospedes/${id_hospede}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

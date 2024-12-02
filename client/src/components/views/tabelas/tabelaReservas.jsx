@@ -12,7 +12,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
 
     async function baixarReservas() {
         try {
-            const resposta = await fetch('http://localhost:5000/reservas/tabela', {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/reservas/tabela`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ function TabelaReservas({tipo, onDeleteSuccess}) {
         const confirmacao = window.confirm("Você tem certeza que deseja deletar essa reserva?");
         if (confirmacao) {
         try {
-            const resposta = await fetch(`http://localhost:5000/reservas/${id_reserva}`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/reservas/${id_reserva}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

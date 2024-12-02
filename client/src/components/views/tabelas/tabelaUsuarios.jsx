@@ -11,7 +11,7 @@ function tabelaUsuarios({ tipo, OnDeleteSucess}) {
 
     async function baixarUsuarios() {
         try {
-            const resposta = await fetch(`http://localhost:5000/usuarios`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/usuarios`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,21 +37,21 @@ function tabelaUsuarios({ tipo, OnDeleteSucess}) {
                         <tr>
                             <th>Nome Completo</th>
                             <th>E-mail</th>
+                            <th>Login</th>
                             <th>Função</th>
-                            <th>Status</th>
                             {tipo === 'edit' && <th>Mais Informações</th>}
                         </tr>
                     </thead>
                     <tbody>
                         {usuarios.map((usuario) => (
-                            <tr key={usuario.id}>
-                                <td>{usuario.}</td>
-                                <td>{usuario.}</td>
-                                <td>{usuario.}</td>
-                                <td>{usuario.}</td>
+                            <tr key={usuario.id_usuario}>
+                                <td>{usuario.nome_usuario}</td>
+                                <td>{usuario.email_usuario}</td>
+                                <td>{usuario.login_usuario}</td>
+                                <td>{usuario.id_cargo}</td>
                                 {tipo === 'edit' && (
                                     <td className={styles.acaoBtn}>
-                                        <Link to={`/edit_usuario/${usuario.id}`} className="btn btn-warning btn-sm">
+                                        <Link to={`/edit_usuario/${usuario.id_usuario}`} className="btn btn-warning btn-sm">
                                             Editar
                                         </Link>
                                     </td>
