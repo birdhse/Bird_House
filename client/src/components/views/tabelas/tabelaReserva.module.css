@@ -46,7 +46,7 @@
 }
 
 .statusIcon.solicitada {
-    background-color: #4784ca;
+    background-color: #4caf50;
 }
 
 .statusIcon.reservada {
@@ -54,7 +54,7 @@
 }
 
 .statusIcon.hospedada {
-    background-color: #e57373;
+    background-color: #9173e5;
 }
 
 .statusIcon.atrasada {
@@ -62,45 +62,13 @@
 }
 
 .statusIcon.cancelada {
-    background-color: #4caf50;
+    background-color: #4784ca;
 }
 
 .statusIcon.finalizada {
     background-color: #ffeb3b;
 }
 
-
-/* .reservado {
-    background-color: #26a9e1;
-}
-
-.hospedado {
-    background-color: #ffcc00;
-}
-
-.emLimpeza {
-    background-color: #e57373;
-}
-
-.bloqueado {
-    background-color: #000;
-}
-
-.finalizado {
-    background-color: #4caf50;
-}
-
-.cancelado {
-    background-color: #ff5722;
-}
-
-.atrasado {
-    background-color: #9c27b0;
-}
-
-.vencido {
-    background-color: #3f51b5;
-} */
 
 /* Botões de filtro de status */
 .filtroStatus {
@@ -121,7 +89,7 @@
 }
 
 .filtroStatus .reservado {
-    background-color: #4784ca;
+    background-color: #4caf50;
 }
 
 .filtroStatus .hospedado {
@@ -129,30 +97,21 @@
 }
 
 .filtroStatus .emLimpeza {
-    background-color: #e57373;
+    background-color: #9173e5;
 }
 
-.filtroStatus .bloqueado {
+.filtroStatus .atrasada {
     background-color: #000000;
 }
 
 .filtroStatus .finalizado {
-    background-color: #4caf50;
+    background-color: #4784ca;
 }
 
 .filtroStatus .cancelado {
     background-color: #ffeb3b;
     color: black;
 }
-
-.filtroStatus .atrasado {
-    background-color: #9c27b0;
-}
-
-.filtroStatus .vencido {
-    background-color: #3f51b5;
-}
-
 
 /* Estilo para o tipo 'edit' */
 .edit {
