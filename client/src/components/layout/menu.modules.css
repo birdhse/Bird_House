@@ -57,11 +57,32 @@
   margin-top: 20px;
 }
 
-/* Ícones no cabeçalho */
-.material_symbols_outlined {
+.material-symbols-outlined {
   color: white;
   font-size: 24px;
   margin-left: 20px;
+  margin-top: 7px;
+}
+
+/* Botão de ícone de configurações */
+.icon-button {
+  background: transparent; /* Sem fundo */
+  border: none; /* Sem bordas */
+  cursor: pointer; /* Cursor de link ao passar o mouse */
+  font-size: 24px; /* Tamanho do ícone */
+  padding: 10px;
+  margin: 0;
+  outline: none; /* Remove contorno ao focar */
+  transition: transform 0.2s ease; /* Suaviza a animação */
+  color: white; /* Cor do ícone */
+}
+
+.icon-button:hover {
+  transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+}
+
+.icon-button:focus {
+  outline: none; /* Remove o contorno ao clicar */
 }
 
 /* Menu lateral */
@@ -113,7 +134,6 @@ label {
   font-size: 16px;
 }
 
-
 /* Ajustes adicionais para a logo */
 .logo {
   color: rgb(245, 245, 245);
@@ -125,12 +145,32 @@ label {
 .logo-image {
   width: 45px; /* Ajuste do tamanho da imagem */
   height: 40px;
-
 }
 
 .logo-text {
   color: white;
   font-size: 1.8rem;
   font-weight: bold;
+}
+
+.icon-button {
+  background: transparent; /* Sem fundo */
+  border: none; /* Sem bordas */
+  cursor: pointer; /* Cursor de link ao passar o mouse */
+  padding: 5px;
+  margin-top: 10px;
+  outline: none; /* Remove contorno ao focar */
+  transition: transform 0.2s ease; /* Animação suave para transformação */
+  color: white; /* Cor do ícone */
+  box-shadow: none; /* Remove sombras padrão */
+}
+
+.icon-button:hover,
+.icon-button:focus,
+.icon-button:active {
+  background: transparent; /* Remove fundo no hover e no foco */
+  box-shadow: none; /* Remove sombra no clique */
+  outline: none; /* Remove contorno no foco */
+  transform: scale(1.1); /* Apenas aplica a escala no hover */
 }
 
