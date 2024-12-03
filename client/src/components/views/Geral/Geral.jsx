@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Menu from '../../layout/menu';
 import './Geral.modules.css';
 
+
 function Geral() {
+
     // Funções para lidar com os cliques nos botões
     const handleActionClick = (action) => {
         console.log(`Botão ${action} clicado!`);
@@ -12,6 +14,7 @@ function Geral() {
         console.log(`Botão ${icon} clicado!`);
     };
 
+    
     return (
         <div>
             <Menu />
