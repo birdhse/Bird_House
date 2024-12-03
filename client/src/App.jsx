@@ -18,6 +18,12 @@ import FormHospede from './components/forms/FormHospede';
 import CadastroHospede from './components/views/Hospedes/CadastroHospede';
 import EditHospede from './components/views/Hospedes/EditHospede';
 import FormReserva from './components/forms/FormReserva';
+
+import GestaoUsuarios from './components/views/Usuario/GestãoUsuario';
+import CadastroUsuario from './components/views/Usuario/CadastroUsuario'
+import EditUsuario from './components/views/Usuario/EditarUsuario';
+import FormUsuario from './components/forms/FormUsuario';
+
 // import TelaLogin from './components/views/TelaLogin/TelaLogin';
 
 
@@ -42,7 +48,13 @@ function App() {
         <Route path='/cadastro_hospede' element={<CadastroHospede/>}/>
         <Route path='/edit_hospede/:id_hospede' element={<EditHospede/>}/>
 
-        <Route path='/usuario_config/' element={<ConfigUsuario />} />
+        <Route path='/usuario_config' element={<ConfigUsuario />} />
+
+        <Route path='/usuarios' element={<GestaoUsuarios/>}/>
+        <Route path='/usuarios/:tipo' element={<GestaoUsuarios/>}/>
+        <Route path='/usuario/:id_usuario' element={<FormUsuario/>}/>
+        <Route path='/cadastro_usuario' element={<CadastroUsuario/>}/>
+        <Route path='/edit_usuario/:id_usuario' element={<EditUsuario/>}/>
 
       </Routes>
     </BrowserRouter>

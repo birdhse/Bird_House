@@ -9,35 +9,39 @@ function Menu() {
     const navigate = useNavigate();
     const [idCargo, setIdCargo] = useState(null); // Estado para armazenar o id_cargo do usuário
 
-    /*useEffect(() => {
-        verificaLogin();
-    }, []);*/
+    useEffect(() => {
+        const id_usuario = localStorage.getItem('id_usuario');
+        console.log(id_usuario);
+        if (!id_usuario) {
+            navigate("/"); // Redireciona se o usuário não estiver logado
+        } else {
+            verificaPermissao(id_usuario);
+        }
+        async function verificaPermissao(id_usuario) {
+            try {
+                const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/usuarios/${id_usuario}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                    const respostaJSON = await resposta.json();
+                    setIdCargo(respostaJSON.id_cargo); // Salva o id_cargo no estado
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }, []);
 
-    // async function verificaLogin() {
-    //     const id_usuario = localStorage.getItem('id_usuario');
-    //     console.log(id_usuario);
-    //     if (!id_usuario) {
-    //         navigate("/"); // Redireciona se o usuário não estiver logado
-    //     } else {
-    //         verificaPermissao(id_usuario);
-    //     }
-    // }
+    async function verificaLogin() {
+        const id_usuario = localStorage.getItem('id_usuario');
+        console.log(id_usuario);
+        if (!id_usuario) {
+            navigate("/"); // Redireciona se o usuário não estiver logado
+        }
+    }
 
-    // async function verificaPermissao(id_usuario) {
-    //     try {
-    //         const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/usuarios/${id_usuario}`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-    //             const respostaJSON = await resposta.json();
-    //             setIdCargo(respostaJSON.id_cargo); // Salva o id_cargo no estado
-    //             window.location.href = '/geral'; // Redireciona após login
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+   
 
     return (
         <div>
@@ -65,10 +69,9 @@ function Menu() {
                     <li><a href="/reservas">Reservas</a></li>
                     <li><a href="/hospedes">Hóspedes</a></li>
                     {/* Condicionalmente renderiza os links de "Usuários" e "Relatórios" se o id_cargo for 1 */}
-                    {/* {idCargo === 1 && <li><a href="/usuarios">Usuários</a></li>}
-                    {idCargo === 1 && <li><a href="/relatorios">Relatórios</a></li>} */}
-                    <li><a href="/usuarios">Usuários</a></li>
-                    <li><a href="/relatorios">Relatórios</a></li>
+                    {idCargo === 1 && <li><a href="/usuarios">Usuários</a></li>}
+                    {idCargo === 1 && <li><a href="/relatorios">Relatórios</a></li>}
+                   
                 </ul>
             </div>
         </div>
