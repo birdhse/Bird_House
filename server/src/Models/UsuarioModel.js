@@ -104,17 +104,19 @@ export async function deleteUsuario(id_usuario) {
     const conexao = mysql.createPool(db);
 
     console.log('Deletando no Model Usuario');
-    const sql = `DELETE FROM  usuarios WHERE id_usuario =?`;
-
-    const params = [id_usuario];
+    const sql = `UPDATE usuarios SET ativo = ? WHERE id_usuario=?`;
+    const params = [
+        0,
+        id_usuario
+    ]
 
     try {
         const [retorno] = await conexao.query(sql, params);
-        console.log('Deletando Usuario');
+        console.log('Inativando Usuario');
         if (retorno.affectedRows < 1) {
             return [404, { message: 'Usuario não encontrado' }];
         }
-        return [200, { menssage: 'Usuario deletado' }];
+        return [200, { menssage: 'Usuario inativado' }];
 
     } catch (error) {
         console.log(error);
@@ -162,4 +164,20 @@ export async function findUserByLoginPassword(login_usuario,senha) {
         return [500, {message: 'Erro ao mostrar usuário'}]
         
     }
+}
+
+export async function showTableUsuarios() {
+    const conexao = mysql.createPool(db);
+
+    console.log('Entrando no Model showTableUsuarios');
+    const sql = `SELECT * FROM tabelausuarios;`;
+
+    try {
+        const [retorno] = await conexao.query(sql);
+        console.log('Tabela Usuarios exibida');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [502, error];
+    }    
 }

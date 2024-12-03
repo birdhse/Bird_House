@@ -226,8 +226,5 @@ export async function showTableReservas() {
     } catch (error) {
         console.log(error);
         return [502, error];
-    }
-
-    
-    
+    }    
 }

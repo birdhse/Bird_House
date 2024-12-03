@@ -1,6 +1,20 @@
-import { createUsuario, deleteUsuario, readUsuario, showOneUsuario, updateUsuario, findUserByLoginPassword} from "../Models/UsuarioModel.js";
+import { showTableUsuarios, createUsuario, deleteUsuario, readUsuario, showOneUsuario, updateUsuario, findUserByLoginPassword} from "../Models/UsuarioModel.js";
 import { hasProperty, isNullOrEmpty,verificaUsuario } from "../validations/UsuarioValidation.js";
 
+export async function mostrarTabelaUsuarios(req, res) {
+    console.log('ReservaController mostrarTabelaUsuarios');
+    const usuario = req.body;
+
+    console.log(usuario);
+
+    try {
+        const [status, resposta] = await showTableUsuarios(usuario);
+        res.status(status).json(resposta);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
 
 export async function criarUsuario(req, res) {
 
@@ -85,7 +99,7 @@ export async function excluirUsuario(req, res) {
 
     const { id_usuario } = req.params;
 
-    if (verificaUsuario(usuario)) {
+    if (isNullOrEmpty(id_usuario)) {
         res.status(400).json({ menssage: 'O id deve ser informado' });
     }
     else {
