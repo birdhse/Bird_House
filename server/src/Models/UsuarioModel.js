@@ -68,7 +68,7 @@ export async function updateUsuario(usuarios, id_usuario) {
     console.log('Entrando no Model Usuario');
 
     //Criando String com comandos sql
-    const sql = `UPDATE hospedes SET nome_hospede = ?,
+    const sql = `UPDATE usuarios SET
     nome_usuario = ?,
     email_usuario = ?,
     login_usuario = ?,
@@ -104,11 +104,9 @@ export async function deleteUsuario(id_usuario) {
     const conexao = mysql.createPool(db);
 
     console.log('Deletando no Model Usuario');
-    const sql = `UPDATE usuarios SET ativo = ? WHERE id_usuario=?`;
-    const params = [
-        0,
-        id_usuario
-    ]
+    const sql = `DELETE FROM  usuarios WHERE id_usuario =?`;
+
+    const params = [id_usuario];
 
     try {
         const [retorno] = await conexao.query(sql, params);
@@ -128,7 +126,7 @@ export async function showOneUsuario(id_usuario) {
     const conexao = mysql.createPool(db);
 
     console.log('Mostrando um Usuario no Model Usuario');
-    const sql = `SELECT * FROM  usuarios WHERE id_usuario =?`;
+    const sql = `SELECT * FROM usuarios WHERE id_usuario =?`;
     const params = [id_usuario];
 
     try {

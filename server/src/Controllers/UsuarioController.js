@@ -120,7 +120,6 @@ export async function mostrarUmUsuario(req, res) {
 
     const { id_usuario} = req.params;
 
-
     try {
         const [status, resposta] = await showOneUsuario(id_usuario);
         res.status(status).json(resposta);

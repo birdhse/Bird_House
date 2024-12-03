@@ -62,14 +62,13 @@ a tela hospedes será igual a de reservas, e na coluna de "ações" será "mais 
 View de usuarios
 Tela Geral - view das reservas, status reserva, acomodações, status acomdação, hospedes.
 
-AO CADASTRAR NOVA RESERVA, O SISTEMA BUSCA SE HÁ UMA RESERVA PELO MESMO HOSPEDE EM UMA DATA QUE CONFLITE EM OUTRA ACOMODAÇÃO, OU SE HÁ UMA RESERVA NA ACOMODAÇÃO ALGUMA RESERVA EM DATA QUE CONFLITE
-
-APLICAR BARRA DE PESQUISA EM HOSPEDE, E ROLAMENTO DE TABELA
-
-AO CADASTRAR NOVO HOSPEDE, O SISTEMA BUSCA NO BANCO DE HOSPEDES SE ALGUM POSSUI CPF IGUAL, SE SIM ELE IMPEDE O CADASTRO. 
+validação:
+-AO CADASTRAR NOVA RESERVA, O SISTEMA BUSCA SE HÁ UMA RESERVA PELO MESMO HOSPEDE EM UMA DATA QUE CONFLITE EM OUTRA ACOMODAÇÃO, OU SE HÁ UMA RESERVA NA ACOMODAÇÃO ALGUMA RESERVA EM DATA QUE CONFLITE
+-AO CADASTRAR NOVO HOSPEDE, O SISTEMA BUSCA NO BANCO DE HOSPEDES SE ALGUM POSSUI CPF IGUAL, SE SIM ELE IMPEDE O CADASTRO. 
 
 
 
 as informações de documento,perfil e editar so vai aparecer quando tiver no status indisponível
 liberar vai aparecer quando a data de check-out coincidir com a data atual e após liberar a acomodação entrará em status de limpeza,e após 1 hora a acomodação entrará em estado de disponível 
 hospedar so vai aparecer quando a acomodação estiver disponível
+

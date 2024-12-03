@@ -1,34 +1,33 @@
 import { useEffect, useState } from "react";
 
 //Declarando função 'Data'
-function Data(){
+function Data() {
     //Declarando 'hora' como estado
-    const [data,setData] = useState('');
+    const [data, setData] = useState('');
 
     //Chamando função pós carregamento
-    useEffect(()=>{
+    useEffect(() => {
         //Chamando função de Atualizar Horário primeira vez
         atualizaData();
-        
+
         //Declarando intervalo de 1 segundo para atualizar relógio
-        const intervalo = setInterval(atualizaData,1000);
-        return()=>{
+        const intervalo = setInterval(atualizaData, 1000);
+        return () => {
             clearInterval(intervalo);
         }
-    },[]);
+    }, []);
 
     //Declarando função que atribui a hora a hora minutos e segundos atuais
-    function atualizaData(){
-        //Declarando Objeto do tipo Date
-        const hoje = new Date();
-        //Pegando hora minutos e segundos
+    function atualizaData() {
+        let data = new Date();
+        let diaHoje = ("0" + data.getDate()).slice(-2);
+        let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+        let anoHoje = data.getFullYear();
 
-        const dataCompleta = hoje.getDate() + '/'+(hoje.getMonth()+1)+'/'+hoje.getFullYear();
-        //Atualizando o estado hora para hora minutos e segundos atuais
-        setData(dataCompleta);
+        const hoje = diaHoje + '/' + mesHoje + '/' + anoHoje;
+        setData(hoje);
     }
-    return(
-        //Retornando uma div com a hora minutos e segundos de forma correta
+    return (
         <div>
             {data}
         </div>

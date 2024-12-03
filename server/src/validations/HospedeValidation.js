@@ -19,65 +19,59 @@ export function verificaHospede(hospede) {
 }
 
 export function verificaTelefHosp(num_celular) {
-    num_celular = document.getElementById('num_celular').value.trim();
+    const celular = num_celular.trim();
     const telPadrao = /^\d{11}$/; // Formato XXXXXXXXXXX
     let valido = true;
 
-    if (num_celular === '' || !telPadrao.test(num_celular)) {
-        document.getElementById('alerta-telef').style.visibility = 'visible';
+    if (celular === '' || !telPadrao.test(celular)) {
         valido = false;
     } else {
-        document.getElementById('alerta-telef').style.visibility = 'hidden';
+        return valido;
     }
-
-    return valido;
 }
 
 export function verificaEmailHosp(email_hospede) {
-    email_hospede = document.getElementById('email_hospede').value.trim();
+    const email = email_hospede.trim();
     let valido = true;
 
-    if (email_hospede === '' || !email_hospede.includes('@')) {
-        document.getElementById('alerta-email').style.visibility = 'visible';
+    if (email === '' || !email.includes('@')) {
         valido = false;
     } else {
-        document.getElementById('alerta-email').style.visibility = 'hidden';
+        return valido;
     }
-
-    return valido;
 }
 
 export function verificarDataNascimentoHosp(data_nascimento) {
-    const dataPadrao = /^\d{2}\/\d{2}\/\d{4}$/;
+    const dataPadrao2 = /^\d{4}-\d{2}-\d{2}$/;  // Formato dd-mm-yyyy
 
-    // Verifica o formato "dd/mm/aaaa"
-    if (!dataPadrao.test(data_nascimento)) {
-        return false;
+    // Verifica se a data corresponde a um dos dois formatos
+    if (!dataPadrao2.test(data_nascimento)) {
+        console.log(1);
+        return false; // Se não tiver o formato correto, retorna falso
     }
 
-    // Divide a data em dia, mês e ano
-    const [dia, mes, ano] = data_nascimento.split('/').map(num => parseInt(num, 10));
+    const [ano, mes, dia] = data_nascimento.split('-').map(num => parseInt(num, 10));
 
-    // Cria um objeto Date com a data informada
-    const data = new Date(ano, mes - 1, dia); // Mês é de 0 a 11 em JavaScript
+    const data = new Date(ano, mes - 1, dia);
 
-    // Valida se a data criada é igual à data inserida (para excluir datas inexistentes como 31/02)
-    if (
-        data.getFullYear() !== ano ||
-        data.getMonth() !== mes - 1 ||
-        data.getDate() !== dia
-    ) {
+    if (data.getDate() !== dia || data.getMonth() + 1 !== mes || data.getFullYear() !== ano) {
+        console.log(2);
         return false;
     }
-
-    // Verifica se a idade está entre 0 e 120 anos
     const hoje = new Date();
     const idade = hoje.getFullYear() - ano - (hoje.getMonth() < mes - 1 || (hoje.getMonth() === mes - 1 && hoje.getDate() < dia) ? 1 : 0);
-    if (idade < 0 || idade > 120) {
-        return false;
-    }
 
-    return true;
+    if (idade < 18) {
+        console.log(3);
+        return false; // A pessoa deve ter 18 anos ou mais
+    }
+    return true; // Se passar todas as verificações, retorna true
+}
+
+export function verificaCPF(cpf_hospede) {
+    if (!validarCPFHosp(cpf_hospede)) return false;
+    if (!validacaoRepetidoCPFHosp(cpf_hospede)) return false;
+    return validacaoMatCPFHosp(cpf_hospede); // Retorna true ou false com base no cálculo
 }
 
 export function validacaoMatCPFHosp(cpf_hospede) {

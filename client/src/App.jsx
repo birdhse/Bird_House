@@ -5,15 +5,15 @@ import { Route } from 'react-router-dom';
 import TelaLogin from './components/views/TelaLogin/TelaLogin';
 import Geral from './components/views/Geral/Geral'
 
-import ListarReservas from './components/views/Reservas/GestaoReservas';
+import GestãoReservas from './components/views/Reservas/GestaoReservas';
 import CadastroReserva from './components/views/Reservas/CadastroReserva'
 import EditReserva from './components/views/Reservas/EditarReserva';
 
 import Relatorios from './components/views/Relatorios/Relatorios';
 
-import ListarHospedes from './components/views/Hospedes/GestaoHospedes';
+import GestãoHospedes from './components/views/Hospedes/GestaoHospedes';
 
-import ConfigUsuario from './components/views/ConfigUsuario/ConfigUsuario';
+import ConfigUsuario from './components/views/Usuarios/ConfigUsuario';
 import FormHospede from './components/forms/FormHospede';
 import CadastroHospede from './components/views/Hospedes/CadastroHospede';
 import EditHospede from './components/views/Hospedes/EditHospede';
@@ -36,14 +36,14 @@ function App() {
         <Route path='/geral' element={<Geral />} />
         <Route path='/relatorios' element={<Relatorios />} />
 
-        <Route path='/reservas' element={<ListarReservas />} />
-        <Route path='/reservas/:tipo' element={<ListarReservas/>}/>
+        <Route path='/reservas' element={<GestãoReservas />} />
+        <Route path='/reservas/:tipo' element={<GestãoReservas/>}/>
         <Route path='/reserva/:id_reserva' element={<FormReserva/>}/>
         <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
         <Route path='/edit_reserva/:id_reserva' element={<EditReserva/>}/>
 
-        <Route path='/hospedes' element={<ListarHospedes/>}/>
-        <Route path='/hospedes/:tipo' element={<ListarHospedes/>}/>
+        <Route path='/hospedes' element={<GestãoHospedes/>}/>
+        <Route path='/hospedes/:tipo' element={<GestãoHospedes/>}/>
         <Route path='/hospede/:id_hospede' element={<FormHospede/>}/>
         <Route path='/cadastro_hospede' element={<CadastroHospede/>}/>
         <Route path='/edit_hospede/:id_hospede' element={<EditHospede/>}/>

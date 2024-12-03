@@ -127,12 +127,11 @@ export async function updateReserva(reserva, id_reserva) {
     console.log('Atualizando no Model Reserva');
     const [consulta] = await conexao.query('SELECT id_hospede FROM hospedes WHERE nome_hospede = ?', reserva.id_hospede);
     reserva.id_hospede = consulta[0].id_hospede;
+    
     if(isNullOrEmpty(reserva.id_hospede)){
         console.log('Hospede não encontrado');
         return [500, error];
     }
-
-
 
     //Criando aula
     const sql = `UPDATE reservas SET
