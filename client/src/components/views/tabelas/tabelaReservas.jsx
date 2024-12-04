@@ -57,6 +57,7 @@ function TabelaReservas({ tipo, onDeleteSuccess }) {
     const renderStatusIcon = (id_status_reserva) => {
         switch (id_status_reserva) {
             case 1:
+                
                 return <span className={`${styles.statusIcon} ${styles.solicitada}`} />;
             case 2:
                 return <span className={`${styles.statusIcon} ${styles.reservada}`} />;
@@ -70,6 +71,25 @@ function TabelaReservas({ tipo, onDeleteSuccess }) {
                 return <span className={`${styles.statusIcon} ${styles.finalizada}`} />;
             default:
                 return <span className={styles.statusIcon} />;
+        }
+    }
+
+    const renderStatusTexto = (id_status_reserva) => {
+        switch (id_status_reserva) {
+            case 1:
+                return <span>Solicitada</span>;
+            case 2:
+                return <span>Reservada</span>;
+            case 3:
+                return <span>Hospedada</span>;
+            case 4:
+                return <span>Atrasada</span>;
+            case 5:
+                return <span>Cancelada</span>;
+            case 6:
+                return <span>Finalizada</span>;
+            default:
+                return <span>Sem informação</span>;;
         }
     }
 
@@ -117,7 +137,7 @@ function TabelaReservas({ tipo, onDeleteSuccess }) {
                 />
             </div>
 
-            <div className={`${styles.tabelaReservas} ${tipo === 'edit' ? styles.edit : ''}`}>
+            <div className={`${styles.tabelaReservas} ${styles.tabela} ${tipo === 'edit' ? styles.edit : ''}`}>
                 <table className={`table table-bordered ${styles.tabelaReservas}`}>
                     <thead>
                         <tr>
@@ -137,7 +157,7 @@ function TabelaReservas({ tipo, onDeleteSuccess }) {
                             {filtrarReservas().sort((a, b) => b.id_reserva - a.id_reserva).map((reserva) => (
                                 <tr key={reserva.id_reserva}>
                                     <td>{reserva.id_reserva}</td>
-                                    <td>{renderStatusIcon(reserva.id_status_reserva)}</td>
+                                    <td>{renderStatusIcon(reserva.id_status_reserva)}{renderStatusTexto(reserva.id_status_reserva)}</td>
                                     <td>{reserva.nome_hospede}</td>
                                     <td>{reserva.nome_acomodacao}</td>
                                     <td>{new Date(reserva.checkin).toLocaleDateString('pt-BR')}</td>

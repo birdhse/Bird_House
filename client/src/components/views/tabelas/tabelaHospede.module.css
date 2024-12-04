@@ -30,48 +30,17 @@
     justify-content: space-around;
 }
 
-/* Icones de status */
-.statusIcon {
-    height: 12px;
-    width: 12px;
-    display: inline-block;
-    border-radius: 50%;
-}
-
-.statusIcon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    margin-right: 8px;
-}
-
-/* Estilo para os botões de filtro de status */
-.filtroStatus {
-    margin-bottom: 20px;
-}
-
-.filtroStatus button {
-    margin-right: 5px;
-    border-radius: 5px;
-    color: white;
-    font-size: 14px;
-    padding: 8px 12px;
-    border: none;
-}
-
 /* Estilo para o tipo 'edit' */
 .edit {
     width: 100%;
 }
 
-/* Estilos para a tabela rolável */
-.tabelaHospedes tbody {
+/* Estilo para permitir rolamento no corpo da tabela */
+.tabelaBody {
     border-color: #CCCCCC;
-    display: block;  /* Torna o corpo da tabela rolável */
-    max-height: 600px;  /* Altura máxima que o corpo da tabela pode ocupar */
-    overflow-y: auto;   /* Permite rolar o conteúdo verticalmente */
-    width: 100%;
+    display: block;
+    max-height: 600px; /* Define a altura máxima do corpo da tabela */
+    overflow-y: auto;  /* Rolamento vertical ativado */
 }
 
 .tabelaHospedes thead {

@@ -79,8 +79,8 @@ function TabelaUsuarios({ tipo, OnDeleteSucess }) {
                 />
             </div>
             <br/>
-            <div className={`${styles.TabelaUsuarios} ${tipo === 'edit' ? styles.edit : ''}`}>
-                <table className={`table table-bordered ${styles.TabelaUsuarios}`}>
+            <div className={`${styles.tabelaUsuarios} ${tipo === 'edit' ? styles.edit : ''}`}>
+                <table className={`table table-bordered ${styles.tabelaUsuarios}`}>
                     <thead>
                         <tr>
                             <th>Nome Completo</th>
@@ -91,6 +91,7 @@ function TabelaUsuarios({ tipo, OnDeleteSucess }) {
                         </tr>
                     </thead>
                     <tbody>
+                    <div className={styles.tabelaBody}>
                     {filtrarUsuarios().sort((a, b) => b.id_usuario - a.id_usuario).map((usuario) => (
                             <tr key={usuario.id_usuario}>
                                 <td>{usuario.nome_usuario}</td>
@@ -109,6 +110,7 @@ function TabelaUsuarios({ tipo, OnDeleteSucess }) {
                                 )}
                             </tr>
                         ))}
+                        </div>
                     </tbody>
                 </table>
             </div>
