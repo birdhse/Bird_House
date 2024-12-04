@@ -24,6 +24,7 @@ import GestaoUsuarios from './components/views/Usuario/GestãoUsuario';
 import CadastroUsuario from './components/views/Usuario/CadastroUsuario'
 import EditUsuario from './components/views/Usuario/EditarUsuario';
 import FormUsuario from './components/views/Usuario/FormUsuario';
+import EsqueciSenha from './components/views/TelaLogin/ForgotPassword';
 
 // import TelaLogin from './components/views/TelaLogin/TelaLogin';
 
@@ -34,6 +35,7 @@ function App() {
       <Routes>
         {/* <Route path='/' element={<TelaLogin />} /> */}
         <Route path='/' element={<TelaLogin />} />
+        <Route path='/esqueci_senha' element={<EsqueciSenha/>} />
         <Route path='/geral' element={<Geral />} />
         <Route path='/relatorios' element={<Relatorios />} />
 

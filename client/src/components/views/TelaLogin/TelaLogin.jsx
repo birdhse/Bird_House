@@ -57,8 +57,15 @@ function TelaLogin() {
                 <button className="btn btn-danger w-100 mt-4" onClick={efetuarLogin}>
                     Enviar
                 </button>
+                {/* Esqueci a senha */}
+                <div className="text-center mt-3">
+                    <a href="/esqueci_senha" className="text-secondary">
+                        Esqueci a senha
+                    </a>
+                </div>
             </div>
         </div>
+
     );
 }
 
