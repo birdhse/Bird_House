@@ -1,8 +1,8 @@
 import mysql from "mysql2/promise"
 import db from "../conexao.js";
+const conexao = mysql.createPool(db);
 
 export async function createUsuario(usuarios) {
-    const conexao = mysql.createPool(db);
     console.log('Entrando no Model Usuario');
 
     const sql = `INSERT INTO usuarios(
@@ -21,7 +21,6 @@ export async function createUsuario(usuarios) {
         usuarios.id_cargo
     ]
 
-
     try {
         const [retorno] = await conexao.query(sql, params);
         console.log('Usuario cadastrado');
@@ -33,9 +32,6 @@ export async function createUsuario(usuarios) {
 }
 
 export async function readUsuario(usuarios) {
-    const conexao = mysql.createPool(db);
-
-    //Ao ser acionado o metodo createAula retorna na tela
     console.log('Entrando no Model Usuario');
 
     //Criando aula
@@ -62,9 +58,6 @@ export async function readUsuario(usuarios) {
 }
 
 export async function updateUsuario(usuarios, id_usuario) {
-    //Criando conexão para o banco de dados usando configurações do db
-    const conexao = mysql.createPool(db);
-
     console.log('Entrando no Model Usuario');
 
     //Criando String com comandos sql
@@ -101,8 +94,6 @@ export async function updateUsuario(usuarios, id_usuario) {
 }
 
 export async function deleteUsuario(id_usuario) {
-    const conexao = mysql.createPool(db);
-
     console.log('Deletando no Model Usuario');
     const sql = `DELETE FROM  usuarios WHERE id_usuario =?`;
 
@@ -123,8 +114,6 @@ export async function deleteUsuario(id_usuario) {
 }
 
 export async function showOneUsuario(id_usuario) {
-    const conexao = mysql.createPool(db);
-
     console.log('Mostrando um Usuario no Model Usuario');
     const sql = `SELECT * FROM usuarios WHERE id_usuario =?`;
     const params = [id_usuario];
@@ -140,12 +129,9 @@ export async function showOneUsuario(id_usuario) {
 }
 
 export async function findUserByLoginPassword(login_usuario,senha) {
-    console.log('UsuarioModel :: findUserByLoginPassword');
-
-    
-    const conexao = mysql.createPool(db);
-    const sql = 'SELECT id_usuario FROM usuarios WHERE login_usuario = ? AND senha = ?';
-    const params = [login_usuario,senha];
+    console.log('UsuarioModel :: findUserByLoginPassword');    
+    const sql = 'SELECT id_usuario FROM usuarios WHERE login_usuario = ? AND senha = ? AND ativo = ?';
+    const params = [login_usuario,senha,1];
 
     try {
         const [retorno] = await conexao.query(sql,params);
@@ -165,8 +151,6 @@ export async function findUserByLoginPassword(login_usuario,senha) {
 }
 
 export async function showTableUsuarios() {
-    const conexao = mysql.createPool(db);
-
     console.log('Entrando no Model showTableUsuarios');
     const sql = `SELECT * FROM tabelausuarios;`;
 

@@ -1,10 +1,9 @@
 import mysql from "mysql2/promise";
 import db from "../conexao.js";
 import { isNullOrEmpty } from "../validations/ReservaValidation.js";
+const conexao = mysql.createPool(db);
 
 export async function readReserva() {
-    const conexao = mysql.createPool(db);
-
     console.log('Entrando no Model Reserva');
     const sql = `SELECT * FROM reservas`;
 
@@ -20,16 +19,35 @@ export async function readReserva() {
 }
 
 export async function createReserva(reserva) {
-
-    const conexao = mysql.createPool(db);
     console.log('Criando no Model Reserva');
 
-    
     const [consulta] = await conexao.query('SELECT id_hospede FROM hospedes WHERE nome_hospede = ?', reserva.id_hospede);
     reserva.id_hospede = consulta[0].id_hospede;
     if(isNullOrEmpty(reserva.id_hospede)){
         console.log('Hospede não encontrado');
         return [500, error];
+    }
+
+    const checagemDatas = `
+        SELECT * FROM reservas WHERE ((checkin BETWEEN ? AND ?) 
+            OR (checkout BETWEEN ? AND ?) 
+            OR (? BETWEEN checkin AND checkout))
+            AND (id_acomodacao = ? OR id_hospede = ?); 
+    `;
+    
+    const [reservasExistentes] = await conexao.query(checagemDatas, [
+        reserva.id_acomodacao, 
+        reserva.id_hospede, 
+        reserva.checkin, 
+        reserva.checkout, 
+        reserva.checkin, 
+        reserva.checkout, 
+        reserva.checkin
+    ]);
+
+    if (reservasExistentes.length > 0) {
+        console.log('Já existe uma reserva para o hóspede ou acomodação nas mesmas datas');
+        return [400, { message: 'Já existe uma reserva para o hóspede ou acomodação nas mesmas datas' }];
     }
 
     const sql = `INSERT INTO reservas (
@@ -70,7 +88,6 @@ export async function createReserva(reserva) {
 }
 
 export async function calculoDias(reserva, id_reserva) {
-    const conexao = mysql.createPool(db);
     console.log('Terminando de criar no Model Reserva');
 
     const sql = `UPDATE reservas SET num_dias=? WHERE id_reserva=?`;
@@ -96,14 +113,12 @@ export async function calculoValor(reserva, id_reserva, desconto) {
     const diferencaMs = new Date(reserva.checkout) - new Date(reserva.checkin);
     const num_dias = diferencaMs / (1000 * 60 * 60 * 24);
 
-    const conexao = mysql.createPool(db);
     console.log('Terminando de criar no Model Reserva');
 
     const [consulta] = await conexao.query('SELECT valor_diaria FROM acomodacoes WHERE id_acomodacao = ?', reserva.id_acomodacao);
     const valor_total = (consulta[0].valor_diaria * num_dias) - desconto;
 
     const sql = `UPDATE reservas SET valor_total=? WHERE id_reserva=?`;
-
     const params = [
         valor_total,
         id_reserva
@@ -120,10 +135,6 @@ export async function calculoValor(reserva, id_reserva, desconto) {
 }
 
 export async function updateReserva(reserva, id_reserva) {
-    //Criando conexão para o banco de dados usando configurações de 'db'
-    const conexao = mysql.createPool(db);
-
-    //Ao ser acionado o metodo createAula retorna na tela
     console.log('Atualizando no Model Reserva');
     const [consulta] = await conexao.query('SELECT id_hospede FROM hospedes WHERE nome_hospede = ?', reserva.id_hospede);
     reserva.id_hospede = consulta[0].id_hospede;
@@ -133,6 +144,28 @@ export async function updateReserva(reserva, id_reserva) {
         return [500, error];
     }
 
+    const checagemDatas = `
+        SELECT * FROM reservas
+        WHERE ((checkin BETWEEN ? AND ?) 
+            OR (checkout BETWEEN ? AND ?) 
+            OR (? BETWEEN checkin AND checkout))
+            AND (id_acomodacao = ? OR id_hospede = ?); 
+    `;
+    
+    const [reservasExistentes] = await conexao.query(checagemDatas, [
+        reserva.id_acomodacao, 
+        reserva.id_hospede, 
+        reserva.checkin, 
+        reserva.checkout, 
+        reserva.checkin, 
+        reserva.checkout, 
+        reserva.checkin
+    ]);
+
+    if (reservasExistentes.length > 0) {
+        console.log('Já existe uma reserva para o hóspede ou acomodação nas mesmas datas');
+        return [400, { message: 'Já existe uma reserva para o hóspede ou acomodação nas mesmas datas' }];
+    }
     //Criando aula
     const sql = `UPDATE reservas SET
     id_hospede =?,
@@ -144,8 +177,6 @@ export async function updateReserva(reserva, id_reserva) {
     id_status_reserva =?,
     observacao =?
     where id_reserva = ?`
-
-
     //Definindo parametros para inserir no sql
     const params = [
         reserva.id_hospede,
@@ -174,8 +205,6 @@ export async function updateReserva(reserva, id_reserva) {
 }
 
 export async function deleteReserva(id_reserva) {
-    const conexao = mysql.createPool(db);
-
     console.log('Deletando no Model Reserva');
     const sql = `UPDATE reservas SET ativo = ? WHERE id_reserva=?`;
     const params = [
@@ -196,8 +225,6 @@ export async function deleteReserva(id_reserva) {
 }
 
 export async function showOneReserva(id_reserva) {
-    const conexao = mysql.createPool(db);
-
     console.log('Mostrando uma Reserva no Model Reserva');
     const sql = `SELECT * FROM  umareserva WHERE id_reserva=?`;
     const params = [id_reserva];
@@ -213,8 +240,6 @@ export async function showOneReserva(id_reserva) {
 }
 
 export async function showTableReservas() {
-    const conexao = mysql.createPool(db);
-
     console.log('Entrando no Model Reserva');
     const sql = `SELECT * FROM tabelareservas;`;
 
