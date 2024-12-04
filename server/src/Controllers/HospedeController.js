@@ -60,30 +60,24 @@ export async function atualizarHospede(req, res) {
 
     // Validação dos dados antes de atualizar
     if (verificaHospede(hospede) || isNullOrEmpty(id_hospede)) {
-        console.log("propriedades");
+        
         return res.status(400).json({ message: 'Todas as propriedades devem ser preenchidas corretamente.' });
     }
     if (isNullOrEmpty(hospede.nome_hospede)) {
-        console.log("nome");
         return res.status(400).json({ message: 'Nome do hóspede é obrigatório.' });
     }
     if (!verificaTelefHosp(hospede.num_celular)) {
-        console.log("celular");
         return res.status(400).json({ message: 'Número de celular inválido.' });
     }
     if (!verificaEmailHosp(hospede.email_hospede)) {
-        console.log("email");
         return res.status(400).json({ message: 'Email inválido.' });
     }
     if (!verificarDataNascimentoHosp(hospede.data_nascimento)) {
-        console.log("nascimento");
         return res.status(400).json({ message: 'Data de nascimento inválida ou idade fora do permitido.' });
     }
     if (!verificaCPF(hospede.cpf_hospede)) {
-        console.log("cpf");
         return res.status(400).json({ message: 'CPF inválido.' });
     }
-
 
     try {
         const [status, resposta] = await updateHospede(hospede, id_hospede);
