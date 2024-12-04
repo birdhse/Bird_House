@@ -32,16 +32,11 @@ function Menu() {
             }
         }
     }, []);
-
-    async function verificaLogin() {
-        const id_usuario = localStorage.getItem('id_usuario');
-        console.log(id_usuario);
-        if (!id_usuario) {
-            navigate("/"); // Redireciona se o usuário não estiver logado
-        }
-    }
-
-   
+    
+    const deslogar = () => {
+        localStorage.removeItem('id_usuario'); // Remove o id_usuario do localStorage
+        navigate("/"); // Redireciona para a tela de login
+    };
 
     return (
         <div>
@@ -60,6 +55,13 @@ function Menu() {
                         title="Configurações"
                     ><a href='/usuario_config'>
                         <span className="material-symbols-outlined">settings</span></a>
+                    </button>
+                    <button
+                        className="icon-button"
+                        title="Deslogar"
+                        onClick={deslogar}
+                    >
+                        <span className="material-symbols-outlined">logout</span>
                     </button>
                 </div>
             </div>
