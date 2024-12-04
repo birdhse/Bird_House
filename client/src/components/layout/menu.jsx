@@ -1,42 +1,46 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './menu.modules.css';
 import Data from './data';
 import Relogio from './relogio';
 import BirdLogo from '../../images/bbhouse.png';
-import { useNavigate } from 'react-router-dom';
+
+async function verificaPermissao(id_usuario, setIdCargo) {
+    try {
+        const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/usuarios/${id_usuario}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        });
+        const respostaJSON = await resposta.json();
+        setIdCargo(respostaJSON.id_cargo);
+    } catch (error) {
+        console.error("Erro ao verificar permissões:", error);
+    }
+}
 
 function Menu() {
     const navigate = useNavigate();
-    const [idCargo, setIdCargo] = useState(null); // Estado para armazenar o id_cargo do usuário
+    const [idCargo, setIdCargo] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false); // Estado para exibir a mensagem de confirmação
 
     useEffect(() => {
         const id_usuario = localStorage.getItem('id_usuario');
-        console.log(id_usuario);
         if (!id_usuario) {
-            navigate("/"); // Redireciona se o usuário não estiver logado
+            navigate("/");
         } else {
-            verificaPermissao(id_usuario);
-        }
-        async function verificaPermissao(id_usuario) {
-            try {
-                const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/usuarios/${id_usuario}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                    const respostaJSON = await resposta.json();
-                    setIdCargo(respostaJSON.id_cargo); // Salva o id_cargo no estado
-            } catch (error) {
-                console.log(error);
-            }
+            verificaPermissao(id_usuario, setIdCargo).finally(() => setLoading(false));
         }
     }, []);
-    
+
     const deslogar = () => {
-        localStorage.removeItem('id_usuario'); // Remove o id_usuario do localStorage
-        navigate("/"); // Redireciona para a tela de login
+        localStorage.removeItem('id_usuario');
+        navigate("/");
     };
+
+    if (loading) {
+        return <div>Carregando...</div>;
+    }
 
     return (
         <div>
@@ -49,17 +53,15 @@ function Menu() {
                     </h2>
                     <h3 className='data'><Data /></h3>
                     <h3 className='relogio'><Relogio /></h3>
-                    {/* Botão de configurações */}
-                    <button
-                        className="icon-button"
-                        title="Configurações"
-                    ><a href='/usuario_config'>
-                        <span className="material-symbols-outlined">settings</span></a>
+                    <button className="icon-button" title="Configurações">
+                        <Link to='/usuario_config'>
+                            <span className="material-symbols-outlined">settings</span>
+                        </Link>
                     </button>
                     <button
                         className="icon-button"
                         title="Deslogar"
-                        onClick={deslogar}
+                        onClick={() => setShowLogoutConfirm(true)} // Exibe a mensagem de confirmação
                     >
                         <span className="material-symbols-outlined">logout</span>
                     </button>
@@ -67,15 +69,24 @@ function Menu() {
             </div>
             <div className='menu_lateral'>
                 <ul>
-                    <li><a href="/geral">Geral</a></li>
-                    <li><a href="/reservas">Reservas</a></li>
-                    <li><a href="/hospedes">Hóspedes</a></li>
-                    {/* Condicionalmente renderiza os links de "Usuários" e "Relatórios" se o id_cargo for 1 */}
-                    {idCargo === 1 && <li><a href="/usuarios">Usuários</a></li>}
-                    {idCargo === 1 && <li><a href="/relatorios">Relatórios</a></li>}
-                   
+                    <li><Link to="/geral">Geral</Link></li>
+                    <li><Link to="/reservas">Reservas</Link></li>
+                    <li><Link to="/hospedes">Hóspedes</Link></li>
+                    {idCargo === 1 && (
+                        <>
+                            <li><Link to="/usuarios">Usuários</Link></li>
+                            <li><Link to="/relatorios">Relatórios</Link></li>
+                        </>
+                    )}
                 </ul>
             </div>
+            {showLogoutConfirm && (
+                <div className="logout-confirmation">
+                    <p>Deseja realmente sair?</p>
+                    <button onClick={deslogar} className="logout-button">Sair</button>
+                    <button onClick={() => setShowLogoutConfirm(false)} className="cancel-button">Cancelar</button>
+                </div>
+            )}
         </div>
     );
 }
