@@ -1,4 +1,4 @@
-import FormHospede  from "../../forms/FormHospede.jsx";
+import FormHospede from "./FormHospede";
 import Menu from "../../layout/menu"
 
 function CadastroHospede() {

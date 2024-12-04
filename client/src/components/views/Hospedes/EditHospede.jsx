@@ -1,4 +1,4 @@
-import FormHospede from "../../forms/FormHospede";
+import FormHospede from "./FormHospede";
 import Menu from "../../layout/menu"
 import { useParams } from "react-router-dom";
 

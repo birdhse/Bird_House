@@ -84,7 +84,7 @@ export async function updateUsuario(usuarios, id_usuario) {
         usuarios.senha,
         usuarios.id_cargo,
         id_usuario
-    ]
+    ];
 
     //Executando query no banco
     try {

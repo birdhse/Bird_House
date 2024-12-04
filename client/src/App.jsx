@@ -8,21 +8,22 @@ import Geral from './components/views/Geral/Geral'
 import GestãoReservas from './components/views/Reservas/GestaoReservas';
 import CadastroReserva from './components/views/Reservas/CadastroReserva'
 import EditReserva from './components/views/Reservas/EditarReserva';
+import FormReserva from './components/views/Reservas/FormReserva';
 
 import Relatorios from './components/views/Relatorios/Relatorios';
 
 import GestãoHospedes from './components/views/Hospedes/GestaoHospedes';
 
 import ConfigUsuario from './components/views/Usuarios/ConfigUsuario';
-import FormHospede from './components/forms/FormHospede';
+import FormHospede from './components/views/Hospedes/FormHospede';
 import CadastroHospede from './components/views/Hospedes/CadastroHospede';
 import EditHospede from './components/views/Hospedes/EditHospede';
-import FormReserva from './components/forms/FormReserva';
+
 
 import GestaoUsuarios from './components/views/Usuario/GestãoUsuario';
 import CadastroUsuario from './components/views/Usuario/CadastroUsuario'
 import EditUsuario from './components/views/Usuario/EditarUsuario';
-import FormUsuario from './components/forms/FormUsuario';
+import FormUsuario from './components/views/Usuario/FormUsuario';
 
 // import TelaLogin from './components/views/TelaLogin/TelaLogin';
 

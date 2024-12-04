@@ -79,12 +79,12 @@ function FormUsuario({ titulo, textoBotao, handleSubmit, id_usuario, TextoValor 
                 <label className='form-label' htmlFor="cargo">Função</label>
                 <select className='form-control' type="text" name="cargo" id="cargo" value={id_cargo} onChange={(e) => (setCargo(e.target.value))}>
                     <option value="" hidden></option>
-                    <option value={1}>Adiministrador</option>
+                    <option value={1}>Administrador</option>
                     <option value={2}>Funcionário</option>
                 </select>
 
                 <div className="d-flex justify-content-between mt-3">
-                    <a className="btn btn-danger" href="/reservas">Cancelar</a>
+                    <a className="btn btn-danger" href="/usuarios">Cancelar</a>
                     <button className="btn btn-success" type="submit">{textoBotao}</button>
                 </div>
             </form>

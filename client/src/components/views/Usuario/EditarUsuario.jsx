@@ -1,4 +1,4 @@
-import FormUsuario from "../../forms/FormUsuario"
+import FormUsuario from "./FormUsuario";
 import Menu from "../../layout/menu"
 
 import { useParams } from "react-router-dom";

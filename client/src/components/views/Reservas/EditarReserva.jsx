@@ -1,4 +1,4 @@
-import FormReserva from "../../forms/FormReserva";
+import FormReserva from "./FormReserva";
 import Menu from "../../layout/menu"
 
 import { useParams } from "react-router-dom";
