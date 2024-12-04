@@ -42,11 +42,11 @@ export function verificaEmailHosp(email_hospede) {
 }
 
 export function verificarDataNascimentoHosp(data_nascimento) {
+    data_nascimento = data_nascimento.split('T')[0];
     const dataPadrao2 = /^\d{4}-\d{2}-\d{2}$/;  // Formato dd-mm-yyyy
 
     // Verifica se a data corresponde a um dos dois formatos
     if (!dataPadrao2.test(data_nascimento)) {
-        console.log(1);
         return false; // Se não tiver o formato correto, retorna falso
     }
 
@@ -55,14 +55,12 @@ export function verificarDataNascimentoHosp(data_nascimento) {
     const data = new Date(ano, mes - 1, dia);
 
     if (data.getDate() !== dia || data.getMonth() + 1 !== mes || data.getFullYear() !== ano) {
-        console.log(2);
         return false;
     }
     const hoje = new Date();
     const idade = hoje.getFullYear() - ano - (hoje.getMonth() < mes - 1 || (hoje.getMonth() === mes - 1 && hoje.getDate() < dia) ? 1 : 0);
 
     if (idade < 18) {
-        console.log(3);
         return false; // A pessoa deve ter 18 anos ou mais
     }
     return true; // Se passar todas as verificações, retorna true
