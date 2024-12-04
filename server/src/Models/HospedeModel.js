@@ -1,8 +1,7 @@
 import mysql from "mysql2/promise"
 import db from "../conexao.js";
-
+const conexao = mysql.createPool(db);
 export async function createHospede(hospedes) {
-    const conexao = mysql.createPool(db);
     console.log('Entrando no Model Hospede');
 
     const sql = `INSERT INTO hospedes(
@@ -32,7 +31,7 @@ export async function createHospede(hospedes) {
 }
 
 export async function readHospede() {
-    const conexao = mysql.createPool(db);
+
     console.log('Entrando no Model Hospede');
 
     const sql = 'SELECT * FROM hospedes';
@@ -50,7 +49,7 @@ export async function readHospede() {
 
 export async function updateHospede(hospedes, id_hospede) {
     //Criando conexão para o banco de dados usando configurações do db
-    const conexao = mysql.createPool(db);
+
 
     //Ao ser acionado o metodo createAula retorna na tela
     console.log('Entrando no Model Hospede');
@@ -88,7 +87,7 @@ export async function updateHospede(hospedes, id_hospede) {
 }
 
 export async function deleteHospede(id_hospede) {
-    const conexao = mysql.createPool(db);
+
 
     console.log('Deletando no Model Hospede');
     const sql = `UPDATE hospedes SET ativo = ? WHERE id_hospede=?`;
@@ -112,7 +111,7 @@ export async function deleteHospede(id_hospede) {
 }
 
 export async function showOneHospede(id_hospede) {
-    const conexao = mysql.createPool(db);
+
 
     console.log('Mostrando um Hospede no Model Hospede');
     const sql = 'SELECT * FROM  hospedes WHERE id_hospede =?';

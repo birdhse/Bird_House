@@ -1,8 +1,9 @@
 import mysql from "mysql2/promise"
 import db from "../conexao.js";
+const conexao = mysql.createPool(db);
 
 export async function createUsuario(usuarios) {
-    const conexao = mysql.createPool(db);
+
     console.log('Entrando no Model Usuario');
 
     const sql = `INSERT INTO usuarios(
@@ -33,7 +34,6 @@ export async function createUsuario(usuarios) {
 }
 
 export async function readUsuario(usuarios) {
-    const conexao = mysql.createPool(db);
 
     //Ao ser acionado o metodo createAula retorna na tela
     console.log('Entrando no Model Usuario');
@@ -63,7 +63,6 @@ export async function readUsuario(usuarios) {
 
 export async function updateUsuario(usuarios, id_usuario) {
     //Criando conexão para o banco de dados usando configurações do db
-    const conexao = mysql.createPool(db);
 
     console.log('Entrando no Model Usuario');
 
@@ -101,12 +100,13 @@ export async function updateUsuario(usuarios, id_usuario) {
 }
 
 export async function deleteUsuario(id_usuario) {
-    const conexao = mysql.createPool(db);
 
     console.log('Deletando no Model Usuario');
-    const sql = `DELETE FROM  usuarios WHERE id_usuario =?`;
-
-    const params = [id_usuario];
+    const sql = `UPDATE usuarios SET ativo = ? WHERE id_usuario=?`;
+    const params = [
+        0,
+        id_usuario
+    ]
 
     try {
         const [retorno] = await conexao.query(sql, params);
@@ -123,7 +123,6 @@ export async function deleteUsuario(id_usuario) {
 }
 
 export async function showOneUsuario(id_usuario) {
-    const conexao = mysql.createPool(db);
 
     console.log('Mostrando um Usuario no Model Usuario');
     const sql = `SELECT * FROM usuarios WHERE id_usuario =?`;
@@ -165,7 +164,6 @@ export async function findUserByLoginPassword(login_usuario,senha) {
 }
 
 export async function showTableUsuarios() {
-    const conexao = mysql.createPool(db);
 
     console.log('Entrando no Model showTableUsuarios');
     const sql = `SELECT * FROM tabelausuarios;`;

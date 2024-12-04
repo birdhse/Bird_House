@@ -1,10 +1,10 @@
 import mysql from "mysql2/promise";
 import db from "../conexao.js";
 import { isNullOrEmpty } from "../validations/ReservaValidation.js";
+const conexao = mysql.createPool(db);
 
 export async function readReserva() {
-    const conexao = mysql.createPool(db);
-
+    
     console.log('Entrando no Model Reserva');
     const sql = `SELECT * FROM reservas`;
 
@@ -21,7 +21,6 @@ export async function readReserva() {
 
 export async function createReserva(reserva) {
 
-    const conexao = mysql.createPool(db);
     console.log('Criando no Model Reserva');
 
     
@@ -70,7 +69,7 @@ export async function createReserva(reserva) {
 }
 
 export async function calculoDias(reserva, id_reserva) {
-    const conexao = mysql.createPool(db);
+
     console.log('Terminando de criar no Model Reserva');
 
     const sql = `UPDATE reservas SET num_dias=? WHERE id_reserva=?`;
@@ -96,7 +95,6 @@ export async function calculoValor(reserva, id_reserva, desconto) {
     const diferencaMs = new Date(reserva.checkout) - new Date(reserva.checkin);
     const num_dias = diferencaMs / (1000 * 60 * 60 * 24);
 
-    const conexao = mysql.createPool(db);
     console.log('Terminando de criar no Model Reserva');
 
     const [consulta] = await conexao.query('SELECT valor_diaria FROM acomodacoes WHERE id_acomodacao = ?', reserva.id_acomodacao);
@@ -121,7 +119,6 @@ export async function calculoValor(reserva, id_reserva, desconto) {
 
 export async function updateReserva(reserva, id_reserva) {
     //Criando conexão para o banco de dados usando configurações de 'db'
-    const conexao = mysql.createPool(db);
 
     //Ao ser acionado o metodo createAula retorna na tela
     console.log('Atualizando no Model Reserva');
@@ -174,7 +171,6 @@ export async function updateReserva(reserva, id_reserva) {
 }
 
 export async function deleteReserva(id_reserva) {
-    const conexao = mysql.createPool(db);
 
     console.log('Deletando no Model Reserva');
     const sql = `UPDATE reservas SET ativo = ? WHERE id_reserva=?`;
@@ -196,7 +192,6 @@ export async function deleteReserva(id_reserva) {
 }
 
 export async function showOneReserva(id_reserva) {
-    const conexao = mysql.createPool(db);
 
     console.log('Mostrando uma Reserva no Model Reserva');
     const sql = `SELECT * FROM  umareserva WHERE id_reserva=?`;
@@ -213,7 +208,6 @@ export async function showOneReserva(id_reserva) {
 }
 
 export async function showTableReservas() {
-    const conexao = mysql.createPool(db);
 
     console.log('Entrando no Model Reserva');
     const sql = `SELECT * FROM tabelareservas;`;
