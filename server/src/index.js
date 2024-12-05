@@ -4,6 +4,7 @@ import cors from 'cors'
 import {criarReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva, mostrarTabelaReservas} from './Controllers/ReservaController.js';
 import {atualizarHospede, criarHospede, excluirHospede, mostrarHospedes, mostrarUmHospede} from './Controllers/HospedeController.js'
 import { mostrarTabelaUsuarios, atualizarUsuario, criarUsuario, excluirUsuario, logarUsuario, mostrarUmUsuario, mostrarUsuarios } from "./Controllers/UsuarioController.js";
+import { mostrarInfos } from "./Controllers/AcomodacoesController.js";
 
 const app = express();
 const porta = 5000;
@@ -37,6 +38,9 @@ app.get("/usuarios/tabela",mostrarTabelaUsuarios)
 app.put("/usuarios/:id_usuario",atualizarUsuario)
 app.delete("/usuarios/:id_usuario",excluirUsuario)
 app.get('/usuarios/:id_usuario', mostrarUmUsuario)
+
+app.get('/geral',mostrarInfos);
+
 
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)

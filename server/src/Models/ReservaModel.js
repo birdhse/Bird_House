@@ -32,17 +32,18 @@ export async function createReserva(reserva) {
         SELECT * FROM reservas WHERE ((checkin BETWEEN ? AND ?) 
             OR (checkout BETWEEN ? AND ?) 
             OR (? BETWEEN checkin AND checkout))
-            AND (id_acomodacao = ? OR id_hospede = ?); 
+            AND (id_acomodacao = ? OR id_hospede = ?)
+            AND ativo = 1; 
     `;
     
-    const [reservasExistentes] = await conexao.query(checagemDatas, [
-        reserva.id_acomodacao, 
-        reserva.id_hospede, 
+    const [reservasExistentes] = await conexao.query(checagemDatas, [ 
         reserva.checkin, 
         reserva.checkout, 
         reserva.checkin, 
         reserva.checkout, 
-        reserva.checkin
+        reserva.checkin,
+        reserva.id_acomodacao,
+        reserva.id_hospede
     ]);
 
     if (reservasExistentes.length > 0) {
@@ -144,12 +145,15 @@ export async function updateReserva(reserva, id_reserva) {
         return [500, error];
     }
 
+    console.log(reserva);
+
     const checagemDatas = `
         SELECT * FROM reservas
         WHERE ((checkin BETWEEN ? AND ?) 
             OR (checkout BETWEEN ? AND ?) 
             OR (? BETWEEN checkin AND checkout))
-            AND (id_acomodacao = ? OR id_hospede = ?); 
+            AND (id_acomodacao = ? OR id_hospede = ?)
+            AND ativo = 1; 
     `;
     
     const [reservasExistentes] = await conexao.query(checagemDatas, [
