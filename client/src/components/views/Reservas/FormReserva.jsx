@@ -86,6 +86,7 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
 
                 <label className='form-label' htmlFor="hospede">Nome do Hóspede:</label>
                 <input className='form-control' type="text" name="hospede" id="hospede" value={nome_hospede} onChange={(e) => (setHospede(e.target.value))} />
+                {nome_hospede === '' && <small className="text-danger">O nome do hóspede é obrigatório.</small>}
 
                 <label className='form-label' htmlFor="acomodacao">Acomodação:</label>
                 <select className='form-control' name="acomodacao" id="acomodacao" value={id_acomodacao} onChange={(e) => (setAcomodacao(e.target.value))} required>
@@ -106,9 +107,11 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
 
                 <label className='form-label' htmlFor="qntd">Quantidade de hóspedes:</label>
                 <input className='form-control' type="number" name="qntd" id="qntd" value={qntd_hospedes} onChange={(e) => (setQntd(e.target.value))} />
+                {nome_hospede === '' && <small className="text-danger">O campo deve ser preenchido.</small>}
 
                 <label className='form-label' htmlFor="qntd">{TextoValor}</label>
                 <input className='form-control' type="number" name="vt" id="vt" value={valor_total} onChange={(e) => (setVT(e.target.value))} />
+                {valor_total === '' && <small className="text-danger">O campo deve ser preenchido.</small>}
 
                 <label className='form-label' htmlFor="observacao">Observações:</label>
                 <input className='form-control' type="text" name="observacao" id="observacao" value={observacao} onChange={(e) => (setObservacao(e.target.value))} />

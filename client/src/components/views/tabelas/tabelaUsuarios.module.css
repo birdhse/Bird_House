@@ -1,5 +1,65 @@
+/* Estilo da tabela geral */
+.tabelaUsuarios {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-color: #CCCCCC;
+}
+
+/* Cabeçalho da tabela */
+.tabelaUsuarios thead {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* Linhas ímpares */
+.tabelaUsuarios tbody tr:nth-child(odd) {
+    background-color: #fbfeff;
+}
+
+/* Linhas pares */
+.tabelaUsuarios tbody tr:nth-child(even) {
+    background-color: #e3f0f3;
+}
+
 /* Colunas de ação (botões editar e deletar) */
 .acaoBtn {
     display: flex;
     justify-content: space-around;
+}
+
+/* Estilo para o tipo 'edit' */
+.edit {
+    width: 100%;
+}
+
+/* Estilo para permitir rolamento no corpo da tabela */
+.tabelaBody {
+    border-color: #CCCCCC;
+    display: block;
+    max-height: 600px; /* Define a altura máxima do corpo da tabela */
+    overflow-y: auto;  /* Rolamento vertical ativado */
+}
+
+.tabelaUsuarios thead {
+    display: table-header-group; /* Garante que o cabeçalho da tabela não role */
+}
+
+.tabelaUsuarios tbody {
+    display: block; /* Torna o corpo da tabela rolável */
+    width: 100%;
+}
+
+.tabelaUsuarios tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tabelaUsuarios td, .tabelaUsuarios th {
+    word-wrap: break-word;
+    padding: 8px;
+    text-align: left;
 }
