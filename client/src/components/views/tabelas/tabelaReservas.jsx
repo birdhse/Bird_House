@@ -147,7 +147,7 @@ function TabelaReservas({ tipo, onDeleteSuccess }) {
                             <th>Acomodação</th>
                             <th>Check-in</th>
                             <th>Check-out</th>
-                            <th>Qtd</th>
+                            <th>Quantidade</th>
                             {tipo === 'edit' && <th>Ações</th>}
                         </tr>
                     </thead>
