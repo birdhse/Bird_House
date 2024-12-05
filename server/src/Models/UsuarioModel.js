@@ -95,9 +95,11 @@ export async function updateUsuario(usuarios, id_usuario) {
 
 export async function deleteUsuario(id_usuario) {
     console.log('Deletando no Model Usuario');
-    const sql = `DELETE FROM  usuarios WHERE id_usuario =?`;
-
-    const params = [id_usuario];
+    const sql = `UPDATE usuarios SET ativo = ? WHERE id_usuario=?`;
+    const params = [
+        0,
+        id_usuario
+    ]
 
     try {
         const [retorno] = await conexao.query(sql, params);
