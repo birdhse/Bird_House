@@ -20,12 +20,14 @@ async function verificaPermissao(id_usuario, setIdCargo) {
 
 function Menu() {
     const navigate = useNavigate();
+    const [id_usuario, setIdUsuario] = useState(localStorage.getItem('id_usuario'));
     const [idCargo, setIdCargo] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showLogoutConfirm, setShowLogoutConfirm] = useState(false); // Estado para exibir a mensagem de confirmação
 
     useEffect(() => {
-        const id_usuario = localStorage.getItem('id_usuario');
+        setIdUsuario(localStorage.getItem('id_usuario'));
+        console.log(id_usuario);
         if (!id_usuario) {
             navigate("/");
         } else {
@@ -54,7 +56,7 @@ function Menu() {
                     <h3 className='data'><Data /></h3>
                     <h3 className='relogio'><Relogio /></h3>
                     <button className="icon-button" title="Configurações">
-                        <Link to='/usuario_config'>
+                        <Link to={`/config_usuarios/${id_usuario}`}>
                             <span className="material-symbols-outlined">settings</span>
                         </Link>
                     </button>

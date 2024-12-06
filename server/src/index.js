@@ -4,13 +4,19 @@ import cors from 'cors'
 import {criarReserva,excluirReserva,mostrarReservas,atualizarReserva,mostrarUmaReserva, mostrarTabelaReservas} from './Controllers/ReservaController.js';
 import {atualizarHospede, criarHospede, excluirHospede, mostrarHospedes, mostrarUmHospede} from './Controllers/HospedeController.js'
 import { mostrarTabelaUsuarios, atualizarUsuario, criarUsuario, excluirUsuario, logarUsuario, mostrarUmUsuario, mostrarUsuarios } from "./Controllers/UsuarioController.js";
+import { atualizarUmUsuario } from "./Controllers/ConfigUsuController.js";
+
 
 const app = express();
 const porta = 5000;
 
 app.use(cors());
 app.use(express.json());
-
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 app.get("/",(req,res)=>{
   res.status(200).json("Servidor funcionando")
@@ -37,6 +43,10 @@ app.get("/usuarios/tabela",mostrarTabelaUsuarios)
 app.put("/usuarios/:id_usuario",atualizarUsuario)
 app.delete("/usuarios/:id_usuario",excluirUsuario)
 app.get('/usuarios/:id_usuario', mostrarUmUsuario)
+
+app.get('/config_usuarios/:id_usuario', mostrarUmUsuario)
+app.put("/config_usuarios/:id_usuario",atualizarUmUsuario)
+
 
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)

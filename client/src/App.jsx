@@ -14,7 +14,6 @@ import Relatorios from './components/views/Relatorios/Relatorios';
 
 import GestãoHospedes from './components/views/Hospedes/GestaoHospedes';
 
-import ConfigUsuario from './components/views/Usuarios/ConfigUsuario';
 import FormHospede from './components/views/Hospedes/FormHospede';
 import CadastroHospede from './components/views/Hospedes/CadastroHospede';
 import EditHospede from './components/views/Hospedes/EditHospede';
@@ -26,6 +25,9 @@ import EditUsuario from './components/views/Usuario/EditarUsuario';
 import FormUsuario from './components/views/Usuario/FormUsuario';
 import EsqueciSenha from './components/views/TelaLogin/ForgotPassword';
 
+import EditUmUsuario from './components/views/Usuarios/ConfigUmUsuario';
+// import ConfigUsuario from './components/views/Usuarios/FormConfigUsuario';
+
 // import TelaLogin from './components/views/TelaLogin/TelaLogin';
 
 
@@ -33,7 +35,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path='/' element={<TelaLogin />} /> */}
         <Route path='/' element={<TelaLogin />} />
         <Route path='/esqueci_senha' element={<EsqueciSenha/>} />
         <Route path='/geral' element={<Geral />} />
@@ -51,7 +52,8 @@ function App() {
         <Route path='/cadastro_hospede' element={<CadastroHospede/>}/>
         <Route path='/edit_hospede/:id_hospede' element={<EditHospede/>}/>
 
-        <Route path='/usuario_config' element={<ConfigUsuario />} />
+        <Route path='/config_usuarios/:id_usuario' element={<EditUmUsuario />} />
+        {/* <Route path='/config_usuarios/:id_usuario' element={<ConfigUsuario />} /> */}
 
         <Route path='/usuarios' element={<GestaoUsuarios/>}/>
         <Route path='/usuarios/:tipo' element={<GestaoUsuarios/>}/>
