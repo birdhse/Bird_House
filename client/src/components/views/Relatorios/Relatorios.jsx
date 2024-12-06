@@ -1,9 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Menu from '../../layout/menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Pie } from 'react-chartjs-2';
 
 function Relatorios() {
     const [graficoRelatorio, setGraficoRelatorio] = useState(false);
+    const [dadosGrafico, setDadosGrafico] = useState(null);
+
+    useEffect(() => {
+        fetch('/api/reservas_por_acomodacao')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro na API: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const labels = data.map(item => item.nome_acomodacao);
+                const values = data.map(item => item.count);
+
+                // Define cores únicas para cada item do gráfico
+                const backgroundColors = labels.map((_, i) =>
+                    `hsl(${(i * 360) / labels.length}, 70%, 60%)`
+                );
+
+                setDadosGrafico({
+                    labels,
+                    datasets: [
+                        {
+                            data: values,
+                            backgroundColor: backgroundColors,
+                            hoverBackgroundColor: backgroundColors,
+                        },
+                    ],
+                });
+            })
+            .catch(error => {
+                console.error("Erro ao buscar dados do gráfico:", error);
+            });
+    }, []);
 
     function exibeGrafico() {
         setGraficoRelatorio(true);
@@ -12,23 +47,22 @@ function Relatorios() {
     function exibeRelatorio() {
         setGraficoRelatorio(false);
     }
-     
+
     return (
         <div>
             <Menu />
             <div className="container mt-4">
-              <h1 className="text-center mt-3">Relatórios e Gráficos das Hospedagens</h1>  
+                <h1 className="text-center mt-3">Relatórios e Gráficos das Hospedagens</h1>
                 <main className="content">
-                    
                     <div className="btn-group mb-5" role="group">
-                        <button 
-                            className={`btn ${graficoRelatorio ? "btn-primary" : "btn-outline-primary"}`} 
+                        <button
+                            className={`btn ${graficoRelatorio ? "btn-primary" : "btn-outline-primary"}`}
                             onClick={exibeGrafico}
                         >
                             Gráficos
                         </button>
-                        <button 
-                            className={`btn ${!graficoRelatorio ? "btn-primary" : "btn-outline-primary"}`} 
+                        <button
+                            className={`btn ${!graficoRelatorio ? "btn-primary" : "btn-outline-primary"}`}
                             onClick={exibeRelatorio}
                         >
                             Relatórios
@@ -36,7 +70,12 @@ function Relatorios() {
                     </div>
                     {graficoRelatorio ? (
                         <div id="graficos" className="p-3 border rounded bg-light">
-                            <p>Aqui serão exibidos os gráficos</p>
+                            <h3>Gráfico de Reservas por Acomodação</h3>
+                            {/* {dadosGrafico ? (
+                                <Pie data={dadosGrafico} />
+                            ) : (
+                                <p>Carregando dados do gráfico...</p>
+                            )} */}
                         </div>
                     ) : (
                         <div id="relatorios" className="p-3 border rounded bg-light">

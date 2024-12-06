@@ -11,7 +11,6 @@ import EditReserva from './components/views/Reservas/EditarReserva';
 import FormReserva from './components/views/Reservas/FormReserva';
 
 import Relatorios from './components/views/Relatorios/Relatorios';
-
 import GestãoHospedes from './components/views/Hospedes/GestaoHospedes';
 
 import FormHospede from './components/views/Hospedes/FormHospede';
@@ -24,9 +23,6 @@ import CadastroUsuario from './components/views/Usuario/CadastroUsuario'
 import EditUsuario from './components/views/Usuario/EditarUsuario';
 import FormUsuario from './components/views/Usuario/FormUsuario';
 import EsqueciSenha from './components/views/TelaLogin/ForgotPassword';
-
-import EditUmUsuario from './components/views/Usuarios/ConfigUmUsuario';
-// import ConfigUsuario from './components/views/Usuarios/FormConfigUsuario';
 
 // import TelaLogin from './components/views/TelaLogin/TelaLogin';
 
@@ -60,6 +56,10 @@ function App() {
         <Route path='/usuario/:id_usuario' element={<FormUsuario/>}/>
         <Route path='/cadastro_usuario' element={<CadastroUsuario/>}/>
         <Route path='/edit_usuario/:id_usuario' element={<EditUsuario/>}/>
+        
+        
+
+
 
       </Routes>
     </BrowserRouter>
