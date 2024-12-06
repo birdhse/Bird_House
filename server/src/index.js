@@ -1,4 +1,4 @@
-import express from "express"
+import express from 'express'
 import cors from 'cors'
 
 import { criarReserva, excluirReserva, mostrarReservas, atualizarReserva, mostrarUmaReserva, mostrarTabelaReservas } from './Controllers/ReservaController.js';
@@ -54,26 +54,82 @@ app.listen(porta, () => {
 
 ///////////////////////////////////////
 
-import db from "./conexao.js";
+import mysql from 'mysql2/promise';
+import db from './conexao.js'; // Configuração da conexão com o banco de dados
+
+
 const conexao = mysql.createPool(db);
-import mysql from "mysql2/promise"
 
+app.use(cors()); // Permite requisições do frontend
+
+// Rota para obter reservas por acomodação
 app.get('/api/reservas_por_acomodacao', async (req, res) => {
-  const resposta = `
-      SELECT COUNT(r.id_acomodacao) AS count, a.nome_acomodacao 
-      FROM reservas AS r
-      JOIN acomodacoes AS a ON r.id_acomodacao = a.id_acomodacao
-      GROUP BY r.id_acomodacao
-  `;
+  try {
+    const { startDate, endDate } = req.query;
+    let query = `
+        SELECT COUNT(r.id_reserva) AS count, a.nome_acomodacao
+        FROM reservas AS r
+        JOIN acomodacoes AS a ON r.id_acomodacao = a.id_acomodacao
+    `;
+    const queryParams = [];
 
-  const [qtde_acomodacao] = await conexao.query(resposta);
+    if (startDate && endDate) {
+        query += ` WHERE r.data_reserva BETWEEN ? AND ? `;
+        queryParams.push(startDate, endDate);
+    }
 
-  if (qtde_acomodacao.length > 0) {
-    return res.status(200).json(qtde_acomodacao);
-  } else {
+    query += ` GROUP BY r.id_acomodacao`;
+
+    const [qtde_acomodacao] = await conexao.query(query, queryParams);
+
+    if (qtde_acomodacao.length > 0) {
+        return res.status(200).json(qtde_acomodacao);
+    } else {
+        return res.status(404).send('Nenhum dado encontrado.');
+    }
+} catch (error) {
+    console.error('Erro ao consultar o banco de dados:', error);
     return res.status(500).send('Erro ao obter os dados.');
-  }
-
+}
 });
 
 
+// Rota para obter reservas por hóspede
+app.get('/api/reservas_por_hospede', async (req, res) => {
+  try {
+      const { startDate, endDate } = req.query;
+      let query = `
+          SELECT COUNT(r.id_hospede) AS count, h.nome_hospede
+          FROM reservas AS r
+          JOIN hospedes AS h ON r.id_hospede = h.id_hospede
+      `;
+      const queryParams = [];
+
+      if (startDate && endDate) {
+          query += ` WHERE r.data_reserva BETWEEN ? AND ? `;
+          queryParams.push(startDate, endDate);
+      }
+
+      query += ` GROUP BY r.id_hospede`;
+
+      const [qtde_hospede] = await conexao.query(query, queryParams);
+
+      if (qtde_hospede.length > 0) {
+          return res.status(200).json(qtde_hospede);
+      } else {
+          return res.status(404).send('Nenhum dado encontrado.');
+      }
+  } catch (error) {
+      console.error('Erro ao consultar o banco de dados:', error);
+      return res.status(500).send('Erro ao obter os dados.');
+  }
+});
+
+
+
+
+// Inicia o servidor
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
