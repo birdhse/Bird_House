@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
-import Menu from '../../layout/menu';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Pie } from 'react-chartjs-2';
+import { useState, useEffect } from "react";
+import Menu from "../../layout/menu";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Pie } from "react-chartjs-2";
 
 function Relatorios() {
     const [graficoRelatorio, setGraficoRelatorio] = useState(false);
     const [dadosGrafico, setDadosGrafico] = useState(null);
 
     useEffect(() => {
-        // Utilizando fetch para obter os dados
         fetch('/api/reservas_por_acomodacao')
             .then(response => {
                 if (!response.ok) {
@@ -20,13 +19,18 @@ function Relatorios() {
                 const labels = data.map(item => item.nome_acomodacao);
                 const values = data.map(item => item.count);
 
+                // Define cores únicas para cada item do gráfico
+                const backgroundColors = labels.map((_, i) =>
+                    `hsl(${(i * 360) / labels.length}, 70%, 60%)`
+                );
+
                 setDadosGrafico({
                     labels,
                     datasets: [
                         {
                             data: values,
-                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FFA07A'],
-                            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FFA07A'],
+                            backgroundColor: backgroundColors,
+                            hoverBackgroundColor: backgroundColors,
                         },
                     ],
                 });
