@@ -32,17 +32,19 @@ export async function createReserva(reserva) {
         SELECT * FROM reservas WHERE ((checkin BETWEEN ? AND ?) 
             OR (checkout BETWEEN ? AND ?) 
             OR (? BETWEEN checkin AND checkout))
-            AND (id_acomodacao = ? OR id_hospede = ?); 
+            AND (id_acomodacao = ? OR id_hospede = ?)
+            AND ativo = ?; 
     `;
     
-    const [reservasExistentes] = await conexao.query(checagemDatas, [
-        reserva.id_acomodacao, 
-        reserva.id_hospede, 
+    const [reservasExistentes] = await conexao.query(checagemDatas, [ 
         reserva.checkin, 
         reserva.checkout, 
         reserva.checkin, 
         reserva.checkout, 
-        reserva.checkin
+        reserva.checkin,
+        reserva.id_acomodacao,
+        reserva.id_hospede,
+        1
     ]);
 
     if (reservasExistentes.length > 0) {
@@ -50,6 +52,16 @@ export async function createReserva(reserva) {
         return [400, { message: 'Já existe uma reserva para o hóspede ou acomodação nas mesmas datas' }];
     }
 
+    
+    const checagemLotacao = `SELECT lotacao FROM acomodacoes WHERE id_acomodacao = ?`;
+    const parametros = [reserva.id_acomodacao];
+    const [resposta] = await conexao.query(checagemLotacao, parametros);
+    const lotacao = resposta[0].lotacao;
+    if(reserva.qntd_hospedes > lotacao){
+        console.log('superou limite de lotacao');
+        return [400, { message: 'superou limite de lotacao' }];
+    }
+    
     const sql = `INSERT INTO reservas (
     checkin,
     checkout,
@@ -144,28 +156,49 @@ export async function updateReserva(reserva, id_reserva) {
         return [500, error];
     }
 
+    const dataIn = reserva.checkin;
+    reserva.checkin = dataIn.split('T')[0];
+
+    const dataOut = reserva.checkout;
+    reserva.checkout = dataOut.split('T')[0];
+
+    console.log(reserva);
+
     const checagemDatas = `
         SELECT * FROM reservas
         WHERE ((checkin BETWEEN ? AND ?) 
             OR (checkout BETWEEN ? AND ?) 
             OR (? BETWEEN checkin AND checkout))
-            AND (id_acomodacao = ? OR id_hospede = ?); 
+            AND (id_acomodacao = ? OR id_hospede = ?)
+            AND ativo = ? AND id_reserva != ?; 
     `;
     
     const [reservasExistentes] = await conexao.query(checagemDatas, [
-        reserva.id_acomodacao, 
-        reserva.id_hospede, 
         reserva.checkin, 
         reserva.checkout, 
         reserva.checkin, 
         reserva.checkout, 
-        reserva.checkin
+        reserva.checkin,
+        reserva.id_acomodacao,
+        reserva.id_hospede,
+        1,
+        reserva.id_reserva
     ]);
 
     if (reservasExistentes.length > 0) {
         console.log('Já existe uma reserva para o hóspede ou acomodação nas mesmas datas');
         return [400, { message: 'Já existe uma reserva para o hóspede ou acomodação nas mesmas datas' }];
     }
+
+    const checagemLotacao = `SELECT lotacao FROM acomodacoes WHERE id_acomodacao = ?`;
+    const parametros = [reserva.id_acomodacao];
+    const [resposta] = await conexao.query(checagemLotacao, parametros);
+    const lotacao = resposta[0].lotacao;
+    if(reserva.qntd_hospedes > lotacao){
+        console.log('superou limite de lotacao');
+        return [400, { message: 'superou limite de lotacao' }];
+    }
+
     //Criando aula
     const sql = `UPDATE reservas SET
     id_hospede =?,

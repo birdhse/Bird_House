@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import Menu from "../../layout/menu";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Pie } from "react-chartjs-2";
+import { useState, useEffect } from 'react';
+import Menu from '../../layout/menu';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Pie } from 'react-chartjs-2';
 
 function Relatorios() {
     const [graficoRelatorio, setGraficoRelatorio] = useState(false);
@@ -71,11 +71,11 @@ function Relatorios() {
                     {graficoRelatorio ? (
                         <div id="graficos" className="p-3 border rounded bg-light">
                             <h3>Gráfico de Reservas por Acomodação</h3>
-                            {dadosGrafico ? (
+                            {/* {dadosGrafico ? (
                                 <Pie data={dadosGrafico} />
                             ) : (
                                 <p>Carregando dados do gráfico...</p>
-                            )}
+                            )} */}
                         </div>
                     ) : (
                         <div id="relatorios" className="p-3 border rounded bg-light">

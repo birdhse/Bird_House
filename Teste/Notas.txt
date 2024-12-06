@@ -16,4 +16,3 @@ Tela Geral - view das reservas, status reserva, acomodações, status acomdaçã
 as informações de documento,perfil e editar so vai aparecer quando tiver no status indisponível
 liberar vai aparecer quando a data de check-out coincidir com a data atual e após liberar a acomodação entrará em status de limpeza,e após 1 hora a acomodação entrará em estado de disponível 
 hospedar so vai aparecer quando a acomodação estiver disponível
-
