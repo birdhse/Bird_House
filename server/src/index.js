@@ -47,3 +47,29 @@ app.get('/geral',mostrarInfos);
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)
 });
+
+///////////////////////////////////////
+
+import db from "./conexao.js";
+const conexao = mysql.createPool(db);
+import mysql from "mysql2/promise"
+
+app.get('/api/reservas_por_acomodacao', async (req, res) => {
+  const resposta = `
+      SELECT COUNT(r.id_acomodacao) AS count, a.nome_acomodacao 
+      FROM reservas AS r
+      JOIN acomodacoes AS a ON r.id_acomodacao = a.id_acomodacao
+      GROUP BY r.id_acomodacao
+  `;
+
+  const [qtde_acomodacao] = await conexao.query(resposta);
+
+  if (qtde_acomodacao.length > 0) {
+    return res.status(200).json(qtde_acomodacao);
+  } else {
+    return res.status(500).send('Erro ao obter os dados.');
+  }
+
+});
+
+
