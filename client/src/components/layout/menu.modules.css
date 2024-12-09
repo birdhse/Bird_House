@@ -207,3 +207,24 @@ label {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.menu_lateral ul li {
+  padding: 10px;
+}
+
+.menu_lateral ul li a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px;
+  display: block;
+}
+
+.menu_lateral li:hover {
+  background-color: #fdc827;
+}
+
+.menu_lateral li.link_ativo {
+  background-color: #fdc827;
+  font-weight: bold;
+}
