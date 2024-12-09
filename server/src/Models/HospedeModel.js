@@ -55,16 +55,15 @@ export async function readHospede() {
     }
 }
 
-export async function updateHospede(hospede, id_hospede) { 
+export async function updateHospede(hospede, id_hospede) {
     //Ao ser acionado o metodo createAula retorna na tela
     console.log('Entrando no Model Hospede');
 
-    const checagem = 'SELECT * FROM hospedes WHERE cpf_hospede = ? AND id_hospede != ?';
-    const [cpfExistente] = await conexao.query(checagem, [hospede.cpf_hospede,id_hospede]);
-
-
     const dataISO = hospede.data_nascimento;
     hospede.data_nascimento = dataISO.split('T')[0];
+
+    const checagem = 'SELECT * FROM hospedes WHERE cpf_hospede = ? AND id_hospede != ?';
+    const [cpfExistente] = await conexao.query(checagem, [hospede.cpf_hospede, id_hospede]);
 
     if (cpfExistente.length > 0) {
         console.log('CPF já cadastrado');
@@ -106,7 +105,7 @@ export async function updateHospede(hospede, id_hospede) {
 export async function deleteHospede(id_hospede) {
     console.log('Deletando no Model Hospede');
     const sql = `UPDATE hospedes SET ativo = ? WHERE id_hospede=?`;
-    const params = [ 0, id_hospede ];
+    const params = [0, id_hospede];
 
     try {
         const [retorno] = await conexao.query(sql, params);
