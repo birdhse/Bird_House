@@ -52,7 +52,7 @@ function ConfigUsuario({ handleSubmit, id_usuario }) {
       senha: password
     };
 
-    const tipo = await handleSubmit(id_usuario);
+    const tipo = await handleSubmit(usuario, id_usuario);
     console.log(tipo);
     navigate(`/config_usuarios/${tipo}`);
 

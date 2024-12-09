@@ -28,12 +28,13 @@ function EditUmUsuario() {
       }
       else {
         console.log(id_usuario);
-
+        console.log(infoUsuario);
         console.log('Usuario Editada');
         return 'editada';
 
       }
     } catch (error) {
+      console.log(infoUsuario);
       console.log(id_usuario);
 
       console.log('Erro ao editar Usuario', error);
