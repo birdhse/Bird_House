@@ -10,7 +10,7 @@ export async function updateConfigUsuario(usuarios, id_usuario) {
     //Criando String com comandos sql
     const sql = `UPDATE usuarios SET
     email_usuario = ?,
-    senha = ?,
+    senha = ?
     WHERE id_usuario = ?
     `
     //Definindo parametros para inserir no sql
