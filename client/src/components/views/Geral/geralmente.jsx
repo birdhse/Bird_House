@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Menu from '../../layout/menu';
 import './Geral.modules.css';
 
-function Geral() {
+function Geralmente() {
     const [infos, setInfos] = useState([]);
 
     useEffect(() => {
@@ -88,4 +88,4 @@ function Geral() {
     );
 }
 
-export default Geral;
+export default Geralmente;
