@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
 
 function Relatorios() {
     const [graficoRelatorio, setGraficoRelatorio] = useState(false);
@@ -21,7 +22,7 @@ function Relatorios() {
     const buscarDados = () => {
         let urlAcomodacao = 'http://localhost:5000/api/reservas_por_acomodacao';
         let urlHospede = 'http://localhost:5000/api/reservas_por_hospede';
-        let urlRelatorio = 'http://localhost:5000/api/reservas_por_acomodacao'; // Para o relatório
+        let urlRelatorio = 'http://localhost:5000/api/reservas_por_acomodacao';
 
         if (startDate && endDate) {
             urlAcomodacao += `?startDate=${startDate}&endDate=${endDate}`;
@@ -29,14 +30,8 @@ function Relatorios() {
             urlRelatorio += `?startDate=${startDate}&endDate=${endDate}`;
         }
 
-        // Busca dados para o gráfico de acomodações
         fetch(urlAcomodacao)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erro na API de gráfico de acomodações: ${response.statusText}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 const labels = data.map(item => item.nome_acomodacao);
                 const values = data.map(item => item.count);
@@ -55,18 +50,10 @@ function Relatorios() {
                     ],
                 });
             })
-            .catch(error => {
-                console.error('Erro ao buscar dados do gráfico de acomodação:', error);
-            });
+            .catch(error => console.error('Erro ao buscar dados do gráfico de acomodação:', error));
 
-        // Busca dados para o gráfico de hóspedes
         fetch(urlHospede)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erro na API de gráfico de hóspedes: ${response.statusText}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 const labels = data.map(item => item.nome_hospede);
                 const values = data.map(item => item.count);
@@ -85,53 +72,75 @@ function Relatorios() {
                     ],
                 });
             })
-            .catch(error => {
-                console.error('Erro ao buscar dados do gráfico de hóspede:', error);
-            });
+            .catch(error => console.error('Erro ao buscar dados do gráfico de hóspede:', error));
 
-        // Busca dados para o relatório
         fetch(urlRelatorio)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erro na API de relatório: ${response.statusText}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 setDadosRelatorio(data);
             })
-            .catch(error => {
-                console.error('Erro ao buscar dados do relatório:', error);
-            });
+            .catch(error => console.error('Erro ao buscar dados do relatório:', error));
     };
 
-    function exibeGrafico() {
-        setGraficoRelatorio(true);
-    }
+    const exibeGrafico = () => setGraficoRelatorio(true);
+    const exibeRelatorio = () => setGraficoRelatorio(false);
 
-    function exibeRelatorio() {
-        setGraficoRelatorio(false);
-    }
+    const handleAcomodacaoChange = event => setSelectedAcomodacao(event.target.value);
 
-    function handleAcomodacaoChange(event) {
-        setSelectedAcomodacao(event.target.value);
-    }
-
-    function gerarPDF() {
+    const gerarPDF = () => {
         const doc = new jsPDF();
-        doc.setFontSize(16);
-        doc.text('Relatório de Reservas por Acomodação e Hóspede', 10, 10);
+        const margin = 10;
+        const pageWidth = doc.internal.pageSize.getWidth();
 
-        let yPosition = 20;
-        dadosRelatorio.forEach(item => {
-            if (!selectedAcomodacao || item.nome_acomodacao === selectedAcomodacao) {
-                doc.text(`${item.nome_acomodacao}: ${item.count} reservas`, 10, yPosition);
-                yPosition += 10;
-            }
-        });
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(18);
+        doc.text("Relatório de Reservas por Acomodação", pageWidth / 2, margin + 10, { align: "center" });
 
-        doc.save('relatorio_reservas.pdf');
-    }
+        if (startDate && endDate) {
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(12);
+            doc.text(`Período: ${startDate} a ${endDate}`, pageWidth / 2, margin + 20, { align: "center" });
+        }
+
+        const filteredData = dadosRelatorio.filter(
+            item => !selectedAcomodacao || item.nome_acomodacao === selectedAcomodacao
+        );
+
+        if (filteredData.length === 0) {
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(12);
+            doc.text("Nenhuma reserva encontrada para os critérios selecionados.", margin, 50);
+        } else {
+            const headers = [["Acomodação", "Reservas"]];
+            const rows = filteredData.map(item => [item.nome_acomodacao, item.count]);
+
+            doc.autoTable({
+                startY: 50,
+                head: headers,
+                body: rows,
+                theme: "striped",
+                headStyles: {
+                    fillColor: [52, 73, 94],
+                    textColor: [255, 255, 255],
+                    halign: "center",
+                    valign: "middle",
+                },
+                bodyStyles: {
+                    halign: "center",
+                    valign: "middle",
+                },
+                margin: { left: margin, right: margin },
+                styles: { fontSize: 10 },
+            });
+        }
+
+        const footer = `Gerado em: ${new Date().toLocaleString()}`;
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.text(footer, margin, doc.internal.pageSize.height - margin);
+
+        doc.save("relatorio_reservas.pdf");
+    };
 
     return (
         <div>
@@ -155,90 +164,44 @@ function Relatorios() {
                     </div>
                     {graficoRelatorio ? (
                         <div className="d-flex justify-content-between" style={{ maxWidth: '100%', overflow: 'auto' }}>
-                            <div id="graficoAcomodacao" className="p-3 border rounded bg-light" style={{ width: '48%', maxHeight: '810px' }}>
+                            <div className="p-3 border rounded bg-light" style={{ width: '48%' }}>
                                 <h3>Reservas por Acomodação</h3>
                                 {dadosGraficoAcomodacao ? (
-                                    <Pie
-                                        data={dadosGraficoAcomodacao}
-                                        options={{
-                                            responsive: true,
-                                            maintainAspectRatio: false,
-                                        }}
-                                        width={650}
-                                        height={650}
-                                    />
+                                    <Pie data={dadosGraficoAcomodacao} options={{ responsive: true }} />
                                 ) : (
                                     <p>Carregando dados do gráfico...</p>
                                 )}
                             </div>
-                            <div id="graficoHospede" className="p-3 border rounded bg-light" style={{ width: '48%', maxHeight: '810px' }}>
+                            <div className="p-3 border rounded bg-light" style={{ width: '48%' }}>
                                 <h3>Reservas por Hóspede</h3>
                                 {dadosGraficoHospede ? (
-                                    <Pie
-                                        data={dadosGraficoHospede}
-                                        options={{
-                                            responsive: true,
-                                            maintainAspectRatio: false,
-                                        }}
-                                        width={650}
-                                        height={650}
-                                    />
+                                    <Pie data={dadosGraficoHospede} options={{ responsive: true }} />
                                 ) : (
                                     <p>Carregando dados do gráfico...</p>
                                 )}
                             </div>
                         </div>
                     ) : (
-                        <div id="relatorios" className="p-3 border rounded bg-light">
+                        <div className="p-3 border rounded bg-light">
                             <h3>Relatório de Reservas por Acomodação</h3>
                             <div className="mb-3">
-                                <label htmlFor="acomodacao" className="form-label">Selecionar Acomodação</label>
-                                <select id="acomodacao" className="form-select" value={selectedAcomodacao} onChange={handleAcomodacaoChange}>
+                                <label className="form-label">Selecionar Acomodação</label>
+                                <select
+                                    className="form-select"
+                                    value={selectedAcomodacao}
+                                    onChange={handleAcomodacaoChange}
+                                >
                                     <option value="">Todas</option>
-                                    {dadosRelatorio.length > 0 && dadosRelatorio.map((item, index) => (
+                                    {dadosRelatorio.map((item, index) => (
                                         <option key={index} value={item.nome_acomodacao}>
                                             {item.nome_acomodacao}
                                         </option>
                                     ))}
                                 </select>
                             </div>
-                            {/* <div className="mb-3">
-                                <label htmlFor="startDate" className="form-label">Data Inicial</label>
-                                <input
-                                    type="date"
-                                    id="startDate"
-                                    className="form-control"
-                                    value={startDate}
-                                    onChange={e => setStartDate(e.target.value)}
-                                />
-                            </div> */}
-                            {/* <div className="mb-3">
-                                <label htmlFor="endDate" className="form-label">Data Final</label>
-                                <input
-                                    type="date"
-                                    id="endDate"
-                                    className="form-control"
-                                    value={endDate}
-                                    onChange={e => setEndDate(e.target.value)}
-                                />
-                            </div> */}
-                            <div className="mb-3">
-                                <button className="btn btn-info text-dark" onClick={gerarPDF}>
-                                    Baixar Relatório em PDF
-                                </button>
-                            </div>
-                            {dadosRelatorio.length > 0 ? (
-                                <pre>
-                                    {selectedAcomodacao
-                                        ? dadosRelatorio
-                                            .filter(item => item.nome_acomodacao === selectedAcomodacao)
-                                            .map(item => `${item.nome_acomodacao}: ${item.count} reservas`)
-                                            .join('\n')
-                                        : dadosRelatorio.map(item => `${item.nome_acomodacao}: ${item.count} reservas`).join('\n')}
-                                </pre>
-                            ) : (
-                                <p>Carregando dados do relatório...</p>
-                            )}
+                            <button className="btn btn-info text-dark" onClick={gerarPDF}>
+                                Baixar Relatório em PDF
+                            </button>
                         </div>
                     )}
                 </main>
