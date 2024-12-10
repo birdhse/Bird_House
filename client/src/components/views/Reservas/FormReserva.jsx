@@ -94,7 +94,14 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
                 </select>
 
                 <label className='form-label' htmlFor="checkin">Data de Check-in</label>
-                <input className='form-control' type="date" name="checkin" id="checkin" value={new Date(checkin).toLocaleDateString('en-CA')} onChange={(e) => (setCheckin(e.target.value))} />
+                <input
+                    className='form-control'
+                    type="date"
+                    name="checkin"
+                    id="checkin"
+                    value={checkin}
+                    onChange={(e) => setCheckin(e.target.value)}
+                />
 
                 <label className='form-label' htmlFor="checkout">Data de Check-out</label>
                 <input
