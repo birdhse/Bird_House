@@ -1,13 +1,13 @@
--- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: birdhouse
+-- Host: localhost    Database: birdhouse
 -- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `acomodacoes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `acomodacoes` (
   `id_acomodacao` int(11) NOT NULL AUTO_INCREMENT,
   `nome_acomodacao` varchar(45) NOT NULL,
@@ -53,7 +53,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cargos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cargos` (
   `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
   `nome_cargo` varchar(45) NOT NULL,
@@ -77,7 +77,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `comodidades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comodidades` (
   `id_comodidade` int(11) NOT NULL AUTO_INCREMENT,
   `camas_casal` int(11) NOT NULL,
@@ -110,7 +110,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `hospedes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hospedes` (
   `id_hospede` int(11) NOT NULL AUTO_INCREMENT,
   `nome_hospede` varchar(45) NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE `hospedes` (
   `cpf_hospede` varchar(11) NOT NULL,
   `ativo` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_hospede`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `hospedes` (
 
 LOCK TABLES `hospedes` WRITE;
 /*!40000 ALTER TABLE `hospedes` DISABLE KEYS */;
-INSERT INTO `hospedes` VALUES (1,'Michael Jackson','27987654321','mechamadilord@gmail.com','1958-08-29','1982',1),(2,'Joaquina Dark','27111111111','jdark@gmail.com','1310-04-02','17719821793',1),(3,'Isaac Lindo Cheroso','22222222','isaaac@gmail.com','2024-11-20','2222222222',1),(4,'teste','0','teste','2024-11-19','1',0),(5,'Duquesa Sarah','279998821','sarahduque@gmail.com','2024-09-17','154780',0),(6,'Amanda Xavier','555555','amandaxavosa@gmail.com','2010-06-02','13577895',0),(9,'irineu','123456789100','irineu@gmail.com','2024-11-19','00000000000',1),(10,'Matheus','2799764444','mat.com','2024-12-02','00000000000',0),(11,'','','','0000-00-00','',0),(12,'','','','0000-00-00','',0),(13,'','','','0000-00-00','',0),(14,'Matheus','2799764444','mat.com','2024-11-22','00000000000',0),(15,'Matheus','27999763836','vitor.v.parajara@gmail.com','2000-02-07','17719821793',1);
+INSERT INTO `hospedes` VALUES (1,'vitor parajara','27992912308','vitor@gmail.com','2003-07-23','17719821793',1),(2,'amanda xavier nascimento','27992912308','amanda@gmail.com','2004-11-25','14495153714',1),(3,'Matheus Brunelli','27992912308','matheus@gmail.com','2004-03-19','13590117737',1),(4,'sarah monteiro ','27992912308','sarah@gmail.com','2004-10-27','22389829732',1),(5,'heloisa','27992912308','heloisa@gmail.com','2004-11-11','21296442799',1),(6,'marco','27992912308','marco@gmail.com','2004-01-06','10186497784',1),(7,'pietro','27992912308','pietro@gmail.com','2004-08-19','17688810736',1),(8,'isaac','27992912308','isaac@gmail.com','2004-09-09','44445329045',1);
 /*!40000 ALTER TABLE `hospedes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +139,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `reservas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reservas` (
   `id_reserva` int(11) NOT NULL AUTO_INCREMENT,
   `checkin` date NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE `reservas` (
   CONSTRAINT `fk_reservas_acomodacoes1` FOREIGN KEY (`id_acomodacao`) REFERENCES `acomodacoes` (`id_acomodacao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservas_hospedes` FOREIGN KEY (`id_hospede`) REFERENCES `hospedes` (`id_hospede`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservas_status_reservas` FOREIGN KEY (`id_status_reserva`) REFERENCES `status_reservas` (`id_status_reservas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
-INSERT INTO `reservas` VALUES (1,'2024-12-05','2024-12-07',2,2,780,'',1,1,1,1),(2,'2024-12-04','2024-12-07',1,3,1170,'',2,2,2,0),(3,'2024-12-12','2024-12-24',3,12,1950,'',2,1,1,1),(4,'2024-12-08','2024-12-11',1,3,1170,'',2,3,1,1);
+INSERT INTO `reservas` VALUES (1,'2024-12-10','2024-12-12',1,2,774,'cama casal',3,1,1,1),(2,'2024-12-14','2024-12-16',2,2,1175,'cama casal',8,4,4,0);
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +178,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `status_acomodacoes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `status_acomodacoes` (
   `id_status_acomodacao` int(11) NOT NULL AUTO_INCREMENT,
   `condicao` varchar(45) NOT NULL,
@@ -202,7 +202,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `status_reservas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `status_reservas` (
   `id_status_reservas` int(11) NOT NULL AUTO_INCREMENT,
   `condicao` varchar(45) NOT NULL,
@@ -221,80 +221,80 @@ INSERT INTO `status_reservas` VALUES (1,'solicitada'),(2,'reservada'),(3,'hosped
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `tabelageral`
+-- Temporary view structure for view `tabelageral`
 --
 
 DROP TABLE IF EXISTS `tabelageral`;
 /*!50001 DROP VIEW IF EXISTS `tabelageral`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `tabelageral` AS SELECT
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `tabelageral` AS SELECT 
  1 AS `id_acomodacao`,
-  1 AS `nome_acomodacao`,
-  1 AS `id_status_acomodacao`,
-  1 AS `condicao`,
-  1 AS `id_hospede`,
-  1 AS `nome_hospede`,
-  1 AS `id_reserva`,
-  1 AS `checkin`,
-  1 AS `checkout` */;
+ 1 AS `nome_acomodacao`,
+ 1 AS `id_status_acomodacao`,
+ 1 AS `condicao`,
+ 1 AS `id_hospede`,
+ 1 AS `nome_hospede`,
+ 1 AS `id_reserva`,
+ 1 AS `checkin`,
+ 1 AS `checkout`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `tabelareservas`
+-- Temporary view structure for view `tabelareservas`
 --
 
 DROP TABLE IF EXISTS `tabelareservas`;
 /*!50001 DROP VIEW IF EXISTS `tabelareservas`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `tabelareservas` AS SELECT
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `tabelareservas` AS SELECT 
  1 AS `id_reserva`,
-  1 AS `id_status_reserva`,
-  1 AS `nome_hospede`,
-  1 AS `nome_acomodacao`,
-  1 AS `checkin`,
-  1 AS `checkout`,
-  1 AS `qntd_hospedes`,
-  1 AS `ativo` */;
+ 1 AS `id_status_reserva`,
+ 1 AS `nome_hospede`,
+ 1 AS `nome_acomodacao`,
+ 1 AS `checkin`,
+ 1 AS `checkout`,
+ 1 AS `qntd_hospedes`,
+ 1 AS `ativo`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `tabelausuarios`
+-- Temporary view structure for view `tabelausuarios`
 --
 
 DROP TABLE IF EXISTS `tabelausuarios`;
 /*!50001 DROP VIEW IF EXISTS `tabelausuarios`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `tabelausuarios` AS SELECT
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `tabelausuarios` AS SELECT 
  1 AS `id_usuario`,
-  1 AS `nome_usuario`,
-  1 AS `email_usuario`,
-  1 AS `login_usuario`,
-  1 AS `senha`,
-  1 AS `nome_cargo`,
-  1 AS `ativo` */;
+ 1 AS `nome_usuario`,
+ 1 AS `email_usuario`,
+ 1 AS `login_usuario`,
+ 1 AS `senha`,
+ 1 AS `nome_cargo`,
+ 1 AS `ativo`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `umareserva`
+-- Temporary view structure for view `umareserva`
 --
 
 DROP TABLE IF EXISTS `umareserva`;
 /*!50001 DROP VIEW IF EXISTS `umareserva`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `umareserva` AS SELECT
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `umareserva` AS SELECT 
  1 AS `id_reserva`,
-  1 AS `id_status_reserva`,
-  1 AS `nome_hospede`,
-  1 AS `id_acomodacao`,
-  1 AS `checkin`,
-  1 AS `checkout`,
-  1 AS `qntd_hospedes`,
-  1 AS `valor_total`,
-  1 AS `observacao` */;
+ 1 AS `id_status_reserva`,
+ 1 AS `nome_hospede`,
+ 1 AS `id_acomodacao`,
+ 1 AS `checkin`,
+ 1 AS `checkout`,
+ 1 AS `qntd_hospedes`,
+ 1 AS `valor_total`,
+ 1 AS `observacao`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -303,7 +303,7 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome_usuario` varchar(45) NOT NULL,
@@ -315,7 +315,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_cargos` (`id_cargo`),
   CONSTRAINT `fk_usuarios_cargos1` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,7 +324,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'sarah','sarah@gmail.com','sarah','123456',1,1),(3,'greg','veloso@gmail','greg','123',1,1),(4,'Matheus','vitor.v.parajara@gmail.com','mat','123',2,1);
+INSERT INTO `usuarios` VALUES (1,'sarah','sarah@gmail.com','sarah','1234567',1,1),(3,'greg','veloso@gmail','greg','1234567',1,1),(4,'Matheus','matheus@gmail.com','matheus','7654321',2,1),(5,'amanda xavier nascimento','amanda@gmail.com','amanda','1234567',1,1),(6,'vitor parajara','vitor@gmail.com','vitor','1234567',2,1),(7,'adm','adm@gmail.com','adm','1234567',1,1),(8,'joaquim','joquinha@gmail.com','joaquim','1234567',1,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-09 16:01:31
+-- Dump completed on 2024-12-10 14:54:25
