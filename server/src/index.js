@@ -136,17 +136,4 @@ app.get('/api/reservas_por_hospede', async (req, res) => {
       console.error('Erro ao consultar o banco de dados:', error);
       return res.status(500).send('Erro ao obter os dados.');
   }
-<<<<<<< HEAD
 });
-=======
-});
-
-
-
-
-// // Inicia o servidor
-// const PORT = 3000;
-// app.listen(PORT, () => {
-//     console.log(`Servidor rodando na porta ${PORT}`);
-// });
->>>>>>> 23cff85ebadbe8004f01e0d59c432095cd8f5c92
