@@ -2,6 +2,20 @@ import mysql from "mysql2/promise";
 import db from "../conexao.js";
 const conexao = mysql.createPool(db);
 
+export async function readAcomodacoes() {
+    const sql = `SELECT * FROM acomodacoes`;
+    try {
+        const [retorno] = await conexao.query(sql);
+        console.log('Acomodacoes exibido');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [400, error];
+    }
+
+}
+
+
 export async function readInfo() {
     console.log('Entrando no Model Acomodacoes');
     //Criando aula
@@ -12,7 +26,7 @@ export async function readInfo() {
 
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE ? BETWEEN checkin AND checkout`;
+    const sql = ` SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout) AND ativo = 1 AND ((id_status_reserva != 5) OR (id_status_reserva != 6))`;
     const params = [
         hoje
     ]
@@ -126,5 +140,159 @@ export async function statusDisponivel(id_acomodacao) {
     } catch (error) {
         console.log(error);
         return [500, error];
+    }
+}
+
+export async function readSuite() {
+    console.log('Entrando no Model Acomodacoes');
+    //Criando aula
+    let data = new Date();
+    let diaHoje = ("0" + data.getDate()).slice(-2);
+    let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+    let anoHoje = data.getFullYear();
+    const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
+
+    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const params = [
+        hoje,
+        1
+    ]
+    //Executando query no banco
+    try {
+
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Acomodacoes exibido');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [400, error];
+    }
+}
+
+export async function readChale() {
+    console.log('Entrando no Model Acomodacoes');
+    //Criando aula
+    let data = new Date();
+    let diaHoje = ("0" + data.getDate()).slice(-2);
+    let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+    let anoHoje = data.getFullYear();
+    const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
+
+    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const params = [
+        hoje,
+        2
+    ]
+    //Executando query no banco
+    try {
+
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Acomodacoes exibido');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [400, error];
+    }
+}
+
+export async function readCabana() {
+    console.log('Entrando no Model Acomodacoes');
+    //Criando aula
+    let data = new Date();
+    let diaHoje = ("0" + data.getDate()).slice(-2);
+    let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+    let anoHoje = data.getFullYear();
+    const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
+
+    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const params = [
+        hoje,
+        3
+    ]
+    //Executando query no banco
+    try {
+
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Acomodacoes exibido');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [400, error];
+    }
+}
+
+export async function readDomo() {
+    console.log('Entrando no Model Acomodacoes');
+    //Criando aula
+    let data = new Date();
+    let diaHoje = ("0" + data.getDate()).slice(-2);
+    let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+    let anoHoje = data.getFullYear();
+    const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
+
+    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const params = [
+        hoje,
+        4
+    ]
+    //Executando query no banco
+    try {
+
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Acomodacoes exibido');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [400, error];
+    }
+}
+
+export async function readBus() {
+    console.log('Entrando no Model Acomodacoes');
+    //Criando aula
+    let data = new Date();
+    let diaHoje = ("0" + data.getDate()).slice(-2);
+    let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+    let anoHoje = data.getFullYear();
+    const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
+
+    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const params = [
+        hoje,
+        5
+    ]
+    //Executando query no banco
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Acomodacoes exibido');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [400, error];
+    }
+}
+
+export async function readEstacionamento() {
+    console.log('Entrando no Model Acomodacoes');
+    //Criando aula
+    let data = new Date();
+    let diaHoje = ("0" + data.getDate()).slice(-2);
+    let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+    let anoHoje = data.getFullYear();
+    const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
+
+    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const params = [
+        hoje,
+        6
+    ]
+    //Executando query no banco
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log('Acomodacoes exibido');
+        return [200, retorno];
+    } catch (error) {
+        console.log(error);
+        return [400, error];
     }
 }
