@@ -100,7 +100,8 @@ function FormReserva({ titulo, textoBotao, handleSubmit, id_reserva, TextoValor 
                 </select>
 
                 <label className='form-label' htmlFor="checkin">Data de Check-in</label>
-                <input className='form-control' type="date" name="checkin" id="checkin" value={new Date(checkin).toLocaleDateString('en-CA')} onChange={(e) => (setCheckin(e.target.value))} />
+                <input className='form-control' type="date" name="checkin" id="checkin" value={new Date(checkin).toLocaleDateString('en-CA')} onChange={(e) => (setCheckin(e.target.value),
+                console.log(checkin))} />
 
                 <label className='form-label' htmlFor="checkout">Data de Check-out:</label>
                 <input className='form-control' type="date" name="checkout" id="checkout" value={new Date(checkout).toLocaleDateString('en-CA')} onChange={(e) => (setCheckout(e.target.value))} />
