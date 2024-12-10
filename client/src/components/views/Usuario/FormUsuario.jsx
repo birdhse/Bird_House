@@ -84,7 +84,7 @@ function FormUsuario({ titulo, textoBotao, handleSubmit, id_usuario, TextoValor 
                 <select className='form-control' name="cargo" id="cargo" value={id_cargo} onChange={(e) => (setCargo(e.target.value))}>
                     <option value="" hidden>Selecione uma função</option>
                     <option value={1}>Administrador</option>
-                    <option value={2}>Funcionário</option>
+                    <option value={2}>Servidor</option>
                 </select>
                 {id_cargo === '' && <small className="text-danger">Selecione uma função.</small>}
 

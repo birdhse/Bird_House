@@ -5,10 +5,21 @@ const conexao = mysql.createPool(db);
 export async function readInfo() {
     console.log('Entrando no Model Acomodacoes');
     //Criando aula
-    const sql = `SELECT * FROM tabelageral`;
+    let data = new Date();
+    let diaHoje = ("0" + data.getDate()).slice(-2);
+    let mesHoje = ("0" + (data.getMonth() + 1)).slice(-2);
+    let anoHoje = data.getFullYear();
+
+    const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
+
+    const sql = ` SELECT * FROM tabelageral WHERE ? BETWEEN checkin AND checkout`;
+    const params = [
+        hoje
+    ]
     //Executando query no banco
     try {
-        const [retorno] = await conexao.query(sql);
+        console.log(hoje)
+        const [retorno] = await conexao.query(sql, params);
         console.log('Acomodacoes exibido');
         return [200, retorno];
     } catch (error) {

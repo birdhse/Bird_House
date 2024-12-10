@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 
 import TelaLogin from './components/views/TelaLogin/TelaLogin';
 import Geral from './components/views/Geral/Geral'
+import Geralmente from './components/views/Geral/geralmente';
 
 import GestãoReservas from './components/views/Reservas/GestaoReservas';
 import CadastroReserva from './components/views/Reservas/CadastroReserva'
@@ -34,7 +35,8 @@ function App() {
       <Routes>
         <Route path='/' element={<TelaLogin />} />
         <Route path='/esqueci_senha' element={<EsqueciSenha/>} />
-        <Route path='/geral' element={<Geral />} />
+        {/* <Route path='/geral' element={<Geral />} /> */}
+        <Route path='/geral' element={<Geralmente/>} />
         <Route path='/relatorios' element={<Relatorios />} />
 
         <Route path='/reservas' element={<GestãoReservas />} />
