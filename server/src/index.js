@@ -128,8 +128,8 @@ app.get('/api/reservas_por_hospede', async (req, res) => {
 
 
 
-// Inicia o servidor
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+// // Inicia o servidor
+// const PORT = 3000;
+// app.listen(PORT, () => {
+//     console.log(`Servidor rodando na porta ${PORT}`);
+// });
