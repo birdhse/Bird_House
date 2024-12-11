@@ -23,6 +23,11 @@ function EsqueciSenha() {
         }
 
         setSuccessFeedback("Um link para redefinir sua senha foi enviado!");
+
+        // Redireciona para a tela de login após 2 segundos
+        setTimeout(() => {
+            window.location.href = "/";
+        }, 2000);
     };
 
     return (
@@ -52,4 +57,3 @@ function EsqueciSenha() {
 }
 
 export default EsqueciSenha;
-

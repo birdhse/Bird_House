@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 
-import { mostrarInfos } from './Controllers/AcomodacoesController.js';
+import { mostrarAcomodacoes, mostrarInfos, mostrarSuite, mostrarChale, mostrarCabana, mostrarDomo, mostrarBus, mostrarEstacionamento} from './Controllers/AcomodacoesController.js';
 import { criarReserva, excluirReserva, mostrarReservas, atualizarReserva, mostrarUmaReserva, mostrarTabelaReservas } from './Controllers/ReservaController.js';
 import { atualizarHospede, criarHospede, excluirHospede, mostrarHospedes, mostrarUmHospede } from './Controllers/HospedeController.js'
 import { mostrarTabelaUsuarios, atualizarUsuario, criarUsuario, excluirUsuario, logarUsuario, mostrarUmUsuario, mostrarUsuarios } from "./Controllers/UsuarioController.js";
@@ -49,10 +49,20 @@ app.get('/config_usuarios/:id_usuario', mostrarUmUsuario)
 app.put("/config_usuarios/:id_usuario",atualizarUmUsuario)
 
 app.get('/geral', mostrarInfos);
+app.get('/acomodacoes', mostrarAcomodacoes);
+app.get('/suite', mostrarSuite);
+app.get('/chale', mostrarChale);
+app.get('/cabana', mostrarCabana);
+app.get('/domo', mostrarDomo);
+app.get('/bus', mostrarBus);
+app.get('/estacionamento', mostrarEstacionamento);
+
 
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)
 });
+
+
 
 ///////////////////////////////////////
 
@@ -127,12 +137,3 @@ app.get('/api/reservas_por_hospede', async (req, res) => {
       return res.status(500).send('Erro ao obter os dados.');
   }
 });
-
-
-
-
-// // Inicia o servidor
-// const PORT = 3000;
-// app.listen(PORT, () => {
-//     console.log(`Servidor rodando na porta ${PORT}`);
-// });
