@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 
+import { mostrarInfos } from './Controllers/AcomodacoesController.js';
 import { criarReserva, excluirReserva, mostrarReservas, atualizarReserva, mostrarUmaReserva, mostrarTabelaReservas } from './Controllers/ReservaController.js';
 import { atualizarHospede, criarHospede, excluirHospede, mostrarHospedes, mostrarUmHospede } from './Controllers/HospedeController.js'
 import { mostrarTabelaUsuarios, atualizarUsuario, criarUsuario, excluirUsuario, logarUsuario, mostrarUmUsuario, mostrarUsuarios } from "./Controllers/UsuarioController.js";
@@ -47,6 +48,7 @@ app.get('/usuarios/:id_usuario', mostrarUmUsuario)
 app.get('/config_usuarios/:id_usuario', mostrarUmUsuario)
 app.put("/config_usuarios/:id_usuario",atualizarUmUsuario)
 
+app.get('/geral', mostrarInfos);
 
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)
@@ -56,6 +58,7 @@ app.listen(porta, () => {
 
 import mysql from 'mysql2/promise';
 import db from './conexao.js'; // Configuração da conexão com o banco de dados
+
 
 
 const conexao = mysql.createPool(db);

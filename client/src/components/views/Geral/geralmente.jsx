@@ -11,7 +11,7 @@ function Geralmente() {
 
     async function baixarInfos() {
         try {
-            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/geral/tabela`, {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/geral`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -29,14 +29,18 @@ function Geralmente() {
     }
 
     // Função que retorna a classe com base no status
-    const getCardClass = (status) => {
-        switch (status) {
+    const getCardClass = (id_status_acomodacao) => {
+        switch (id_status_acomodacao) {
             case 1:
                 return 'card red';
             case 2:
-                return 'card blue';
-            case 3:
                 return 'card orange';
+            case 3:
+                return 'card green';
+            case 4:
+                return 'card yellow';
+            case 5:
+                return 'card purple';
             default:
                 return 'card'; // Caso não tenha status conhecido, retorna apenas 'card'
         }
@@ -66,21 +70,22 @@ function Geralmente() {
                     </div>
 
                     {/* Cards de Acomodações */}
-                    <div>
-                    {infos.map((info) => (
-                        <div key={info.id_acomodacao} className={getCardClass(info.id_status_acomodacao)}>
-                            <div>
-                                <h3>{info.nome_acomodacao}</h3>
-                                <p><strong>{info.nome_hospede}</strong></p>
-                                <p>{info.checkin} - {info.checkout}</p>
-                                <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                    <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                    <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
+                    <div className='cards'>
+                        {infos.map((info) => (
+                            <div key={info.id_acomodacao} className={getCardClass(info.id_status_acomodacao)}>
+                                <div>
+                                    <h3>{info.nome_acomodacao}</h3>
+                                    <p><strong>{info.nome_hospede}</strong></p>
+                                    <p>{new Date(info.checkin).toLocaleDateString('pt-BR')} - {new Date(info.checkout).toLocaleDateString('pt-BR')}</p>
+                                    <br/>
+                                    <div className="icons">
+                                        <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                        <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
+                                        <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                     </div>
                 </div>
             </div>

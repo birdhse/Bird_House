@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './menu.modules.css';
 import Data from './data';
 import Relogio from './relogio';
@@ -20,20 +20,20 @@ async function verificaPermissao(id_usuario, setIdCargo) {
 
 function Menu() {
     const navigate = useNavigate();
+    const location = useLocation(); // Pega a localização atual
     const [id_usuario, setIdUsuario] = useState(localStorage.getItem('id_usuario'));
     const [idCargo, setIdCargo] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false); // Estado para exibir a mensagem de confirmação
+    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
     useEffect(() => {
         setIdUsuario(localStorage.getItem('id_usuario'));
-        console.log(id_usuario);
         if (!id_usuario) {
             navigate("/");
         } else {
             verificaPermissao(id_usuario, setIdCargo).finally(() => setLoading(false));
         }
-    }, []);
+    }, [id_usuario]);
 
     const deslogar = () => {
         localStorage.removeItem('id_usuario');
@@ -63,7 +63,7 @@ function Menu() {
                     <button
                         className="icon-button"
                         title="Deslogar"
-                        onClick={() => setShowLogoutConfirm(true)} // Exibe a mensagem de confirmação
+                        onClick={() => setShowLogoutConfirm(true)}
                     >
                         <span className="material-symbols-outlined">logout</span>
                     </button>
@@ -71,13 +71,33 @@ function Menu() {
             </div>
             <div className='menu_lateral'>
                 <ul>
-                    <li><Link to="/geral">Geral</Link></li>
-                    <li><Link to="/reservas">Reservas</Link></li>
-                    <li><Link to="/hospedes">Hóspedes</Link></li>
+                    <li
+                        className={location.pathname === "/geral" ? "link_ativo" : ""}
+                    >
+                        <Link to="/geral">Geral</Link>
+                    </li>
+                    <li
+                        className={location.pathname === "/reservas" ? "link_ativo" : ""}
+                    >
+                        <Link to="/reservas">Reservas</Link>
+                    </li>
+                    <li
+                        className={location.pathname === "/hospedes" ? "link_ativo" : ""}
+                    >
+                        <Link to="/hospedes">Hóspedes</Link>
+                    </li>
                     {idCargo === 1 && (
                         <>
-                            <li><Link to="/usuarios">Usuários</Link></li>
-                            <li><Link to="/relatorios">Relatórios</Link></li>
+                            <li
+                                className={location.pathname === "/usuarios" ? "link_ativo" : ""}
+                            >
+                                <Link to="/usuarios">Usuários</Link>
+                            </li>
+                            <li
+                                className={location.pathname === "/relatorios" ? "link_ativo" : ""}
+                            >
+                                <Link to="/relatorios">Relatórios</Link>
+                            </li>
                         </>
                     )}
                 </ul>
