@@ -11,7 +11,9 @@ function Relatorios() {
     const [dadosGraficoAcomodacao, setDadosGraficoAcomodacao] = useState(null);
     const [dadosGraficoHospede, setDadosGraficoHospede] = useState(null);
     const [dadosRelatorio, setDadosRelatorio] = useState([]);
+    const [dadosRelatorioHospede, setDadosRelatorioHospede] = useState([]);
     const [selectedAcomodacao, setSelectedAcomodacao] = useState('');
+    const [selectedHospede, setSelectedHospede] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
@@ -22,12 +24,10 @@ function Relatorios() {
     const buscarDados = () => {
         let urlAcomodacao = 'http://localhost:5000/api/reservas_por_acomodacao';
         let urlHospede = 'http://localhost:5000/api/reservas_por_hospede';
-        let urlRelatorio = 'http://localhost:5000/api/reservas_por_acomodacao';
 
         if (startDate && endDate) {
             urlAcomodacao += `?startDate=${startDate}&endDate=${endDate}`;
             urlHospede += `?startDate=${startDate}&endDate=${endDate}`;
-            urlRelatorio += `?startDate=${startDate}&endDate=${endDate}`;
         }
 
         fetch(urlAcomodacao)
@@ -49,8 +49,10 @@ function Relatorios() {
                         },
                     ],
                 });
+
+                setDadosRelatorio(data);
             })
-            .catch(error => console.error('Erro ao buscar dados do gráfico de acomodação:', error));
+            .catch(error => console.error('Erro ao buscar dados de acomodações:', error));
 
         fetch(urlHospede)
             .then(response => response.json())
@@ -71,63 +73,69 @@ function Relatorios() {
                         },
                     ],
                 });
-            })
-            .catch(error => console.error('Erro ao buscar dados do gráfico de hóspede:', error));
 
-        fetch(urlRelatorio)
-            .then(response => response.json())
-            .then(data => {
-                setDadosRelatorio(data);
+                setDadosRelatorioHospede(data);
             })
-            .catch(error => console.error('Erro ao buscar dados do relatório:', error));
+            .catch(error => console.error('Erro ao buscar dados de hóspedes:', error));
     };
 
-    const exibeGrafico = () => setGraficoRelatorio(true);
-    const exibeRelatorio = () => setGraficoRelatorio(false);
-
-    const handleAcomodacaoChange = event => setSelectedAcomodacao(event.target.value);
-
-    const gerarPDF = () => {
+    const gerarPDF = (tipo) => {
         const doc = new jsPDF();
         const margin = 10;
         const pageWidth = doc.internal.pageSize.getWidth();
 
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(18);
-        doc.text("Relatório de Reservas por Acomodação", pageWidth / 2, margin + 10, { align: "center" });
+        let title = '';
+        let filteredData = [];
 
-        if (startDate && endDate) {
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(12);
-            doc.text(`Período: ${startDate} a ${endDate}`, pageWidth / 2, margin + 20, { align: "center" });
+        if (tipo === 'acomodacao') {
+            title = 'Relatório de Reservas por Acomodação';
+            filteredData = dadosRelatorio.filter(
+                item => !selectedAcomodacao || item.nome_acomodacao === selectedAcomodacao
+            );
+        } else if (tipo === 'hospede') {
+            title = 'Relatório de Reservas por Hóspede';
+            filteredData = dadosRelatorioHospede.filter(
+                item => !selectedHospede || item.nome_hospede === selectedHospede
+            );
         }
 
-        const filteredData = dadosRelatorio.filter(
-            item => !selectedAcomodacao || item.nome_acomodacao === selectedAcomodacao
-        );
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(18);
+        doc.text(title, pageWidth / 2, margin + 10, { align: 'center' });
+
+        if (startDate && endDate) {
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(12);
+            doc.text(`Período: ${startDate} a ${endDate}`, pageWidth / 2, margin + 20, { align: 'center' });
+        }
 
         if (filteredData.length === 0) {
-            doc.setFont("helvetica", "italic");
+            doc.setFont('helvetica', 'italic');
             doc.setFontSize(12);
-            doc.text("Nenhuma reserva encontrada para os critérios selecionados.", margin, 50);
+            doc.text('Nenhum dado encontrado para os critérios selecionados.', margin, 50);
         } else {
-            const headers = [["Acomodação", "Reservas"]];
-            const rows = filteredData.map(item => [item.nome_acomodacao, item.count]);
+            const headers = tipo === 'acomodacao' 
+                ? [['Acomodação', 'Reservas']]
+                : [['Hóspede', 'Reservas']];
+            const rows = filteredData.map(item => [
+                tipo === 'acomodacao' ? item.nome_acomodacao : item.nome_hospede,
+                item.count
+            ]);
 
             doc.autoTable({
                 startY: 50,
                 head: headers,
                 body: rows,
-                theme: "striped",
+                theme: 'striped',
                 headStyles: {
                     fillColor: [52, 73, 94],
                     textColor: [255, 255, 255],
-                    halign: "center",
-                    valign: "middle",
+                    halign: 'center',
+                    valign: 'middle',
                 },
                 bodyStyles: {
-                    halign: "center",
-                    valign: "middle",
+                    halign: 'center',
+                    valign: 'middle',
                 },
                 margin: { left: margin, right: margin },
                 styles: { fontSize: 10 },
@@ -135,11 +143,11 @@ function Relatorios() {
         }
 
         const footer = `Gerado em: ${new Date().toLocaleString()}`;
-        doc.setFont("helvetica", "italic");
+        doc.setFont('helvetica', 'italic');
         doc.setFontSize(10);
         doc.text(footer, margin, doc.internal.pageSize.height - margin);
 
-        doc.save("relatorio_reservas.pdf");
+        doc.save(`${tipo}_relatorio_reservas.pdf`);
     };
 
     return (
@@ -151,17 +159,18 @@ function Relatorios() {
                     <div className="btn-group mb-5" role="group">
                         <button
                             className={`btn ${graficoRelatorio ? 'btn-primary' : 'btn-outline-primary'}`}
-                            onClick={exibeGrafico}
+                            onClick={() => setGraficoRelatorio(true)}
                         >
                             Gráficos
                         </button>
                         <button
                             className={`btn ${!graficoRelatorio ? 'btn-primary' : 'btn-outline-primary'}`}
-                            onClick={exibeRelatorio}
+                            onClick={() => setGraficoRelatorio(false)}
                         >
                             Relatórios
                         </button>
                     </div>
+
                     {graficoRelatorio ? (
                         <div className="d-flex justify-content-between" style={{ maxWidth: '100%', overflow: 'auto' }}>
                             <div className="p-3 border rounded bg-light" style={{ width: '48%' }}>
@@ -183,13 +192,13 @@ function Relatorios() {
                         </div>
                     ) : (
                         <div className="p-3 border rounded bg-light">
-                            <h3>Relatório de Reservas por Acomodação</h3>
+                            <h3>Selecione o tipo de relatório:</h3>
                             <div className="mb-3">
-                                <label className="form-label">Selecionar Acomodação</label>
+                                <label className="form-label">Selecionar por acomodação</label>
                                 <select
                                     className="form-select"
                                     value={selectedAcomodacao}
-                                    onChange={handleAcomodacaoChange}
+                                    onChange={(e) => setSelectedAcomodacao(e.target.value)}
                                 >
                                     <option value="">Todas</option>
                                     {dadosRelatorio.map((item, index) => (
@@ -198,10 +207,29 @@ function Relatorios() {
                                         </option>
                                     ))}
                                 </select>
+                                <button className="btn btn-info text-dark mt-3" onClick={() => gerarPDF('acomodacao')}>
+                                    Baixar Relatório por Acomodação
+                                </button>
                             </div>
-                            <button className="btn btn-info text-dark" onClick={gerarPDF}>
-                                Baixar Relatório em PDF
-                            </button>
+
+                            <div className="mb-3">
+                                <label className="form-label">Selecionar poóspede</label>
+                                <select
+                                    className="form-select"
+                                    value={selectedHospede}
+                                    onChange={(e) => setSelectedHospede(e.target.value)}
+                                >
+                                    <option value="">Todos</option>
+                                    {dadosRelatorioHospede.map((item, index) => (
+                                        <option key={index} value={item.nome_hospede}>
+                                            {item.nome_hospede}
+                                        </option>
+                                    ))}
+                                </select>
+                                <button className="btn btn-info text-dark mt-3" onClick={() => gerarPDF('hospede')}>
+                                    Baixar Relatório por Hóspede
+                                </button>
+                            </div>
                         </div>
                     )}
                 </main>
