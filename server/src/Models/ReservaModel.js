@@ -1,6 +1,7 @@
 import mysql from "mysql2/promise";
 import db from "../conexao.js";
 import { isNullOrEmpty } from "../validations/ReservaValidation.js";
+import { verificaMudaStatus } from "./AcomocacoesModel.js";
 const conexao = mysql.createPool(db);
 
 export async function readReserva() {
@@ -27,13 +28,14 @@ export async function createReserva(reserva) {
         console.log('Hospede não encontrado');
         return [500, error];
     }
+    console.log(reserva);
 
     const checagemDatas = `
         SELECT * FROM reservas WHERE ((checkin BETWEEN ? AND ?) 
             OR (checkout BETWEEN ? AND ?) 
             OR (? BETWEEN checkin AND checkout))
-            AND (id_acomodacao = ? OR id_hospede = ?)
-            AND ativo = ?; 
+            AND ((id_acomodacao = ? OR id_hospede = ?)
+            AND ativo = 1); 
     `;
     
     const [reservasExistentes] = await conexao.query(checagemDatas, [ 
@@ -43,10 +45,10 @@ export async function createReserva(reserva) {
         reserva.checkout, 
         reserva.checkin,
         reserva.id_acomodacao,
-        reserva.id_hospede,
-        1
+        reserva.id_hospede
     ]);
-
+    console.log(reservasExistentes.length);
+    console.log(reservasExistentes);
     if (reservasExistentes.length > 0) {
         console.log('Já existe uma reserva para o hóspede ou acomodação nas mesmas datas');
         return [400, { message: 'Já existe uma reserva para o hóspede ou acomodação nas mesmas datas' }];
@@ -60,6 +62,14 @@ export async function createReserva(reserva) {
     if(reserva.qntd_hospedes > lotacao){
         console.log('superou limite de lotacao');
         return [400, { message: 'superou limite de lotacao' }];
+    }
+
+    const checaEstado =  `SELECT id_status_acomodacao FROM acomodacoes WHERE id_acomodacao = ?`;
+    const parametros2 = [reserva.id_acomodacao];
+    const [resposta2] = await conexao.query(checaEstado, parametros2);
+    if(resposta2[0].id_status_acomodacao != 3){
+        console.log('acomodacao não disponivel');
+        return [400, { message: 'acomodacao não disponivel' }];
     }
     
     const sql = `INSERT INTO reservas (
@@ -91,6 +101,7 @@ export async function createReserva(reserva) {
         console.log('Reserva cadastrada');
         calculoDias(reserva, id_reserva);
         calculoValor(reserva, id_reserva, desconto);
+        verificaMudaStatus(reserva.id_acomodacao,reserva.id_status_reserva);
         return [201, retorno];
     } catch (error) {
         console.log(error);
@@ -169,8 +180,8 @@ export async function updateReserva(reserva, id_reserva) {
         WHERE ((checkin BETWEEN ? AND ?) 
             OR (checkout BETWEEN ? AND ?) 
             OR (? BETWEEN checkin AND checkout))
-            AND (id_acomodacao = ? OR id_hospede = ?)
-            AND ativo = ? AND id_reserva != ?; 
+            AND ((id_acomodacao = ? OR id_hospede = ?)
+            AND ((ativo = 1) AND (id_reserva != ?))); 
     `;
     
     const [reservasExistentes] = await conexao.query(checagemDatas, [
@@ -181,7 +192,6 @@ export async function updateReserva(reserva, id_reserva) {
         reserva.checkin,
         reserva.id_acomodacao,
         reserva.id_hospede,
-        1,
         reserva.id_reserva
     ]);
 
@@ -199,6 +209,14 @@ export async function updateReserva(reserva, id_reserva) {
         return [400, { message: 'superou limite de lotacao' }];
     }
 
+    // const checaEstado =  `SELECT id_status_acomodacao FROM acomodacoes WHERE id_acomodacao = ?`;
+    // const parametros2= [reserva.id_acomodacao];
+    // const [resposta2] = await conexao.query(checaEstado, parametros2);
+    // if(resposta2 != 3){
+    //     console.log('acomodacao não disponivel');
+    //     return [400, { message: 'acomodacao não disponivel' }];
+    // }
+    
     //Criando aula
     const sql = `UPDATE reservas SET
     id_hospede =?,
@@ -230,6 +248,7 @@ export async function updateReserva(reserva, id_reserva) {
             return [404, { mensagem: 'Reserva não encontrada' }];
         }
         calculoDias(reserva, id_reserva, 0);
+        verificaMudaStatus(reserva.id_acomodacao,reserva.id_status_reserva);
         return [200, { mensagem: 'Reserva Atualizada' }];
     } catch (error) {
         console.log(error);

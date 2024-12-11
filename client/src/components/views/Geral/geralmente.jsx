@@ -1,37 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import Menu from '../../layout/menu';
+import { Link } from "react-router-dom";
 import './Geral.modules.css';
 
 function Geralmente() {
-    const [suitehospede, setHospedeS] = useState('');
-    const [suitecheckin, setCheckinS] = useState('');
-    const [suitecheckout, setCheckoutS] = useState('');
+    const [suiteidh, setIdHospedeS] = useState("")
+    const [suitehospede, setHospedeS] = useState("");
+    const [suitecheckin, setCheckinS] = useState("");
+    const [suitecheckout, setCheckoutS] = useState("");
     const [suiteStatus, setStatusS] = useState("");
+    const [suiteidr, setIdReservaS] = useState("");
 
+    const [chaleidh, setIdHospedeC] = useState("")
     const [chalehospede, setHospedeC] = useState("");
     const [chalechekin, setCheckinC] = useState("");
     const [chalecheckout, setCheckoutC] = useState("");
     const [chaleStatus, setStatusC] = useState("");
+    const [chaleidr, setIdReservaC] = useState("");
 
+    const [cabanaidh, setIdHospedeCb] = useState("")
     const [cabanahospede, setHospedeCb] = useState("");
     const [cabanachekin, setCheckinCb] = useState("");
     const [cabanacheckout, setCheckoutCb] = useState("");
     const [cabanaStatus, setStatusCb] = useState("");
+    const [cabanaidr, setIdReservaCb] = useState("");
 
+    const [domoidh, setIdHospedeD] = useState("")
     const [domohospede, setHospedeD] = useState("");
     const [domochekin, setCheckinD] = useState("");
     const [domocheckout, setCheckoutD] = useState("");
     const [domoStatus, setStatusD] = useState("");
+    const [domoidr, setIdReservaD] = useState("");
 
+    const [busidh, setIdHospedeB] = useState("")
     const [bushospede, setHospedeB] = useState("");
     const [buschekin, setCheckinB] = useState("");
     const [buscheckout, setCheckoutB] = useState("");
     const [busStatus, setStatusB] = useState("");
+    const [busidr, setIdReservaB] = useState("");
 
+    const [estaidh, setIdHospedeE] = useState("")
     const [estahospede, setHospedeE] = useState("");
     const [estachekin, setCheckinE] = useState("");
     const [estacheckout, setCheckoutE] = useState("");
     const [estaStatus, setStatusE] = useState("");
+    const [estaidr, setIdReservaE] = useState("");
 
     useEffect(() => {
         baixarAcomodacoes();
@@ -56,13 +69,12 @@ function Geralmente() {
             } else {
                 const consulta = await resposta.json();
                 if (consulta) {
-                    console.log(consulta);
                     setStatusS(consulta[0].id_status_acomodacao);
                     setStatusC(consulta[1].id_status_acomodacao);
                     setStatusCb(consulta[2].id_status_acomodacao);
                     setStatusD(consulta[3].id_status_acomodacao);
                     setStatusB(consulta[4].id_status_acomodacao);
-                    setStatusE(consulta[5].id_status_acomodacao)
+                    setStatusE(consulta[5].id_status_acomodacao);
                 } else {
                     console.log('Nenhum dado retornado');
                 }
@@ -88,6 +100,8 @@ function Geralmente() {
                     setHospedeS(consulta[0].nome_hospede);
                     setCheckinS(consulta[0].checkin);
                     setCheckoutS(consulta[0].checkout);
+                    setIdHospedeS(consulta[0].id_hospede);
+                    setIdReservaS(consulta[0].id_reserva);
                 } else {
                     console.log('Nenhum dado retornado');
                 }
@@ -96,7 +110,6 @@ function Geralmente() {
             console.log('Erro ao consultar infos', error);
         }
     }
-
 
     async function baixarChale() {
         try {
@@ -114,6 +127,8 @@ function Geralmente() {
                     setHospedeC(consulta[0].nome_hospede);
                     setCheckinC(consulta[0].checkin);
                     setCheckoutC(consulta[0].checkout);
+                    setIdHospedeC(consulta[0].id_hospede);
+                    setIdReservaC(consulta[0].id_reserva);
                 } else {
                     console.log('Nenhum dado retornado');
                 }
@@ -122,7 +137,7 @@ function Geralmente() {
             console.log('Erro ao consultar infos', error);
         }
     }
-    
+
     async function baixarCabana() {
         try {
             const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/cabana`, {
@@ -136,10 +151,12 @@ function Geralmente() {
             } else {
                 const consulta = await resposta.json();
                 if (consulta) {
-                    
+
                     setHospedeCb(consulta[0].nome_hospede);
                     setCheckinCb(consulta[0].checkin);
                     setCheckoutCb(consulta[0].checkout);
+                    setIdHospedeCb(consulta[0].id_hospede);
+                    setIdReservaCb(consulta[0].id_reserva);
                 } else {
                     console.log('Nenhum dado retornado');
                 }
@@ -148,7 +165,7 @@ function Geralmente() {
             console.log('Erro ao consultar infos', error);
         }
     }
-   
+
     async function baixarDomo() {
         try {
             const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/domo`, {
@@ -162,10 +179,12 @@ function Geralmente() {
             } else {
                 const consulta = await resposta.json();
                 if (consulta) {
-                    
+
                     setHospedeD(consulta[0].nome_hospede);
                     setCheckinD(consulta[0].checkin);
                     setCheckoutD(consulta[0].checkout);
+                    setIdHospedeD(consulta[0].id_hospede);
+                    setIdReservaD(consulta[0].id_reserva);
                 } else {
                     console.log('Nenhum dado retornado');
                 }
@@ -188,10 +207,12 @@ function Geralmente() {
             } else {
                 const consulta = await resposta.json();
                 if (consulta) {
-                    
+
                     setHospedeB(consulta[0].nome_hospede);
                     setCheckinB(consulta[0].checkin);
                     setCheckoutB(consulta[0].checkout);
+                    setIdHospedeB(consulta[0].id_hospede);
+                    setIdReservaB(consulta[0].id_reserva);
                 } else {
                     console.log('Nenhum dado retornado');
                 }
@@ -214,10 +235,13 @@ function Geralmente() {
             } else {
                 const consulta = await resposta.json();
                 if (consulta) {
-                    
+
                     setHospedeE(consulta[0].nome_hospede);
                     setCheckinE(consulta[0].checkin);
                     setCheckoutE(consulta[0].checkout);
+                    setIdHospedeE(consulta[0].id_hospede);
+                    setIdReservaE(consulta[0].id_reserva);
+
                 } else {
                     console.log('Nenhum dado retornado');
                 }
@@ -227,6 +251,25 @@ function Geralmente() {
         }
     }
 
+    async function Limpeza(id_acomodacao) {
+        try {
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/limpeza/${id_acomodacao}`,{
+              method:'PUT',
+              headers:{
+                'Content-Type':'application/json'
+              },
+            });
+            if(!resposta.ok){
+              const retorno = await resposta.json();
+              console.log('Erro ao editar Reserva',retorno);
+            }
+            else{
+              console.log('Reserva Editada');              
+            }
+          } catch (error) {
+            console.log('Erro ao editar reserva', error);
+          }
+        }
 
     // Função que retorna a classe com base no status
     const getCardClass = (id_status_acomodacao) => {
@@ -255,6 +298,45 @@ function Geralmente() {
         console.log(`Botão ${icon} clicado!`);
     };
 
+    function renderButtonsBasedOnStatus(status, hospede, reserva, id_acomodacao) {
+        const today = new Date().toLocaleDateString('pt-BR');
+
+        // if (status === 1) {
+        //     if (suitecheckin && new Date(suitecheckin).toLocaleDateString('pt-BR') === today) {
+        //         return (
+        //             <button className="action-button" onClick={fazendoCheckin(id)}>Checkin</button>
+        //         );
+        //     };
+        // } 
+        if (status === 2 || status === 1) {
+            return (
+                <div className="icons">
+                    <Link to={`/edit_hospede/${hospede}`}>
+                        <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
+                    </Link>
+                    <Link to={`/edit_reserva/${reserva}`}>
+                        <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
+                    </Link>
+                </div>
+            );
+        } if (status === 5) {
+            return (
+                <button className="action-button" onClick={Limpeza(id_acomodacao)}>Liberar</button>
+            );
+        }
+        // } if (status === 3) {
+        //     return (
+        //         <button className="action-button" onClick={() => handleActionClick('reservar')}>Reservar</button>
+        //     );
+        // } if (status === 5) {
+        //     return (
+        //         <button className="action-button" onClick={() => handleActionClick('liberar')}>Liberar</button>
+        //     );
+        // }
+        // Se o status não for 1 nem 2, você pode retornar nada ou um estado padrão.
+        return null;
+    }
+
     return (
         <div>
             <Menu />
@@ -265,7 +347,7 @@ function Geralmente() {
                         <span className="status-label pending">Pendente</span>
                         <span className="status-label unavailable">Indisponível</span>
                         <span className="status-label available">Disponível</span>
-                        <span className="status-label maintenance">Manutenção</span>
+                        {/* <span className="status-label maintenance">Manutenção</span> */}
                         <span className="status-label cleaning">Em limpeza</span>
                     </div>
 
@@ -286,14 +368,10 @@ function Geralmente() {
                                 )}
 
                                 <br />
-                                <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                    <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                    <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
-                                </div>
+                                {renderButtonsBasedOnStatus(suiteStatus, suiteidh, suiteidr, 1)}
                             </div>
                         </div>
-                     
+
                         <div className={getCardClass(chaleStatus)}>
                             <div>
                                 <h3>Chalé</h3>
@@ -309,11 +387,7 @@ function Geralmente() {
                                 )}
 
                                 <br />
-                                <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                    <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                    <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
-                                </div>
+                                {renderButtonsBasedOnStatus(chaleStatus, chaleidh, chaleidr, 2)}
                             </div>
                         </div>
 
@@ -332,11 +406,7 @@ function Geralmente() {
                                 )}
 
                                 <br />
-                                <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                    <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                    <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
-                                </div>
+                                {renderButtonsBasedOnStatus(cabanaStatus, cabanaidh, cabanaidr, 3)}
                             </div>
                         </div>
 
@@ -355,11 +425,7 @@ function Geralmente() {
                                 )}
 
                                 <br />
-                                <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                    <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                    <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
-                                </div>
+                                {renderButtonsBasedOnStatus(domoStatus, domoidh, domoidr, 4)}
                             </div>
                         </div>
 
@@ -378,11 +444,7 @@ function Geralmente() {
                                 )}
 
                                 <br />
-                                <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                    <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                    <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
-                                </div>
+                                {renderButtonsBasedOnStatus(busStatus, busidh, busidr, 5)}
                             </div>
                         </div>
 
@@ -401,11 +463,7 @@ function Geralmente() {
                                 )}
 
                                 <br />
-                                <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-                                    <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-                                    <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
-                                </div>
+                                {renderButtonsBasedOnStatus(estaStatus, estaidh, estaidr, 6)}
                             </div>
                         </div>
 
@@ -419,24 +477,5 @@ function Geralmente() {
 export default Geralmente;
 
 
-// {renderButtonsBasedOnStatus(chaleStatus)}
+// 
 
-// function renderButtonsBasedOnStatus(status) {
-//     if (status === 1) {
-//         // Se o status for 1, renderiza os ícones e botões
-//         return (
-//             <div className="icons">
-//                 <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
-//                 <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
-//                 <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
-//             </div>
-//         );
-//     } else if (status === 2) {
-//         // Se o status for 2, renderiza o botão de ação "Hospedar"
-//         return (
-//             <button className="action-button" onClick={() => handleActionClick('hospedar')}>Hospedar</button>
-//         );
-//     }
-//     // Se o status não for 1 nem 2, você pode retornar nada ou um estado padrão.
-//     return null;
-// }

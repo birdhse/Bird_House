@@ -73,3 +73,65 @@ export async function mostrarEstacionamento(req, res) {
         res.status(status).json(data);
     }
 }
+
+export async function statusPendente(req, res) {
+    const { id_acomodacao } = req.params;
+    //Tentando atualizar reserva
+    try {
+        const [status, resposta] = await statusPendente(id_acomodacao);
+        res.status(status).json(resposta)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+export async function statusIndisponivel(req, res) {
+    const { id_acomodacao } = req.params;
+    //Tentando atualizar reserva
+    try {
+        const [status, resposta] = await statusIndisponivel(id_acomodacao);
+        res.status(status).json(resposta)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+export async function statusEmLimpeza(req, res) {
+    const { id_acomodacao } = req.params;
+    const acomodacao = id_acomodacao
+    //Tentando atualizar reserva
+    try {
+        console.log(acomodacao);
+        const [status, resposta] = await statusEmLimpeza(acomodacao);
+        res.status(status).json(resposta)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+export async function statusManutencao(req, res) {
+    const { id_acomodacao } = req.params;
+    //Tentando atualizar reserva
+    try {
+        const [status, resposta] = await statusManutencao(id_acomodacao);
+        res.status(status).json(resposta)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+export async function statusDisponivel(req, res) {
+    const { id_acomodacao } = req.params;
+    //Tentando atualizar reserva
+    try {
+        const [status, resposta] = await statusDisponivel(id_acomodacao);
+        res.status(status).json(resposta)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}

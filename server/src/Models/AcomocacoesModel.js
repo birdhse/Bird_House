@@ -15,7 +15,6 @@ export async function readAcomodacoes() {
 
 }
 
-
 export async function readInfo() {
     console.log('Entrando no Model Acomodacoes');
     //Criando aula
@@ -26,7 +25,7 @@ export async function readInfo() {
 
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout) AND ativo = 1 AND ((id_status_reserva != 5) OR (id_status_reserva != 6))`;
+    const sql = ` SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout) AND ativo = 1 AND ((id_status_reserva != 5) OR (id_status_reserva != 6)) ORDER BY id_acomodacao`;
     const params = [
         hoje
     ]
@@ -39,6 +38,33 @@ export async function readInfo() {
     } catch (error) {
         console.log(error);
         return [400, error];
+    }
+}
+
+export async function verificaMudaStatus(id_acomodacao, id_status_reserva) {
+    console.log("Alterando status da acomodação");
+    console.log(id_acomodacao, id_status_reserva);
+    try {
+        console.log("try")
+        if (id_status_reserva == 1 || id_status_reserva == 2 || id_status_reserva == 4) {
+            // Status "Pendente"
+            console.log("pendente")
+            await statusPendente(id_acomodacao);
+        } else if (id_status_reserva == 3) {
+            // Status "Indisponível"
+            console.log("indisp")
+            await statusIndisponivel(id_acomodacao);
+        } else if (id_status_reserva == 5) {
+            // Status "Disponível"
+            console.log("disp")
+            await statusDisponivel(id_acomodacao);
+        } else if (id_status_reserva == 6) {
+            // Status "Em Limpeza"
+            console.log("limpa")
+            await statusEmLimpeza(id_acomodacao);
+        }
+    } catch (error) {
+        console.error("Erro ao alterar status da acomodação:", error);
     }
 }
 
@@ -85,11 +111,12 @@ export async function statusIndisponivel(id_acomodacao) {
 
 export async function statusEmLimpeza(id_acomodacao) {
     console.log('Atualizando no Model Acomodacoes');
+    console.log(id_acomodacao);
     //Criando aula
     const sql = `UPDATE acomodacoes SET id_status_acomodacao =? where id_acomodacao = ?`
     //Definindo parametros para inserir no sql
     const params = [
-        3,
+        5,
         id_acomodacao
     ];
 
@@ -129,7 +156,7 @@ export async function statusDisponivel(id_acomodacao) {
     const sql = `UPDATE acomodacoes SET id_status_acomodacao =? where id_acomodacao = ?`
     //Definindo parametros para inserir no sql
     const params = [
-        5,
+        3,
         id_acomodacao
     ];
 
@@ -152,7 +179,7 @@ export async function readSuite() {
     let anoHoje = data.getFullYear();
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const sql = ` SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout)AND((id_acomodacao = ?)AND((id_status_reserva != 6)AND(id_status_reserva != 5)))`;
     const params = [
         hoje,
         1

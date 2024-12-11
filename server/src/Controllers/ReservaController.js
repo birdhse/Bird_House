@@ -57,10 +57,7 @@ export async function mostrarReservas(req, res) {
 
 
 export async function atualizarReserva(req, res) {
-
     console.log('ReservaController atualizarReserva');
-
-    //Criando constante com a requisição
     const reserva = req.body;
     const { id_reserva } = req.params;
 
@@ -77,7 +74,6 @@ export async function atualizarReserva(req, res) {
             res.status(500).json(error);
         }
     }
-
 }
 
 export async function excluirReserva(req, res) {
