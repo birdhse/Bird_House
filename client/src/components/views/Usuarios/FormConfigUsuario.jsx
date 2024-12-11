@@ -76,7 +76,7 @@ function ConfigUsuario({ handleSubmit, id_usuario }) {
 
             <div className="mb-4">
               <label htmlFor="email" className="form-label">E-mail</label>
-              <input type="email" id="email" className="form-control w-1 p-2" defaultValue={email_usuario} />
+              <input type="email" id="email" className="form-control w-1 p-2" defaultValue={email_usuario} readOnly/>
             </div>
 
             <div className="mb-4">
@@ -103,13 +103,26 @@ function ConfigUsuario({ handleSubmit, id_usuario }) {
             </div>
 
             <div className="d-flex align-items-center gap-2">
-              <button type="submit" className="btn btn-info text-white" onClick={() => {
-                const confirmChange = window.confirm("Você tem certeza que deseja fazer essas alterações?");
-                if (confirmChange) {
-                  alert("Informações alteradas com sucesso!");
-                }
-              }}
-              >Alterar</button>
+              <button
+                type="submit"
+                className="btn btn-info text-white"
+                onClick={(e) => {
+                  // Verifica se as senhas atendem às condições
+                  if (password.length > 6 && password === confirmPassword) {
+                    const confirmChange = window.confirm("Você tem certeza que deseja fazer essas alterações?");
+                    if (confirmChange) {
+                      alert("Informações alteradas com sucesso!");
+                      // Aqui você pode adicionar a lógica para enviar os dados para o banco, como um fetch ou axios
+                    }
+                  } else {
+                    alert("Erro: As senhas não são iguais ou a senha tem menos de 6 caracteres!");
+                    e.preventDefault();
+                  }
+                }}
+              >
+                Alterar
+              </button>
+
 
               <a href="#" className="text-primary" onClick={(e) => { e.preventDefault(); alert("Para ajuda entre em contato através do e-mail: matheus.brunelli@aluno.senai.br ou entre em contato com seu administrador") }}>
                 Ajuda

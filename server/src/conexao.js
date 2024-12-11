@@ -3,6 +3,7 @@ export const db = {
         user:"root",
         password:"",
         database:"birdhouse"
+
 }
 
 export default db

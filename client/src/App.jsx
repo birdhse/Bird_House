@@ -34,33 +34,35 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<TelaLogin />} />
-        <Route path='/esqueci_senha' element={<EsqueciSenha/>} />
-        {/* <Route path='/geral' element={<Geral />} /> */}
-        <Route path='/geral' element={<Geralmente/>} />
+        <Route path='/esqueci_senha' element={<EsqueciSenha />} />
+        <Route path='/geral' element={<Geral />} />
+        {/* <Route path='/geral' element={<Geralmente/>} /> */}
         <Route path='/relatorios' element={<Relatorios />} />
 
         <Route path='/reservas' element={<GestãoReservas />} />
-        <Route path='/reservas/:tipo' element={<GestãoReservas/>}/>
-        <Route path='/reserva/:id_reserva' element={<FormReserva/>}/>
-        <Route path='/cadastro_reserva' element={<CadastroReserva/>}/>
-        <Route path='/edit_reserva/:id_reserva' element={<EditReserva/>}/>
+        <Route path='/reservas/:tipo' element={<GestãoReservas />} />
+        <Route path='/reserva/:id_reserva' element={<FormReserva />} />
+        <Route path='/cadastro_reserva' element={<CadastroReserva />} />
+        <Route path='/edit_reserva/:id_reserva' element={<EditReserva />} />
 
-        <Route path='/hospedes' element={<GestãoHospedes/>}/>
-        <Route path='/hospedes/:tipo' element={<GestãoHospedes/>}/>
-        <Route path='/hospede/:id_hospede' element={<FormHospede/>}/>
-        <Route path='/cadastro_hospede' element={<CadastroHospede/>}/>
-        <Route path='/edit_hospede/:id_hospede' element={<EditHospede/>}/>
+        <Route path='/hospedes' element={<GestãoHospedes />} />
+        <Route path='/hospedes/:tipo' element={<GestãoHospedes />} />
+        <Route path='/hospede/:id_hospede' element={<FormHospede />} />
+        <Route path='/cadastro_hospede' element={<CadastroHospede />} />
+        <Route path='/edit_hospede/:id_hospede' element={<EditHospede />} />
 
         <Route path='/config_usuarios/:id_usuario' element={<EditUmUsuario />} />
         {/* <Route path='/config_usuarios/:id_usuario' element={<ConfigUsuario />} /> */}
 
-        <Route path='/usuarios' element={<GestaoUsuarios/>}/>
-        <Route path='/usuarios/:tipo' element={<GestaoUsuarios/>}/>
-        <Route path='/usuario/:id_usuario' element={<FormUsuario/>}/>
-        <Route path='/cadastro_usuario' element={<CadastroUsuario/>}/>
-        <Route path='/edit_usuario/:id_usuario' element={<EditUsuario/>}/>
-        
-        
+        <Route path='/usuarios' element={<GestaoUsuarios />} />
+        <Route path='/usuarios/:tipo' element={<GestaoUsuarios />} />
+        <Route path='/usuario/:id_usuario' element={<FormUsuario />} />
+        <Route path='/cadastro_usuario' element={<CadastroUsuario />} />
+        <Route path='/edit_usuario/:id_usuario' element={<EditUsuario />} />
+
+        <Route path="/" element={<Geralmente />} />
+        <Route path="/editar-hospede/:id_hospede" element={<EditHospede />} />
+        <Route path="/editar-reserva/:id_reserva" element={<EditReserva />} />
 
 
 
