@@ -20,3 +20,5 @@ hospedar so vai aparecer quando a acomodação estiver disponível
 ao alterar o status de uma reserva, alterar o status da acomodacao.
 reserva criada (solicitada)- pendente_confirmação
 reserva reservada - indisponível
+
+mm
