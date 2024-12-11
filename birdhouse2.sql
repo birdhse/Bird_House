@@ -43,7 +43,7 @@ CREATE TABLE `acomodacoes` (
 
 LOCK TABLES `acomodacoes` WRITE;
 /*!40000 ALTER TABLE `acomodacoes` DISABLE KEYS */;
-INSERT INTO `acomodacoes` VALUES (1,'Suíte com Cozinha',3,390,1,5),(2,'Chalé Família',0,590,1,5),(3,'Cabana',0,490,1,5),(4,'Domo',2,590,2,5),(5,'Charrua (Bus)',2,490,3,5),(6,'Estacionamento de Overlands',0,100,4,5);
+INSERT INTO `acomodacoes` VALUES (1,'Suíte com Cozinha',3,390,1,5),(2,'Chalé Família',10,590,1,5),(3,'Cabana',4,490,1,5),(4,'Domo',2,590,2,5),(5,'Charrua (Bus)',2,490,3,5),(6,'Estacionamento de Overlands',5,100,4,5);
 /*!40000 ALTER TABLE `acomodacoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `hospedes` (
   `cpf_hospede` varchar(11) NOT NULL,
   `ativo` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_hospede`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `hospedes` (
 
 LOCK TABLES `hospedes` WRITE;
 /*!40000 ALTER TABLE `hospedes` DISABLE KEYS */;
-INSERT INTO `hospedes` VALUES (1,'vitor parajara','27992912308','vitor@gmail.com','2003-07-23','17719821793',1),(2,'amanda xavier nascimento','27992912308','amanda@gmail.com','2004-11-25','14495153714',1),(3,'Matheus Brunelli','27992912308','matheus@gmail.com','2004-03-19','13590117737',1),(4,'sarah monteiro ','27992912308','sarah@gmail.com','2004-10-27','22389829732',1),(5,'heloisa','27992912308','heloisa@gmail.com','2004-11-11','21296442799',1),(6,'marco','27992912308','marco@gmail.com','2004-01-06','10186497784',1),(7,'pietro','27992912308','pietro@gmail.com','2004-08-19','17688810736',1),(8,'isaac','27992912308','isaac@gmail.com','2004-09-09','44445329045',1);
+INSERT INTO `hospedes` VALUES (1,'vitor','27992912308','vitor@gmail.com','2003-07-23','17719821793',1),(2,'amanda','27992912308','amanda@gmail.com','2004-11-25','14495153714',1),(3,'matheus','27992912308','matheus@gmail.com','2004-03-19','13590117737',1),(4,'sarah','27992912308','sarah@gmail.com','2004-10-27','22389829732',1),(5,'heloisa','27992912308','heloisa@gmail.com','2004-11-11','21296442799',1),(6,'marco','27992912308','marco@gmail.com','2004-01-06','10186497784',1),(7,'pietro','27992912308','pietro@gmail.com','2004-08-19','17688810736',1),(8,'isaac','27992912308','isaac@gmail.com','2004-09-09','44445329045',1),(9,'mauricio','27999763836','mdavel@gmail.com','1993-01-01','66273158070',1),(10,'gabriel','27999763836','gabriel@gmail.com','1992-10-21','39787359031',1);
 /*!40000 ALTER TABLE `hospedes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `reservas` (
   CONSTRAINT `fk_reservas_acomodacoes1` FOREIGN KEY (`id_acomodacao`) REFERENCES `acomodacoes` (`id_acomodacao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservas_hospedes` FOREIGN KEY (`id_hospede`) REFERENCES `hospedes` (`id_hospede`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservas_status_reservas` FOREIGN KEY (`id_status_reserva`) REFERENCES `status_reservas` (`id_status_reservas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
-INSERT INTO `reservas` VALUES (1,'2024-12-10','2024-12-12',1,2,774,'cama casal',3,1,1,1),(2,'2024-12-14','2024-12-16',2,2,1175,'cama casal',8,4,4,0);
+INSERT INTO `reservas` VALUES (1,'2024-12-12','2024-12-14',2,2,780,'duas cama de solteiro ',2,1,1,1),(2,'2024-12-12','2024-12-14',5,2,1176,'animais de estimação',3,2,2,1),(3,'2024-12-12','2024-12-14',3,2,980,'cachorro',7,3,3,1),(4,'2024-12-12','2024-12-14',2,2,1175,'cama de casal',4,4,4,1),(5,'2024-12-12','2024-12-14',1,2,980,'',1,5,5,1),(6,'2024-12-15','2024-12-21',3,6,2340,'uma cama de casal e uma cama de solteiro',9,1,1,1),(7,'2024-12-15','2024-12-21',7,6,3535,'3 camas de casal e uma de solteiro',8,2,2,1),(8,'2024-12-15','2024-12-21',2,6,2937,'cachorro',6,3,3,1),(9,'2024-12-15','2024-12-21',1,6,3540,'',10,4,4,1),(10,'2024-12-15','2024-12-21',2,6,2932,'',2,5,5,1),(11,'2024-12-22','2024-12-28',2,6,3535,'',4,3,4,1),(12,'2024-12-29','2024-12-31',2,2,1177,'',8,2,4,1),(13,'2025-01-01','2025-01-04',2,3,1770,'',4,2,4,1),(14,'2025-01-09','2025-01-11',3,2,200,'',8,2,6,1),(15,'2024-12-12','2024-12-14',2,2,200,'',8,5,6,1);
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -315,7 +315,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_cargos` (`id_cargo`),
   CONSTRAINT `fk_usuarios_cargos1` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,7 +324,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'sarah','sarah@gmail.com','sarah','1234567',1,1),(3,'greg','veloso@gmail','greg','1234567',1,1),(4,'Matheus','matheus@gmail.com','matheus','7654321',2,1),(5,'amanda xavier nascimento','amanda@gmail.com','amanda','1234567',1,1),(6,'vitor parajara','vitor@gmail.com','vitor','1234567',2,1),(7,'adm','adm@gmail.com','adm','1234567',1,1),(8,'joaquim','joquinha@gmail.com','joaquim','1234567',1,0);
+INSERT INTO `usuarios` VALUES (1,'sarah','sarah@gmail.com','sarah','1234567',1,1),(3,'greg','veloso@gmail','greg','1234567',1,1),(4,'Matheus','matheus@gmail.com','matheus','7654321',2,1),(5,'amanda xavier nascimento','amanda@gmail.com','amanda','1234567',1,1),(6,'vitor parajara','vitor@gmail.com','vitor','1234567',2,1),(7,'adm','adm@gmail.com','adm','1234567',1,1),(8,'joaquim','joquinha@gmail.com','joaquim','1234567',2,1),(9,'Mariana barbosa','mbarbosa@gmail.com','mariana','1234567',2,1),(10,'Renata Miguel','renata@gmail.com','renata','1234567',1,1),(11,'Gabriela Vilett','gvilett@gmail.com','gabriela','1234567',2,1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-10 14:54:25
+-- Dump completed on 2024-12-11 16:19:02
