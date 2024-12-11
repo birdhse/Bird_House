@@ -213,7 +213,7 @@ function Relatorios() {
                             </div>
 
                             <div className="mb-3">
-                                <label className="form-label">Selecionar poóspede</label>
+                                <label className="form-label">Selecionar por hóspede</label>
                                 <select
                                     className="form-select"
                                     value={selectedHospede}
