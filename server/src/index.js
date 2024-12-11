@@ -143,16 +143,3 @@ app.get('/api/reservas_por_hospede', async (req, res) => {
       return res.status(500).send('Erro ao obter os dados.');
   }
 });
-<<<<<<< HEAD
-
-
-
-
-
-// // Inicia o servidor
-// const PORT = 3000;
-// app.listen(PORT, () => {
-//     console.log(`Servidor rodando na porta ${PORT}`);
-// });
-=======
->>>>>>> e7dfebbec78dbbb8f87a31b3c8de5138125eb711
