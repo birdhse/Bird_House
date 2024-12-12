@@ -251,10 +251,10 @@ function Geralmente() {
         }
     }
 
-    async function Limpeza(id_acomodacao) {
+    async function Liberar(id_acomodacao) {
         try {
-            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/limpeza/${id_acomodacao}`,{
-              method:'PUT',
+            const resposta = await fetch(`${process.env.REACT_APP_BACKEND}/disponivel/${id_acomodacao}`,{
+              method:'GET',
               headers:{
                 'Content-Type':'application/json'
               },
@@ -300,11 +300,12 @@ function Geralmente() {
 
     function renderButtonsBasedOnStatus(status, hospede, reserva, id_acomodacao) {
         const today = new Date().toLocaleDateString('pt-BR');
+        console.log(id_acomodacao)
 
         // if (status === 1) {
         //     if (suitecheckin && new Date(suitecheckin).toLocaleDateString('pt-BR') === today) {
         //         return (
-        //             <button className="action-button" onClick={fazendoCheckin(id)}>Checkin</button>
+        //             <button className="action-button" onClick={fazendoCheckin(id_a)}>Checkin</button>
         //         );
         //     };
         // } 
@@ -321,7 +322,7 @@ function Geralmente() {
             );
         } if (status === 5) {
             return (
-                <button className="action-button" onClick={Limpeza(id_acomodacao)}>Liberar</button>
+               <button className="action-button" onClick={() => Liberar(id_acomodacao)}>Liberar</button>
             );
         }
         // } if (status === 3) {

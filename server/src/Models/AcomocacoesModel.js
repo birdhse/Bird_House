@@ -102,6 +102,7 @@ export async function statusIndisponivel(id_acomodacao) {
     try {
         const [retorno] = await conexao.query(sql, params);
         console.log(retorno, 'status atualizado: Indisponivel');
+        
         return [200, { mensagem: 'status atualizado: Indisponivel' }];
     } catch (error) {
         console.log(error);

@@ -304,3 +304,24 @@ export async function showTableReservas() {
         return [502, error];
     }    
 }
+
+export async function statusHospedada(id_acomodacao) {
+    console.log('Atualizando no Model Acomodacoes');
+    //Criando aula
+    const sql = `UPDATE acomodacoes SET id_status_acomodacao =? where id_acomodacao = ?`
+    //Definindo parametros para inserir no sql
+    const params = [
+        2,
+        id_acomodacao
+    ];
+
+    try {
+        const [retorno] = await conexao.query(sql, params);
+        console.log(retorno, 'status atualizado: Indisponivel');
+        
+        return [200, { mensagem: 'status atualizado: Indisponivel' }];
+    } catch (error) {
+        console.log(error);
+        return [500, error];
+    }
+}

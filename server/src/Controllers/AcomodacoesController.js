@@ -1,5 +1,5 @@
 import { readInfo, readAcomodacoes, readSuite, readChale, readCabana, readDomo, readBus, readEstacionamento } from "../Models/AcomocacoesModel.js";
-
+import { statusDisponivel, statusEmLimpeza, statusIndisponivel, statusManutencao, statusPendente } from "../Models/AcomocacoesModel.js";
 
 
 
@@ -74,7 +74,7 @@ export async function mostrarEstacionamento(req, res) {
     }
 }
 
-export async function statusPendente(req, res) {
+export async function Pendente(req, res) {
     const { id_acomodacao } = req.params;
     //Tentando atualizar reserva
     try {
@@ -86,10 +86,11 @@ export async function statusPendente(req, res) {
     }
 }
 
-export async function statusIndisponivel(req, res) {
+export async function Indisponivel(req, res) {
     const { id_acomodacao } = req.params;
     //Tentando atualizar reserva
     try {
+        
         const [status, resposta] = await statusIndisponivel(id_acomodacao);
         res.status(status).json(resposta)
     } catch (error) {
@@ -98,13 +99,11 @@ export async function statusIndisponivel(req, res) {
     }
 }
 
-export async function statusEmLimpeza(req, res) {
-    const { id_acomodacao } = req.params;
-    const acomodacao = id_acomodacao
+export async function EmLimpeza(req, res) {
+    const {id_acomodacao} = req.params;
     //Tentando atualizar reserva
     try {
-        console.log(acomodacao);
-        const [status, resposta] = await statusEmLimpeza(acomodacao);
+        const [status, resposta] = await statusEmLimpeza(id_acomodacao);
         res.status(status).json(resposta)
     } catch (error) {
         console.log(error);
@@ -112,7 +111,7 @@ export async function statusEmLimpeza(req, res) {
     }
 }
 
-export async function statusManutencao(req, res) {
+export async function Manutencao(req, res) {
     const { id_acomodacao } = req.params;
     //Tentando atualizar reserva
     try {
@@ -124,7 +123,7 @@ export async function statusManutencao(req, res) {
     }
 }
 
-export async function statusDisponivel(req, res) {
+export async function Disponivel(req, res) {
     const { id_acomodacao } = req.params;
     //Tentando atualizar reserva
     try {

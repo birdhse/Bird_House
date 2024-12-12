@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import {statusPendente, statusIndisponivel, statusDisponivel, statusEmLimpeza, statusManutencao} from './Controllers/AcomodacoesController.js';
+import {Pendente, Indisponivel, Disponivel, EmLimpeza, Manutencao} from './Controllers/AcomodacoesController.js';
 import { mostrarAcomodacoes, mostrarInfos, mostrarSuite, mostrarChale, mostrarCabana, mostrarDomo, mostrarBus, mostrarEstacionamento} from './Controllers/AcomodacoesController.js';
 import { criarReserva, excluirReserva, mostrarReservas, atualizarReserva, mostrarUmaReserva, mostrarTabelaReservas } from './Controllers/ReservaController.js';
 import { atualizarHospede, criarHospede, excluirHospede, mostrarHospedes, mostrarUmHospede } from './Controllers/HospedeController.js'
@@ -58,11 +58,11 @@ app.get('/bus', mostrarBus);
 app.get('/estacionamento', mostrarEstacionamento);
 
 
-app.put('/pendente/:id_acomodacao', statusPendente);
-app.get('/indisponivel/:id_acomodacao',statusIndisponivel);
-app.put('/disponivel/:id_acomodacao', statusDisponivel);
-app.put('/limpeza/:id_acomodacao', statusEmLimpeza);
-app.put('/manutencao/:id_acomodacao', statusManutencao);
+app.get('/pendente/:id_acomodacao', Pendente);
+app.get('/indisponivel/:id_acomodacao',Indisponivel);
+app.get('/disponivel/:id_acomodacao', Disponivel);
+app.get('/limpeza/:id_acomodacao', EmLimpeza);
+app.get('/manutencao/:id_acomodacao', Manutencao);
 
 app.listen(porta, () => {
   console.log(`API Rodando na porta ${porta}`)
