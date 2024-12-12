@@ -35,8 +35,8 @@ function App() {
       <Routes>
         <Route path='/' element={<TelaLogin />} />
         <Route path='/esqueci_senha' element={<EsqueciSenha />} />
-        <Route path='/geral' element={<Geral />} />
-        {/* <Route path='/geral' element={<Geralmente/>} /> */}
+        {/* <Route path='/geral' element={<Geral />} /> */}
+        <Route path='/geral' element={<Geralmente/>} />
         <Route path='/relatorios' element={<Relatorios />} />
 
         <Route path='/reservas' element={<GestãoReservas />} />

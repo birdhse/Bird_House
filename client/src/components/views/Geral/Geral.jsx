@@ -287,7 +287,7 @@ function Geralmente() {
 
                                 <br />
                                 <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                    {/* <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button> */}
                                     <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
                                     <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                                 </div>
@@ -310,7 +310,7 @@ function Geralmente() {
 
                                 <br />
                                 <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                    {/* <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button> */}
                                     <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
                                     <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                                 </div>
@@ -333,7 +333,7 @@ function Geralmente() {
 
                                 <br />
                                 <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                    {/* <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button> */}
                                     <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
                                     <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                                 </div>
@@ -356,7 +356,7 @@ function Geralmente() {
 
                                 <br />
                                 <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                    {/* <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button> */}
                                     <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
                                     <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                                 </div>
@@ -379,7 +379,7 @@ function Geralmente() {
 
                                 <br />
                                 <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                    {/* <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button> */}
                                     <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
                                     <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                                 </div>
@@ -402,7 +402,7 @@ function Geralmente() {
 
                                 <br />
                                 <div className="icons">
-                                    <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button>
+                                    {/* <button className="icon-button" title="Documentos" onClick={() => handleIconClick('documentos')}>&#x1F4C4;</button> */}
                                     <button className="icon-button" title="Perfil" onClick={() => handleIconClick('perfil')}>&#x1F464;</button>
                                     <button className="icon-button" title="Editar" onClick={() => handleIconClick('editar')}>&#x270F;</button>
                                 </div>

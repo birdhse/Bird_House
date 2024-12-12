@@ -205,7 +205,7 @@ export async function readChale() {
     let anoHoje = data.getFullYear();
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const sql = `  SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout)AND((id_acomodacao = ?)AND((id_status_reserva != 6)AND(id_status_reserva != 5)))`;
     const params = [
         hoje,
         2
@@ -231,7 +231,7 @@ export async function readCabana() {
     let anoHoje = data.getFullYear();
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const sql = `  SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout)AND((id_acomodacao = ?)AND((id_status_reserva != 6)AND(id_status_reserva != 5)))`;
     const params = [
         hoje,
         3
@@ -257,7 +257,7 @@ export async function readDomo() {
     let anoHoje = data.getFullYear();
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const sql = `  SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout)AND((id_acomodacao = ?)AND((id_status_reserva != 6)AND(id_status_reserva != 5)))`;
     const params = [
         hoje,
         4
@@ -283,7 +283,7 @@ export async function readBus() {
     let anoHoje = data.getFullYear();
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const sql = `  SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout)AND((id_acomodacao = ?)AND((id_status_reserva != 6)AND(id_status_reserva != 5)))`;
     const params = [
         hoje,
         5
@@ -308,7 +308,7 @@ export async function readEstacionamento() {
     let anoHoje = data.getFullYear();
     const hoje = anoHoje + '-' + mesHoje + '-' + diaHoje;
 
-    const sql = ` SELECT * FROM tabelageral WHERE ((? BETWEEN checkin AND checkout)AND(id_acomodacao = ?))`;
+    const sql = `  SELECT * FROM tabelageral WHERE (? BETWEEN checkin AND checkout)AND((id_acomodacao = ?)AND((id_status_reserva != 6)AND(id_status_reserva != 5)))`;
     const params = [
         hoje,
         6
